@@ -9,3 +9,6 @@
 /coverage
 
 package-lock.json
+
+#auto-generated files
+/build
