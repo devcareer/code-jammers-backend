@@ -27,7 +27,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app.js",
     "test": "nyc mocha -r @babel/register ./src/tests/index.js --timeout 10000",
-    "lint": "eslint src/  --fix"
+    "lint": "eslint src/  --fix",
+    "coverage": "nyc report --reporter=text-lcov"
   },
   "repository": {
     "type": "git",
