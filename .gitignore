@@ -4,6 +4,5 @@
 # environment variables
 .env
 
-# sequelize varaibles
-.config
+
 
