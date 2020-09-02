@@ -16,7 +16,11 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app.js",
+    "build": "babel ./src --out-dir build/",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "repository": {
     "type": "git",
