@@ -11,9 +11,14 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5"
+  },
   "scripts": {
-    "start": "nodemon node ./src/app.js",
+    "start": "nodemon --exec babel-node ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
