@@ -3,3 +3,6 @@
 
 # environment variables
 .env
+
+# coverage dependencies
+.nyc_output
