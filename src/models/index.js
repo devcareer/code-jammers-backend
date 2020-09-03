@@ -27,15 +27,7 @@ fs.readdirSync(__dirname)
     const model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
-<<<<<<< HEAD
 Object.keys(db).forEach((modelName) => {
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> feature(tourist-city-models) - create tourist center and city models
-Object.keys(db).forEach(modelName => {
->>>>>>> 7dd9135... feature(tourist-city-models) - create tourist center and city models
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
