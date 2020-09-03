@@ -14,9 +14,7 @@ if (config.url) {
 } else {
   sequelize = new Sequelize(
     config.database,
-
     config.username,
-
     config.password,
     config
   );
