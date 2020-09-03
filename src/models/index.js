@@ -20,6 +20,7 @@ if (config.url) {
     config.username,
 
     config.password,
+
     config
   );
 }
