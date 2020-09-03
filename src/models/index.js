@@ -2,13 +2,7 @@ const fs = require("fs");
 
 const path = require("path");
 
-<<<<<<< HEAD
 const Sequelize = require("sequelize");
-=======
-import Sequelize from "sequelize";
-
-import configurations from "../database";
->>>>>>> feature(tourist-city-models) - create city and tourist center models
 
 const basename = path.basename(__filename);
 
@@ -38,10 +32,6 @@ fs.readdirSync(__dirname)
     const model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
-<<<<<<< HEAD
-=======
-
->>>>>>> 282520d... feature(tourist-city-models) - create models
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
