@@ -35,11 +35,8 @@
     "build": "npm run clean && npm run build-babel"
   },
   "engines": {
-    "node": "12.x",
-    "build": "babel ./src --out-dir build/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "node": "12.x"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devcareer/code-jammers-backend.git"
