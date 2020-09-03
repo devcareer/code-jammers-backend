@@ -7,14 +7,10 @@
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
-=======
-    "sequelize": "^6.3.5"
->>>>>>> abd01bd... feature(tourist-city-models) - create models
   },
   "devDependencies": {
     "@babel/cli": "^7.11.5",
