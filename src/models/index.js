@@ -16,28 +16,16 @@ if (config.url) {
     config.database,
     config.username,
     config.password,
-<<<<<<< HEAD
     config
-=======
-
-    config,
->>>>>>> 4cc11dc... feature(tourist-city-models) - create city and tourist center models
   );
 }
 fs.readdirSync(__dirname)
   .filter(
-    (file) => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
+    (file) =>
+      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
   )
   .forEach((file) => {
-<<<<<<< HEAD
     const model = sequelize.import(path.join(__dirname, file));
-=======
-    const model = require(path.join(__dirname, file))(
-      sequelize,
-
-      Sequelize.DataTypes,
-    );
->>>>>>> 4cc11dc... feature(tourist-city-models) - create city and tourist center models
     db[model.name] = model;
   });
 Object.keys(db).forEach(modelName => {
