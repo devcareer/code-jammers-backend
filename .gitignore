@@ -7,3 +7,5 @@
 # coverage dependencies
 .nyc_output
 /coverage
+
+package-lock.json
