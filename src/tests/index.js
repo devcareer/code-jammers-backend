@@ -1,4 +1,4 @@
-import describe from "./index-test";
+import "./index-test";
 
 
 
