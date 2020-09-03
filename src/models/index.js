@@ -2,11 +2,9 @@ import fs from "fs";
 
 import path from "path";
 
-import configurations from "../database/config";
-
 import Sequelize from "sequelize";
 
-import configurations from "../database";
+import configurations from "../database/config";
 
 const basename = path.basename(__filename);
 
