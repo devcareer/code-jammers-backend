@@ -8,5 +8,4 @@
 .nyc_output
 
 package-lock.json
-
 /build
