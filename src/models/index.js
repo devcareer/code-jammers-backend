@@ -9,7 +9,9 @@ import configurations from "../database/config";
 const basename = path.basename(__filename);
 
 const env = process.env.NODE_ENV || "development";
-const config = require(`${__dirname}/../database/config/config.js`)[env];
+
+const config = configurations[env];
+
 const db = {};
 let sequelize;
 if (config.url) {
@@ -27,11 +29,18 @@ if (config.url) {
 }
 
 fs.readdirSync(__dirname)
+
   .filter(
     file => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
   )
+
   .forEach(file => {
-    const model = sequelize.import(path.join(__dirname, file));
+    const model = require(path.join(__dirname, file))(
+      sequelize,
+
+      Sequelize.DataTypes,
+    );
+
     db[model.name] = model;
   });
 Object.keys(db).forEach(modelName => {
@@ -42,4 +51,5 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 
 db.Sequelize = Sequelize;
-module.exports = db;
+
+export default db;
