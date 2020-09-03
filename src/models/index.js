@@ -23,12 +23,13 @@ if (config.url) {
 
     config.password,
 
-    config,
+    config
   );
 }
 fs.readdirSync(__dirname)
   .filter(
-    (file) => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
+    (file) =>
+      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
   )
   .forEach((file) => {
 <<<<<<< HEAD
@@ -37,7 +38,7 @@ fs.readdirSync(__dirname)
     const model = require(path.join(__dirname, file))(
       sequelize,
 
-      Sequelize.DataTypes,
+      Sequelize.DataTypes
     );
 >>>>>>> 4cc11dc... feature(tourist-city-models) - create city and tourist center models
     db[model.name] = model;
