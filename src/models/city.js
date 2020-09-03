@@ -14,11 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-<<<<<<< HEAD
-  City.associate = models => {
-=======
   City.associate = (models) => {
->>>>>>> 048f235... feature(tourist-city-models) - create models
     City.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,
