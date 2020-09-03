@@ -23,15 +23,29 @@ if (config.url) {
     config.username,
 
     config.password,
+<<<<<<< HEAD
     config,
+=======
+
+    config
+>>>>>>> feature(tourist-city-models) - create models
   );
 }
 fs.readdirSync(__dirname)
   .filter(
     file => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
   )
+<<<<<<< HEAD
   .forEach(file => {
     const model = sequelize.import(path.join(__dirname, file));
+=======
+  .forEach((file) => {
+    const model = require(path.join(__dirname, file))(
+      sequelize,
+
+      Sequelize.DataTypes
+    );
+>>>>>>> feature(tourist-city-models) - create models
     db[model.name] = model;
   });
 Object.keys(db).forEach(modelName => {
