@@ -37,4 +37,7 @@ describe("app.js should return all endpoints", async () => {
 });
 
 export default describe;
+<<<<<<< HEAD
 >>>>>>> feature(tourist-city-models) - create models
+=======
+>>>>>>> abd01bd... feature(tourist-city-models) - create models
