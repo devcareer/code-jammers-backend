@@ -7,14 +7,10 @@
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
-=======
-    "sequelize": "^6.3.5"
->>>>>>> 603e13d... feature(tourist-city-models) - create models
   },
   "devDependencies": {
     "@babel/cli": "^7.11.5",
@@ -36,14 +32,10 @@
     "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^2.0.4",
     "nyc": "^15.1.0",
-<<<<<<< HEAD
     "sequelize-cli": "^6.2.0",
     "sequelize-test-helpers": "^1.2.3",
     "sinon": "^9.0.3",
     "sinon-chai": "^3.5.0"
-=======
-    "sequelize-cli": "^6.2.0"
->>>>>>> 603e13d... feature(tourist-city-models) - create models
   },
   "scripts": {
     "clean": "npm rm -rf build && npm run build-babel",
