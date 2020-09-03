@@ -17,5 +17,3 @@ package-lock.json
 /build
 
 coverage
-
-src/models/index.js
