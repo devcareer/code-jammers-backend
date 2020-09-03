@@ -29,8 +29,17 @@
     "start": "nodemon --exec babel-node ./src/app.js",
     "test": "nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint src/  --fix"
+    "lint": "eslint src/  --fix",
+    "clean": "npm rm -rf build && npm run build-babel",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel"
   },
+  "engines": {
+    "node": "12.x",
+    "build": "babel ./src --out-dir build/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devcareer/code-jammers-backend.git"

@@ -1,8 +1,6 @@
-
 import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../app";
-
 
 // assertion style
 
@@ -22,7 +20,6 @@ describe("app.js should return all endpoints", async () => {
 				});
 		});
 	});
-    
 });
 
 export default describe;

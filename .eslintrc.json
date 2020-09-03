@@ -15,7 +15,9 @@
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
       "no-unused-vars":"off",
-      "no-undef":"off"
+      "no-undef":"off",
+      "no-tabs":"off",
+      "no-console": "off",
+      "import/no-extraneous-dependencies":["error", {"devDependencies": true}]
     }
   }
-  
