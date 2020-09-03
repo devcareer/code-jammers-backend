@@ -1,16 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
->>>>>>> 38ac9f8... feature(tourist-city-models) - create city and tourist center models
 const Sequelize = require("sequelize");
-=======
-import Sequelize from "sequelize";
-
-import configurations from "../database";
->>>>>>> feature(tourist-city-models) - create city and tourist center models
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
