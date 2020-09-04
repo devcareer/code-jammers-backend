@@ -19,6 +19,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.1.0",
+    "cross-env": "^7.0.2",
     "eslint": "^7.8.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
@@ -33,7 +34,8 @@
     "lint": "eslint src/  --fix",
     "clean": "npm rm -rf build && npm run build-babel",
     "build-babel": "babel -d ./build ./src -s",
-    "build": "npm run clean && npm run build-babel"
+    "build": "npm run clean && npm run build-babel",
+    "heroku-postbuild": "npm run build"
   },
   "engines": {
     "node": "12.x"
