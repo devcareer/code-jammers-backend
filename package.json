@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start-dev": "nodemon --exec babel-node ./src/app.js",
-    "start": "node ./build/app.js",
+    "start": "node ./app/build/app.js",
     "test": "nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/  --fix",
