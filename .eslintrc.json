@@ -1,4 +1,5 @@
-{ "root": true,
+{ 
+  "root": true,
   "extends": "airbnb-base",
   "env": {
     "node": true,
@@ -10,12 +11,14 @@
       "sourceType": "module"
     },
     "rules": {
-      "indent": ["error", "tab"],
       "linebreak-style": ["error", "windows"],
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
       "no-unused-vars":"off",
-      "no-undef":"off"
+      "no-undef":"off",
+      "no-tabs":"off",
+      "no-console": "off",
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     }
   }
   
