@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
   },
@@ -27,7 +28,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app.js",
-    "test": "nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/  --fix"
   },
