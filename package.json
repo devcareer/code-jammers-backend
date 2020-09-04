@@ -29,7 +29,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app.js",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
-    "coverage": "nyc report --reporter=text-lcov",
+    "coverage": "nyc report --reporter=text-lcov --reporter=lcov",
     "lint": "eslint src/  --fix"
   },
   "repository": {
