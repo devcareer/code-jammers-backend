@@ -35,7 +35,7 @@
     "clean": "npm rm -rf build && npm run build-babel",
     "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm install && npm run build"
   },
   "engines": {
     "node": "12.x"
