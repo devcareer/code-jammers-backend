@@ -4,11 +4,16 @@
 # environment variables
 .env
 
+
 # package-lock.json
 package-lock.json
 
 # history
 .history
 
+# coverage dependencies
+.nyc_output
+/coverage
 
+package-lock.json
 
