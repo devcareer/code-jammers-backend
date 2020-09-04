@@ -15,7 +15,5 @@ package-lock.json
 # history
 .history
 
-# Config.js used for testing my migration
-config.js
-.sequelizerc
+
 
