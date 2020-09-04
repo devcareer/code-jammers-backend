@@ -7,6 +7,15 @@
 # coverage dependencies
 .nyc_output
 
+/build
+
+# package-lock.json
 package-lock.json
 
-/build
+# history
+.history
+
+# Config.js used for testing my migration
+config.js
+.sequelizerc
+
