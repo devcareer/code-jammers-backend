@@ -27,14 +27,14 @@
     "nyc": "^15.1.0"
   },
   "scripts": {
-    "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
-    "start": "npm run build && node ./build/app.js",
-    "test": "nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint src/  --fix",
     "clean": "npm rm -rf build && npm run build-babel",
     "build-babel": "babel -d ./build ./src -s", 
-    "build": "npm run clean && npm run build-babel"
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js",
+    "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
+    "test": "nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint src/  --fix"
   },
   "engines": {
     "node": "12.x"
