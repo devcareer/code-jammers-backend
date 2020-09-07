@@ -9,10 +9,10 @@ module.exports = {
      */
 
     await queryInterface.bulkInsert(
-      "Countries",
+      "Country",
       [
         {
-          namesOfCountries: "Nigeria",
+          nameOfCountries: "Nigeria",
           gallery:
             "https://img.freepik.com/free-vector/nigeria-map-flag-national-emblem_2239-230.jpg?size=338&ext=jpg",
           capital: "FCT Abuja",
@@ -34,6 +34,6 @@ module.exports = {
      *
      * Example:
      */
-    await queryInterface.bulkDelete("Countries", null, {});
+    await queryInterface.bulkDelete("Country", null, {});
   },
 };

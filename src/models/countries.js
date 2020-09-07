@@ -1,6 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
-  const Country = sequelize.define("Countries", {
-    namesOfCountries: {
+  const Country = sequelize.define("Country", {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    nameOfCountries: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -31,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Country.associate = (models) => {
-    Country.hasMany(models.Cultures, {
+    Country.hasMany(models.Culture, {
       onDelete: "cascade",
     });
   };
