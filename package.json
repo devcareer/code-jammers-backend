@@ -29,7 +29,7 @@
   },
   "scripts": {
     "clean": "npm rm -rf build && npm run build-babel",
-    "build-babel": "babel -d ./build ./src -s", 
+    "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./build/app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
@@ -40,7 +40,6 @@
   "engines": {
     "node": "12.x"
   },
- 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devcareer/code-jammers-backend.git"
