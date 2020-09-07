@@ -9,7 +9,7 @@ module.exports = {
      */
 
     await queryInterface.bulkInsert(
-      "Cultures",
+      "Culture",
       [
         {
           types: "Yoruba culture",
@@ -34,6 +34,6 @@ module.exports = {
      *
      * Example:
      */
-    await queryInterface.bulkDelete("Cultures", null, {});
+    await queryInterface.bulkDelete("Culture", null, {});
   },
 };
