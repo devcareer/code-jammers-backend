@@ -29,9 +29,16 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app.js",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
-    "coverage": "nyc report --reporter=text-lcov --reporter=lcov",
-    "lint": "eslint src/  --fix"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint src/  --fix",
+    "clean": "npm rm -rf build && npm run build-babel",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel"
   },
+  "engines": {
+    "node": "12.x"
+  },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devcareer/code-jammers-backend.git"
