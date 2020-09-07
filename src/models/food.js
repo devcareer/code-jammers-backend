@@ -1,11 +1,10 @@
-'use strict';
 const {
   Model
-} = require('sequelize');
+} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Food extends Model {
    
-    static associate(models) {
+static associate(models) {
     
     }
   };
@@ -15,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     gallery: DataTypes.STRING,
     event: DataTypes.STRING
+
   }, {
     sequelize,
     modelName: 'Food',
