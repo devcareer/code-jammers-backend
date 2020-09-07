@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const City = sequelize.define("Country", {
+  const City = sequelize.define("City", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gallery: {
+    gallary: {
       type: DataTypes.STRING,
       allowNull: false,
     },
