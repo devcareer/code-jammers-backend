@@ -9,7 +9,7 @@ module.exports = {
      */
 
     await queryInterface.bulkInsert(
-      "Country",
+      "Countries",
       [
         {
           nameOfCountry: "Nigeria",
@@ -34,6 +34,6 @@ module.exports = {
      *
      * Example:
      */
-    await queryInterface.bulkDelete("Country", null, {});
+    await queryInterface.bulkDelete("Countries", null, {});
   },
 };
