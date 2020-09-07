@@ -12,7 +12,7 @@ module.exports = {
       "Countries",
       [
         {
-          namesOfCountries: "Nigeria",
+          nameOfCountry: "Nigeria",
           gallery:
             "https://img.freepik.com/free-vector/nigeria-map-flag-national-emblem_2239-230.jpg?size=338&ext=jpg",
           capital: "FCT Abuja",
