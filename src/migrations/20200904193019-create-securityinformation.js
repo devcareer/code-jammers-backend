@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Securityinformation", {
+    await queryInterface.createTable("Securityinformations", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,13 +14,13 @@ module.exports = {
         type: Sequelize.STRING,
       },
       // countryId: {
-      //   type: Sequelize.INTEGER,
-      //   onDelete: "CASCADE",
-      //   allowNull: false,
-      //   references: {
-      //     model: "Country",
-      //     key: "id",
-      //   },
+      // 	type: Sequelize.INTEGER,
+      // 	onDelete: "CASCADE",
+      // 	allowNull: false,
+      // 	references: {
+      // 		model: "Countries",
+      // 		key: "id",
+      // 	},
       // },
       createdAt: {
         allowNull: false,
@@ -33,6 +33,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Securityinformation");
+    await queryInterface.dropTable("Securityinformations");
   },
 };
