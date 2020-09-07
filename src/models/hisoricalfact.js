@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+<<<<<<< HEAD
   Hisoricalfact.associate = models => {
+=======
+  Hisoricalfact.associate = (models) => {
+>>>>>>> lint code
     Hisoricalfact.belongsTo(models.Countries, {
       foreignKey: {
         allowNull: false,

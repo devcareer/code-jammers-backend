@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+<<<<<<< HEAD
   Securityinformation.associate = models => {
+=======
+  Securityinformation.associate = (models) => {
+>>>>>>> lint code
     Securityinformation.belongsTo(models.Countries, {
       foreignKey: {
         allowNull: false,
