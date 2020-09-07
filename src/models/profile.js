@@ -24,12 +24,12 @@ export default (sequelize, DataTypes) => {
             allowNull: false,
         }
     });
-    Profile.associate = (models) => {
-        Profile.belongsTo(models.User, {
-          foreignKey: 'userId',
-          as: 'user',
-          onDelete: 'CASCADE',
-        });
-    };
-    return Profile;
+        Profile.associate = (models) => {
+            Profile.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false,
+            },
+            });
+        };
+        return Profile;
 };

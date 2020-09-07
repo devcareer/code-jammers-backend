@@ -18,8 +18,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       userId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
         allowNull: false,
-        type: Sequelize.INTEGER
+        references: {
+          model: 'User',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +35,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Profiles');
