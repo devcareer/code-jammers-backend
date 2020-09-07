@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      namesOfCountries: {
+      nameOfCountry: {
         type: Sequelize.STRING,
       },
       gallery: {
