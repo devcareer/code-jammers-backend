@@ -2,8 +2,8 @@ module.exports = (sequelize, DataTypes) => {
   const Country = sequelize.define("Country", {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       autoIncrement: true,
+      allowNull: false,
       primaryKey: true,
     },
     nameOfCountry: {
