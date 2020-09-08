@@ -1,6 +1,11 @@
 # dependencies
+<<<<<<< HEAD
 /node_modules
  
+=======
+node_modules/
+
+>>>>>>> testing
 # environment variables
 .env
 

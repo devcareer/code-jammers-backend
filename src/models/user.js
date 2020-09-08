@@ -1,5 +1,11 @@
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,8 +28,10 @@ export default (sequelize, DataTypes) => {
     }
   });
 
-  User.hasOne(models.Profile, {
-    onDelete: 'cascade',
-  });
+  User.associate = (models) => {
+    User.hasOne(models.Profile, {
+      onDelete: 'cascade',
+    });
+  }
   return User;
 };
