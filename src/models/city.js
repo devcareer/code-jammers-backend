@@ -1,15 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-<<<<<<< HEAD
   const City = sequelize.define("Cities", {
-=======
-  const City = sequelize.define("City", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      allowNull: false,
-      primaryKey: true,
-    },
->>>>>>> 7c9811a... feature(tourist-city-models) - create models
     name: {
       type: DataTypes.STRING,
       allowNull: false,
