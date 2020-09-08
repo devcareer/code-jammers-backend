@@ -29,11 +29,24 @@ if (config.url) {
 fs.readdirSync(__dirname)
 
   .filter(
+<<<<<<< HEAD
     file => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
   )
 
   .forEach(file => {
     const model = sequelize.import(path.join(__dirname, file));
+=======
+    (file) => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
+  )
+
+  .forEach((file) => {
+    const model = require(path.join(__dirname, file))(
+      sequelize,
+
+      Sequelize.DataTypes,
+    );
+
+>>>>>>> 73f9a81... feature(tourist-city-models) - create city and tourist center models
     db[model.name] = model;
   });
 Object.keys(db).forEach(modelName => {
