@@ -1,8 +1,10 @@
 import path from "path";
 
+import configurations from "../database/config";
+
 import Sequelize from "sequelize";
 
-import configurations from "../database/config";
+import configurations from "../database";
 
 const fs = require("fs");
 
