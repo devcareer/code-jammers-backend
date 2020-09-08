@@ -1,6 +1,6 @@
 import database from "../models";
 
-class User {
+export default class User {
   static async createUser(newUser) {
     try {
       return await database.User.create(newUser);
@@ -9,5 +9,3 @@ class User {
     }
   }
 }
-
-export default User;

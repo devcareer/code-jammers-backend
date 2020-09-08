@@ -3,11 +3,11 @@
   "extends": "airbnb-base",
   "env": {
     "node": true,
-    "es6": true,
+    "es2021": true,
     "mocha": true
   },
     "parserOptions": {
-      "ecmaVersion": 2020,
+      "ecmaVersion": 12,
       "sourceType": "module"
     },
     "rules": {
@@ -16,7 +16,9 @@
       "semi": ["error", "always"],
       "no-unused-vars":"off",
       "no-undef":"off",
+      "import/no-dynamic-require":"off",
       "no-tabs":"off",
+      "global-require":"off",
       "no-console": "off",
       "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
       "no-useless-catch":"off",
