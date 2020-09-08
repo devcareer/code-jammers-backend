@@ -13,9 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-
-  Historicalfacts.associate = models => {
-    Historicalfacts.belongsTo(models.Country, {
+  Historicalfact.associate = models => {
+    Historicalfact.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,
       },
