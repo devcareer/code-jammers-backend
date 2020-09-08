@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
+=======
+import fs from "fs";
+
+import path from "path";
+
+import Sequelize from "sequelize";
+
+import configurations from "../database";
+>>>>>>> 4dcc6e2... feature(tourist-city-models) - create city and tourist center models
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
@@ -16,6 +26,10 @@ if (config.url) {
     config.database,
     config.username,
     config.password,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4dcc6e2... feature(tourist-city-models) - create city and tourist center models
     config
   );
 }
@@ -26,7 +40,16 @@ fs.readdirSync(__dirname)
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
   )
   .forEach((file) => {
+<<<<<<< HEAD
     const model = sequelize.import(path.join(__dirname, file));
+=======
+    const model = require(path.join(__dirname, file))(
+      sequelize,
+
+      Sequelize.DataTypes
+    );
+
+>>>>>>> 4dcc6e2... feature(tourist-city-models) - create city and tourist center models
     db[model.name] = model;
   });
 
