@@ -4,7 +4,11 @@ import path from "path";
 
 import Sequelize from "sequelize";
 
+<<<<<<< HEAD
 import configurations from "../database/config";
+=======
+import configurations from "../database";
+>>>>>>> 4dcc6e2... feature(tourist-city-models) - create city and tourist center models
 
 const basename = path.basename(__filename);
 
@@ -26,21 +30,22 @@ if (config.use_env_variable) {
 
     config.password,
 
-    config,
+    config
   );
 }
 
 fs.readdirSync(__dirname)
 
   .filter(
-    (file) => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
+    (file) =>
+      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
   )
 
   .forEach((file) => {
     const model = require(path.join(__dirname, file))(
       sequelize,
 
-      Sequelize.DataTypes,
+      Sequelize.DataTypes
     );
 
     db[model.name] = model;
