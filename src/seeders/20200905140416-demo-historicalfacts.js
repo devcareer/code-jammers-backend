@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert("Hisoricalfacts", [{
+    await queryInterface.bulkInsert("Hisoricalfact", [{
       countryId: 1,
       location: "Nigeria",
       gallery: "https://netstorage-legit.akamaized.net/images/468ff81348dddbff.jpg",
@@ -11,6 +11,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("Hisoricalfacts", null, {});
+    await queryInterface.bulkDelete("Hisoricalfact", null, {});
   },
 };
