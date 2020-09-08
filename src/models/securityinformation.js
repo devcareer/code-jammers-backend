@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Securityinformation = sequelize.define("Securityinformations", {
+  const Securityinformation = sequelize.define("Securityinformation", {
     countryId: {
       type: DataTypes.STRING,
       allowNull: false,
