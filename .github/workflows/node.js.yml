@@ -5,7 +5,7 @@ name: build
 on:
   push:
     branches:
-      - '*'
+      - fx-test-coverage-maintainability-174691368
     tags:
       - '!*' # Do not execute on tags
     paths:
@@ -24,26 +24,27 @@ jobs:
     name: test/node ${{ matrix.node }}/${{ matrix.platform }}
     runs-on: ${{ matrix.platform }}
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@fx-test-coverage-maintainability-174691368
+    - uses: actions/setup-node@fx-test-coverage-maintainability-174691368
       with:
         node-version: ${{ matrix.node }}
     - run: npm install
-    - run: npm run build
-    - run: npm run test
+    - run: npm build
+    - run: npm test
   coverage:
     needs: [ test ]
     name: coverage
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@fx-test-coverage-maintainability-174691368
+    - uses: actions/setup-node@fx-test-coverage-maintainability-174691368
       with:
         node-version: '12'
     - run: npm install
-    - run: npm run build
-    - uses: paambaati/codeclimate-action@v2.6.0
+    - run: npm build
+    - uses: paambaati/codeclimate-action@v2.5.7
       env:
         CC_TEST_REPORTER_ID: 9906af45c33c52f1112f044f87d15e49cdfabac704956c36638b2f9d87c679a7
       with:
         coverageCommand: npm run coverage
+        debug: true
