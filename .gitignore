@@ -1,6 +1,6 @@
 # dependencies
 /node_modules
-
+ 
 # environment variables
 .env
 
@@ -8,4 +8,5 @@
 .nyc_output
 /coverage
 
+/build
 package-lock.json
