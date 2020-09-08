@@ -1,20 +1,16 @@
-const fs = require("fs");
+import fs from "fs";
 
-const path = require("path");
+import path from "path";
 
-<<<<<<< HEAD
-const Sequelize = require("sequelize");
-=======
 import Sequelize from "sequelize";
 
-import configurations from "../database";
->>>>>>> feature(tourist-city-models) - create city and tourist center models
+import configurations from "../database/config";
 
 const basename = path.basename(__filename);
 
 const env = process.env.NODE_ENV || "development";
 
-const config = require(`${__dirname}/../config/config.json`)[env];
+const config = require(`${__dirname}/../database/config`)[env];
 
 const db = {};
 
@@ -61,4 +57,4 @@ db.sequelize = sequelize;
 
 db.Sequelize = Sequelize;
 
-module.exports = db;
+export default db;
