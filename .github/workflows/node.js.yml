@@ -30,9 +30,9 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Test & publish code coverage
-      uses: paambaati/codeclimate-action@v2.5.6
+      uses: paambaati/codeclimate-action@v2.5.6 
       env:
-        CC_TEST_REPORTER_ID: 9906af45c33c52f1112f044f87d15e49cdfabac704956c36638b2f9d87c679a7
+        CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
       with:
         coverageCommand: npm run coverage
         debug: true
