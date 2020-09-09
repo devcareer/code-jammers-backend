@@ -3,6 +3,6 @@ plugins:
   eslint:
     enabled: true
 exclude_patterns:
-- "**/config/"
-- "**/database/"
-- "**/test/"
+- "src/config/"
+- "src/database/"
+- "src/test/"
