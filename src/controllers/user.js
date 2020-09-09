@@ -1,9 +1,8 @@
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
-import User from "../UserService/user";
+import User from "../UserService/User";
 
 const util = new Util();
-
 class userController {
   static async createUser(req, res) {
     const { email, username, password } = req.body;
@@ -11,9 +10,10 @@ class userController {
       util.setError(400, "Please you are required to fill all fields");
       return util.send(res);
     }
-    const hashedPassword = bcrypt.hashSync(password);
-    console.log(hashedPassword);
-    const newUser = req.body;
+    const hashedPassword = bcrypt.hashSync(password, 10, (err, hash) => {
+        return hash
+      });
+    const newUser = { email:email, username:username, password:hashedPassword };
     try {
       const createdUser = await User.createUser(newUser);
       util.setSuccess(201, "User created!", createdUser);
