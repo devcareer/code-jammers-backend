@@ -35,7 +35,8 @@
     "nodemon": "^2.0.4",
     "nyc": "^15.1.0",
     "sequelize-test-helpers": "^1.2.3",
-    "sinon": "^9.0.3"
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0"
   },
   "scripts": {
     "clean": "npm rm -rf build && npm run build-babel",
