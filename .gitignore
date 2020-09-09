@@ -9,3 +9,5 @@
 /coverage
 
 /build
+
+package-lock.json

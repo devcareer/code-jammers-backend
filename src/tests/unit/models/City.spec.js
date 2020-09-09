@@ -20,7 +20,7 @@ describe("src/models/City", () => {
   checkModelName(City)("City");
 
   context("properties", () => {
-    ["id", "location", "gallary", "name"].forEach(checkPropertyExists(city));
+    ["location", "gallary", "name"].forEach(checkPropertyExists(city));
   });
 
   context("associations", () => {
