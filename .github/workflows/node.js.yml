@@ -6,31 +6,35 @@ on:
   push:
     branches:
       - '*'
-
 jobs:
-  build:
-    name: Build
-    runs-on: windows-latest
+  test:
+  name: Build
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
-
+        platform: [ windows-latest ]
+        node: [ '12', '10' ]
+    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: ${{ matrix.node }}
     - run: npm install
-    - run: npm run build --if-present
+    - run: npm run build
     - run: npm test
-
   coverage:
-    name: Coverage
+    needs: [ test ]
+    name: coverage
     runs-on: windows-latest
     steps:
-    - name: Test & publish code coverage
-      uses: paambaati/codeclimate-action@v2.5.6 
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: npm install
+    - run: npm run build
+    - uses: paambaati/codeclimate-action@v2.2.4
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
       with:
