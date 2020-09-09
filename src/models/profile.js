@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
         },
         userId: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         }
     });
