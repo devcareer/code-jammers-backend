@@ -1,4 +1,7 @@
+import chai from "chai";
 import { expect } from "chai";
+import sinonChai from "sinon-chai";
+chai.use(sinonChai);
 
 import {
   sequelize,
@@ -35,9 +38,7 @@ describe("src/models/countries", () => {
     });
 
     it("defined a hasMany association with Culture", () => {
-      expect(Country.hasMany).to.have.been.calledWith(Culture, {
-        foreignKey: "countryId",
-      });
+      expect(Country.hasMany).to.have.been.calledWith(Culture);
     });
   });
 });
