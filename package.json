@@ -10,7 +10,9 @@
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.5",
@@ -38,8 +40,7 @@
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./build/app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/**/*.js --timeout 10000 --recursive --exit || true ",    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src/  --fix"
   },
   "engines": {
@@ -56,4 +57,3 @@
   },
   "homepage": "https://github.com/devcareer/code-jammers-backend#readme"
 }
-

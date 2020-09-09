@@ -1,40 +1,40 @@
-const { expect } = require("chai");
+import chai from "chai";
+import sinonChai from "sinon-chai";
+
+chai.use(sinonChai);
+
+const { expect } = chai;
 
 const {
   sequelize,
   dataTypes,
   checkModelName,
-  checkUniqueIndex,
   checkPropertyExists,
 } = require("sequelize-test-helpers");
 
-const FoodModel = require("../../src/models/Food");
+const foodModel = require("../../../models/food");
 
-describe("src/models/Food", () => {
-  const Food = FoodModel(sequelize, dataTypes);
+describe("src/models/food", () => {
+  const Food = foodModel(sequelize, dataTypes);
   const food = new Food();
 
   checkModelName(Food)("Food");
 
   context("properties", () => {
-    ["countryId", "types", "methodOfPreparation", "gallery"].forEach(
+    ["id", "countryId", "types", "methodOfPreparation", "gallery"].forEach(
       checkPropertyExists(food),
     );
   });
 
   context("associations", () => {
-    const Country = "some dummy Country";
+    const Country = "Country";
 
     before(() => {
-      User.associate({ Company });
+      Food.associate({ Country });
     });
 
     it("defined a belongsTo association with Country", () => {
       expect(Food.belongsTo).to.have.been.calledWith(Country);
     });
-  });
-
-  context("indexes", () => {
-    ["email", "token"].forEach(checkUniqueIndex(food));
   });
 });

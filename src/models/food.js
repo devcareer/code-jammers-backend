@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Culture = sequelize.define("Food", {
+  const Food = sequelize.define("Food", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     methodOfPreparation: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     gallery: {
