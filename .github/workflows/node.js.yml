@@ -10,9 +10,9 @@ jobs:
   test:
     strategy:
       matrix:
-        platform: [ windows-latest ]
-        node: [ '12', '10' ]
-    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
+        platform: windows-latest
+        node: [10.x, 12.x, 14.x]
+    name: Build
     runs-on: ${{ matrix.platform }}
     steps:
     - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - run: npm install
-    - run: npm run build
+    - run: npm run build --if-present
     - run: npm test
   coverage:
     needs: [ test ]
