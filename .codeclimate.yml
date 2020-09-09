@@ -8,3 +8,5 @@ exclude_patterns:
 - "src/config/"
 - "src/database/"
 - "src/test/"
+- "src/migrations/"
+- "src/models/"
