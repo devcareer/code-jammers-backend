@@ -1,3 +1,4 @@
+import { expect } from "chai";
 import {
   sequelize,
   dataTypes,
@@ -21,15 +22,15 @@ describe("src/models/securityinformation", () => {
     );
   });
 
-  //   context("associations", () => {
-  //     const Country = "Nigeria";
+  context("associations", () => {
+    const Country = "Nigeria";
 
-  //     before(() => {
-  //       Securityinformation.associate({ Country });
-  //     });
+    before(() => {
+      Securityinformation.associate({ Country });
+    });
 
-  //     it("defined a belongsTo association with Country", () => {
-  //       expect(Securityinformation.belongsTo).to.have.been.calledWith(Country);
-  //     });
-  //   });
+    it("defined a belongsTo association with Country", () => {
+      expect(Securityinformation.belongsTo).to.have.been.calledWith(Country);
+    });
+  });
 });
