@@ -1,50 +1,35 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: build
+name: NodeJS CI
 on:
   push:
     branches:
-      - fx-test-coverage-maintainability-174691368
-    tags:
-      - '!*' # Do not execute on tags
-    paths:
-      - src/*
-      - test/*
-      - '*.json'
-  pull_request:
-    paths:
-      - '!*.MD'
+      - '*'
+
 jobs:
-  test:
+  build:
+    name: Build
+    runs-on: windows-latest
     strategy:
       matrix:
-        platform: [ windows-latest ]
-        node: [ '12', '10' ]
-    name: test/node ${{ matrix.node }}/${{ matrix.platform }}
-    runs-on: ${{ matrix.platform }}
+        node-version: [10.x, 12.x, 14.x]
+
     steps:
-    - uses: actions/checkout@fx-test-coverage-maintainability-174691368
-    - uses: actions/setup-node@fx-test-coverage-maintainability-174691368
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node }}
+        node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npm build
+    - run: npm run build --if-present
     - run: npm test
-  coverage:
-    needs: [ test ]
-    name: coverage
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@fx-test-coverage-maintainability-174691368
-    - uses: actions/setup-node@fx-test-coverage-maintainability-174691368
-      with:
-        node-version: '12'
-    - run: npm install
-    - run: npm build
-    - uses: paambaati/codeclimate-action@v2.5.7
+    - name: Test & publish code coverage
+      uses: paambaati/codeclimate-action@v2.5.7
       env:
         CC_TEST_REPORTER_ID: 9906af45c33c52f1112f044f87d15e49cdfabac704956c36638b2f9d87c679a7
       with:
         coverageCommand: npm run coverage
         debug: true
+        coverageLocations:
+          ${{github.workspace}}/coverage/lcov.info:lcov
