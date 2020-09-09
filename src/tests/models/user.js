@@ -14,7 +14,7 @@ import UserModel from "../../models/user"
 describe("src/models/User", () => {
   const User = UserModel(sequelize, dataTypes)
   const user = new User()
-  checkModelName(User)(User)
+  checkModelName(User)("User")
   context("properties", () => {
     ;["email", "username", "password", "role"].forEach(
       checkPropertyExists(user)

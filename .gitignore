@@ -1,15 +1,6 @@
 # dependencies
-<<<<<<< HEAD
 /node_modules
-<<<<<<< HEAD
 
-=======
- 
-=======
-node_modules/
-
->>>>>>> testing
->>>>>>> 2024993... testing
 # environment variables
 .env
 
