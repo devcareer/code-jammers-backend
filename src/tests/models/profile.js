@@ -15,7 +15,7 @@ import ProfileModel from "../../models/profile"
 describe("src/models/Profile", () => {
   const Profile = ProfileModel(sequelize, dataTypes)
   const profile = new Profile()
-  checkModelName(Profile)(Profile)
+  checkModelName(Profile)("Profile")
   context("properties", () => {
     ;["firstName", "lastName", "profilePicture", "userId"].forEach(
       checkPropertyExists(profile)
