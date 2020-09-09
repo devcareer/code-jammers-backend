@@ -22,5 +22,5 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  return Historicalfacts;
+  return Historicalfact;
 };
