@@ -6,24 +6,26 @@ on:
   push:
     branches:
       - '*'
+
 jobs:
-  test:
+  build:
+    name: Build
+    runs-on: windows-latest
     strategy:
       matrix:
-        platform: windows-latest
-        node: [10.x, 12.x, 14.x]
-    name: Build
-    runs-on: ${{ matrix.platform }}
+        node-version: [10.x, 12.x, 14.x]
+
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node }}
+        node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
   coverage:
-    needs: [ test ]
+    needs: [ build ]
     name: coverage
     runs-on: windows-latest
     steps:
