@@ -31,7 +31,7 @@ module.exports = {
         onDelete: "CASCADE",
         allowNull: false,
         references: {
-          model: "Country",
+          model: "Countries",
           key: "id",
         },
       },
