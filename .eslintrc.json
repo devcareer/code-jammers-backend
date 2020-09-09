@@ -21,6 +21,7 @@
       "import/no-dynamic-require":"off",
       "no-tabs":"off",
       "no-console": "off",
+
       "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
       "arrow-parens": [2, "as-needed"],
       "require-jsdoc": [2, {
