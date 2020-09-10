@@ -1,11 +1,11 @@
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Users", {
+  up(queryInterface, Sequelize) {
+    return queryInterface.sequelize.query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";").then(() => queryInterface.createTable("Users", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
       email: {
         type: Sequelize.STRING,
@@ -17,10 +17,9 @@ module.exports = {
         type: Sequelize.STRING,
       },
       role: {
-        type: Sequelize.STRING,
-        defaultValue: "user",
+        type: Sequelize.ENUM("Super Admin", "Admin", "User"),
+        defaultValue: "User",
       },
-
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -29,15 +28,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
+    }));
   },
-  down: async (queryInterface, Sequelize) => {
-<<<<<<< HEAD
-    await queryInterface.dropTable("Users");
-  },
+  down: queryInterface => queryInterface.dropTable("Users"),
 };
-=======
-    await queryInterface.dropTable('Users');
-  }
-};
->>>>>>> 2024993... testing

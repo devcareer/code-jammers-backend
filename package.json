@@ -51,6 +51,10 @@
     "migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all",
     "seed": "node_modules/.bin/sequelize db:seed:all",
     "seed:undo": "node_modules/.bin/sequelize db:seed:undo:all"
+
+  },
+  "engines": {
+    "node": "12.x"
   },
   "repository": {
     "type": "git",

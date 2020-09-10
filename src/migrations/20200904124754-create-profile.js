@@ -1,11 +1,15 @@
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Profiles", {
+  up(queryInterface, Sequelize) {
+    return queryInterface.sequelize.query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";").then(() => queryInterface.createTable("Profiles", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.literal("uuid_generate_v4()"),
+      },
+      userId: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       firstName: {
         type: Sequelize.STRING,
@@ -16,14 +20,6 @@ module.exports = {
       profilePicture: {
         type: Sequelize.STRING,
       },
-      userId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Users",
-          key: "id",
-        },
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -32,9 +28,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
+    }));
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Profiles");
-  },
+  down: queryInterface => queryInterface.dropTable("Profile"),
 };
