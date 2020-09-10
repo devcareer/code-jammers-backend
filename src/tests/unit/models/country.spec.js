@@ -31,7 +31,7 @@ describe("src/models/countries", () => {
   });
 
   context("associations", () => {
-    const Culture = "dumbing culture data";
+    const Culture = "culture data";
 
     before(() => {
       Country.associate({ Culture });
