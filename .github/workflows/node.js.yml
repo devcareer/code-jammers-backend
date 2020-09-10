@@ -25,22 +25,7 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
 
-  coverage:
-    needs: [ build ]
-    name: Coverage
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
       with:
-        node-version: 12.x
-    - run: npm install
-    - run: npm run build --if-present
-    - uses: paambaati/codeclimate-action@v2.5.7
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
-      with:
-        coverageCommand: npm run coverage
-        debug: true
-        coverageLocations:
-          ${{github.workspace}}/coverage/lcov.info:lcov
+        github-token: ${{ secrets.GITHUB_TOKEN }}
