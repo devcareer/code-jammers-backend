@@ -40,11 +40,22 @@
     "start": "npm run build && node ./build/app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov",
+    "coverage": "nyc report --reporter=text-lcov --reporter=lcov",
     "lint": "eslint src/  --fix"
   },
   "engines": {
     "node": "12.x"
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "repository": {
     "type": "git",
