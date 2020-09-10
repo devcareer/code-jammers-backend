@@ -9,7 +9,7 @@ export default class userController {
     try {
       const { email, username, password } = req.body;
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const newUser = { email, username, password:hashedPassword };
+      const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       util.setSuccess(201, "User created!", createdUser);
       return util.send(res);
