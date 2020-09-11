@@ -40,7 +40,7 @@
     "start": "npm run build && node ./build/app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
     "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
-    "coverage": "nyc report --reporter=text-lcov | coveralls --verbose",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | node ./node_modules/coveralls/bin/coveralls.js --verbose",
     "lint": "eslint src/  --fix"
   },
   "engines": {
