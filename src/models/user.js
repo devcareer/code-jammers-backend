@@ -1,11 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      allowNull: false,
-      primaryKey: true,
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -14,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
-   username: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -23,15 +17,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     role: {
-      type: DataTypes.STRING,
-      defaultValue: 'user',
-    }
+      type: DataTypes.ENUM("Super Admin", "Admin", "User"),
+      defaultValue: "user",
+      isVerified: false,
+    },
   });
-
-  User.associate = (models) => {
-    User.hasOne(models.Profile, {
-      onDelete: 'cascade',
+  User.associate = models => {
+    User.belongsTo(models.Profile, {
+      as: "profileDetails",
+      foreignKey: "userId",
     });
-  }
+  };
   return User;
 };
