@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
-    it("it should create a user with complete details successfully", (done) => {
+    it("it should create a user with complete details successfully", done => {
       const user = {
         username: "GarryT",
         email: "Garry@gmail.com",
