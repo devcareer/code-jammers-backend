@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const Culture = sequelize.define("Culture", {
     types: {
       type: DataTypes.STRING,
