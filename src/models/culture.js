@@ -1,11 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const Culture = sequelize.define("Culture", {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-    },
     types: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -34,9 +28,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Culture.associate = (models) => {
     Culture.belongsTo(models.Country, {
-      foreignKey: {
-        allowNull: false,
-      },
+      as: "countryDetails",
+      foreignKey: "countryId",
     });
   };
 
