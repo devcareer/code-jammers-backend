@@ -1,5 +1,13 @@
 export default (sequelize, DataTypes) => {
   const Culture = sequelize.define("Culture", {
+    countryId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "Countries",
+        key: "id",
+      },
+    },
     types: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,13 +33,6 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-
-  Culture.associate = (models) => {
-    Culture.belongsTo(models.Country, {
-      as: "countryDetails",
-      foreignKey: "countryId",
-    });
-  };
 
   return Culture;
 };

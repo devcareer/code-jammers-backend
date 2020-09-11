@@ -1,4 +1,3 @@
-"use strict";
 export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.sequelize

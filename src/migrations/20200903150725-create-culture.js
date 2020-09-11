@@ -1,4 +1,3 @@
-"use strict";
 export default {
   up: (queryInterface, Sequelize) => {
     return queryInterface.sequelize
@@ -10,6 +9,14 @@ export default {
             primaryKey: true,
             type: Sequelize.UUID,
             defaultValue: Sequelize.literal("uuid_generate_v4()"),
+          },
+          countryId: {
+            type: Sequelize.UUID,
+            allowNull: false,
+            references: {
+              model: "Countries",
+              key: "id",
+            },
           },
           types: {
             allowNull: false,
@@ -35,15 +42,7 @@ export default {
             allowNull: false,
             type: Sequelize.STRING,
           },
-          countryId: {
-            type: Sequelize.UUID,
-            onDelete: "CASCADE",
-            allowNull: false,
-            references: {
-              model: "Countries",
-              key: "id",
-            },
-          },
+
           createdAt: {
             allowNull: false,
             type: Sequelize.DATE,

@@ -59,7 +59,6 @@ export default (sequelize, DataTypes) => {
         "Mayotte (France)",
         "São Tomé and Príncipe",
         "Seychelles",
-        "",
       ],
       allowNull: false,
     },
@@ -91,7 +90,10 @@ export default (sequelize, DataTypes) => {
 
   Country.associate = (models) => {
     Country.hasMany(models.Culture, {
+      as: "cultureCountry",
+      foreignKey: "countryId",
       onDelete: "cascade",
+      hooks: true,
     });
   };
 
