@@ -23,16 +23,4 @@ describe("src/models/culture", () => {
       checkPropertyExists(culture)
     );
   });
-
-  context("associations", () => {
-    const Country = "Nigeria";
-
-    before(() => {
-      Culture.associate({ Country });
-    });
-
-    it("defined a belongsTo association with Country", () => {
-      expect(Culture.belongsTo).to.have.been.calledWith(Country);
-    });
-  });
 });
