@@ -3,22 +3,7 @@ module.exports = {
     await queryInterface.bulkInsert("Food", [{
       countryId: "9e92fadd-8897-4d3d-b9de-cf82e9752a1f",
       types: "Jellof rice",
-      methodOfPreparation: `Ingredients: 1 cup blended onions about 3- 5 and fresh chilies, to taste
-                                         4 cups egusi melon seeds, ground or milled
-                                         1⁄2 – 1 cup palm oil
-                                         2 teaspoons fresh Une Iru, locust beans
-                                         Salt to taste
-                                         Ground crayfish to taste
-                                         7– 8 cups stock
-                                         Cooked Meat & fish quantity and variety to personal preference
-                                         2 cups cut pumpkin leaves
-                                         1 cup waterleaf cut
-                                         3 tablespoons bitter leaf washed
-                            Instructions
-                                    EGUSI PASTE:
-                                         Prepare the egusi paste:
-                                         Blend egusi seeds and onion mixture. Set aside.
-                            MAKE THE SOUP:
+      methodOfPreparation: `MAKE THE SOUP:
                                          1 In a large pot, heat the palm oil on medium for a minute and then add the Une.
                                          2 Slowly add the stock and set on low heat to simmer.
                                          3 Scoop teaspoon size balls of the egusi paste mixture into the stock. Be sure to keep ball shape.

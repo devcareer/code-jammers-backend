@@ -8,18 +8,11 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    types: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    methodOfPreparation: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    gallery: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    types: { type: DataTypes.STRING, allowNull: false },
+
+    methodOfPreparation: { type: DataTypes.TEXT, allowNull: false },
+
+    gallery: { type: DataTypes.STRING, allowNull: false },
 
   });
   Food.associate = models => {
