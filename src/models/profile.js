@@ -21,6 +21,6 @@ module.exports = (sequelize, DataTypes) => {
     Profile.belongsTo(models.User, {
       as: "profileDetails", foreignKey: "userId",
     });
-  }
+  };
   return Profile;
 };
