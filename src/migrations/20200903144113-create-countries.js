@@ -1,7 +1,7 @@
 export default {
   up(queryInterface, Sequelize) {
     return queryInterface.sequelize
-      .query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
+      .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
       .then(() =>
         queryInterface.createTable("Countries", {
           id: {

@@ -1,5 +1,5 @@
 export default {
-  up: (queryInterface) =>
+  up: queryInterface => {
     queryInterface.bulkInsert(
       "Countries",
       [
@@ -18,6 +18,7 @@ export default {
         },
       ],
       {}
-    ),
+    );
+  },
   down: (queryInterface) => queryInterface.bulkDelete("Countries", null, {}),
 };
