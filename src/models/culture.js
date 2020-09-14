@@ -8,7 +8,7 @@ export default (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    types: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -25,7 +25,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
     gallery: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     tribe: {
