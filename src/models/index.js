@@ -17,6 +17,7 @@ if (config.url) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 fs.readdirSync(__dirname)
+<<<<<<< HEAD
   .filter((file) => {
     return (
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
@@ -29,6 +30,11 @@ fs.readdirSync(__dirname)
   });
 Object.keys(db).forEach((modelName) => {
 =======
+=======
+  .filter(
+    file =>
+      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
+>>>>>>> 1a6a907... error fixed
   )
   .forEach(file => {
     const model = sequelize.import(path.join(__dirname, file));
