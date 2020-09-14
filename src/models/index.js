@@ -14,7 +14,7 @@ if (config.url) {
   sequelize = new Sequelize(config.url, config);
   sequelize = new Sequelize(process.env[config.url], config);
 } else {
-  sequelize = new Sequelize( config.database, config.username, config.password, config );
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 fs.readdirSync(__dirname)
   .filter((file) => {
