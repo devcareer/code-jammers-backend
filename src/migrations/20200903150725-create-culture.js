@@ -1,7 +1,7 @@
 export default {
   up(queryInterface, Sequelize) {
     return queryInterface.sequelize
-      .query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
+      .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
       .then(() =>
         queryInterface.createTable("Cultures", {
           id: {
@@ -18,39 +18,14 @@ export default {
               key: "id",
             },
           },
-          types: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          festivals: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          dressing: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          language: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          gallery: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          tribe: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-
-          createdAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
-          updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
+          types: { allowNull: false, type: Sequelize.STRING },
+          festivals: { allowNull: false, type: Sequelize.STRING },
+          dressing: { allowNull: false, type: Sequelize.STRING },
+          language: { allowNull: false, type: Sequelize.STRING },
+          gallery: { allowNull: false, type: Sequelize.STRING },
+          tribe: { allowNull: false, type: Sequelize.STRING },
+          createdAt: { allowNull: false, type: Sequelize.DATE },
+          updatedAt: { allowNull: false, type: Sequelize.DATE },
         })
       );
   },
