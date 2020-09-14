@@ -69,44 +69,19 @@ export default {
               "Cape Verde",
               "Mayotte (France)",
               "São Tomé and Príncipe",
-              "Seychelles",
-              "",
+              "Seychelles"
             ],
           },
-          gallery: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          capital: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          population: {
-            allowNull: false,
-            type: Sequelize.INTEGER,
-          },
-          officialLanguage: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          region: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          currency: {
-            allowNull: false,
-            type: Sequelize.STRING,
-          },
-          createdAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
-          updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
-        })
+          gallery: { allowNull: false, type: Sequelize.STRING },
+          capital: { allowNull: false, type: Sequelize.STRING },
+          population: { allowNull: false, type: Sequelize.INTEGER },
+          officialLanguage: { allowNull: false, type: Sequelize.STRING },
+          region: { allowNull: false, type: Sequelize.STRING },
+          currency: { allowNull: false, type: Sequelize.STRING },
+          createdAt: { allowNull: false, type: Sequelize.DATE },
+          updatedAt: { allowNull: false, type: Sequelize.DATE },
+        }),
       );
   },
-  down: (queryInterface) => queryInterface.dropTable("Countries"),
+  down: queryInterface => queryInterface.dropTable("Countries"),
 };

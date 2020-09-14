@@ -17,8 +17,8 @@ export default {
           updatedAt: new Date(),
         },
       ],
-      {}
+      {},
     );
   },
-  down: (queryInterface) => queryInterface.bulkDelete("Countries", null, {}),
+  down: queryInterface => queryInterface.bulkDelete("Countries", null, {}),
 };
