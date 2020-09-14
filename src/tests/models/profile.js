@@ -15,10 +15,19 @@ chai.use(sinonChai);
 describe("src/models/Profile", () => {
   const Profile = ProfileModel(sequelize, dataTypes);
   const profile = new Profile();
-  checkModelName(Profile)("Profile");
+  checkModelName(Profile)("Profiles");
   context("properties", () => {
     ["firstName", "lastName", "profilePicture", "userId"].forEach(
       checkPropertyExists(profile),
     );
+  });
+  context("associations", () => {
+    const User = "profile data";
+    before(() => {
+      Profile.associate({ User });
+    });
+    it("defined a belongsTo association with Profile", () => {
+      expect(Profile.belongsTo).to.have.been.calledWith(User);
+    });
   });
 });
