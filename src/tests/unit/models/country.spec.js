@@ -1,14 +1,14 @@
-import chai from "chai";
-import { expect } from "chai";
-import sinonChai from "sinon-chai";
-import CountryModel from "../../../models/countries";
-
 import {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
 } from "sequelize-test-helpers";
+import chai from "chai";
+import { expect } from "chai";
+import sinonChai from "sinon-chai";
+import CountryModel from "../../../models/countries";
+
 
 chai.use(sinonChai);
 
