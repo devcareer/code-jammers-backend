@@ -5,6 +5,15 @@ module.exports = {
       types: "Jellof rice",
       methodOfPreparation: `Boiling the Meat or fresh fish along side stock fish, add the palm oil into so it can boil. 
                            Add the ponmo and the dried fish too. Add the blended the fresh pepper,tomato,onion into the 
+                           boiling stock.
+                           Boiling the Meat or fresh fish along side stock fish, add the palm oil into so it can boil. 
+                           Add the ponmo and the dried fish too. Add the blended the fresh pepper,tomato,onion into the 
+                           boiling stock.
+                           Boiling the Meat or fresh fish along side stock fish, add the palm oil into so it can boil. 
+                           Add the ponmo and the dried fish too. Add the blended the fresh pepper,tomato,onion into the 
+                           boiling stock.
+                           Boiling the Meat or fresh fish along side stock fish, add the palm oil into so it can boil. 
+                           Add the ponmo and the dried fish too. Add the blended the fresh pepper,tomato,onion into the 
                            boiling stock.`,
       gallery: "https://res.cloudinary.com/augustar/image/upload/v1599659318/nigerian-jollof-rice_trm7pp.jpg",
       createdAt: new Date(),
