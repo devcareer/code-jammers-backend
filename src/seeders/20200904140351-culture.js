@@ -18,7 +18,7 @@ export default {
         },
       ],
       {},
-	);
+    );
   },
   down: queryInterface => queryInterface.bulkDelete("Cultures", null, {}),
 };

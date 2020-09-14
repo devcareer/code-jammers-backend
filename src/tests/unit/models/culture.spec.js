@@ -4,11 +4,10 @@ import {
   checkModelName,
   checkPropertyExists,
 } from "sequelize-test-helpers";
-import chai from "chai";
-import { expect } from "chai";
+import chai, { expect } from "chai";
+
 import sinonChai from "sinon-chai";
 import CultureModel from "../../../models/culture";
-
 
 chai.use(sinonChai);
 
