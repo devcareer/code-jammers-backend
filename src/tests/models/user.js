@@ -5,7 +5,6 @@ import {
   sequelize,
   dataTypes,
   checkModelName,
-  checkUniqueIndex,
   checkPropertyExists,
 } from "sequelize-test-helpers";
 
@@ -22,12 +21,12 @@ describe("src/models/User", () => {
     );
   });
   context("associations", () => {
-    const Profile = "some dummy profile";
+    const Profile = "profile data";
     before(() => {
       User.associate({ Profile });
     });
-    it("defined a hasOne association with Profile", () => {
-      expect(User.hasOne).to.have.been.calledWith(Profile);
+    it("defined a belongsTo association with Profile", () => {
+      expect(User.belongsTo).to.have.been.calledWith(Profile);
     });
   });
 });

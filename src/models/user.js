@@ -4,9 +4,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     username: {
       type: DataTypes.STRING,
@@ -19,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     role: {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
       defaultValue: "user",
-      isVerified: false,
     },
   });
   User.associate = models => {
