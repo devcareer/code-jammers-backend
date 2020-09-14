@@ -12,14 +12,38 @@ export default {
           type: Sequelize.UUID,
           references: { model: "Countries", key: "id" },
         },
-        types: { allowNull: false, type: Sequelize.STRING },
-        festivals: { allowNull: false, type: Sequelize.STRING },
-        dressing: { allowNull: false, type: Sequelize.STRING },
-        language: { allowNull: false, type: Sequelize.STRING },
-        gallery: { allowNull: false, type: Sequelize.STRING },
-        tribe: { allowNull: false, type: Sequelize.STRING },
-        createdAt: { allowNull: false, type: Sequelize.DATE },
-        updatedAt: { allowNull: false, type: Sequelize.DATE },
+        types: {
+		  allowNull: false,
+		  type: Sequelize.STRING,
+		 },
+        festivals: {
+		  allowNull: false,
+		  type: Sequelize.STRING,
+		 },
+        dressing: {
+		  allowNull: false,
+		  type: Sequelize.STRING,
+		 },
+        language: {
+		  allowNull: false,
+		  type: Sequelize.STRING,
+		 },
+        gallery: {
+		  allowNull: false,
+		  type: Sequelize.STRING,
+        },
+        tribe: {
+		  allowNull: false,
+		  type: Sequelize.STRING,
+        },
+        createdAt: {
+		  allowNull: false,
+		  type: Sequelize.DATE,
+		 },
+        updatedAt: {
+		  allowNull: false,
+		  type: Sequelize.DATE,
+        },
       }));
   },
   down: queryInterface => queryInterface.dropTable("Cultures"),
