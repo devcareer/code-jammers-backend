@@ -6,7 +6,6 @@ import {
   sequelize,
   dataTypes,
   checkModelName,
-  checkUniqueIndex,
   checkPropertyExists,
 } from "sequelize-test-helpers";
 
@@ -21,14 +20,5 @@ describe("src/models/Profile", () => {
     ["firstName", "lastName", "profilePicture", "userId"].forEach(
       checkPropertyExists(profile),
     );
-  });
-  context("associations", () => {
-    const User = "some dummy profile";
-    before(() => {
-      Profile.associate({ User });
-    });
-    it("defined a belongsTo association with User", () => {
-      expect(Profile.belongsTo).to.have.been.calledWith(User);
-    });
   });
 });

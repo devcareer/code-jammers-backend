@@ -7,27 +7,12 @@ export default {
         type: Sequelize.DataTypes.UUID,
         defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
-      email: {
-        type: Sequelize.STRING,
-      },
-      username: {
-        type: Sequelize.STRING,
-      },
-      password: {
-        type: Sequelize.STRING,
-      },
-      role: {
-        type: Sequelize.STRING,
-        defaultValue: "user",
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
+      email: { type: Sequelize.STRING },
+      username: { type: Sequelize.STRING },
+      password: { type: Sequelize.STRING },
+      role: { type: Sequelize.STRING, defaultValue: "user" },
+      createdAt: { allowNull: false, type: Sequelize.DATE },
+      updatedAt: { allowNull: false, type: Sequelize.DATE },
     }));
   },
   down: queryInterface => queryInterface.dropTable("Users"),
