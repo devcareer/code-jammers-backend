@@ -20,13 +20,4 @@ describe("src/models/User", () => {
       checkPropertyExists(user),
     );
   });
-  context("associations", () => {
-    const Profile = "profile data";
-    before(() => {
-      User.associate({ Profile });
-    });
-    it("defined a belongsTo association with Profile", () => {
-      expect(User.belongsTo).to.have.been.calledWith(Profile);
-    });
-  });
 });

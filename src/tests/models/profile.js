@@ -21,4 +21,13 @@ describe("src/models/Profile", () => {
       checkPropertyExists(profile),
     );
   });
+  context("associations", () => {
+    const User = "profile data";
+    before(() => {
+      Profile.associate({ User });
+    });
+    it("defined a belongsTo association with Profile", () => {
+      expect(Profile.belongsTo).to.have.been.calledWith(User);
+    });
+  });
 });

@@ -18,10 +18,5 @@ export default (sequelize, DataTypes) => {
       defaultValue: "user",
     },
   });
-  User.associate = models => {
-    User.belongsTo(models.Profile, {
-      as: "profileDetails", foreignKey: "userId",
-    });
-  };
   return User;
 };
