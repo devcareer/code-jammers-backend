@@ -1,6 +1,7 @@
 import chai from "chai";
 import { expect } from "chai";
 import sinonChai from "sinon-chai";
+import CountryModel from "../../../models/countries";
 chai.use(sinonChai);
 
 import {
@@ -9,8 +10,6 @@ import {
   checkModelName,
   checkPropertyExists,
 } from "sequelize-test-helpers";
-
-import CountryModel from "../../../models/countries";
 
 describe("src/models/countries", () => {
   const Country = CountryModel(sequelize, dataTypes);
