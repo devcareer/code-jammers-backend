@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 const path = require('path')
 require("@babel/register");
 
@@ -8,22 +6,4 @@ module.exports = {
     'models-path': path.resolve('src', 'models'),
     'seeders-path': path.resolve('src', 'seeders'),
     'migrations-path': path.resolve('src', 'migrations')
-=======
-const path = require('path')
-
-module.exports = {
-    'config': path.resolve('src/config', 'config.json'),
-    'models-path': path.resolve('src', 'models'),
-    'seeders-path': path.resolve('src', 'seeders'),
-    'migrations-path': path.resolve('src', 'migrations')
->>>>>>> some changes
-=======
-const path = require('path')
-
-module.exports = {
-    'config': path.resolve('src/config', 'config.js'),
-    'models-path': path.resolve('src', 'models'),
-    'seeders-path': path.resolve('src', 'seeders'),
-    'migrations-path': path.resolve('src', 'migrations')
->>>>>>> feat(models): create music and food models
 }
