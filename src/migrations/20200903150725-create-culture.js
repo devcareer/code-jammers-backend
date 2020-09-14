@@ -1,9 +1,7 @@
 export default {
   up(queryInterface, Sequelize) {
-    return queryInterface.sequelize
-      .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
-      .then(() =>
-        queryInterface.createTable("Cultures", {
+    return queryInterface.sequelize.query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
+      .then(() => queryInterface.createTable("Cultures", {
           id: {
             allowNull: false,
             primaryKey: true,
@@ -12,7 +10,6 @@ export default {
           },
           countryId: {
             type: Sequelize.UUID,
-            allowNull: false,
             references: {
               model: "Countries",
               key: "id",
