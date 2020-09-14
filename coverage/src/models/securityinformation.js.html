@@ -81,6 +81,7 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 453938a... rework models
 <a name='L23'></a><a href='#L23'>23</a>
@@ -93,6 +94,9 @@
 >>>>>>> 1ba6306... lint code
 =======
 >>>>>>> 453938a... rework models
+=======
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+>>>>>>> 9dc53f7... lint code
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -104,6 +108,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -117,6 +122,8 @@
 >>>>>>> 1ba6306... lint code
 =======
 >>>>>>> 453938a... rework models
+=======
+>>>>>>> 9dc53f7... lint code
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,6 +131,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <span class="cline-any cline-yes">1x</span>
@@ -156,6 +164,16 @@
         key: "id",
       },
 >>>>>>> 453938a... rework models
+=======
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = (sequelize, DataTypes) =&gt; {
+  const Securityinformation = sequelize.define("Securityinformation", {
+    countryId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+>>>>>>> 9dc53f7... lint code
     },
     location: {
       type: DataTypes.STRING,
@@ -165,16 +183,20 @@
 &nbsp;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   Securityinformation.associate = models =&gt; {
     Securityinformation.belongsTo(models.Country, {
       as: "countrySecurityInformation",
       foreignKey: "countryId",
 =======
+=======
+>>>>>>> 9dc53f7... lint code
   Securityinformation.associate = (models) =&gt; {
     Securityinformation.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,
       },
+<<<<<<< HEAD
 >>>>>>> 1ba6306... lint code
 =======
   Securityinformation.associate = models =&gt; {
@@ -182,6 +204,8 @@
       as: "countrySecurityInformation",
       foreignKey: "countryId",
 >>>>>>> 453938a... rework models
+=======
+>>>>>>> 9dc53f7... lint code
     });
   };
 &nbsp;
@@ -197,6 +221,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 at Thu Sep 17 2020 20:22:52 GMT+0100 (West Africa Standard Time)
 =======
                 at Mon Sep 14 2020 16:35:52 GMT+0100 (West Africa Standard Time)
@@ -207,6 +232,9 @@
 =======
                 at Thu Sep 17 2020 19:45:37 GMT+0100 (West Africa Standard Time)
 >>>>>>> 6c6cd7b... rebase and fix conflict
+=======
+                at Mon Sep 14 2020 16:35:52 GMT+0100 (West Africa Standard Time)
+>>>>>>> 9dc53f7... lint code
             </div>
         </div>
         <script src="../../prettify.js"></script>

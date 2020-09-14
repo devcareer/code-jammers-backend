@@ -85,6 +85,7 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
@@ -101,6 +102,9 @@
 =======
 <a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 >>>>>>> 6c6cd7b... rebase and fix conflict
+=======
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+>>>>>>> 9dc53f7... lint code
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,6 +120,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,6 +137,8 @@
 >>>>>>> 453938a... rework models
 =======
 >>>>>>> 6c6cd7b... rebase and fix conflict
+=======
+>>>>>>> 9dc53f7... lint code
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,6 +146,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <span class="cline-any cline-yes">1x</span>
@@ -171,6 +179,16 @@
         key: "id",
       },
 >>>>>>> 453938a... rework models
+=======
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = (sequelize, DataTypes) =&gt; {
+  const Historicalfact = sequelize.define("Historicalfact", {
+    countryId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+>>>>>>> 9dc53f7... lint code
     },
     location: {
       type: DataTypes.STRING,
@@ -181,6 +199,7 @@
       allowNull: false,
     },
   });
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   Historicalfact.associate = models =&gt; {
@@ -202,6 +221,14 @@
       as: "countryHistoricalFacts",
       foreignKey: "countryId",
 >>>>>>> 453938a... rework models
+=======
+&nbsp;
+  Historicalfact.associate = (models) =&gt; {
+    Historicalfact.belongsTo(models.Country, {
+      foreignKey: {
+        allowNull: false,
+      },
+>>>>>>> 9dc53f7... lint code
     });
   };
 &nbsp;
@@ -217,6 +244,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 at Thu Sep 17 2020 20:22:52 GMT+0100 (West Africa Standard Time)
 =======
                 at Mon Sep 14 2020 16:35:52 GMT+0100 (West Africa Standard Time)
@@ -227,6 +255,9 @@
 =======
                 at Thu Sep 17 2020 19:45:37 GMT+0100 (West Africa Standard Time)
 >>>>>>> 6c6cd7b... rebase and fix conflict
+=======
+                at Mon Sep 14 2020 16:35:52 GMT+0100 (West Africa Standard Time)
+>>>>>>> 9dc53f7... lint code
             </div>
         </div>
         <script src="../../prettify.js"></script>
