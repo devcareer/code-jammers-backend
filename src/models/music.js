@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Culture = sequelize.define("Music", {
+  const Music = sequelize.define("Music", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -10,11 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    types: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    methodOfPreparation: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -22,13 +18,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    event: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
 
   });
-  Food.associate = (models) => {
-    Food.belongsTo(models.Country, {
+  Music.associate = (models) => {
+    Music.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,
       },
     });
   };
-  return Food;};
+  return Music;
+};
+

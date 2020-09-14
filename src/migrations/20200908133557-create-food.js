@@ -14,7 +14,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       methodOfPreparation: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       gallery: {
         type: Sequelize.STRING,

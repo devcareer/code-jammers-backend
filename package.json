@@ -10,7 +10,9 @@
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.5",
@@ -58,4 +60,3 @@
   },
   "homepage": "https://github.com/devcareer/code-jammers-backend#readme"
 }
-
