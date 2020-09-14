@@ -1,14 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Food = sequelize.define("Food", {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-    },
     countryId: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: "Countries",
+        key: "id",
+      },
     },
     types: {
       type: DataTypes.STRING,
