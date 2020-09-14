@@ -5,13 +5,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    username: { 
+      type: DataTypes.STRING, 
+      allowNull: false 
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING, 
+      allowNull: false 
     },
     role: {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
@@ -20,8 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = models => {
     User.belongsTo(models.Profile, {
-      as: "profileDetails",
-      foreignKey: "userId",
+      as: "profileDetails", foreignKey: "userId",
     });
   };
   return User;
