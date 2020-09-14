@@ -12,7 +12,7 @@ export default {
         nameOfCountry: {
 		  allowNull: false,
 		  type: Sequelize.ENUM,
-		  values: [
+		 values: [
             "Nigeria",
             "Ethiopia",
             "Egypt",
