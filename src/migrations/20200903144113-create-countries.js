@@ -69,7 +69,7 @@ export default {
               "Cape Verde",
               "Mayotte (France)",
               "São Tomé and Príncipe",
-              "Seychelles"
+              "Seychelles",
             ],
           },
           gallery: { allowNull: false, type: Sequelize.STRING },
