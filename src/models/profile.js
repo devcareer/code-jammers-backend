@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Profile = sequelize.define("Profile", {
     userId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     firstName: {
