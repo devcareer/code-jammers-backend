@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "code-jammers-backend",
   "version": "1.0.0",
@@ -59,54 +58,4 @@
   },
   "homepage": "https://github.com/devcareer/code-jammers-backend#readme"
 }
-=======
-{
-  "name": "code-jammers-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "pg": "^8.3.3",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.5",
-    "sequelize-cli": "^6.2.0",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.11.5",
-    "@babel/core": "^7.11.5",
-    "@babel/node": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.11.5",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/register": "^7.11.5",
-    "@babel/runtime": "^7.11.2",
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "coveralls": "^3.1.0",
-    "eslint": "^7.8.0",
-    "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "mocha": "^8.1.3",
-    "nodemon": "^2.0.4",
-    "nyc": "^15.1.0"
-  },
-  "scripts": {
-    "start": "nodemon --exec babel-node ./src/app.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
-    "coverage": "nyc report --reporter=text-lcov --reporter=lcov",
-    "lint": "eslint src/  --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devcareer/code-jammers-backend.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/devcareer/code-jammers-backend/issues"
-  },
-  "homepage": "https://github.com/devcareer/code-jammers-backend#readme"
-}
->>>>>>> feat(models): create music and food models
+

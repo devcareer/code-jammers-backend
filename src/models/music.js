@@ -31,5 +31,4 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
   };
-  return Food;
-};
+  return Food;};
