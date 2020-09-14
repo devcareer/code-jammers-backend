@@ -1,6 +1,7 @@
 import chai from "chai";
 import { expect } from "chai";
 import sinonChai from "sinon-chai";
+import CultureModel from "../../../models/culture";
 chai.use(sinonChai);
 
 import {
@@ -9,8 +10,6 @@ import {
   checkModelName,
   checkPropertyExists,
 } from "sequelize-test-helpers";
-
-import CultureModel from "../../../models/culture";
 
 describe("src/models/culture", () => {
   const Culture = CultureModel(sequelize, dataTypes);
