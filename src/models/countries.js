@@ -1,8 +1,7 @@
 export default (sequelize, DataTypes) => {
   const Country = sequelize.define("Country", {
     nameOfCountry: {
-      type: DataTypes.ENUM,
-      values: [
+      type: DataTypes.ENUM(
         "Nigeria",
         "Ethiopia",
         "Egypt",
@@ -58,8 +57,8 @@ export default (sequelize, DataTypes) => {
         "Cape Verde",
         "Mayotte (France)",
         "São Tomé and Príncipe",
-        "Seychelles",
-      ],
+        "Seychelles"
+      ),
       allowNull: false,
     },
     gallery: {
@@ -92,8 +91,6 @@ export default (sequelize, DataTypes) => {
     Country.hasMany(models.Culture, {
       as: "cultureCountry",
       foreignKey: "countryId",
-      onDelete: "cascade",
-      hooks: true,
     });
   };
 

@@ -1,6 +1,6 @@
 export default {
-  up: queryInterface => {
-    queryInterface.bulkInsert(
+  up: (queryInterface) => {
+    return queryInterface.bulkInsert(
       "Countries",
       [
         {
@@ -17,8 +17,8 @@ export default {
           updatedAt: new Date(),
         },
       ],
-      {},
+      {}
     );
   },
-  down: queryInterface => queryInterface.bulkDelete("Countries", null, {}),
+  down: (queryInterface) => queryInterface.bulkDelete("Countries", null, {}),
 };

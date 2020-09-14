@@ -1,12 +1,12 @@
 export default {
-  up: queryInterface => {
-    queryInterface.bulkInsert(
+  up: (queryInterface) => {
+    return queryInterface.bulkInsert(
       "Cultures",
       [
         {
           id: "63995ef8-351f-4035-a268-c6cd7697f0ef",
           countryId: "6003fb36-5112-463e-a1f9-c8944e72412f",
-          types: "Yoruba culture",
+          type: "Yoruba culture",
           festivals: "Eyo festival",
           dressing: "Agbádá àti Fìlà from Iseyin",
           language: "Yoruba",
@@ -17,8 +17,8 @@ export default {
           updatedAt: new Date(),
         },
       ],
-      {},
+      {}
     );
   },
-  down: queryInterface => queryInterface.bulkDelete("Cultures", null, {}),
+  down: (queryInterface) => queryInterface.bulkDelete("Cultures", null, {}),
 };

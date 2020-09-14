@@ -14,7 +14,7 @@ export default {
             type: Sequelize.UUID,
             references: { model: "Countries", key: "id" },
           },
-          types: {
+          type: {
             allowNull: false,
             type: Sequelize.STRING,
           },
