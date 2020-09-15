@@ -22,12 +22,8 @@ export default (sequelize, DataTypes) => {
     }
   });
 
-  User.associate = (models) => {
-    User.hasOne(models.Profile, {
-      foreignKey: 'userId',
-      as: 'profile',
-      onDelete: 'CASCADE',
-    })
-}
+  User.hasOne(models.Profile, {
+    onDelete: 'cascade',
+  });
   return User;
 };
