@@ -1,33 +1,21 @@
-const {
-  Model,
-} = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
-  class Comment extends Model {
-    static associate(models) {
-      this.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false,
-        },
-      });
-
-      this.belongsTo(models.Country, {
-        foreignKey: {
-          allowNull: false,
-        },
-      });
-    }
-  }
-  Comment.init({
-    userId: DataTypes.UUID,
-    countryId: DataTypes.UUID,
-    comment: {
-      type: DataTypes.STRING,
+  const Comment = sequelize.define("Comments", {
+    userId: {
+      type: DataTypes.UUID,
       allowNull: false,
     },
-  }, {
-    sequelize,
-    modelName: "Comment",
+    comment: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
   });
+
+  Comment.associate = models => {
+    Comment.belongsTo(models.User, {
+      as: "user",
+      foreignKey: "userId",
+      onDelete: "cascade",
+    });
+  };
   return Comment;
 };
