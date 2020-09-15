@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/tests/unit/models/TouristCenter.spec.js</title>
+    <title>Code coverage report for src/models/culture.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/tests/unit/models</a> TouristCenter.spec.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/models</a> culture.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/22</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -94,80 +94,89 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import chai from "chai";
-import sinonChai from "sinon-chai";
-&nbsp;
-chai.use(sinonChai);
-&nbsp;
-const { expect } = chai;
-&nbsp;
-const {
-  sequelize,
-  dataTypes,
-  checkModelName,
-  checkPropertyExists,
-} = require("sequelize-test-helpers");
-&nbsp;
-const touristCenterModel = require("../../../models/touristCenter");
-&nbsp;
-describe("src/models/Tourist Center", () =&gt; {
-  const TouristCenter = touristCenterModel(sequelize, dataTypes);
-  const touristCenter = new TouristCenter();
-  checkModelName(TouristCenter)("TouristCenters");
-&nbsp;
-  context("properties", () =&gt; {
-    ["location", "gallary", "name"].forEach(checkPropertyExists(touristCenter));
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD:coverage/src/models/culture.js.html
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default (sequelize, DataTypes) =&gt; {
+  const Culture = sequelize.define("Cultures", {
+    countryId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "Countries",
+        key: "id",
+      },
+    },
+    type: {
+=======
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = (sequelize, DataTypes) =&gt; {
+  const TouristCenter = sequelize.define("TouristCenters", {
+    name: {
+>>>>>>> feature(tourist-city-models) - create tourist center and city models:coverage/src/models/touristCenter.js.html
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    festivals: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    dressing: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    language: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    gallery: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    tribe: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   });
 &nbsp;
-  context("associations", () =&gt; {
-    const Country = "Zambia";
-&nbsp;
-    before(() =&gt; {
-      TouristCenter.associate({ Country });
-    });
-&nbsp;
-    it("defined a belongsTo association with Country", () =&gt; {
-      expect(TouristCenter.belongsTo).to.have.been.calledWith(Country);
-    });
-  });
-});
+  return Culture;
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -175,17 +184,25 @@ describe("src/models/Tourist Center", () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Sep 16 2020 11:54:51 GMT+0200 (Eastern European Standard Time)
+<<<<<<< HEAD
+                at Thu Sep 17 2020 10:01:37 GMT+0100 (West Africa Standard Time)
+=======
+<<<<<<< HEAD:coverage/src/models/culture.js.html
+                at Wed Sep 16 2020 10:10:46 GMT+0100 (West Africa Standard Time)
+=======
+                at Tue Sep 15 2020 14:48:54 GMT+0200 (Eastern European Standard Time)
+>>>>>>> feature(tourist-city-models) - create tourist center and city models:coverage/src/models/touristCenter.js.html
+>>>>>>> c6489c4... feature(tourist-city-models) - create tourist center and city models
             </div>
         </div>
-        <script src="../../../../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../../sorter.js"></script>
-        <script src="../../../../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
