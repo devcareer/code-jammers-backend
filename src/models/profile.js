@@ -3,6 +3,10 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.STRING,
       allowNull: false,
+      references: {
+        model: "Users",
+        key: "id",
+      },
     },
     firstName: {
       type: DataTypes.STRING,
