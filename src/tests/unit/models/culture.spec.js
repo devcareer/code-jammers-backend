@@ -15,11 +15,11 @@ describe("src/models/culture", () => {
   const Culture = CultureModel(sequelize, dataTypes);
   const culture = new Culture();
 
-  checkModelName(Culture)("Culture");
+  checkModelName(Culture)("Cultures");
 
   context("properties", () => {
     ["type", "festivals", "dressing", "language", "gallery", "tribe"].forEach(
-      checkPropertyExists(culture)
+      checkPropertyExists(culture),
     );
   });
 });

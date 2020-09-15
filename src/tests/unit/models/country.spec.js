@@ -15,7 +15,7 @@ describe("src/models/countries", () => {
   const Country = CountryModel(sequelize, dataTypes);
   const country = new Country();
 
-  checkModelName(Country)("Country");
+  checkModelName(Country)("Countries");
 
   context("properties", () => {
     [

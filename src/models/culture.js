@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Culture = sequelize.define("Culture", {
+  const Culture = sequelize.define("Cultures", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,

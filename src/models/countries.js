@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Country = sequelize.define("Country", {
+  const Country = sequelize.define("Countries", {
     nameOfCountry: {
       type: DataTypes.ENUM(
         "Nigeria",
