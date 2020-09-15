@@ -8,5 +8,5 @@ exclude_patterns:
 - "src/database/"
 - "coverage"
 - "src/models"
-- "src/tests/unit/models"
+
 
