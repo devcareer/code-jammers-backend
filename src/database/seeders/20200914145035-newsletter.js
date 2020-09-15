@@ -3,6 +3,10 @@ module.exports = {
     await queryInterface.bulkInsert("Newsletter", [{
       email: "newuser@gmail.com",
       message: "Thank you for subscribing to Know Africa. We look forward to sharing the many beauties of Africa with you!",
+    },
+    {
+      email: "newuser@gmail.com",
+      message: "Thank you for subscribing to Know Africa. We look forward to sharing the many beauties of Africa with you!",
     }]);
   },
 
