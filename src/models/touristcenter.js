@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const TouristCenter = sequelize.define("TouristCenters", {
 =======
 =======
@@ -30,6 +31,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
 =======
+=======
+>>>>>>> 56fb470... feature(tourist-city-models) - create tourist center and city models
   const TouristCenter = sequelize.define("TouristCenters", {
     name: {
       type: DataTypes.STRING,
