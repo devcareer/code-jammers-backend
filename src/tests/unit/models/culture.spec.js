@@ -18,8 +18,8 @@ describe("src/models/culture", () => {
   checkModelName(Culture)("Culture");
 
   context("properties", () => {
-    ["types", "festivals", "dressing", "language", "gallery", "tribe"].forEach(
-      checkPropertyExists(culture),
+    ["type", "festivals", "dressing", "language", "gallery", "tribe"].forEach(
+      checkPropertyExists(culture)
     );
   });
 });
