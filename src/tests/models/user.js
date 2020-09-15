@@ -14,7 +14,7 @@ chai.use(sinonChai);
 describe("src/models/User", () => {
   const User = UserModel(sequelize, dataTypes);
   const user = new User();
-  checkModelName(User)("User");
+  checkModelName(User)("Users");
   context("properties", () => {
     ["email", "username", "password", "role"].forEach(
       checkPropertyExists(user),

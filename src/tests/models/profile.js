@@ -15,7 +15,7 @@ chai.use(sinonChai);
 describe("src/models/Profile", () => {
   const Profile = ProfileModel(sequelize, dataTypes);
   const profile = new Profile();
-  checkModelName(Profile)("Profile");
+  checkModelName(Profile)("Profiles");
   context("properties", () => {
     ["firstName", "lastName", "profilePicture", "userId"].forEach(
       checkPropertyExists(profile),
