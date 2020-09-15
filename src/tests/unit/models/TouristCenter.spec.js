@@ -17,7 +17,7 @@ const touristCenterModel = require("../../../models/touristCenter");
 describe("src/models/Tourist Center", () => {
   const TouristCenter = touristCenterModel(sequelize, dataTypes);
   const touristCenter = new TouristCenter();
-  checkModelName(TouristCenter)("TouristCenter");
+  checkModelName(TouristCenter)("TouristCenters");
 
   context("properties", () => {
     ["id", "location", "gallary", "name"].forEach(
