@@ -43,6 +43,10 @@ fs.readdirSync(__dirname)
 
     db[model.name] = model;
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
