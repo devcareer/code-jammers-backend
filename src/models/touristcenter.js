@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const TouristCenter = sequelize.define("TouristCenters", {
+  const TouristCenter = sequelize.define("TouristCenter", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  TouristCenter.associate = models => {
+  TouristCenter.associate = (models) => {
     TouristCenter.belongsTo(models.Country, {
       as: "country",
       foreignKey: "countryId",
