@@ -7,4 +7,5 @@ plugins:
 exclude_patterns:
 - "src/database/"
 - "coverage"
+- "src/models"
 
