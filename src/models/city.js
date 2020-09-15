@@ -1,11 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const City = sequelize.define("City", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      allowNull: false,
-      primaryKey: true,
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,13 +12,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    countryId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
   });
 
   City.associate = (models) => {
     City.belongsTo(models.Country, {
-      foreignKey: {
-        allowNull: false,
-      },
+      as: "country",
+      foreignKey: "countryId",
+      onDelete: "cascade",
     });
   };
 

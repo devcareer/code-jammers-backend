@@ -43,9 +43,11 @@
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./build/app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
+    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/**/*.js --timeout 10000 --recursive --exit || true ",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | node ./node_modules/coveralls/bin/coveralls.js --verbose",
-    "lint": "eslint src/  --fix"
+    "lint": "eslint src/  --fix",
+    "migrate-db": "npx sequelize db:migrate:all",
+    "seed-db": "npx sequelize db:seed:all"
   },
   "engines": {
     "node": "12.x"
