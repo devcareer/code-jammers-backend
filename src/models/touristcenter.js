@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const TouristCenter = sequelize.define("TouristCenter", {
+  const TouristCenter = sequelize.define("TouristCenters", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
