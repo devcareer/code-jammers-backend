@@ -23,9 +23,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   Food.associate = models => {
     Food.belongsTo(models.Country, {
-      foreignKey: {
-        allowNull: false,
-      },
+      as: "country",
+      foreignKey: "countryId",
     });
   };
   return Food;
