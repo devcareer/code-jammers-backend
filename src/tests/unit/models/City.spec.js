@@ -17,7 +17,7 @@ const cityModel = require("../../../models/city");
 describe("src/models/City", () => {
   const City = cityModel(sequelize, dataTypes);
   const city = new City();
-  checkModelName(City)("City");
+  checkModelName(City)("Cities");
 
   context("properties", () => {
     ["id", "location", "gallary", "name"].forEach(checkPropertyExists(city));

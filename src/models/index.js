@@ -36,6 +36,7 @@ if (config.url) {
 
 fs.readdirSync(__dirname)
   .filter(
+<<<<<<< HEAD
     (file) =>
       file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
   )
@@ -43,6 +44,12 @@ fs.readdirSync(__dirname)
 <<<<<<< HEAD
     const model = sequelize.import(path.join(__dirname, file));
 =======
+=======
+    file => file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js",
+  )
+
+  .forEach(file => {
+>>>>>>> aa32979... feature(tourist-city-models) - create tourist center and city models
     const model = require(path.join(__dirname, file))(
       sequelize,
 
@@ -53,11 +60,16 @@ fs.readdirSync(__dirname)
     db[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
+Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+<<<<<<< HEAD
 module.exports = db;
+=======
+
+export default db;
+>>>>>>> aa32979... feature(tourist-city-models) - create tourist center and city models
