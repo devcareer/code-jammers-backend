@@ -18,4 +18,4 @@ package-lock.json
 
 coverage
 
-/models/index.js
+src/models/index.js
