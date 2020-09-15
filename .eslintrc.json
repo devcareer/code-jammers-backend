@@ -17,6 +17,7 @@
       "semi": ["error", "always"],
       "no-unused-vars":"off",
       "no-undef":"off",
+      "import/no-dynamic-require":"off",
       "no-tabs":"off",
       "import/no-dynamic-require":"off",
       "no-console": "off",
