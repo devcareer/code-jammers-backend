@@ -20,9 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   Music.associate = models => {
     Music.belongsTo(models.Country, {
-      foreignKey: {
-        allowNull: false,
-      },
+      as: "country",
+      foreignKey: "countryId",
     });
   };
   return Music;
