@@ -14,5 +14,4 @@ package-lock.json
 # coverage dependencies
 .nyc_output
 
-package-lock.json
 /build
