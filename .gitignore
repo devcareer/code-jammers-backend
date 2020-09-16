@@ -6,6 +6,8 @@
 
 # coverage dependencies
 coverage/
+*.lcov
+.lcov*
 package-lock.json
 
 # history
