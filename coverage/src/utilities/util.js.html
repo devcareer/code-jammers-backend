@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.75% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/16</span>
+                <span class='fraction'>12/16</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.75% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/16</span>
+                <span class='fraction'>12/16</span>
             </div>
         
             
@@ -103,29 +103,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,17 +139,17 @@
     this.message = null;
   }
 &nbsp;
-  setSuccess(<span class="fstat-no" title="function not covered" >statusCode, m</span>essage, data) {
-<span class="cstat-no" title="statement not covered" >    this.s</span>tatusCode = statusCode;
-<span class="cstat-no" title="statement not covered" >    this.m</span>essage = message;
-<span class="cstat-no" title="statement not covered" >    this.d</span>ata = data;
-<span class="cstat-no" title="statement not covered" >    this.t</span>ype = "success";
-  }
-&nbsp;
-  setError(statusCode, message) {
+  setSuccess(statusCode, message, data) {
     this.statusCode = statusCode;
     this.message = message;
-    this.type = "error";
+    this.data = data;
+    this.type = "success";
+  }
+&nbsp;
+  setError(<span class="fstat-no" title="function not covered" >statusCode, m</span>essage) {
+<span class="cstat-no" title="statement not covered" >    this.s</span>tatusCode = statusCode;
+<span class="cstat-no" title="statement not covered" >    this.m</span>essage = message;
+<span class="cstat-no" title="statement not covered" >    this.t</span>ype = "error";
   }
 &nbsp;
   send(res) {
@@ -159,10 +159,10 @@
       data: this.data,
     };
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.type === "success") {
-<span class="cstat-no" title="statement not covered" >      return r</span>es.status(this.statusCode).json(result);
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.type === "success") {
+      return res.status(this.statusCode).json(result);
     }
-    return res.status(this.statusCode).json({
+<span class="cstat-no" title="statement not covered" >    return r</span>es.status(this.statusCode).json({
       status: this.type,
       message: this.message,
     });
@@ -175,7 +175,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Sep 15 2020 12:13:17 GMT+0100 (West Africa Standard Time)
+                at Wed Sep 16 2020 17:24:15 GMT+0100 (West Africa Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
