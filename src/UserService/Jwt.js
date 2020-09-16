@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config();
 const secretKey = process.env.JWT_KEY;
 export default class jwtHelper {
   static async generateToken(payload, secret = secretKey) {
