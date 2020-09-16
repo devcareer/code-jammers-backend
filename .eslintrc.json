@@ -23,7 +23,7 @@
       "import/no-unresolved":"off",
       "import/no-dynamic-require":"off",
       "no-console": "off",
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+      "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
       "arrow-parens": [2, "as-needed"],
       "require-jsdoc": [2, {
         "require": {
