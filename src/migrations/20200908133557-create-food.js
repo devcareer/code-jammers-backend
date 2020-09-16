@@ -34,7 +34,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       methodOfPreparation: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       gallery: {
 >>>>>>> 7927c34... feat(models): create models for music and food
