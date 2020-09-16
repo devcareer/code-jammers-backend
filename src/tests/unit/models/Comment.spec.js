@@ -18,7 +18,7 @@ describe("src/models/comment", () => {
   const Comment = CommentModel(sequelize, dataTypes);
   const comment = new Comment();
 
-  checkModelName(Comment)("Comment");
+  checkModelName(Comment)("Comments");
 
   context("properties", () => {
     ["userId", "comment"].forEach(checkPropertyExists(comment));
