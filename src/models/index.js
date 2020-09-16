@@ -4,7 +4,6 @@ const Sequelize = require("sequelize");
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-
 const config = require(`${__dirname}/../database/config/config.js`)[env];
 const db = {};
 let sequelize;
@@ -28,7 +27,6 @@ fs.readdirSync(__dirname)
     const model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
-
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
