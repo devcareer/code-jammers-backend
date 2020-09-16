@@ -8,7 +8,7 @@ import {
   checkPropertyExists,
 } from "sequelize-test-helpers";
 
-import UserModel from "../../models/user";
+import UserModel from "../../models/User";
 
 chai.use(sinonChai);
 describe("src/models/User", () => {
