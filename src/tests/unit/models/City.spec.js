@@ -13,6 +13,7 @@ const {
 } = require("sequelize-test-helpers");
 
 const cityModel = require("../../../models/city");
+const CountryModel = require("../../../models/countries");
 
 describe("src/models/City", () => {
   const City = cityModel(sequelize, dataTypes);
@@ -28,10 +29,15 @@ describe("src/models/City", () => {
 
     before(() => {
       City.associate({ Country });
+      City.belongsTo(CountryModel, { as: "cities", foreignKey: "countryId" });
     });
 
     it("defined a belongsTo association with Country", () => {
       expect(City.belongsTo).to.have.been.calledWith(Country);
+      expect(City.belongsTo).to.have.been.calledWith(CountryModel, {
+        as: "cities",
+        foreignKey: "countryId",
+      });
     });
   });
 });

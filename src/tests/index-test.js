@@ -21,3 +21,5 @@ describe("app.js should return all endpoints", async () => {
     });
   });
 });
+
+export default describe;
