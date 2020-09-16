@@ -10,3 +10,4 @@ exclude_patterns:
   - "src/models"
   - "src/tests"
 
+
