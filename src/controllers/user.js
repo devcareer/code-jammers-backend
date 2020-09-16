@@ -17,7 +17,12 @@ export default class userController {
       const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      util.setSuccess(201, "User created!", token, createdUser);
+      const data = {
+        email: createdUser.email,
+        username: createdUser.username
+      };
+      data.token = token;
+      util.setSuccess(201, "User created!", data);
       return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
