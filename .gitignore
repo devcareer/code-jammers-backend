@@ -1,9 +1,8 @@
 # dependencies
 /node_modules
-
+ 
 # environment variables
 .env
-
 
 # package-lock.json
 package-lock.json
