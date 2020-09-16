@@ -5,9 +5,10 @@
 .env
 
 # coverage dependencies
-#coverage/
-*.lcov
-.lcov*
+coverage/*
+!coverage/lcov.info
+
+
 package-lock.json
 
 # history
