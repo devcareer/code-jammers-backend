@@ -2,7 +2,7 @@
   "name": "code-jammers-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
@@ -41,7 +41,8 @@
     "nyc": "^15.1.0",
     "sequelize-test-helpers": "^1.2.3",
     "sinon": "^9.0.3",
-    "sinon-chai": "^3.5.0"
+    "sinon-chai": "^3.5.0",
+    "mocha-lcov-reporter": "^1.3.0"
   },
   "scripts": {
     "clean": "npm rm -rf build && npm run build-babel",
