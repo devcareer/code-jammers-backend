@@ -3,7 +3,7 @@
   "extends": "airbnb-base",
   "env": {
     "node": true,
-    "es6": true,
+    "es2021": true,
     "mocha": true
   },
     "parser": "babel-eslint",
@@ -19,6 +19,8 @@
       "no-undef":"off",
       "import/no-dynamic-require":"off",
       "no-tabs":"off",
+      "global-require":"off",
+      "import/no-unresolved":"off",
       "no-console": "off",
       "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
       "arrow-parens": [2, "as-needed"],
@@ -28,6 +30,7 @@
             "MethodDefinition": false,
             "ClassDeclaration": false
         }
-    }]
+    }],
+      "no-useless-catch":"off"
     }
 }
