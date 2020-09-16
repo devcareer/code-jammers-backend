@@ -22,7 +22,7 @@ describe("src/models/Profile", () => {
     );
   });
   context("associations", () => {
-    const User = "profile data";
+    const User = "User data";
     before(() => {
       Profile.associate({ User });
     });
