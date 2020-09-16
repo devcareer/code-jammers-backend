@@ -5,7 +5,7 @@
 .env
 
 # coverage dependencies
-coverage
+coverage/
 package-lock.json
 
 # history
