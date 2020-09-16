@@ -1,5 +1,8 @@
 module.exports = {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> eee4ced... include tests for user sign-up
   up: (queryInterface, Sequelize) => queryInterface.createTable("Users", {
     id: {
       type: Sequelize.INTEGER,
@@ -20,6 +23,7 @@ module.exports = {
       allowNull: false
     },
     role: {
+<<<<<<< HEAD
       type: Sequelize.STRING,
       allowNull: false
     },
@@ -56,9 +60,16 @@ module.exports = {
         allowNull: false,
       },
       role: {
+=======
+>>>>>>> eee4ced... include tests for user sign-up
       type: Sequelize.STRING,
-      allowNull:false,
+      allowNull: false
     },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE
+    },
+<<<<<<< HEAD
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -74,3 +85,12 @@ module.exports = {
   }
 };
 >>>>>>> 5f3b0e5... feature(setup):crea user account
+=======
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE
+    }
+  }),
+  down: (queryInterface) => queryInterface.dropTable("Users")
+};
+>>>>>>> eee4ced... include tests for user sign-up
