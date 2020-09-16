@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = (sequelize, DataTypes) => {
   const Culture = sequelize.define("Music", {
     id: {
@@ -33,3 +34,28 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Food;
 };
+=======
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Music extends Model {
+    
+    static associate(models) {
+     
+    }
+  };
+  Music.init({
+    id: DataTypes.INTEGER,
+    countryId: DataTypes.INTEGER,
+    category: DataTypes.STRING,
+    gallery: DataTypes.STRING,
+    event: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'Music',
+  });
+  return Music;
+};
+>>>>>>> resolve conflict
