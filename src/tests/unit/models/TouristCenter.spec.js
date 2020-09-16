@@ -13,6 +13,7 @@ const {
 } = require("sequelize-test-helpers");
 
 const touristCenterModel = require("../../../models/touristCenter");
+const CountryModel = require("../../../models/countries");
 
 describe("src/models/Tourist Center", () => {
   const TouristCenter = touristCenterModel(sequelize, dataTypes);
@@ -28,10 +29,18 @@ describe("src/models/Tourist Center", () => {
 
     before(() => {
       TouristCenter.associate({ Country });
+      TouristCenter.belongsTo(CountryModel, {
+        as: "touristCenters",
+        foreignKey: "countryId",
+      });
     });
 
     it("defined a belongsTo association with Country", () => {
       expect(TouristCenter.belongsTo).to.have.been.calledWith(Country);
+      expect(TouristCenter.belongsTo).to.have.been.calledWith(CountryModel, {
+        as: "touristCenters",
+        foreignKey: "countryId",
+      });
     });
   });
 });

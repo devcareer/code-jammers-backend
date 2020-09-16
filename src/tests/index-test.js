@@ -20,3 +20,5 @@ describe("/ should display Welcome to Know Africa", () => {
       });
   });
 });
+
+export default describe;

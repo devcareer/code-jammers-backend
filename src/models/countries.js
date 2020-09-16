@@ -92,6 +92,16 @@ export default (sequelize, DataTypes) => {
       as: "cultureCountry",
       foreignKey: "countryId",
     });
+
+    Country.hasMany(models.Cities, {
+      as: "cities",
+      foreignKey: "countryId",
+    });
+
+    Country.hasMany(models.TouristCenters, {
+      as: "touristCenters",
+      foreignKey: "countryId",
+    });
   };
 
   return Country;
