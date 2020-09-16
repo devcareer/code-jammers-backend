@@ -1,26 +1,24 @@
-import chai from "chai";
+import chai, { expect } from "chai";
 import sinonChai from "sinon-chai";
-
-chai.use(sinonChai);
-
-const { expect } = chai;
-const {
+import {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
-} = require("sequelize-test-helpers");
+} from "sequelize-test-helpers";
 
-const foodModel = require("../../../models/food");
+import foodModel from "../../../models/food";
+
+chai.use(sinonChai);
 
 describe("src/models/food", () => {
   const Food = foodModel(sequelize, dataTypes);
   const food = new Food();
 
-  checkModelName(Food)("Food");
+  checkModelName(Food)("Foods");
 
   context("properties", () => {
-    ["countryId", "types", "methodOfPreparation", "gallery"].forEach(
+    ["countryId", "type", "methodOfPreparation", "gallery"].forEach(
       checkPropertyExists(food),
     );
   });

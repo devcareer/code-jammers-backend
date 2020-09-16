@@ -1,6 +1,7 @@
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Music", {
+  up: async (queryInterface, Sequelize) => queryInterface.sequelize
+    .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
+    .then(() => queryInterface.createTable("Musics", {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -8,8 +9,8 @@ module.exports = {
         defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
       countryId: {
-        type: Sequelize.UUID,
         allowNull: false,
+        type: Sequelize.UUID,
       },
       category: {
         allowNull: false,
@@ -31,9 +32,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
-  },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Music");
-  },
+    })),
+  down: async queryInterface => queryInterface.dropTable("Music"),
 };

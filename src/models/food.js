@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Food = sequelize.define("Food", {
+  const Food = sequelize.define("Foods", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    types: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false,
     },

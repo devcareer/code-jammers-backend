@@ -1,23 +1,18 @@
+import chai, { expect } from "chai";
 import sinonChai from "sinon-chai";
-import chai from "chai";
-
-chai.use(sinonChai);
-
-const { expect } = chai;
-
-const {
+import {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
-} = require("sequelize-test-helpers");
+} from "sequelize-test-helpers";
 
-const musicModel = require("../../../models/music");
+import musicModel from "../../../models/music";
 
-describe("src/models/Music", () => {
+describe("src/models/music", () => {
   const Music = musicModel(sequelize, dataTypes);
   const music = new Music();
-  checkModelName(Music)("Music");
+  checkModelName(Music)("Musics");
 
   context("properties", () => {
     ["countryId", "category", "gallery", "event"].forEach(
