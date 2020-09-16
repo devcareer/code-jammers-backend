@@ -4,8 +4,8 @@
 # environment variables
 .env
 
-
-# package-lock.json
+# coverage dependencies
+coverage
 package-lock.json
 
 # history
