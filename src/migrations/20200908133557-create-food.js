@@ -9,6 +9,7 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
+<<<<<<< HEAD
       countryId: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -59,6 +60,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+=======
+      countryId: { type: Sequelize.UUID, allowNull: false },
+
+      types: { allowNull: false, type: Sequelize.STRING },
+
+      methodOfPreparation: { allowNull: false, type: Sequelize.TEXT },
+
+      gallery: { allowNull: false, type: Sequelize.STRING },
+
+      createdAt: { allowNull: false, type: Sequelize.DATE },
+
+      updatedAt: { allowNull: false, type: Sequelize.DATE },
+>>>>>>> 95cf471... resolve codeclimate
     });
   },
   down: async (queryInterface, Sequelize) => {
