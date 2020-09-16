@@ -4,7 +4,11 @@ const Sequelize = require("sequelize");
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
+<<<<<<< HEAD
 const config = require(`${__dirname}/../database/config/config.js`)[env];
+=======
+const config = require(`${__dirname}/../database/config.js`)[env];
+>>>>>>> 4def575... add seeders and migrations
 const db = {};
 let sequelize;
 if (config.url) {
