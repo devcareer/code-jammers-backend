@@ -3,6 +3,7 @@ module.exports = {
     await queryInterface.createTable("Music", {
       id: {
         allowNull: false,
+<<<<<<< HEAD
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.literal("uuid_generate_v4()"),
@@ -21,6 +22,22 @@ module.exports = {
       },
       event: {
         allowNull: false,
+=======
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      countryId: {
+        type: Sequelize.INTEGER,
+      },
+      category: {
+        type: Sequelize.STRING,
+      },
+      gallery: {
+        type: Sequelize.STRING,
+      },
+      event: {
+>>>>>>> 7927c34... feat(models): create models for music and food
         type: Sequelize.STRING,
       },
       createdAt: {

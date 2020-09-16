@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     methodOfPreparation: {
       type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     gallery: {
@@ -23,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
   });
   Food.associate = models => {
+
     Food.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,

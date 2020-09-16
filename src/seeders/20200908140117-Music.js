@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("Food", [{
@@ -39,27 +38,4 @@ module.exports = {
     await queryInterface.bulkDelete("Food", null, {});
   },
 };
-=======
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-  },
 
-  down: async (queryInterface, Sequelize) => {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  },
-};
->>>>>>> 3451cfe... fixed conflict
