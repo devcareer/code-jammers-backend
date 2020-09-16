@@ -8,4 +8,3 @@ module.exports = {
     'migrations-path': path.resolve('src/database', 'migrations')
 }
 
-
