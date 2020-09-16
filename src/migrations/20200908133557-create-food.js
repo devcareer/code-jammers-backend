@@ -3,20 +3,24 @@ module.exports = {
     await queryInterface.createTable("Food", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
       countryId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        allowNull: false,
       },
       types: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       methodOfPreparation: {
+        allowNull: false,
         type: Sequelize.TEXT,
       },
       gallery: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {

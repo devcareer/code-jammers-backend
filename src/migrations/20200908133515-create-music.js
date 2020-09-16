@@ -3,20 +3,24 @@ module.exports = {
     await queryInterface.createTable("Music", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
       countryId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        allowNull: false,
       },
       category: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       gallery: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       event: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {
