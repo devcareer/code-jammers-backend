@@ -8,15 +8,18 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    category: { type: DataTypes.STRING, 
+    category: {
+      type: DataTypes.STRING,
       allowNull: false,
-     },
-    gallery: { type: DataTypes.STRING, 
+    },
+    gallery: {
+      type: DataTypes.STRING,
       allowNull: false,
-     },
-    event: { type: DataTypes.STRING, 
+    },
+    event: {
+      type: DataTypes.STRING,
       allowNull: false,
-     },
+    },
   });
   Music.associate = models => {
     Music.belongsTo(models.Country, {
