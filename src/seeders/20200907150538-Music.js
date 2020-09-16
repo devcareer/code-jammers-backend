@@ -1,7 +1,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("Food", [{
-      countryId: 1,
+      countryId: "9e92fadd-8897-4d3d-b9de-cf82e9752a1f",
       types: "Jellof rice",
       methodOfPreparation: `Ingredients: 1 cup blended onions about 3- 5 and fresh chilies, to taste
                                          4 cups egusi melon seeds, ground or milled

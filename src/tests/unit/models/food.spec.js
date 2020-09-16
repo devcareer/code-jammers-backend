@@ -50,7 +50,7 @@ describe("src/models/food", () => {
   checkModelName(Food)("Food");
 
   context("properties", () => {
-    ["id", "countryId", "types", "methodOfPreparation", "gallery"].forEach(
+    ["countryId", "types", "methodOfPreparation", "gallery"].forEach(
       checkPropertyExists(food),
     );
   });

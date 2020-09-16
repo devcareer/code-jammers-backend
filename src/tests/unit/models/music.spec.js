@@ -20,11 +20,7 @@ describe("src/models/Music", () => {
   checkModelName(Music)("Music");
 
   context("properties", () => {
-<<<<<<< HEAD
     ["countryId", "category", "gallery", "event"].forEach(
-=======
-    ["id", "countryId", "category", "gallery", "event"].forEach(
->>>>>>> 9e045bb... feat(models): create music and food models
       checkPropertyExists(music),
     );
   });
