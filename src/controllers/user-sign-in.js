@@ -9,7 +9,6 @@ const { generateToken } = jwtHelper;
 const util = new Util();
 
 export default class loginController {
-  // eslint-disable-next-line consistent-return
   static async loginUser(req, res) {
     try {
       const { error } = loginValidation(req.body);

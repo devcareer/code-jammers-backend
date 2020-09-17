@@ -1,5 +1,5 @@
 # dependencies
-/node_modules
+node_modules/
  
 # environment variables
 .env
@@ -11,9 +11,9 @@ package-lock.json
 .history
 
 # coverage dependencies
-.nyc_output
-/coverage
+.nyc_output/
+coverage/
 
-/build
+build/
 
 
