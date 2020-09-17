@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
+import Joi from "joi";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
+import userValidation from "../validation/userValidation";
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -9,6 +11,10 @@ const util = new Util();
 export default class userController {
   static async createUser(req, res) {
     try {
+      const result = Joi.validate(req.body, userValidation.userSchema, {
+        convert: false,
+      });
+      console.log(result);
       const { email, username, password } = req.body;
       const userEmail = await User.checkEmail(email);
       if (userEmail) {
