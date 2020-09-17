@@ -1,29 +1,29 @@
 module.exports = (sequelize, DataTypes) => {
-  const TouristCenter = sequelize.define("TouristCenters", {
+  const State = sequelize.define("States", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,
     },
     name: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     gallery: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    location: {
-      type: DataTypes.TEXT,
+    capital: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   });
 
-  TouristCenter.associate = (models) => {
-    TouristCenter.belongsTo(models.Country, {
+  State.associate = models => {
+    State.belongsTo(models.Country, {
       as: "country",
       foreignKey: "countryId",
     });
   };
 
-  return TouristCenter;
+  return State;
 };
