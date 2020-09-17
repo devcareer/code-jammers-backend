@@ -5,8 +5,8 @@
 .env
 
 # coverage dependencies
-coverage/*
-!coverage/lcov.info
+coverage
+
 
 
 package-lock.json
