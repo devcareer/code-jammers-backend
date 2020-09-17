@@ -2,7 +2,11 @@ export default {
   up(queryInterface, Sequelize) {
     return queryInterface.sequelize
       .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
-      .then(() => queryInterface.createTable("Cities", {
+      .then(() => queryInterface.createTable("States", {
+        countryId: {
+          type: Sequelize.UUID,
+          allowNull: false,
+        },
         id: {
           allowNull: false,
           primaryKey: true,
@@ -10,17 +14,13 @@ export default {
           defaultValue: Sequelize.literal("uuid_generate_v4()"),
         },
         name: {
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
         },
-        location: {
-          type: Sequelize.STRING,
+        capital: {
+          type: Sequelize.TEXT,
         },
-        gallary: {
-          type: Sequelize.STRING,
-        },
-        countryId: {
-          type: Sequelize.UUID,
-          allowNull: false,
+        gallery: {
+          type: Sequelize.TEXT,
         },
         createdAt: {
           allowNull: false,
@@ -33,6 +33,6 @@ export default {
       }));
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Cities");
+    await queryInterface.dropTable("States");
   },
 };

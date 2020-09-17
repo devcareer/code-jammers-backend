@@ -25,7 +25,15 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
+<<<<<<< HEAD
                 <span class='fraction'>25/25</span>
+=======
+<<<<<<< HEAD
+                <span class='fraction'>22/22</span>
+=======
+                <span class='fraction'>25/25</span>
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
             </div>
         
             
@@ -46,7 +54,15 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
+<<<<<<< HEAD
                 <span class='fraction'>25/25</span>
+=======
+<<<<<<< HEAD
+                <span class='fraction'>22/22</span>
+=======
+                <span class='fraction'>25/25</span>
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
             </div>
         
             
@@ -94,6 +110,12 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+=======
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
@@ -101,6 +123,10 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<<<<<<< HEAD
+=======
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -115,7 +141,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<<<<<<< HEAD
 <span class="cline-any cline-yes">1x</span>
+=======
+<<<<<<< HEAD
+=======
+<span class="cline-any cline-yes">1x</span>
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -131,15 +164,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<<<<<<< HEAD
+<span class="cline-any cline-yes">1x</span>
+=======
+<<<<<<< HEAD
+=======
+<span class="cline-any cline-yes">1x</span>
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<<<<<<< HEAD
+=======
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,7 +207,14 @@ const {
 } = require("sequelize-test-helpers");
 &nbsp;
 const cityModel = require("../../../models/city");
+<<<<<<< HEAD
 const CountryModel = require("../../../models/countries");
+=======
+<<<<<<< HEAD
+=======
+const CountryModel = require("../../../models/countries");
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
 &nbsp;
 describe("src/models/City", () =&gt; {
   const City = cityModel(sequelize, dataTypes);
@@ -174,15 +230,31 @@ describe("src/models/City", () =&gt; {
 &nbsp;
     before(() =&gt; {
       City.associate({ Country });
+<<<<<<< HEAD
       City.belongsTo(CountryModel, { as: "cities", foreignKey: "countryId" });
+=======
+<<<<<<< HEAD
+=======
+      City.belongsTo(CountryModel, { as: "cities", foreignKey: "countryId" });
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
     });
 &nbsp;
     it("defined a belongsTo association with Country", () =&gt; {
       expect(City.belongsTo).to.have.been.calledWith(Country);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
       expect(City.belongsTo).to.have.been.calledWith(CountryModel, {
         as: "cities",
         foreignKey: "countryId",
       });
+<<<<<<< HEAD
+=======
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
     });
   });
 });
@@ -193,7 +265,31 @@ describe("src/models/City", () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
+<<<<<<< HEAD
                 at Wed Sep 16 2020 20:30:55 GMT+0200 (Central Africa Time)
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+                at Wed Sep 16 2020 11:54:51 GMT+0200 (Eastern European Standard Time)
+=======
+                at Tue Sep 15 2020 14:48:54 GMT+0200 (Eastern European Standard Time)
+>>>>>>> c2f0426... feature(tourist-city-models) - create tourist center and city models
+=======
+                at Wed Sep 16 2020 11:54:51 GMT+0200 (Eastern European Standard Time)
+>>>>>>> e3fd2a1... feature(tourist-city-models) - create tourist center and city models
+=======
+                at Tue Sep 15 2020 14:48:54 GMT+0200 (Eastern European Standard Time)
+>>>>>>> aa32979... feature(tourist-city-models) - create tourist center and city models
+=======
+                at Tue Sep 15 2020 14:48:54 GMT+0200 (Eastern European Standard Time)
+>>>>>>> 56fb470... feature(tourist-city-models) - create tourist center and city models
+=======
+                at Thu Sep 17 2020 10:54:39 GMT+0200 (Eastern European Standard Time)
+>>>>>>> 1ef91171eeb6d3ceee204724c81e20d0b423fe32
+>>>>>>> 756da420102dec953601ca1132ef0916b9ffbe32
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

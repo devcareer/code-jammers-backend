@@ -93,8 +93,8 @@ export default (sequelize, DataTypes) => {
       foreignKey: "countryId",
     });
 
-    Country.hasMany(models.Cities, {
-      as: "cities",
+    Country.hasMany(models.States, {
+      as: "states",
       foreignKey: "countryId",
     });
 

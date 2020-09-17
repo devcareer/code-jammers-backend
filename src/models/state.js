@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const TouristCenter = sequelize.define("TouristCenters", {
+  const State = sequelize.define("States", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -12,18 +12,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    location: {
+    capital: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
   });
 
-  TouristCenter.associate = (models) => {
-    TouristCenter.belongsTo(models.Country, {
+  State.associate = models => {
+    State.belongsTo(models.Country, {
       as: "country",
       foreignKey: "countryId",
     });
   };
 
-  return TouristCenter;
+  return State;
 };

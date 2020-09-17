@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/models</title>
+    <title>Code coverage report for All files</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../prettify.css" />
-    <link rel="stylesheet" href="../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../sort-arrow-sprite.png);
+            background-image: url(sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,34 +19,50 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> src/models</h1>
+        <h1>All files</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>38/38</span>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <span class='fraction'>85/85</span>
+=======
+                <span class='fraction'>65/65</span>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
+=======
+                <span class='fraction'>65/65</span>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>38/38</span>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <span class='fraction'>85/85</span>
+=======
+                <span class='fraction'>65/65</span>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
+=======
+                <span class='fraction'>65/65</span>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
             </div>
         
             
@@ -73,123 +89,94 @@
 </tr>
 </thead>
 <tbody><tr>
-	<td class="file high" data-value="countries.js"><a href="countries.js.html">countries.js</a></td>
+	<td class="file high" data-value="src"><a href="src/index.html">src</a></td>
 	<td data-value="100" class="pic high">
 	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
 	</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="8" class="abs high">8/8</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="2" class="abs high">2/2</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="2" class="abs high">2/2</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="8" class="abs high">8/8</td>
+	</tr>
+
+<tr>
+	<td class="file high" data-value="src/models"><a href="src/models/index.html">src/models</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="16" class="abs high">16/16</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="6" class="abs high">6/6</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="16" class="abs high">16/16</td>
+	</tr>
+
+<tr>
+	<td class="file high" data-value="src/tests"><a href="src/tests/index.html">src/tests</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
+	<td data-value="100" class="pct high">100%</td>
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<td data-value="5" class="abs high">5/5</td>
+=======
+	<td data-value="3" class="abs high">3/3</td>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
+=======
+	<td data-value="3" class="abs high">3/3</td>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="100" class="pct high">100%</td>
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<td data-value="5" class="abs high">5/5</td>
+	</tr>
+
+<tr>
+	<td class="file high" data-value="src/tests/models"><a href="src/tests/models/index.html">src/tests/models</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="28" class="abs high">28/28</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="7" class="abs high">7/7</td>
 	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
+	<td data-value="28" class="abs high">28/28</td>
+=======
+	<td data-value="3" class="abs high">3/3</td>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
+=======
+	<td data-value="3" class="abs high">3/3</td>
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
+	</tr>
+
+<tr>
+	<td class="file high" data-value="src/tests/unit/models"><a href="src/tests/unit/models/index.html">src/tests/unit/models</a></td>
+	<td data-value="100" class="pic high">
+	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
+	</td>
 	<td data-value="100" class="pct high">100%</td>
-	<td data-value="2" class="abs high">2/2</td>
+	<td data-value="28" class="abs high">28/28</td>
+	<td data-value="100" class="pct high">100%</td>
+	<td data-value="0" class="abs high">0/0</td>
 	<td data-value="100" class="pct high">100%</td>
 	<td data-value="7" class="abs high">7/7</td>
-	</tr>
-
-<tr>
-	<td class="file high" data-value="culture.js"><a href="culture.js.html">culture.js</a></td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
 	<td data-value="100" class="pct high">100%</td>
-	<td data-value="3" class="abs high">3/3</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="1" class="abs high">1/1</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="3" class="abs high">3/3</td>
-	</tr>
-
-<tr>
-	<td class="file high" data-value="food.js"><a href="food.js.html">food.js</a></td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="2" class="abs high">2/2</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	</tr>
-
-<tr>
-	<td class="file high" data-value="music.js"><a href="music.js.html">music.js</a></td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="2" class="abs high">2/2</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	</tr>
-
-<tr>
-	<td class="file high" data-value="profile.js"><a href="profile.js.html">profile.js</a></td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="2" class="abs high">2/2</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	</tr>
-
-<tr>
-	<td class="file high" data-value="state.js"><a href="state.js.html">state.js</a></td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="2" class="abs high">2/2</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	</tr>
-
-<tr>
-	<td class="file high" data-value="touristCenter.js"><a href="touristCenter.js.html">touristCenter.js</a></td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="2" class="abs high">2/2</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="5" class="abs high">5/5</td>
-	</tr>
-
-<tr>
-	<td class="file high" data-value="user.js"><a href="user.js.html">user.js</a></td>
-	<td data-value="100" class="pic high">
-	<div class="chart"><div class="cover-fill cover-full" style="width: 100%"></div><div class="cover-empty" style="width: 0%"></div></div>
-	</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="3" class="abs high">3/3</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="0" class="abs high">0/0</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="1" class="abs high">1/1</td>
-	<td data-value="100" class="pct high">100%</td>
-	<td data-value="3" class="abs high">3/3</td>
+	<td data-value="28" class="abs high">28/28</td>
 	</tr>
 
 </tbody>
@@ -200,17 +187,25 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Sep 17 2020 20:36:25 GMT+0200 (Central Africa Time)
+<<<<<<< HEAD
+<<<<<<< HEAD
+                at Wed Sep 16 2020 10:10:46 GMT+0100 (West Africa Standard Time)
+=======
+                at Tue Sep 15 2020 14:48:54 GMT+0200 (Eastern European Standard Time)
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
+=======
+                at Tue Sep 15 2020 14:48:54 GMT+0200 (Eastern European Standard Time)
+>>>>>>> feature(tourist-city-models) - create tourist center and city models
             </div>
         </div>
-        <script src="../../prettify.js"></script>
+        <script src="prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../sorter.js"></script>
-        <script src="../../block-navigation.js"></script>
+        <script src="sorter.js"></script>
+        <script src="block-navigation.js"></script>
     </body>
 </html>
     
