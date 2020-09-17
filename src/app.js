@@ -1,13 +1,13 @@
 import express from "express";
 import bodyParser from "body-parser";
 import passport from "passport";
-import cookieSession from "cookie-session"
+import cookieSession from "cookie-session";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes";
 import { googleStrategy } from "./database/config/passport"
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 
 const app = express();
 app.use(bodyParser.json());

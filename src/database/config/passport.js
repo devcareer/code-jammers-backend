@@ -1,11 +1,11 @@
-import { Strategy } from "passport-google-oauth20"
-import { createUser } from "../../UserService/User"
-import model from "../../models"
-import dotenv from 'dotenv'
+import { Strategy } from "passport-google-oauth20";
+import { createUser } from "../../UserService/User";
+import model from "../../models";
+import dotenv from 'dotenv';
 
-const { Users } = model
+const { Users } = model;
 
-dotenv.config()
+dotenv.config();
 
 const googleStrategy = new Strategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -35,7 +35,6 @@ const googleStrategy = new Strategy({
         return cb(null,currentUser);
       }
 
-  
       const newUser = {
         userame: profile.name.givenName,
         lastName:  profile.name.familyName,
