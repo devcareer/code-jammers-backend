@@ -29,4 +29,3 @@ jobs:
         COVERALLS_GIT_BRANCH: ${{ github.ref }}
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ${{ github.workspace }}/coverage/lcov.info
