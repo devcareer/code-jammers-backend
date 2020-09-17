@@ -3,17 +3,20 @@ module.exports = {
     await queryInterface.createTable("Comments", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
       userId: {
-        type: Sequelize.INTEGER,
-      },
-      countryId: {
-        type: Sequelize.INTEGER,
+        allowNull: false,
+        type: Sequelize.UUID,
+        references: {
+          model: "Users",
+          key: "id",
+        },
       },
       comment: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {
