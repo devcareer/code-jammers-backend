@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/tests/unit/models/culture.spec.js</title>
+    <title>Code coverage report for src/tests/unit/models/comment.spec.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/tests/unit/models</a> culture.spec.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/tests/unit/models</a> comment.spec.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -82,54 +82,93 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import chai from "chai";
+import sinonChai from "sinon-chai";
+&nbsp;
+chai.use(sinonChai);
+&nbsp;
+const { expect } = chai;
+&nbsp;
+const {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
-} from "sequelize-test-helpers";
-import chai, { expect } from "chai";
+} = require("sequelize-test-helpers");
 &nbsp;
-import sinonChai from "sinon-chai";
-import CultureModel from "../../../models/culture";
+const CommentModel = require("../../../models/comment.js");
 &nbsp;
-chai.use(sinonChai);
+describe("src/models/comment", () =&gt; {
+  const Comment = CommentModel(sequelize, dataTypes);
+  const comment = new Comment();
 &nbsp;
-describe("src/models/culture", () =&gt; {
-  const Culture = CultureModel(sequelize, dataTypes);
-  const culture = new Culture();
-&nbsp;
-  checkModelName(Culture)("Cultures");
+  checkModelName(Comment)("Comments");
 &nbsp;
   context("properties", () =&gt; {
-    ["type", "festivals", "dressing", "language", "gallery", "tribe"].forEach(
-      checkPropertyExists(culture),
-    );
+    ["userId", "comment"].forEach(checkPropertyExists(comment));
+  });
+&nbsp;
+  context("associations", () =&gt; {
+    const User = "John Doe";
+&nbsp;
+    before(() =&gt; {
+      Comment.associate({ User });
+    });
+&nbsp;
+    it("defined a belongsTo association with User", () =&gt; {
+      expect(Comment.belongsTo).to.have.been.calledWith(User);
+    });
   });
 });
 &nbsp;</pre></td></tr></table></pre>
@@ -139,15 +178,7 @@ describe("src/models/culture", () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                at Thu Sep 17 2020 10:01:37 GMT+0100 (West Africa Standard Time)
-=======
-                at Wed Sep 16 2020 12:03:25 GMT+0100 (West Africa Standard Time)
->>>>>>> 9ba41ce... import models tests
-=======
                 at Wed Sep 16 2020 14:18:46 GMT+0100 (West Africa Standard Time)
->>>>>>> cef59da... test coverage
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
