@@ -18,7 +18,7 @@ describe("src/models/newsletter", () => {
   const Newsletter = NewsletterModel(sequelize, dataTypes);
   const newsletter = new Newsletter();
 
-  checkModelName(Newsletter)("Newsletter");
+  checkModelName(Newsletter)("Newsletters");
 
   context("properties", () => {
     ["email", "message"].forEach(checkPropertyExists(newsletter));
