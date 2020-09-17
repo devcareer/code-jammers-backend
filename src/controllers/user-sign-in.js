@@ -24,9 +24,8 @@ export default class loginController {
       };
       data.token = token;
       util.setSuccess(201, "User logged in!", data);
-      return util.send(res);
     } catch (error) {
       return util.send(res);
-    }
+    } return util.send(res);
   }
 }
