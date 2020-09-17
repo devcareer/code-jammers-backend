@@ -1,20 +1,33 @@
+const {
+  Model,
+} = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
-  const Comment = sequelize.define("Comment", {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    countryId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+  class Comment extends Model {
+    static associate(models) {
+      this.belongsTo(models.User, {
+        foreignKey: {
+          allowNull: false,
+        },
+      });
+
+      this.belongsTo(models.Country, {
+        foreignKey: {
+          allowNull: false,
+        },
+      });
+    }
+  }
+  Comment.init({
+    userId: DataTypes.UUID,
+    countryId: DataTypes.UUID,
     comment: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+  }, {
+    sequelize,
+    modelName: "Comment",
   });
+  return Comment;
 };
