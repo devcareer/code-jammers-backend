@@ -1,6 +1,7 @@
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Comments", {
+  up: async (queryInterface, Sequelize) => queryInterface.sequelize
+    .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
+    .then(() => queryInterface.createTable("Comments", {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -10,10 +11,6 @@ module.exports = {
       userId: {
         allowNull: false,
         type: Sequelize.UUID,
-        references: {
-          model: "Users",
-          key: "id",
-        },
       },
       comment: {
         allowNull: false,
@@ -27,8 +24,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
-  },
+    })),
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("Comments");
   },
