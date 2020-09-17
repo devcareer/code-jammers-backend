@@ -12,7 +12,7 @@ package-lock.json
 
 # coverage dependencies
 .nyc_output
-coverage
+/coverage
 
 /build
 
