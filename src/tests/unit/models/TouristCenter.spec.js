@@ -21,7 +21,7 @@ describe("src/models/Tourist Center", () => {
   checkModelName(TouristCenter)("TouristCenters");
 
   context("properties", () => {
-    ["location", "gallary", "name"].forEach(checkPropertyExists(touristCenter));
+    ["location", "gallery", "name"].forEach(checkPropertyExists(touristCenter));
   });
 
   context("associations", () => {

@@ -1,28 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
   const TouristCenter = sequelize.define("TouristCenters", {
-    name: {
+    countryId: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gallary: {
-      type: DataTypes.STRING,
+    name: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    gallery: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    countryId: {
-      type: DataTypes.UUID,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   });
 
-  TouristCenter.associate = models => {
+  TouristCenter.associate = (models) => {
     TouristCenter.belongsTo(models.Country, {
-      as: "country",
+      as: "countryTouristCenter",
       foreignKey: "countryId",
-      onDelete: "cascade",
     });
   };
 
