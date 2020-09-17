@@ -1,7 +1,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("Foods", [{
-      id: "9e92fadd-8897-4d3d-b9de-cf82e9752a1f", 
+      id: "9e92fadd-8897-4d3d-b9de-cf82e9752a1f",
       countryId: "6003fb36-5112-463e-a1f9-c8944e72412f",
       type: "Egusi soup",
       methodOfPreparation: `Add melon, onion, water and fresh pepper in a blender. Blend the ingredients together until 
