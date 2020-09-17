@@ -7,6 +7,7 @@ const { generateToken } = jwtHelper;
 const util = new Util();
 
 export default class loginController {
+  // eslint-disable-next-line consistent-return
   static async loginUser(req, res) {
     try {
       const { email, password } = req.body;
@@ -23,9 +24,11 @@ export default class loginController {
         email: userEmail.email, password: userEmail.username
       };
       data.token = token;
-      util.setSuccess(201, "User logged in!", data);
-    } catch (error) {
+      util.setSuccess(201, "User created!", data);
       return util.send(res);
-    } return util.send(res);
+    } catch (error) {
+      util.setError(400, error.message);
+      return util.send(res);
+    }
   }
 }
