@@ -2,7 +2,8 @@ import bcrypt from "bcrypt";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
-import loginValidation from "../validation/userValidation";
+// eslint-disable-next-line import/named
+import { loginValidation } from "../validation/userValidation";
 
 const { generateToken } = jwtHelper;
 const util = new Util();

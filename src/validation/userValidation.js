@@ -1,20 +1,24 @@
-import Joi from "@hapi/joi";
+import Joi from "joi";
 
-const userValidation = data => {
-  const schema = {
-    username: Joi.string().min(4).max(15).required(),
-    email: Joi.string().email().min(3).max(150),
-    password: Joi.string().min(6).max(100).required()
-  };
-  return Joi.validate(data, schema);
+const registerValidation = user => {
+  const schema = Joi.object({
+    username: Joi.string().min(5).max(50),
+    email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co"] } }).min(5)
+      .max(255),
+    password: Joi.string().required().min(5).max(1024),
+  });
+
+  return schema.validate(user);
 };
 
-const loginValidation = data => {
-  const schema = {
-    email: Joi.string().email().min(3).max(150),
-    password: Joi.string().min(6).max(100).required()
-  };
-  return Joi.validate(data, schema);
-};
+const loginValidation = user => {
+  const schema = Joi.object({
+    email: Joi.string().required().email().min(5)
+      .max(255),
+    password: Joi.string().required().min(5).max(1024),
+  });
 
-export default { userValidation, loginValidation };
+  return schema.validate(user);
+};
+module.exports.registerValidation = registerValidation;
+module.exports.loginValidation = loginValidation;

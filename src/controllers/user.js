@@ -3,7 +3,7 @@ import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
 // eslint-disable-next-line import/named
-import userValidation from "../validation/userValidation";
+import { registerValidation } from "../validation/userValidation";
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -11,7 +11,7 @@ const util = new Util();
 export default class userController {
   static async createUser(req, res) {
     try {
-      const { error } = userValidation(req.body);
+      const { error } = registerValidation(req.body);
       if (error) {
         return res.status(400).send(error.details[0].message);
       }
