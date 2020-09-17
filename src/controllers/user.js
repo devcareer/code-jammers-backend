@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
-import User from "../UserService/User";
-import jwtHelper from "../UserService/Jwt";
+import User from "../services/UserService/User";
+import jwtHelper from "../utilities/Jwt";
+// eslint-disable-next-line import/named
+import userValidation from "../validation/userValidation";
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -9,6 +11,10 @@ const util = new Util();
 export default class userController {
   static async createUser(req, res) {
     try {
+      const { error } = userValidation(req.body);
+      if (error) {
+        return res.status(400).send(error.details[0].message);
+      }
       const { email, username, password } = req.body;
       const userEmail = await User.checkEmail(email);
       if (userEmail) {

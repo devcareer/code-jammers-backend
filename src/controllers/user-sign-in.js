@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
-import User from "../UserService/User";
-import jwtHelper from "../UserService/Jwt";
+import User from "../services/UserService/User";
+import jwtHelper from "../utilities/Jwt";
+import loginValidation from "../validation/userValidation";
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -9,6 +10,10 @@ const util = new Util();
 export default class loginController {
   static async loginUser(req, res) {
     try {
+      const { error } = loginValidation(req.body);
+      if (error) {
+        return res.status(400).send(error.details[0].message);
+      }
       const { email, password } = req.body;
       const userEmail = await User.checkEmail(email);
       if (!userEmail) {
