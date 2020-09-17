@@ -17,7 +17,7 @@ export default class userController {
       const { email, username, password } = req.body;
       const userEmail = await User.checkEmail(email);
       if (userEmail) {
-        return res.status(400).send({ message: "Email already used by another user." });
+        return res.status(409).send({ message: "Email already used by another user." });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email, username, password: hashedPassword };
