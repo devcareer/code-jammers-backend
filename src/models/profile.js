@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 module.exports = (sequelize, DataTypes) => {
   const Profile = sequelize.define("Profiles", {
-=======
-export default (sequelize, DataTypes) => {
-  const Profile = sequelize.define("Profile", {
->>>>>>> eeefdaf... fix JWT
     userId: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -26,26 +21,10 @@ export default (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // Profile.associate = models => {
-  //   Profile.belongsTo(models.User, {
-  //     as: "profileDetails", foreignKey: "userId",
-  //   });
-  // };
-=======
-  Profile.associate = models => {
-    Profile.belongsTo(models.User, {
-      as: "profileDetails", foreignKey: "userId",
-    });
-  };
->>>>>>> eeefdaf... fix JWT
-=======
   Profile.associate = models => {
     Profile.belongsTo(models.Users, {
       as: "profileDetails", foreignKey: "userId",
     });
   };
->>>>>>> 30aa778... fix undefined error
   return Profile;
 };

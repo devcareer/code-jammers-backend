@@ -7,7 +7,7 @@ import {
 import chai, { expect } from "chai";
 
 import sinonChai from "sinon-chai";
-import CountryModel from "../../../models/countries";
+import CountryModel from "../../models/countries";
 
 chai.use(sinonChai);
 

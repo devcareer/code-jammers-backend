@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
-import User from "../UserService/User";
-import jwtHelper from "../UserService/Jwt";
+import User from "../services/UserService/User";
+import jwtHelper from "../utilities/Jwt";
 
 const { generateToken } = jwtHelper;
 const util = new Util();
