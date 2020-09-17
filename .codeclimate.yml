@@ -5,6 +5,7 @@ plugins:
     config:
       config: ".eslintrc.json"
 exclude_patterns:
-- "src/database/"
-- "coverage"
-
+  - "src/database/"
+  - "coverage"
+  - "src/models"
+  - "src/tests"

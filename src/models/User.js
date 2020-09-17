@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
+  const User = sequelize.define("Users", {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -15,7 +15,7 @@ export default (sequelize, DataTypes) => {
     },
     role: {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
-      defaultValue: "user",
+      defaultValue: "User",
     },
   });
   return User;

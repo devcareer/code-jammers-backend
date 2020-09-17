@@ -1,6 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../app";
+import profile from "../models/profile";
 
 // assertion style
 

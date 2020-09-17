@@ -1,8 +1,12 @@
-export default (sequelize, DataTypes) => {
-  const Profile = sequelize.define("Profile", {
+module.exports = (sequelize, DataTypes) => {
+  const Profile = sequelize.define("Profiles", {
     userId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
+      references: {
+        model: "Users",
+        key: "id",
+      },
     },
     firstName: {
       type: DataTypes.STRING,
@@ -18,7 +22,7 @@ export default (sequelize, DataTypes) => {
     },
   });
   Profile.associate = models => {
-    Profile.belongsTo(models.User, {
+    Profile.belongsTo(models.Users, {
       as: "profileDetails", foreignKey: "userId",
     });
   };

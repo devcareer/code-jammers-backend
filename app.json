@@ -1,0 +1,12 @@
+{
+    "buildpacks": [
+
+        {
+            "url": "heroku/nodejs"
+        }
+    ],
+    "env": {
+        "NPM_CONFIG_PRODUCTION": "false"
+    },
+    "repository": "https://github.com/devcareer/code-jammers-backend"
+}

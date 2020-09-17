@@ -14,8 +14,11 @@
     "path": "^0.12.7",
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
+    "proxyquire": "^2.1.3",
     "sequelize": "^5.21.13",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.5",
@@ -34,9 +37,12 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "mocha": "^8.1.3",
-    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^2.0.4",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "sequelize-test-helpers": "^1.2.3",
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0",
+    "mocha-lcov-reporter": "^1.3.0"
   },
   "scripts": {
     "clean": "npm rm -rf build && npm run build-babel",
@@ -44,7 +50,7 @@
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./build/app.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
-    "test": "cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
+    "test": "cross-env NODE_ENV=test &&  npm run migrate:undo  && npm run migrate  && nyc --require --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | node ./node_modules/coveralls/bin/coveralls.js --verbose",
     "lint": "eslint src/  --fix",
     "migrate": "node_modules/.bin/sequelize db:migrate",
