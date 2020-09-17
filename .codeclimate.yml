@@ -8,4 +8,4 @@ exclude_patterns:
 - "src/database/"
 - "src/tests/"
 - "coverage"
-
+- "src/models/"
