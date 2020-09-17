@@ -6,6 +6,7 @@ module.exports = {
       [
         {
           countryId: "2e11e4a9-441b-4426-9521-39adc64ccfad",
+
           name: "Victorial Falls",
 
           location: "Livingstone",
@@ -19,7 +20,7 @@ module.exports = {
         },
       ],
 
-      {},
+      {}
     );
   },
 

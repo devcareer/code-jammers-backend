@@ -5,20 +5,20 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     gallery: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     location: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   });
 
-  TouristCenter.associate = models => {
+  TouristCenter.associate = (models) => {
     TouristCenter.belongsTo(models.Country, {
       as: "country",
       foreignKey: "countryId",
