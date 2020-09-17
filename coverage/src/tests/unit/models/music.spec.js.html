@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/tests/unit/models/country.spec.js</title>
+    <title>Code coverage report for src/tests/unit/models/music.spec.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/tests/unit/models</a> country.spec.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/tests/unit/models</a> music.spec.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -91,16 +91,10 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -110,23 +104,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,46 +125,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import chai, { expect } from "chai";
+import sinonChai from "sinon-chai";
+import {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
 } from "sequelize-test-helpers";
-import chai, { expect } from "chai";
 &nbsp;
-import sinonChai from "sinon-chai";
-import CountryModel from "../../../models/countries";
+import musicModel from "../../../models/music";
 &nbsp;
-chai.use(sinonChai);
-&nbsp;
-describe("src/models/countries", () =&gt; {
-  const Country = CountryModel(sequelize, dataTypes);
-  const country = new Country();
-&nbsp;
-  checkModelName(Country)("Countries");
+describe("src/models/music", () =&gt; {
+  const Music = musicModel(sequelize, dataTypes);
+  const music = new Music();
+  checkModelName(Music)("Musics");
 &nbsp;
   context("properties", () =&gt; {
-    [
-      "nameOfCountry",
-      "gallery",
-      "capital",
-      "population",
-      "officialLanguage",
-      "region",
-      "currency",
-    ].forEach(checkPropertyExists(country));
+    ["countryId", "category", "gallery", "event"].forEach(
+      checkPropertyExists(music),
+    );
   });
 &nbsp;
   context("associations", () =&gt; {
-    const Culture = "culture data";
+    const Country = "Nigeria";
 &nbsp;
     before(() =&gt; {
-      Country.associate({ Culture });
+      Music.associate({ Country });
     });
 &nbsp;
-    it("defined a hasMany association with Culture", () =&gt; {
-      expect(Country.hasMany).to.have.been.calledWith(Culture);
+    it("defined a belongsTo association with Country", () =&gt; {
+      expect(Music.belongsTo).to.have.been.calledWith(Country);
     });
   });
 });
