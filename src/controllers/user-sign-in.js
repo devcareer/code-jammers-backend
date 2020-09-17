@@ -26,14 +26,12 @@ export default class loginController {
       }
       const token = await generateToken({ userEmail });
       const data = {
-        email: userEmail.email,
-        password: userEmail.username
+        email: userEmail.email, password: userEmail.username
       };
       data.token = token;
       util.setSuccess(201, "User logged in!", data);
       return util.send(res);
     } catch (error) {
-      util.setError(400, error.message);
       return util.send(res);
     }
   }
