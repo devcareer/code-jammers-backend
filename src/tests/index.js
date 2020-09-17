@@ -1,6 +1,6 @@
 import "./index-test";
-import "./unit/models/country.spec";
-import "./unit/models/culture.spec";
+import "./models/country.spec";
+import "./models/culture.spec";
 import "./models/user";
 import "./models/profile";
-import "./userTest/user-test";
+import "./controllers/userTest/user-test";

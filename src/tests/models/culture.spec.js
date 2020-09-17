@@ -7,7 +7,7 @@ import {
 import chai, { expect } from "chai";
 
 import sinonChai from "sinon-chai";
-import CultureModel from "../../../models/culture";
+import CultureModel from "../../models/culture";
 
 chai.use(sinonChai);
 
