@@ -3,7 +3,6 @@ import Util from "../utilities/util";
 import User from "../UserService/User";
 import jwtHelper from "../UserService/Jwt";
 
-
 const { generateToken } = jwtHelper;
 const util = new Util();
 export default class userController {
@@ -30,6 +29,4 @@ export default class userController {
       return util.send(res);
     }
   }
-
- 
 }
