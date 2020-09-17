@@ -1,9 +1,17 @@
 export default (sequelize, DataTypes) => {
-  const User = sequelize.define("Users", {
+  const User = sequelize.define("User", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
     username: {
       type: DataTypes.STRING,
@@ -14,9 +22,12 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM("Super Admin", "Admin", "User"),
-      defaultValue: "User",
+      type: DataTypes.STRING,
+      defaultValue: "user",
     },
   });
+  // User.hasOne(models.Profile, {
+  //   onDelete: "cascade",
+  // });
   return User;
 };
