@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/tests/unit/models/culture.spec.js</title>
+    <title>Code coverage report for src/tests/unit/models/food.spec.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/tests/unit/models</a> culture.spec.js</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">src/tests/unit/models</a> food.spec.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>17/17</span>
             </div>
         
             
@@ -82,7 +82,21 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -91,9 +105,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -106,30 +117,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import chai, { expect } from "chai";
+import sinonChai from "sinon-chai";
+import {
   sequelize,
   dataTypes,
   checkModelName,
   checkPropertyExists,
 } from "sequelize-test-helpers";
-import chai, { expect } from "chai";
 &nbsp;
-import sinonChai from "sinon-chai";
-import CultureModel from "../../../models/culture";
+import foodModel from "../../../models/food";
 &nbsp;
 chai.use(sinonChai);
 &nbsp;
-describe("src/models/culture", () =&gt; {
-  const Culture = CultureModel(sequelize, dataTypes);
-  const culture = new Culture();
+describe("src/models/food", () =&gt; {
+  const Food = foodModel(sequelize, dataTypes);
+  const food = new Food();
 &nbsp;
-  checkModelName(Culture)("Cultures");
+  checkModelName(Food)("Foods");
 &nbsp;
   context("properties", () =&gt; {
-    ["type", "festivals", "dressing", "language", "gallery", "tribe"].forEach(
-      checkPropertyExists(culture),
+    ["countryId", "type", "methodOfPreparation", "gallery"].forEach(
+      checkPropertyExists(food),
     );
+  });
+  context("associations", () =&gt; {
+    const Country = "Country";
+&nbsp;
+    before(() =&gt; {
+      Food.associate({ Country });
+    });
+&nbsp;
+    it("defined a belongsTo association with Country", () =&gt; {
+      expect(Food.belongsTo).to.have.been.calledWith(Country);
+    });
   });
 });
 &nbsp;</pre></td></tr></table></pre>
@@ -139,11 +172,7 @@ describe("src/models/culture", () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-<<<<<<< HEAD
-                at Wed Sep 16 2020 17:24:15 GMT+0100 (West Africa Standard Time)
-=======
                 at Thu Sep 17 2020 10:01:37 GMT+0100 (West Africa Standard Time)
->>>>>>> 592225e51c9255c54dadae7a64251a32785fb118
             </div>
         </div>
         <script src="../../../../prettify.js"></script>
