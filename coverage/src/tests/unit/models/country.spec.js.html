@@ -175,14 +175,14 @@ describe("src/models/countries", () =&gt; {
   });
 &nbsp;
   context("associations", () =&gt; {
-    const Culture = "culture data";
+    const Cultures = "culture data";
 &nbsp;
     before(() =&gt; {
-      Country.associate({ Culture });
+      Country.associate({ Cultures });
     });
 &nbsp;
     it("defined a hasMany association with Culture", () =&gt; {
-      expect(Country.hasMany).to.have.been.calledWith(Culture);
+      expect(Country.hasMany).to.have.been.calledWith(Cultures);
     });
   });
 });

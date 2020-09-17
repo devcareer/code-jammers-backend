@@ -25,11 +25,13 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-<<<<<<< HEAD
+
                 <span class='fraction'>8/8</span>
-=======
+
                 <span class='fraction'>15/15</span>
->>>>>>> eeefdaf... fix JWT
+
+                <span class='fraction'>15/15</span>
+
             </div>
         
             
@@ -51,10 +53,14 @@
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <span class='fraction'>8/8</span>
 =======
                 <span class='fraction'>15/15</span>
 >>>>>>> eeefdaf... fix JWT
+=======
+                <span class='fraction'>15/15</span>
+>>>>>>> 30aa778... fix undefined error
             </div>
         
             
@@ -80,11 +86,14 @@
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <a name='L15'></a><a href='#L15'>15</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 =======
 >>>>>>> eeefdaf... fix JWT
+=======
+>>>>>>> 30aa778... fix undefined error
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
@@ -101,10 +110,21 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 636c14c... resolve conflicts
 >>>>>>> 5a40104... resolve conflicts
 =======
 >>>>>>> eeefdaf... fix JWT
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+=======
+>>>>>>> 30aa778... fix undefined error
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,6 +149,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import express from "express";
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 &nbsp;
 const app = express();
@@ -151,6 +172,21 @@ app.use(cors());
 &nbsp;
 const port = process.env.PORT || 3000;
 &nbsp;
+=======
+import bodyParser from "body-parser";
+import cors from "cors";
+import userRoutes from "./routes/userRoutes";
+&nbsp;
+const app = express();
+app.use(bodyParser.json());
+&nbsp;
+app.use(bodyParser.urlencoded({ extended: true }));
+&nbsp;
+app.use(cors());
+&nbsp;
+const port = process.env.PORT || 3000;
+&nbsp;
+>>>>>>> 30aa778... fix undefined error
 app.use("/api/v1/", userRoutes);
 &nbsp;
 app.get("/", (req, res) =&gt; {
@@ -171,6 +207,7 @@ export default app;
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 at Thu Sep 17 2020 10:01:37 GMT+0100 (West Africa Standard Time)
 =======
 <<<<<<< HEAD
@@ -182,6 +219,9 @@ export default app;
 =======
                 at Mon Sep 14 2020 16:38:52 GMT+0100 (West Africa Standard Time)
 >>>>>>> eeefdaf... fix JWT
+=======
+                at Wed Sep 16 2020 17:24:15 GMT+0100 (West Africa Standard Time)
+>>>>>>> 30aa778... fix undefined error
             </div>
         </div>
         <script src="../prettify.js"></script>
