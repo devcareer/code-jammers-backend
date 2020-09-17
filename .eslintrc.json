@@ -3,7 +3,7 @@
   "extends": "airbnb-base",
   "env": {
     "node": true,
-    "es6": true,
+    "es2021": true,
     "mocha": true
   },
     "parser": "babel-eslint",
