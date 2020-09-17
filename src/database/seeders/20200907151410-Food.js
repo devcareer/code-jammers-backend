@@ -1,10 +1,11 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert("Foods", [{
-      id: "9e92fadd-8897-4d3d-b9de-cf82e9752a1f",
-      countryId: "6003fb36-5112-463e-a1f9-c8944e72412f",
-      type: "Egusi soup",
-      methodOfPreparation: `Add melon, onion, water and fresh pepper in a blender. Blend the ingredients together until 
+    await queryInterface.bulkInsert(
+      "Foods", [{
+        id: "9e92fadd-8897-4d3d-b9de-cf82e9752a1f",
+        countryId: "6003fb36-5112-463e-a1f9-c8944e72412f",
+        type: "Egusi soup",
+        methodOfPreparation: `Add melon, onion, water and fresh pepper in a blender. Blend the ingredients together until 
       it forms a paste.
       Add water, chicken, turkey, ponmo, yellow pepper, stock, smoked panla fish, crayfish, chopped pepper and palm oil 
       to a pot. Allow all the ingredients to boil for 15 minutes.
@@ -13,11 +14,12 @@ module.exports = {
       Next add the Ugu leaves and Uziza, mix together and allow to cook for 5 minutes. You will notice that the oil will 
       start to rise to the top, your Egusi Soup is now ready.
       Serve and enjoy with Eba, Semo, Pounded Yam or even Rice.`,
-      gallery: "https://res.cloudinary.com/augustar/image/upload/v1599563547/pounded-yam_qfzcy7.jpg",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }],
-    {});
+        gallery: "https://res.cloudinary.com/augustar/image/upload/v1599563547/pounded-yam_qfzcy7.jpg",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }],
+      {},
+    );
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete("Foods", null, {});

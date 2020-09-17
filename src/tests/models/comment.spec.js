@@ -12,7 +12,7 @@ const {
   checkPropertyExists,
 } = require("sequelize-test-helpers");
 
-const CommentModel = require("../../../models/comment.js");
+const CommentModel = require("../../models/comment.js");
 
 describe("src/models/comment", () => {
   const Comment = CommentModel(sequelize, dataTypes);

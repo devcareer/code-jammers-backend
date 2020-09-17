@@ -12,7 +12,7 @@ const {
   checkPropertyExists,
 } = require("sequelize-test-helpers");
 
-const NewsletterModel = require("../../../models/newsletter.js");
+const NewsletterModel = require("../../models/newsletter.js");
 
 describe("src/models/newsletter", () => {
   const Newsletter = NewsletterModel(sequelize, dataTypes);
