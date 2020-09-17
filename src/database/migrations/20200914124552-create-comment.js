@@ -3,14 +3,14 @@ module.exports = {
     .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
     .then(() => queryInterface.createTable("Comments", {
       id: {
-        allowNull: false,
+        allowNull: true,
         primaryKey: true,
         type: Sequelize.UUID,
         defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
       userId: {
         allowNull: false,
-        type: Sequelize.UUID,
+        type: Sequelize.STRING,
       },
       comment: {
         allowNull: false,
