@@ -3,14 +3,18 @@ module.exports = {
     await queryInterface.bulkInsert("Newsletters", [{
       email: "newuser@gmail.com",
       message: "Thank you for subscribing to Know Africa. We look forward to sharing the many beauties of Africa with you!",
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-      email: "newuser@gmail.com",
+      email: "seconduser@gmail.com",
       message: "Thank you for subscribing to Know Africa. We look forward to sharing the many beauties of Africa with you!",
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }]);
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("Newsletter", null, {});
+    await queryInterface.bulkDelete("Newsletters", null, {});
   },
 };
