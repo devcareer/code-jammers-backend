@@ -30,4 +30,6 @@ export default class userController {
       return util.send(res);
     }
   }
+
+ 
 }

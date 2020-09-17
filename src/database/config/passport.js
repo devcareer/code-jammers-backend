@@ -1,48 +1,57 @@
-// import { Strategy } from "passport-google-oauth2"
-import passport from "passport"
-// var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
-
-import { createUser, findUserById } from "../../UserService/User"
+import { Strategy } from "passport-google-oauth20"
+import { createUser } from "../../UserService/User"
+import model from "../../models"
 import dotenv from 'dotenv'
+
+const { Users } = model
 
 dotenv.config()
 
-// passport.use(new GoogleStrategy( {
-//     clientID: process.env.GOOGLE_CLIENT_ID,
-//     clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-//     callbackURL:process.env.GOOGLE_CALLBACK_URL,
-//      passReqToCallback   : true
-// }, async function(accessToken, refreshToken, profile, done){
-
-// } ) ) 
 const googleStrategy = new Strategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL:process.env.GOOGLE_CALLBACK_URL,
-     passReqToCallback   : true
-}) 
-async (accessToken, refreshToken, profile, cb) => {
-    console.log("profile", profile);
-    // try {
-        
-    //     const email = profile.email[0].value;
-    //     const { id } = profile
+    callbackURL: process.env.GOOGLE_CALLBACK_URL,
+  },
+  
+  async (accessToken, refreshToken, profile, cb) => {
+      console.log("profile", profile);
+      console.log("profile email", profile.emails[0].value);
+      console.log("profile photo", profile.photos[0].value);
+      console.log("profile displayName", profile.displayName);
+      console.log("profile provider", profile.provider);
+    try {
+      const email = profile.emails[0].value;
+      const profilePicture =  profile.photos[0].value
+      const provider = profile.provider
+      
+      const { googleId: id } = profile
+      // check if user already exists our database
+      const currentUser = await Users.findOne({
+         id
+      })
+      console.log("user",currentUser);
+  
+      if (currentUser) {
+        return cb(null,currentUser);
+      }
 
-    //     //Check if user already exists in DB with the given profileID
-    //     const currentUser = await findUserById(id)
-
-    //     if (currentUser) {
-    //         return cb(null, currentUser)
-    //     } else {
-    //         //Create a new user
-    //         const newUser = {
-
-    //         }
-    //     }
-
-    // } catch (error) {
-    //     console.log("google oauth error", error);
-    // }
-}
-
-export default googleStrategy 
+  
+      const newUser = {
+        userame: profile.name.givenName,
+        lastName:  profile.name.familyName,
+        profilePicture,
+        email,
+        id,
+        provider,
+        role: 'user'
+      };
+      // store in database
+      await createUser(newUser);
+  
+      return cb(null, newUser);
+    } catch (err) {
+      return cb(err, false);
+    }
+  });
+  
+  export { googleStrategy };
