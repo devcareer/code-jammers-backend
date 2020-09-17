@@ -21,6 +21,7 @@ const env = process.env.NODE_ENV || "development";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> f15c36c... rebase develop
@@ -46,6 +47,9 @@ const config = require(`${__dirname}/../database/config.js`)[env];
 =======
 const config = require(`${__dirname}/../database/config.js`)[env];
 >>>>>>> 4b198e7... fix database config
+=======
+const config = require(`${__dirname}/../database/config/config.js`)[env];
+>>>>>>> ffb1870... rework models
 const db = {};
 >>>>>>> dff23cc... rebase develop
 
@@ -76,14 +80,18 @@ Object.keys(db).forEach(modelName => {
 
 fs
   .readdirSync(__dirname)
-  .filter((file) => (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js"))
-  .forEach((file) => {
+  .filter(file => (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js"))
+  .forEach(file => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
+<<<<<<< HEAD
 Object.keys(db).forEach((modelName) => {
 >>>>>>> 9dc53f7... lint code
+=======
+Object.keys(db).forEach(modelName => {
+>>>>>>> ffb1870... rework models
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }

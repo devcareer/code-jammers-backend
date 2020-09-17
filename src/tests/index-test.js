@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 describe("app.js should return all endpoints", async () => {
   describe("/ should display Welcome to Know Africa", () => {
-    it("it should get the welcome page", (done) => {
+    it("it should get the welcome page", done => {
       chai
         .request(server)
         .get("/")

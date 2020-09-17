@@ -1,30 +1,9 @@
 const path = require('path')
-<<<<<<< HEAD
-<<<<<<< HEAD
 require("@babel/register");
-
-module.exports = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    'config': path.resolve('src/database/config', 'config.js'),
-=======
-    config: path.resolve('src/database', 'config.js'),
->>>>>>> f51eb66... rebase develop
-=======
-    config: path.resolve('src/database', 'config.js'),
->>>>>>> 825ba26... rebase develop
-    'models-path': path.resolve('src', 'models'),
-    'seeders-path': path.resolve('src/database', 'seeders'),
-    'migrations-path': path.resolve('src/database', 'migrations')
-=======
-=======
-require("@babel/register");
->>>>>>> 4b198e7... fix database config
 
 module.exports = {
     config: path.resolve('src/database', 'config.js'),
     'models-path': path.resolve('src', 'models'),
-    'seeders-path': path.resolve('src', 'seeders'),
-    'migrations-path': path.resolve('src', 'migrations')
->>>>>>> 080040d... feat(models): Design historical & security models
+    'seeders-path': path.resolve('src/database', 'seeders'),
+    'migrations-path': path.resolve('src/database', 'migrations')
 }

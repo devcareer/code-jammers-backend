@@ -1,8 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
-  const Historicalfact = sequelize.define("Historicalfact", {
+  const Historicalfact = sequelize.define("Historicalfacts", {
     countryId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: "Countries",
+        key: "id",
+      },
     },
     location: {
       type: DataTypes.STRING,
@@ -14,11 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Historicalfact.associate = (models) => {
+  Historicalfact.associate = models => {
     Historicalfact.belongsTo(models.Country, {
-      foreignKey: {
-        allowNull: false,
-      },
+      as: "countryHistoricalFacts",
+      foreignKey: "countryId",
     });
   };
 

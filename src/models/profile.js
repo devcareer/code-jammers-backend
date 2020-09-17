@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
-  Profile.associate = (models) => {
+  Profile.associate = models => {
     Profile.belongsTo(models.User, {
       as: "profileDetails", foreignKey: "userId",
     });

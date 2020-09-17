@@ -20,7 +20,7 @@ describe("src/models/historicalfact", () => {
   const Historicalfact = HistoricalfactModel(sequelize, dataTypes);
   const historicalfact = new Historicalfact();
 
-  checkModelName(Historicalfact)("Historicalfact");
+  checkModelName(Historicalfact)("Historicalfacts");
 
   context("properties", () => {
     ["countryId", "location", "gallery"].forEach(

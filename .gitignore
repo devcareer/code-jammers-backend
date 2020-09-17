@@ -15,5 +15,3 @@ package-lock.json
 .nyc_output
 
 /build
-
-package-lock.json
