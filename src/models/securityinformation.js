@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const Securityinformation = sequelize.define("Securityinformations", {
     countryId: {
       type: DataTypes.UUID,
@@ -10,7 +11,12 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
 =======
+=======
+>>>>>>> 035a52d... resolve all conflict
   const Securityinformation = sequelize.define("Securityinformations", {
+=======
+  const Securityinformation = sequelize.define("Securityinformation", {
+>>>>>>> eb31de8... resolve all conflict
     countryId: {
       type: DataTypes.STRING,
       allowNull: false,
