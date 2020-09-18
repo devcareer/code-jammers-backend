@@ -21,18 +21,6 @@
       "import/no-dynamic-require":"off",
       "no-tabs":"off",
       "no-console": "off",
-<<<<<<< HEAD
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
-      "arrow-parens": [2, "as-needed"],
-      "require-jsdoc": [2, {
-        "require": {
-            "FunctionDeclaration": true,
-            "MethodDefinition": false,
-            "ClassDeclaration": false
-        }
-    }]
-=======
       "import/no-extraneous-dependencies":["error", {"devDependencies": true}]
->>>>>>> eb31de8... resolve all conflict
     }
 }

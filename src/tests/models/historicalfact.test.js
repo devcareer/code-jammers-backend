@@ -10,7 +10,7 @@ import {
   makeMockModels,
 } from "sequelize-test-helpers";
 
-import HistoricalfactModel from "../../models/historicalfact";
+import HistoricalfactModel from "../../models/hisoricalfact";
 
 chai.use(sinonChai);
 

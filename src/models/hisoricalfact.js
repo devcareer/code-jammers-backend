@@ -16,9 +16,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Hisoricalfact.associate = (models) => {
     Hisoricalfact.belongsTo(models.Countries, {
-      foreignKey: {
-        allowNull: false,
-      },
+      as: "historicalFact",
+      foreignKey: "countryId",
     });
   };
 
