@@ -1,16 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
-  const TouristCenter = sequelize.define("TouristCenter", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+  const TouristCenter = sequelize.define("TouristCenters", {
+    countryId: {
+      type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gallary: {
+    gallery: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -18,13 +16,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    about: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
   });
 
   TouristCenter.associate = (models) => {
     TouristCenter.belongsTo(models.Country, {
-      foreignKey: {
-        allowNull: false,
-      },
+      as: "countryTouristCenter",
+      foreignKey: "countryId",
     });
   };
 
