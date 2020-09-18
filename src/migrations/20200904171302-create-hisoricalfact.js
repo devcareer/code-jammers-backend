@@ -6,8 +6,12 @@ module.exports = {
     await queryInterface.createTable("Hisoricalfact", {
 =======
   up: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     await queryInterface.createTable("Hisoricalfacts", {
 >>>>>>> 86cdcdb... lint code
+=======
+    await queryInterface.createTable("Hisoricalfact", {
+>>>>>>> 92567b9... install sinon, remove plural tables
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -29,10 +33,14 @@ module.exports = {
       //   allowNull: false,
       //   references: {
 <<<<<<< HEAD
+<<<<<<< HEAD
       //     model: "Country",
 =======
       //     model: "Countries",
 >>>>>>> 86cdcdb... lint code
+=======
+      //     model: "Country",
+>>>>>>> 92567b9... install sinon, remove plural tables
       //     key: "id",
       //   },
       // },
@@ -47,6 +55,7 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     await queryInterface.dropTable("Hisoricalfact");
   },
@@ -96,6 +105,9 @@ module.exports = {
 >>>>>>> 060c3e6... resolve conflict
 =======
     await queryInterface.dropTable("Hisoricalfacts");
+=======
+    await queryInterface.dropTable("Hisoricalfact");
+>>>>>>> 92567b9... install sinon, remove plural tables
   },
 >>>>>>> 86cdcdb... lint code
 =======

@@ -25,8 +25,12 @@ module.exports = {
 >>>>>>> 020be84... rebase develop
 =======
   up: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     await queryInterface.bulkInsert("Securityinformations", [{
 >>>>>>> 86cdcdb... lint code
+=======
+    await queryInterface.bulkInsert("Securityinformation", [{
+>>>>>>> 92567b9... install sinon, remove plural tables
       countryId: 1,
       location: "Nigeria",
       createdAt: new Date(),
@@ -100,7 +104,7 @@ module.exports = {
 =======
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("Securityinformations", null, {});
+    await queryInterface.bulkDelete("Securityinformation", null, {});
   },
 >>>>>>> 86cdcdb... lint code
 =======

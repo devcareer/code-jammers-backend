@@ -2,10 +2,14 @@ module.exports = (sequelize, DataTypes) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const Securityinformation = sequelize.define("Securityinformation", {
 =======
   const Securityinformation = sequelize.define("Securityinformations", {
 >>>>>>> 86cdcdb... lint code
+=======
+  const Securityinformation = sequelize.define("Securityinformation", {
+>>>>>>> 92567b9... install sinon, remove plural tables
     countryId: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -48,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
 >>>>>>> 86cdcdb... lint code
 
   Securityinformation.associate = (models) => {
-    Securityinformation.belongsTo(models.Countries, {
+    Securityinformation.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,
       },

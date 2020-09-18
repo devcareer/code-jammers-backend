@@ -25,8 +25,12 @@ module.exports = {
 >>>>>>> 020be84... rebase develop
 =======
   up: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     await queryInterface.createTable("Securityinformations", {
 >>>>>>> 86cdcdb... lint code
+=======
+    await queryInterface.createTable("Securityinformation", {
+>>>>>>> 92567b9... install sinon, remove plural tables
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -66,6 +70,7 @@ module.exports = {
       // 	allowNull: false,
       // 	references: {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // 		model: "Country",
       // 		key: "id",
       // 	},
@@ -95,6 +100,9 @@ module.exports = {
 >>>>>>> 825ba26... rebase develop
 =======
       // 		model: "Countries",
+=======
+      // 		model: "Country",
+>>>>>>> 92567b9... install sinon, remove plural tables
       // 		key: "id",
       // 	},
       // },
@@ -110,6 +118,7 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -215,6 +224,9 @@ module.exports = {
 >>>>>>> 060c3e6... resolve conflict
 =======
     await queryInterface.dropTable("Securityinformations");
+=======
+    await queryInterface.dropTable("Securityinformation");
+>>>>>>> 92567b9... install sinon, remove plural tables
   },
 >>>>>>> 86cdcdb... lint code
 =======
