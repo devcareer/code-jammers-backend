@@ -18,6 +18,14 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
       defaultValue: "User",
     },
+    resetPasswordToken: {
+      type: String,
+      required: false,
+    },
+    resetpasswordExpires: {
+      type: Date,
+      required: false,
+    },
   });
   return User;
 };
