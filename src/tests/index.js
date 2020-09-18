@@ -5,6 +5,7 @@ import "./models/user";
 import "./models/profile";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import "./userTest/user-test";
 =======
 import "./unit/models/food.spec";
@@ -13,3 +14,6 @@ import "./unit/models/music.spec";
 =======
 import "./controllers/userSignUpTest/user-test";
 >>>>>>> 5a6ba69e73d9eb8b819e927cf8f46792306695d3
+=======
+import "./controllers/userSignUpTest/user-test";
+>>>>>>> 1588af43bee78b303583b99dcee15fc0626c7091

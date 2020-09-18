@@ -48,7 +48,7 @@ describe("Should test all users", async () => {
         .set("Accept", "application/json")
         .send(user3)
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(409);
           res.body.should.have.property("message").eql("Email already used by another user.");
           done();
         });
