@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const Securityinformation = sequelize.define("Securityinformation", {
 =======
   const Securityinformation = sequelize.define("Securityinformations", {
@@ -30,6 +31,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Securityinformation;
 =======
+=======
+>>>>>>> 080040d... feat(models): Design historical & security models
 	const Securityinformation = sequelize.define("Securityinformations", {
 		countryId: {
 			type: DataTypes.STRING,
@@ -40,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 	});
+<<<<<<< HEAD
 =======
 >>>>>>> 86cdcdb... lint code
 
@@ -57,4 +61,16 @@ module.exports = (sequelize, DataTypes) => {
 =======
   return Securityinformation;
 >>>>>>> 86cdcdb... lint code
+=======
+
+	Securityinformation.associate = (models) => {
+		Securityinformation.belongsTo(models.Countries, {
+			foreignKey: {
+				allowNull: false,
+			},
+		});
+	};
+
+	return Securityinformation;
+>>>>>>> 080040d... feat(models): Design historical & security models
 };

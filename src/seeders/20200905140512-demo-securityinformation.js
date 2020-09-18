@@ -5,6 +5,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("Securityinformation", [{
 =======
@@ -64,6 +65,8 @@ module.exports = {
 =======
 =======
 >>>>>>> 060c3e6... resolve conflict
+=======
+>>>>>>> 080040d... feat(models): Design historical & security models
 	up: async (queryInterface, Sequelize) => {
 		await queryInterface.bulkInsert("Securityinformations", [{
 			countryId: 1,
@@ -77,6 +80,7 @@ module.exports = {
 	down: async (queryInterface, Sequelize) => {
 		await queryInterface.bulkDelete("Securityinformations", null, {});
 	},
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 080040d... feat(models): Design historical & security models
 >>>>>>> 673fb64... rebase develop
@@ -95,4 +99,6 @@ module.exports = {
     await queryInterface.bulkDelete("Securityinformations", null, {});
   },
 >>>>>>> 86cdcdb... lint code
+=======
+>>>>>>> 080040d... feat(models): Design historical & security models
 };

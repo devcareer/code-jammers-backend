@@ -1,6 +1,7 @@
 module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Hisoricalfact", {
 =======
@@ -50,6 +51,8 @@ module.exports = {
     await queryInterface.dropTable("Hisoricalfact");
   },
 =======
+=======
+>>>>>>> 080040d... feat(models): Design historical & security models
 	up: async (queryInterface, Sequelize) => {
 		await queryInterface.createTable("Hisoricalfacts", {
 			id: {
@@ -89,9 +92,12 @@ module.exports = {
 	down: async (queryInterface, Sequelize) => {
 		await queryInterface.dropTable("Hisoricalfacts");
 	},
+<<<<<<< HEAD
 >>>>>>> 060c3e6... resolve conflict
 =======
     await queryInterface.dropTable("Hisoricalfacts");
   },
 >>>>>>> 86cdcdb... lint code
+=======
+>>>>>>> 080040d... feat(models): Design historical & security models
 };

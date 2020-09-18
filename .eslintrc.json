@@ -18,6 +18,7 @@
       "semi": ["error", "always"],
       "no-unused-vars":"off",
       "no-undef":"off",
+<<<<<<< HEAD
       "import/no-dynamic-require":"off",
       "no-tabs":"off",
       "no-console": "off",
@@ -28,3 +29,10 @@
 =======
   }
 >>>>>>> 060c3e6... resolve conflict
+=======
+      "no-tabs":"off",
+      "no-console": "off",
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    }
+  }
+>>>>>>> 080040d... feat(models): Design historical & security models

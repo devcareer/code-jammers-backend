@@ -1,4 +1,5 @@
 const path = require('path')
+<<<<<<< HEAD
 require("@babel/register");
 
 module.exports = {
@@ -14,4 +15,12 @@ module.exports = {
     'models-path': path.resolve('src', 'models'),
     'seeders-path': path.resolve('src/database', 'seeders'),
     'migrations-path': path.resolve('src/database', 'migrations')
+=======
+
+module.exports = {
+    'config': path.resolve('src/config', 'config.js'),
+    'models-path': path.resolve('src', 'models'),
+    'seeders-path': path.resolve('src', 'seeders'),
+    'migrations-path': path.resolve('src', 'migrations')
+>>>>>>> 080040d... feat(models): Design historical & security models
 }
