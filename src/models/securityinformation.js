@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       },
 =======
   const Securityinformation = sequelize.define("Securityinformations", {
+  const Securityinformation = sequelize.define("Securityinformation", {
     countryId: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -46,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
 >>>>>>> 1b580f5... lint code
 
   Securityinformation.associate = (models) => {
-    Securityinformation.belongsTo(models.Countries, {
+    Securityinformation.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,
       },
