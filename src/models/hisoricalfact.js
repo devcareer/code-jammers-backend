@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Hisoricalfact = sequelize.define("Hisoricalfacts", {
+  const Hisoricalfact = sequelize.define("Hisoricalfact", {
     countryId: {
       type: DataTypes.INTEGER,
       allowNull: false,

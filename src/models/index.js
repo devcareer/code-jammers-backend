@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
 
-=======
->>>>>>> 080040d... feat(models): Design historical & security models
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
