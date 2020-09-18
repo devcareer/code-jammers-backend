@@ -1,9 +1,12 @@
 module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Securityinformation", {
 =======
+=======
+>>>>>>> 673fb64... rebase develop
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Securityinformations", {
 >>>>>>> 3bd88a8... lint code
@@ -93,5 +96,46 @@ module.exports = {
 =======
     await queryInterface.dropTable("Securityinformations");
   },
+<<<<<<< HEAD
 >>>>>>> 3bd88a8... lint code
+=======
+=======
+	up: async (queryInterface, Sequelize) => {
+		await queryInterface.createTable("Securityinformations", {
+			id: {
+				allowNull: false,
+				autoIncrement: true,
+				primaryKey: true,
+				type: Sequelize.INTEGER,
+			},
+			countryId: {
+				type: Sequelize.INTEGER,
+			},
+			location: {
+				type: Sequelize.STRING,
+			},
+			// countryId: {
+			// 	type: Sequelize.INTEGER,
+			// 	onDelete: "CASCADE",
+			// 	allowNull: false,
+			// 	references: {
+			// 		model: "Countries",
+			// 		key: "id",
+			// 	},
+			// },
+			createdAt: {
+				allowNull: false,
+				type: Sequelize.DATE,
+			},
+			updatedAt: {
+				allowNull: false,
+				type: Sequelize.DATE,
+			},
+		});
+	},
+	down: async (queryInterface, Sequelize) => {
+		await queryInterface.dropTable("Securityinformations");
+	},
+>>>>>>> 080040d... feat(models): Design historical & security models
+>>>>>>> 673fb64... rebase develop
 };

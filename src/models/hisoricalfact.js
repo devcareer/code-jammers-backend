@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-  const Hisoricalfact = sequelize.define("Hisoricalfact", {
+  const Hisoricalfact = sequelize.define("Hisoricalfacts", {
     countryId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     location: {
