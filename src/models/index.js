@@ -1,16 +1,24 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
+
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
+<<<<<<< HEAD
+=======
+
+const config = require(`${__dirname}/../config/config.js`)[env];
+const db = {};
+>>>>>>> dff23cc... rebase develop
 
 const config = require(`${__dirname}/../database/config/config.js`)[env];
 const db = {};
 let sequelize;
 if (config.use_env_variable) {
+
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(
@@ -32,6 +40,7 @@ Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
+
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
