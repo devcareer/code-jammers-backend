@@ -18,7 +18,6 @@ const config = require(`${__dirname}/../database/config/config.js`)[env];
 const db = {};
 let sequelize;
 if (config.use_env_variable) {
-
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(
@@ -40,7 +39,6 @@ Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
-
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
