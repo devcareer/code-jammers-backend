@@ -21,10 +21,6 @@
       "import/no-dynamic-require":"off",
       "no-tabs":"off",
       "no-console": "off",
-<<<<<<< HEAD
       "import/no-extraneous-dependencies":["error", {"devDependencies": true}]
-=======
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
->>>>>>> 080040d... feat(models): Design historical & security models
     }
   }

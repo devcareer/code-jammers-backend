@@ -1,10 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-  const Securityinformation = sequelize.define("Securityinformations", {
-=======
   const Securityinformation = sequelize.define("Securityinformation", {
->>>>>>> 92567b9... install sinon, remove plural tables
     countryId: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,26 +23,4 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
   return Securityinformation;
-=======
-	const Securityinformation = sequelize.define("Securityinformations", {
-		countryId: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		location: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-	});
-
-	Securityinformation.associate = (models) => {
-		Securityinformation.belongsTo(models.Countries, {
-			foreignKey: {
-				allowNull: false,
-			},
-		});
-	};
-
-	return Securityinformation;
->>>>>>> 080040d... feat(models): Design historical & security models
 };

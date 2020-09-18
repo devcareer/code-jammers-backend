@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-
-  const Historicalfacts = sequelize.define("Historicalfacts", {
+  const Historicalfact = sequelize.define("Historicalfact", {
     countryId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Historicalfacts.associate = (models) => {
-    Historicalfacts.belongsTo(models.Country, {
+  Historicalfact.associate = (models) => {
+    Historicalfact.belongsTo(models.Country, {
       foreignKey: {
         allowNull: false,
       },
     });
   };
 
-  return Historicalfacts;
+  return Historicalfact;
 };
