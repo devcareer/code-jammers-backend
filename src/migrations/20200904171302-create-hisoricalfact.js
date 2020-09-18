@@ -18,9 +18,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      // countryId: {
-      //   type: Sequelize.INTEGER,
-      // },
+      countryId: {
+        type: Sequelize.INTEGER,
+      },
       location: {
         type: Sequelize.STRING,
       },
@@ -28,11 +28,15 @@ module.exports = {
         type: Sequelize.STRING,
       },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4b198e7... fix database config
       // countryId: {
       //   type: Sequelize.INTEGER,
       //   onDelete: "CASCADE",
       //   allowNull: false,
       //   references: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       //     model: "Country",
@@ -56,6 +60,12 @@ module.exports = {
         },
       },
 >>>>>>> 821e82d... add seq-test script test migrations with sequelize test helpers
+=======
+      //     model: "Country",
+      //     key: "id",
+      //   },
+      // },
+>>>>>>> 4b198e7... fix database config
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

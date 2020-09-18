@@ -40,6 +40,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       // countryId: {
       //   type: Sequelize.INTEGER,
       // },
@@ -115,16 +116,27 @@ module.exports = {
       location: {
         type: Sequelize.STRING,
       },
+=======
+>>>>>>> 4b198e7... fix database config
       countryId: {
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
-        allowNull: false,
-        references: {
-          model: "Country",
-          key: "id",
-        },
       },
+<<<<<<< HEAD
 >>>>>>> 821e82d... add seq-test script test migrations with sequelize test helpers
+=======
+      location: {
+        type: Sequelize.STRING,
+      },
+      // countryId: {
+      //   type: Sequelize.INTEGER,
+      //   onDelete: "CASCADE",
+      //   allowNull: false,
+      //   references: {
+      //     model: "Country",
+      //     key: "id",
+      //   },
+      // },
+>>>>>>> 4b198e7... fix database config
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

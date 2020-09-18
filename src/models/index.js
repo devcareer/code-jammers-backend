@@ -1,15 +1,19 @@
 <<<<<<< HEAD
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
+<<<<<<< HEAD
 
 =======
 >>>>>>> 080040d... feat(models): Design historical & security models
+=======
+>>>>>>> 4b198e7... fix database config
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -39,6 +43,9 @@ const config = require(`${__dirname}/../config/config.json`)[env];
 const config = require(`${__dirname}/../database/config.js`)[env];
 
 >>>>>>> 825ba26... rebase develop
+=======
+const config = require(`${__dirname}/../database/config.js`)[env];
+>>>>>>> 4b198e7... fix database config
 const db = {};
 >>>>>>> dff23cc... rebase develop
 
@@ -67,6 +74,7 @@ Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
+<<<<<<< HEAD
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
@@ -93,6 +101,8 @@ Object.keys(db).forEach((modelName) => {
 	if (db[modelName].associate) {
 		db[modelName].associate(db);
 	}
+=======
+>>>>>>> 4b198e7... fix database config
 });
 
 db.sequelize = sequelize;
