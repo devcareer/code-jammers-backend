@@ -39,6 +39,7 @@ module.exports = {
       },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       // countryId: {
       //   type: Sequelize.INTEGER,
       // },
@@ -107,6 +108,23 @@ module.exports = {
       // 	},
       // },
 >>>>>>> 86cdcdb... lint code
+=======
+      // countryId: {
+      //   type: Sequelize.INTEGER,
+      // },
+      location: {
+        type: Sequelize.STRING,
+      },
+      countryId: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: "Country",
+          key: "id",
+        },
+      },
+>>>>>>> 821e82d... add seq-test script test migrations with sequelize test helpers
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
