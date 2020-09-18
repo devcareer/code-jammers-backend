@@ -1,6 +1,5 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
-
 const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
@@ -8,9 +7,13 @@ const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 const config = require(`${__dirname}/../config/config.js`)[env];
+=======
+const config = require(`${__dirname}/../database/config.js`)[env];
+>>>>>>> a305340... fix database config
 const db = {};
 >>>>>>> dff23cc... rebase develop
 
