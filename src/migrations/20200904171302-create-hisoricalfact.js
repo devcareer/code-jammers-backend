@@ -1,7 +1,7 @@
 module.exports = {
 <<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Hisoricalfacts", {
+    await queryInterface.createTable("Hisoricalfact", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -22,7 +22,7 @@ module.exports = {
       //   onDelete: "CASCADE",
       //   allowNull: false,
       //   references: {
-      //     model: "Countries",
+      //     model: "Country",
       //     key: "id",
       //   },
       // },
@@ -37,7 +37,7 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Hisoricalfacts");
+    await queryInterface.dropTable("Hisoricalfact");
   },
 =======
 	up: async (queryInterface, Sequelize) => {

@@ -11,8 +11,12 @@ module.exports = {
 =======
 >>>>>>> 2aaae8d... rebase develop
   up: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     await queryInterface.createTable("Securityinformations", {
 >>>>>>> 3bd88a8... lint code
+=======
+    await queryInterface.createTable("Securityinformation", {
+>>>>>>> 020be84... rebase develop
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -39,7 +43,7 @@ module.exports = {
       // 	onDelete: "CASCADE",
       // 	allowNull: false,
       // 	references: {
-      // 		model: "Countries",
+      // 		model: "Country",
       // 		key: "id",
       // 	},
 >>>>>>> 3bd88a8... lint code
@@ -55,6 +59,7 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     await queryInterface.dropTable("Securityinformation");
   },
@@ -98,6 +103,9 @@ module.exports = {
 >>>>>>> f15c36c... rebase develop
 =======
     await queryInterface.dropTable("Securityinformations");
+=======
+    await queryInterface.dropTable("Securityinformation");
+>>>>>>> 020be84... rebase develop
   },
 <<<<<<< HEAD
 <<<<<<< HEAD

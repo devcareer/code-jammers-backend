@@ -11,8 +11,12 @@ module.exports = {
 =======
 >>>>>>> 2aaae8d... rebase develop
   up: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     await queryInterface.bulkInsert("Securityinformations", [{
 >>>>>>> 3bd88a8... lint code
+=======
+    await queryInterface.bulkInsert("Securityinformation", [{
+>>>>>>> 020be84... rebase develop
       countryId: 1,
       location: "Nigeria",
       createdAt: new Date(),
@@ -43,6 +47,7 @@ module.exports = {
 =======
 
   down: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     await queryInterface.bulkDelete("Securityinformations", null, {});
 <<<<<<< HEAD
   },
@@ -68,4 +73,8 @@ module.exports = {
 =======
   }
 >>>>>>> 2aaae8d... rebase develop
+=======
+    await queryInterface.bulkDelete("Securityinformation", null, {});
+  },
+>>>>>>> 020be84... rebase develop
 };
