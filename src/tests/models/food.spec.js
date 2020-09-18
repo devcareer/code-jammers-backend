@@ -18,9 +18,7 @@ describe("src/models/food", () => {
   checkModelName(Food)("Foods");
 
   context("properties", () => {
-    ["countryId", "type", "methodOfPreparation", "gallery"].forEach(
-      checkPropertyExists(food),
-    );
+    ["countryId", "type", "methodOfPreparation", "gallery"].forEach(checkPropertyExists(food));
   });
   context("associations", () => {
     const Country = "Country";
