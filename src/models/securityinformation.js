@@ -1,8 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
-  const Securityinformation = sequelize.define("Securityinformation", {
+  const Securityinformation = sequelize.define("Securityinformations", {
     countryId: {
-      type: DataTypes.STRING,
+      type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: "Countries",
+        key: "id",
+      },
     },
     location: {
       type: DataTypes.STRING,
@@ -11,10 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Securityinformation.associate = models => {
-    Securityinformation.belongsTo(models.Countries, {
-      foreignKey: {
-        allowNull: false,
-      },
+    Securityinformation.belongsTo(models.Country, {
+      as: "countrySecurityInformation",
+      foreignKey: "countryId",
     });
   };
 

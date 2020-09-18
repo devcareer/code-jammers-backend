@@ -1,9 +1,9 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert("Historicalfact", [{
-      countryId: 1,
+    await queryInterface.bulkInsert("Historicalfacts", [{
+      countryId: "2a7fe4a4-f6d3-4e99-a7ef-8098786073c2",
       location: "Nigeria",
-      gallery: "https://netstorage-legit.akamaized.net/images/468ff81348dddbff.jpg",
+      gallery: "https://netstorage-legit",
       createdAt: new Date(),
       updatedAt: new Date(),
     }],
@@ -11,6 +11,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("Historicalfact", null, {});
+    await queryInterface.bulkDelete("Historicalfacts", null, {});
   },
 };

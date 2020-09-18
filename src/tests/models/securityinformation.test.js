@@ -20,7 +20,7 @@ describe("src/models/securityinformation", () => {
   const Securityinformation = SecurityinformationModel(sequelize, dataTypes);
   const securityinformation = new Securityinformation();
 
-  checkModelName(Securityinformation)("Securityinformation");
+  checkModelName(Securityinformation)("Securityinformations");
 
   context("properties", () => {
     ["countryId", "location"].forEach(
