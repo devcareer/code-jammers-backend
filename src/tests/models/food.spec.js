@@ -7,7 +7,7 @@ import {
   checkPropertyExists,
 } from "sequelize-test-helpers";
 
-import foodModel from "../../../models/food";
+import foodModel from "../../models/food";
 
 chai.use(sinonChai);
 

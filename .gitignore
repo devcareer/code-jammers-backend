@@ -4,7 +4,8 @@ node_modules/
 # environment variables
 .env
 
-# package-lock.json
+# coverage dependencies
+coverage/
 package-lock.json
 
 # history
@@ -12,14 +13,8 @@ package-lock.json
 
 # coverage dependencies
 .nyc_output/
-<<<<<<< HEAD
-coverage/
-
-build/
-=======
 
 coverage/
->>>>>>> 1588af43bee78b303583b99dcee15fc0626c7091
 
 build/
 

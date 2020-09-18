@@ -7,7 +7,7 @@ import {
   checkPropertyExists,
 } from "sequelize-test-helpers";
 
-import musicModel from "../../../models/music";
+import musicModel from "../../models/music";
 
 describe("src/models/music", () => {
   const Music = musicModel(sequelize, dataTypes);
