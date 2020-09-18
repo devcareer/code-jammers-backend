@@ -47,8 +47,8 @@
     "test": "cross-env NODE_ENV=development nyc --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov --reporter=lcov | node ./node_modules/coveralls/bin/coveralls.js",
     "migrate": "node_modules/.bin/sequelize db:migrate",
-		"migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all",
-		"seed": "node_modules/.bin/sequelize db:seed:all",
+    "migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all",
+    "seed": "node_modules/.bin/sequelize db:seed:all",
     "seed:undo": "node_modules/.bin/sequelize db:seed:undo:all",
     "lint": "eslint src/  --fix"
   },
