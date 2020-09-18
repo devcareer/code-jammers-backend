@@ -3,6 +3,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     await queryInterface.bulkInsert("Historicalfact", [{
 =======
     await queryInterface.bulkInsert("Hisoricalfact", [{
@@ -13,6 +14,9 @@ module.exports = {
 =======
     await queryInterface.bulkInsert("Hisoricalfact", [{
 >>>>>>> 4b198e7... fix database config
+=======
+    await queryInterface.bulkInsert("Historicalfact", [{
+>>>>>>> b673fd5... fix tests
       countryId: 1,
       location: "Nigeria",
       gallery: "https://netstorage-legit.akamaized.net/images/468ff81348dddbff.jpg",
@@ -26,6 +30,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     await queryInterface.bulkDelete("Historicalfact", null, {});
 =======
     await queryInterface.bulkDelete("Hisoricalfacts", null, {});
@@ -36,5 +41,8 @@ module.exports = {
 =======
     await queryInterface.bulkDelete("Hisoricalfact", null, {});
 >>>>>>> 4b198e7... fix database config
+=======
+    await queryInterface.bulkDelete("Historicalfact", null, {});
+>>>>>>> b673fd5... fix tests
   },
 };
