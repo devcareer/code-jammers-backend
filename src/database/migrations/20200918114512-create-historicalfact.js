@@ -12,6 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID,
       },
+      about: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
       location: {
         allowNull: false,
         type: Sequelize.STRING,

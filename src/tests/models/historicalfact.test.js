@@ -10,7 +10,7 @@ import {
   makeMockModels,
 } from "sequelize-test-helpers";
 
-import HistoricalfactModel from "../../models/hisoricalfact";
+import HistoricalfactModel from "../../models/historicalfact";
 
 chai.use(sinonChai);
 
@@ -23,7 +23,7 @@ describe("src/models/historicalfact", () => {
   checkModelName(Historicalfact)("Historicalfacts");
 
   context("properties", () => {
-    ["countryId", "location", "gallery"].forEach(
+    ["countryId", "about", "location", "gallery"].forEach(
       checkPropertyExists(historicalfact),
     );
   });

@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
     },
+    about: {
+      allowNull: false,
+      type: DataTypes.TEXT,
+    },
     location: {
       type: DataTypes.STRING,
       allowNull: false,

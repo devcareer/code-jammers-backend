@@ -23,7 +23,7 @@ describe("src/models/securityinformation", () => {
   checkModelName(Securityinformation)("Securityinformations");
 
   context("properties", () => {
-    ["countryId", "location"].forEach(
+    ["countryId", "about", "location"].forEach(
       checkPropertyExists(securityinformation),
     );
   });
