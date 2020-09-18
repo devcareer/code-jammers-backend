@@ -1,6 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
   const Securityinformation = sequelize.define("Securityinformation", {
+=======
+  const Securityinformation = sequelize.define("Securityinformations", {
+>>>>>>> 86cdcdb... lint code
     countryId: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -10,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+<<<<<<< HEAD
 
   Securityinformation.associate = (models) => {
     Securityinformation.belongsTo(models.Country, {
@@ -35,15 +40,21 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 	});
+=======
+>>>>>>> 86cdcdb... lint code
 
-	Securityinformation.associate = (models) => {
-		Securityinformation.belongsTo(models.Countries, {
-			foreignKey: {
-				allowNull: false,
-			},
-		});
-	};
+  Securityinformation.associate = (models) => {
+    Securityinformation.belongsTo(models.Countries, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
+<<<<<<< HEAD
 	return Securityinformation;
 >>>>>>> 060c3e6... resolve conflict
+=======
+  return Securityinformation;
+>>>>>>> 86cdcdb... lint code
 };

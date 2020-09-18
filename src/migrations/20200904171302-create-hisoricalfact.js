@@ -1,7 +1,12 @@
 module.exports = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Hisoricalfact", {
+=======
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("Hisoricalfacts", {
+>>>>>>> 86cdcdb... lint code
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -22,7 +27,11 @@ module.exports = {
       //   onDelete: "CASCADE",
       //   allowNull: false,
       //   references: {
+<<<<<<< HEAD
       //     model: "Country",
+=======
+      //     model: "Countries",
+>>>>>>> 86cdcdb... lint code
       //     key: "id",
       //   },
       // },
@@ -37,6 +46,7 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     await queryInterface.dropTable("Hisoricalfact");
   },
 =======
@@ -80,4 +90,8 @@ module.exports = {
 		await queryInterface.dropTable("Hisoricalfacts");
 	},
 >>>>>>> 060c3e6... resolve conflict
+=======
+    await queryInterface.dropTable("Hisoricalfacts");
+  },
+>>>>>>> 86cdcdb... lint code
 };

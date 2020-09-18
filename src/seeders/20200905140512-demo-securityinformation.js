@@ -4,6 +4,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("Securityinformation", [{
 =======
@@ -18,6 +19,10 @@ module.exports = {
 =======
     await queryInterface.bulkInsert("Securityinformation", [{
 >>>>>>> 020be84... rebase develop
+=======
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkInsert("Securityinformations", [{
+>>>>>>> 86cdcdb... lint code
       countryId: 1,
       location: "Nigeria",
       createdAt: new Date(),
@@ -25,6 +30,7 @@ module.exports = {
     }],
     {});
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   down: async (queryInterface, Sequelize) => {
@@ -83,4 +89,10 @@ module.exports = {
 >>>>>>> 020be84... rebase develop
 =======
 >>>>>>> 060c3e6... resolve conflict
+=======
+
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.bulkDelete("Securityinformations", null, {});
+  },
+>>>>>>> 86cdcdb... lint code
 };
