@@ -12,6 +12,7 @@ const env = process.env.NODE_ENV || "development";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> f15c36c... rebase develop
@@ -21,6 +22,8 @@ const config = require(`${__dirname}/../config/config.js`)[env];
 const config = require(`${__dirname}/../database/config.js`)[env];
 >>>>>>> a305340... fix database config
 =======
+=======
+>>>>>>> 060c3e6... resolve conflict
 
 const config = require(`${__dirname}/../config/config.js`)[env];
 =======
@@ -39,6 +42,7 @@ const config = require(`${__dirname}/../database/config/config.js`)[env];
 const db = {};
 let sequelize;
 if (config.use_env_variable) {
+
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(
@@ -60,6 +64,7 @@ Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
+
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

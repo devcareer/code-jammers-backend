@@ -3,6 +3,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Securityinformation", {
 =======
@@ -88,6 +89,8 @@ module.exports = {
     await queryInterface.dropTable("Securityinformation");
   },
 =======
+=======
+>>>>>>> 060c3e6... resolve conflict
 	up: async (queryInterface, Sequelize) => {
 		await queryInterface.createTable("Securityinformations", {
 			id: {
@@ -124,6 +127,7 @@ module.exports = {
 	down: async (queryInterface, Sequelize) => {
 		await queryInterface.dropTable("Securityinformations");
 	},
+<<<<<<< HEAD
 >>>>>>> f15c36c... rebase develop
 =======
     await queryInterface.dropTable("Securityinformations");
@@ -176,4 +180,6 @@ module.exports = {
 >>>>>>> 673fb64... rebase develop
 =======
 >>>>>>> 2aaae8d... rebase develop
+=======
+>>>>>>> 060c3e6... resolve conflict
 };
