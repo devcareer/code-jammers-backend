@@ -2,11 +2,14 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Securityinformation", {
 =======
 =======
 >>>>>>> 673fb64... rebase develop
+=======
+>>>>>>> 2aaae8d... rebase develop
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Securityinformations", {
 >>>>>>> 3bd88a8... lint code
@@ -97,6 +100,7 @@ module.exports = {
     await queryInterface.dropTable("Securityinformations");
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3bd88a8... lint code
 =======
 =======
@@ -138,4 +142,6 @@ module.exports = {
 	},
 >>>>>>> 080040d... feat(models): Design historical & security models
 >>>>>>> 673fb64... rebase develop
+=======
+>>>>>>> 2aaae8d... rebase develop
 };
