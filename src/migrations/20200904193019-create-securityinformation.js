@@ -6,6 +6,9 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 83db9f1... test migration and seeders locally
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Securityinformation", {
 =======
@@ -164,6 +167,7 @@ module.exports = {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3bd88a8... lint code
 =======
 =======
@@ -215,4 +219,6 @@ module.exports = {
 >>>>>>> 86cdcdb... lint code
 =======
 >>>>>>> 080040d... feat(models): Design historical & security models
+=======
+>>>>>>> 83db9f1... test migration and seeders locally
 };

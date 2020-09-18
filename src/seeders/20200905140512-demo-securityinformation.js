@@ -6,6 +6,7 @@ module.exports = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("Securityinformation", [{
 =======
@@ -13,6 +14,8 @@ module.exports = {
 >>>>>>> 673fb64... rebase develop
 =======
 >>>>>>> 2aaae8d... rebase develop
+=======
+>>>>>>> 83db9f1... test migration and seeders locally
   up: async (queryInterface, Sequelize) => {
 <<<<<<< HEAD
     await queryInterface.bulkInsert("Securityinformations", [{
@@ -60,6 +63,7 @@ module.exports = {
 <<<<<<< HEAD
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 3bd88a8... lint code
 =======
 =======
@@ -101,4 +105,6 @@ module.exports = {
 >>>>>>> 86cdcdb... lint code
 =======
 >>>>>>> 080040d... feat(models): Design historical & security models
+=======
+>>>>>>> 83db9f1... test migration and seeders locally
 };
