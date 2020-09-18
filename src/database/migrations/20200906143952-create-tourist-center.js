@@ -15,13 +15,16 @@ export default {
             defaultValue: Sequelize.literal("uuid_generate_v4()"),
           },
           name: {
-            type: Sequelize.TEXT,
+            type: Sequelize.STRING,
           },
           location: {
-            type: Sequelize.TEXT,
+            type: Sequelize.STRING,
           },
           gallery: {
-            type: Sequelize.TEXT,
+            type: Sequelize.STRING,
+          },
+          about: {
+            type: Sequelize.TEXT
           },
           createdAt: {
             allowNull: false,

@@ -5,14 +5,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     name: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     gallery: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    about: {
       type: DataTypes.TEXT,
       allowNull: false,
     },

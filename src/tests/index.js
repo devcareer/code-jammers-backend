@@ -1,9 +1,11 @@
 import "./index-test";
-import "./unit/models/country.spec";
-import "./unit/models/culture.spec";
 import "./models/user";
 import "./models/profile";
-import "./unit/models/food.spec";
-import "./unit/models/music.spec";
-import "./unit/models/State.spec";
-import "./unit/models/TouristCenter.spec";
+import "./models/food.spec";
+import "./models/music.spec";
+import "./models/country.spec";
+import "./models/culture.spec";
+import "./models/comment.spec";
+import "./models/newsletter.spec";
+import "./models/State.spec";
+import "./models/TouristCenter.spec";
