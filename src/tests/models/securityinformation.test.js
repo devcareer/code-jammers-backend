@@ -1,4 +1,6 @@
-import { expect } from "chai";
+import chai from "chai";
+import sinonChai from "sinon-chai";
+
 import {
   sequelize,
   dataTypes,
@@ -8,7 +10,11 @@ import {
   makeMockModels,
 } from "sequelize-test-helpers";
 
-import SecurityinformationModel from "../models/securityinformation";
+import SecurityinformationModel from "../../models/securityinformation";
+
+chai.use(sinonChai);
+
+const { expect } = chai;
 
 describe("src/models/securityinformation", () => {
   const Securityinformation = SecurityinformationModel(sequelize, dataTypes);

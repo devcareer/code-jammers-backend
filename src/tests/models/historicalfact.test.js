@@ -1,4 +1,6 @@
-import { expect } from "chai";
+import chai from "chai";
+import sinonChai from "sinon-chai";
+
 import {
   sequelize,
   dataTypes,
@@ -8,17 +10,21 @@ import {
   makeMockModels,
 } from "sequelize-test-helpers";
 
-import HisoricalfactModel from "../models/hisoricalfact";
+import HistoricalfactModel from "../../models/historicalfact";
 
-describe("src/models/hisoricalfact", () => {
-  const Hisoricalfact = HisoricalfactModel(sequelize, dataTypes);
-  const hisoricalfact = new Hisoricalfact();
+chai.use(sinonChai);
 
-  checkModelName(Hisoricalfact)("Hisoricalfact");
+const { expect } = chai;
+
+describe("src/models/historicalfact", () => {
+  const Historicalfact = HistoricalfactModel(sequelize, dataTypes);
+  const historicalfact = new Historicalfact();
+
+  checkModelName(Historicalfact)("Historicalfact");
 
   context("properties", () => {
     ["countryId", "location", "gallery"].forEach(
-      checkPropertyExists(hisoricalfact),
+      checkPropertyExists(historicalfact),
     );
   });
 
@@ -26,7 +32,7 @@ describe("src/models/hisoricalfact", () => {
     const Country = "Nigeria";
 
     before(() => {
-      Hisoricalfact.associate({ Country });
+      Historicalfact.associate({ Country });
     });
 
     it("defined a belongsTo association with Country", () => {
