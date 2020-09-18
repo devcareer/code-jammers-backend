@@ -23,6 +23,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+<<<<<<< HEAD
       // countryId: {
       //   type: Sequelize.INTEGER,
       // },
@@ -50,16 +51,27 @@ module.exports = {
 >>>>>>> 3bd88a8... lint code
       // },
 =======
+=======
+>>>>>>> 825ba26... rebase develop
       countryId: {
         type: Sequelize.INTEGER,
-        onDelete: "CASCADE",
-        allowNull: false,
-        references: {
-          model: "Country",
-          key: "id",
-        },
       },
+<<<<<<< HEAD
 >>>>>>> 98750bc... rebase develop
+=======
+      location: {
+        type: Sequelize.STRING,
+      },
+      // countryId: {
+      //   type: Sequelize.INTEGER,
+      //   onDelete: "CASCADE",
+      //   allowNull: false,
+      //   references: {
+      //     model: "Country",
+      //     key: "id",
+      //   },
+      // },
+>>>>>>> 825ba26... rebase develop
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
