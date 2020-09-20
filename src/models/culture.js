@@ -34,11 +34,11 @@ export default (sequelize, DataTypes) => {
     },
   });
 
-  // Culture.associate = models => {
-  //   Culture.belongsTo(models.Country, {
-  //     as: "countryCulture",
-  //     foreignKey: "id",
-  //   });
-  // };
+  Culture.associate = models => {
+    Culture.belongsTo(models.Countries, {
+      as: "countryCulture",
+      foreignKey: "id",
+    });
+  };
   return Culture;
 };

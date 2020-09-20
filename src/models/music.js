@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   Music.associate = models => {
-    Music.belongsTo(models.Country, {
+    Music.belongsTo(models.Countries, {
       as: "country",
       foreignKey: "countryId",
     });

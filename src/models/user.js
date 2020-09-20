@@ -19,7 +19,7 @@ export default (sequelize, DataTypes) => {
     },
   });
   User.associate = models => {
-    User.belongsTo(models.Profile, {
+    User.belongsTo(models.Profiles, {
       as: "profileDetails", foreignKey: "userId",
     });
   };

@@ -87,9 +87,8 @@ export default (sequelize, DataTypes) => {
     },
   });
 
-<<<<<<< HEAD
   Country.associate = models => {
-    Country.hasMany(models.Culture, {
+    Country.hasMany(models.Cultures, {
       as: "cultureCountry",
       foreignKey: "countryId",
     });
@@ -104,14 +103,6 @@ export default (sequelize, DataTypes) => {
       foreignKey: "countryId",
     });
   };
-=======
-  // Country.associate = models => {
-  //   Country.hasMany(models.Culture, {
-  //     as: "cultureCountry",
-  //     foreignKey: "countryId",
-  //   });
-  // };
->>>>>>> 87e2ece... rebase develop
 
   return Country;
 };

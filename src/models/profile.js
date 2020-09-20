@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
-  // Profile.associate = models => {
-  //   Profile.belongsTo(models.User, {
-  //     as: "profileDetails", foreignKey: "userId",
-  //   });
-  // };
+  Profile.associate = models => {
+    Profile.belongsTo(models.Users, {
+      as: "profileDetails", foreignKey: "userId",
+    });
+  };
   return Profile;
 };

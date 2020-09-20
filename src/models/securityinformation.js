@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Securityinformation.associate = models => {
-    Securityinformation.belongsTo(models.Country, {
+    Securityinformation.belongsTo(models.Countries, {
       as: "countrySecurityInformation",
       foreignKey: "countryId",
     });
