@@ -1,17 +1,21 @@
 # dependencies
-/node_modules
+node_modules/
  
 # environment variables
 .env
 
 # coverage dependencies
 coverage/
-.nyc_output
+.nyc_output/
 # package-lock.json
 package-lock.json
 
 # history
 .history
 
-/build
+# coverage dependencies
+.nyc_output
+
+
+build/
 
