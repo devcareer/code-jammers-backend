@@ -8,18 +8,9 @@ chai.should();
 
 chai.use(chaiHttp);
 
-describe("/ should display Welcome to Know Africa", () => {
-  it("it should get the welcome page", done => {
-    chai
-      .request(server)
-      .get("/")
-      .end((err, res) => {
-        res.should.have.status(200);
-        done();
-      });
-  });
+describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
-    it("it should create a user with complete details successfully", done => {
+    it("it should create a user with complete details successfully", (done) => {
       const user = {
         username: "GarryT",
         email: "Garry@gmail.com",
@@ -56,5 +47,3 @@ describe("/ should display Welcome to Know Africa", () => {
     });
   });
 });
-
-export default describe;
