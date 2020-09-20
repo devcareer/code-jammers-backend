@@ -1,10 +1,10 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import server from "../app";
+import server from "../../app";
 import {
   user,
   user2
-} from "../database/seeders/user-test-data";
+} from "./user-test-data";
 
 // assertion style
 

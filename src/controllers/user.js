@@ -5,6 +5,7 @@ import jwtHelper from "../UserService/Jwt";
 
 const { generateToken } = jwtHelper;
 const util = new Util();
+
 export default class userController {
   static async createUser(req, res) {
     try {
