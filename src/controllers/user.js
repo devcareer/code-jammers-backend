@@ -1,4 +1,3 @@
-  
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
