@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
+<<<<<<< HEAD
   Profile.associate = models => {
 <<<<<<< HEAD
     Profile.belongsTo(models.Users, {
@@ -30,5 +31,12 @@ module.exports = (sequelize, DataTypes) => {
       as: "profileDetails", foreignKey: "userId",
     });
   };
+=======
+  // Profile.associate = models => {
+  //   Profile.belongsTo(models.User, {
+  //     as: "profileDetails", foreignKey: "userId",
+  //   });
+  // };
+>>>>>>> 1bb0234... rebase develop
   return Profile;
 };

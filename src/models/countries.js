@@ -102,6 +102,6 @@ export default (sequelize, DataTypes) => {
       foreignKey: "countryId",
     });
   }
-  
+
   return Country;
 };
