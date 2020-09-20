@@ -12,6 +12,10 @@ app.use(cors());
 
 const port = process.env.PORT || 3000;
 
+<<<<<<< HEAD
+=======
+console.log(userRoutes);
+>>>>>>> 07b9634... resolve conflicts
 app.use("/api/v1/", userRoutes);
 
 app.get("/", (req, res) => {

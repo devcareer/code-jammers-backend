@@ -8,6 +8,7 @@ export default class User {
       throw error;
     }
   }
+<<<<<<< HEAD
 
   static async checkEmail(email) {
     try {
@@ -16,4 +17,6 @@ export default class User {
       throw error;
     }
   }
+=======
+>>>>>>> 07b9634... resolve conflicts
 }
