@@ -70,6 +70,7 @@
     ]
   }
     }],
+     
       "no-useless-catch":"off"
     }
 }
