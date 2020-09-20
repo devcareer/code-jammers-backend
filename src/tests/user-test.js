@@ -1,10 +1,13 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../app";
+<<<<<<< HEAD
 import {
   user,
   user2
 } from "../database/seeders/user-test-data";
+=======
+>>>>>>> 600939d... modified database/config.js
 
 // assertion style
 
@@ -14,7 +17,16 @@ chai.use(chaiHttp);
 
 describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
+<<<<<<< HEAD
     it("it should create a user with complete details successfully", done => {
+=======
+    it("it should create a user with complete details successfully", (done) => {
+      const user = {
+        username: "GarryT",
+        email: "Garry@gmail.com",
+        password: "123456"
+      };
+>>>>>>> 600939d... modified database/config.js
       chai
         .request(server)
         .post("/api/v1/users/signup")
@@ -30,11 +42,22 @@ describe("Should test all users", async () => {
         });
     });
     it("it should not create a user with incomplete details", () => {
+<<<<<<< HEAD
+=======
+      const user = {
+        email: "Garry@gmail.com",
+        password: "123456"
+      };
+>>>>>>> 600939d... modified database/config.js
       chai
         .request(server)
         .post("/api/v1/users/signup")
         .set("Accept", "application/json")
+<<<<<<< HEAD
         .send(user2)
+=======
+        .send(user)
+>>>>>>> 600939d... modified database/config.js
         .end((err, res) => {
           res.should.have.status(400);
           done();

@@ -8,8 +8,6 @@ export default class User {
       throw error;
     }
   }
-<<<<<<< HEAD
-
   static async checkEmail(email) {
     try {
       return await database.User.findOne({ where: { email } });
@@ -17,6 +15,4 @@ export default class User {
       throw error;
     }
   }
-=======
->>>>>>> 07b9634... resolve conflicts
 }

@@ -16,3 +16,4 @@ import "./models/culture";
 import "./models/user";
 import "./models/profile";
 import "./controllers/userSignUpTest/user-test";
+import "./user-test";
