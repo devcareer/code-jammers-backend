@@ -8,7 +8,11 @@ import {
   checkPropertyExists,
 } from "sequelize-test-helpers";
 
+<<<<<<< HEAD
 import UserModel from "../../models/User";
+=======
+import UserModel from "../../models/user";
+>>>>>>> e6f281f... resolve merge conflict
 
 chai.use(sinonChai);
 describe("src/models/User", () => {

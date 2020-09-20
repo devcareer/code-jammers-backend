@@ -1,6 +1,10 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../app";
+import {
+  user,
+  user2
+} from "../database/seeders/user-test-data";
 
 // assertion style
 
@@ -20,11 +24,6 @@ describe("/ should display Welcome to Know Africa", () => {
   });
   describe("/api/v1/users/signup should create a user", () => {
     it("it should create a user with complete details successfully", done => {
-      const user = {
-        username: "GarryT",
-        email: "Garry@gmail.com",
-        password: "123456"
-      };
       chai
         .request(server)
         .post("/api/v1/users/signup")
@@ -40,15 +39,11 @@ describe("/ should display Welcome to Know Africa", () => {
         });
     });
     it("it should not create a user with incomplete details", () => {
-      const user = {
-        email: "Garry@gmail.com",
-        password: "123456"
-      };
       chai
         .request(server)
         .post("/api/v1/users/signup")
         .set("Accept", "application/json")
-        .send(user)
+        .send(user2)
         .end((err, res) => {
           res.should.have.status(400);
           done();
