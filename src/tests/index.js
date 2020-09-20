@@ -11,3 +11,6 @@ import "./models/historicalfact.test";
 import "./models/securityinformation.test";
 import "./models/State.spec";
 import "./models/TouristCenter.spec";
+import "./unit/models/food.spec";
+import "./unit/models/music.spec";
+import "./user-test";
