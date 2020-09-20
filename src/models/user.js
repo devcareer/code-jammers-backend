@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const User = sequelize.define("Users", {
+  const User = sequelize.define("User", {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,5 +18,10 @@ export default (sequelize, DataTypes) => {
       defaultValue: "user",
     },
   });
+  User.associate = models => {
+    User.belongsTo(models.Profiles, {
+      as: "profileDetails", foreignKey: "userId",
+    });
+  };
   return User;
 };
