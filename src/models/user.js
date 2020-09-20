@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
     email: {
       type: DataTypes.STRING,
@@ -20,8 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = models => {
     User.belongsTo(models.Profile, {
-      as: "profileDetails",
-      foreignKey: "userId",
+      as: "profileDetails", foreignKey: "userId",
     });
   };
   return User;
