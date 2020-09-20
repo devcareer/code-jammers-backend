@@ -1,4 +1,4 @@
-import database from "../models";
+import database from "../../models";
 
 export default class User {
   static async createUser(newUser) {

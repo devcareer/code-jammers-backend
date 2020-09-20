@@ -21,32 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-  // Profile.associate = models => {
-  //   Profile.belongsTo(models.User, {
-  //     as: "profileDetails", foreignKey: "userId",
-  //   });
-  // };
-=======
->>>>>>> 97eeae8... fix conflicts
   Profile.associate = models => {
     Profile.belongsTo(models.Users, {
       as: "profileDetails", foreignKey: "userId",
     });
   };
-<<<<<<< HEAD
-=======
->>>>>>> eeefdaf... fix JWT
-=======
-  Profile.associate = models => {
-    Profile.belongsTo(models.Users, {
-      as: "profileDetails", foreignKey: "userId",
-    });
-  };
->>>>>>> 30aa778... fix undefined error
->>>>>>> 97eeae8... fix conflicts
   return Profile;
 };
