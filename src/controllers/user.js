@@ -1,5 +1,4 @@
 import bcrypt from "bcrypt";
-import Joi from "joi";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
@@ -19,6 +18,7 @@ export default class userController {
   static async createUser(req, res) {
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
       const { error } = registerValidation(req.body);
       if (error) {
         return res.status(400).send(error.details[0].message);
@@ -29,6 +29,13 @@ export default class userController {
       });
       console.log(result);
 >>>>>>> 84d76fc... add email conflict test
+=======
+      const { error } = userValidation(req.body);
+      if (error) {
+        return res.status(400).send(error.details[0].message);
+      }
+      console.log(`error: ${error}`);
+>>>>>>> 5a6ba69... add validation
       const { email, username, password } = req.body;
       const userEmail = await User.checkEmail(email);
       if (userEmail) {
