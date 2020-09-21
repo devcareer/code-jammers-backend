@@ -2,7 +2,10 @@ import bcrypt from "bcrypt";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
+<<<<<<< HEAD
 import { registerValidation } from "../validation/userValidation";
+=======
+>>>>>>> d84d9cf... rearrange folder
 
 const { generateToken } = jwtHelper;
 const util = new Util();

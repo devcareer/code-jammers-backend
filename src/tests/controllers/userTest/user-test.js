@@ -1,5 +1,6 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
+<<<<<<< HEAD:src/tests/userTest/user-test.js
 <<<<<<< HEAD:src/tests/user-test.js
 import server from "../app";
 <<<<<<< HEAD
@@ -14,6 +15,9 @@ import {
 >>>>>>> ea6a4c6... Enabled Json web token
 =======
 import server from "../../app";
+=======
+import server from "../../../app";
+>>>>>>> d84d9cf... rearrange folder:src/tests/controllers/userTest/user-test.js
 import {
   user,
   user2

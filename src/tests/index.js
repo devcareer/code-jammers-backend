@@ -1,4 +1,5 @@
 import "./index-test";
+<<<<<<< HEAD
 import "./models/user";
 import "./models/profile";
 <<<<<<< HEAD
@@ -21,3 +22,10 @@ import "./user-test";
 =======
 import "./userTest/user-test";
 >>>>>>> 30aa778... fix undefined error
+=======
+import "./models/country.spec";
+import "./models/culture.spec";
+import "./models/user";
+import "./models/profile";
+import "./controllers/userTest/user-test";
+>>>>>>> d84d9cf... rearrange folder
