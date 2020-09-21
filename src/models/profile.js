@@ -1,4 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
+<<<<<<< HEAD
   const Profile = sequelize.define("Profiles", {
     userId: {
       type: DataTypes.STRING,
@@ -7,6 +8,12 @@ module.exports = (sequelize, DataTypes) => {
         model: "Users",
         key: "id",
       },
+=======
+  const Profile = sequelize.define("Profile", {
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+>>>>>>> de8b767... add profile and user model
     },
     firstName: {
       type: DataTypes.STRING,
@@ -21,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
+<<<<<<< HEAD
 <<<<<<< HEAD
   Profile.associate = models => {
 <<<<<<< HEAD
@@ -38,5 +46,7 @@ module.exports = (sequelize, DataTypes) => {
   //   });
   // };
 >>>>>>> 1bb0234... rebase develop
+=======
+>>>>>>> de8b767... add profile and user model
   return Profile;
 };

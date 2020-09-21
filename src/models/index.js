@@ -4,11 +4,7 @@ const Sequelize = require("sequelize");
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-<<<<<<< HEAD
 const config = require(`${__dirname}/../database/config/config.js`)[env];
-=======
-const config = require(`${__dirname}/../database/config.js`)[env];
->>>>>>> 283f3f5... resolve conflict
 const db = {};
 let sequelize;
 if (config.url) {
@@ -24,21 +20,12 @@ if (config.url) {
 }
 fs
   .readdirSync(__dirname)
-<<<<<<< HEAD
   .filter(file => (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js"))
   .forEach(file => {
     const model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 Object.keys(db).forEach(modelName => {
-=======
-  .filter((file) => (file.indexOf(".") !== 0) && (file !== basename) && (file.slice(-3) === ".js"))
-  .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file));
-    db[model.name] = model;
-  });
-Object.keys(db).forEach((modelName) => {
->>>>>>> 283f3f5... resolve conflict
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
