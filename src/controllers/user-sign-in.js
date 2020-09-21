@@ -25,10 +25,10 @@ export default class loginController {
       }
       const token = await generateToken({ userEmail });
       const data = {
-        email: userEmail.email, password: userEmail.username
+        email: userEmail.email, username: userEmail.username, role: userEmail.role
       };
       data.token = token;
-      util.setSuccess(201, "User created!", data);
+      util.setSuccess(201, "User Logged in!", data);
     } catch (error) {
       util.setError(400, error.message);
     } return util.send(res);
