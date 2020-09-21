@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
@@ -33,6 +34,13 @@ export default class userController {
 =======
 import util from "../utilities/util";
 import User from "../UserService/User";
+=======
+import bcrypt from "bcrypt";
+import Util from "../utilities/util";
+import User from "../UserService/user";
+
+const util = new Util();
+>>>>>>> 703912e... comit msg
 
 class userController {
   static async createUser(req, res) {
@@ -41,6 +49,8 @@ class userController {
       util.setError(400, "Please you are required to fill all fields");
       return util.send(res);
     }
+    const hashedPassword = bcrypt.hashSync(password);
+    console.log(hashedPassword);
     const newUser = req.body;
     try {
       const createdUser = await User.createUser(newUser);
@@ -56,6 +66,5 @@ class userController {
 }
 =======
 }
-
 export default userController;
 >>>>>>> 283f3f5... resolve conflict
