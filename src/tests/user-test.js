@@ -22,11 +22,15 @@ describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     it("it should create a user with complete details successfully", done => {
 =======
 =======
 >>>>>>> ea6a4c6... Enabled Json web token
     it("it should create a user with complete details successfully", (done) => {
+=======
+    it("it should create a user with complete details successfully", done => {
+>>>>>>> ecd02d1... modify eslint
       const user = {
         username: "GarryT",
         email: "Garry@gmail.com",
