@@ -15,18 +15,20 @@ describe("src/models/music", () => {
   checkModelName(Music)("Musics");
 
   context("properties", () => {
-    ["countryId", "category", "gallery", "event"].forEach(checkPropertyExists(music));
+    ["countryId", "category", "gallery", "event"].forEach(
+      checkPropertyExists(music),
+    );
   });
 
   context("associations", () => {
-    const Country = "Nigeria";
+    const Countries = "Nigeria";
 
     before(() => {
-      Music.associate({ Country });
+      Music.associate({ Countries });
     });
 
     it("defined a belongsTo association with Country", () => {
-      expect(Music.belongsTo).to.have.been.calledWith(Country);
+      expect(Music.belongsTo).to.have.been.calledWith(Countries);
     });
   });
 });

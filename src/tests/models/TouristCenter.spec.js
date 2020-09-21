@@ -25,10 +25,10 @@ describe("src/models/Tourist Center", () => {
   });
 
   context("associations", () => {
-    const Country = "Zambia";
+    const Countries = "Zambia";
 
     before(() => {
-      TouristCenter.associate({ Country });
+      TouristCenter.associate({ Countries });
       TouristCenter.belongsTo(CountryModel, {
         as: "touristCenters",
         foreignKey: "countryId",
@@ -36,7 +36,7 @@ describe("src/models/Tourist Center", () => {
     });
 
     it("defined a belongsTo association with Country", () => {
-      expect(TouristCenter.belongsTo).to.have.been.calledWith(Country);
+      expect(TouristCenter.belongsTo).to.have.been.calledWith(Countries);
       expect(TouristCenter.belongsTo).to.have.been.calledWith(CountryModel, {
         as: "touristCenters",
         foreignKey: "countryId",

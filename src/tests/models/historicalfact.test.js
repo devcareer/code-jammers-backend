@@ -29,14 +29,14 @@ describe("src/models/historicalfact", () => {
   });
 
   context("associations", () => {
-    const Country = "Nigeria";
+    const Countries = "Nigeria";
 
     before(() => {
-      Historicalfact.associate({ Country });
+      Historicalfact.associate({ Countries });
     });
 
     it("defined a belongsTo association with Country", () => {
-      expect(Historicalfact.belongsTo).to.have.been.calledWith(Country);
+      expect(Historicalfact.belongsTo).to.have.been.calledWith(Countries);
     });
   });
 });

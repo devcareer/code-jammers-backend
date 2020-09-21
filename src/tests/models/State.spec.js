@@ -25,15 +25,15 @@ describe("src/models/State", () => {
   });
 
   context("associations", () => {
-    const Country = "Zambia";
+    const Countries = "Zambia";
 
     before(() => {
-      State.associate({ Country });
+      State.associate({ Countries });
       State.belongsTo(CountryModel, { as: "states", foreignKey: "countryId" });
     });
 
     it("defined a belongsTo association with Country", () => {
-      expect(State.belongsTo).to.have.been.calledWith(Country);
+      expect(State.belongsTo).to.have.been.calledWith(Countries);
       expect(State.belongsTo).to.have.been.calledWith(CountryModel, {
         as: "states",
         foreignKey: "countryId",
