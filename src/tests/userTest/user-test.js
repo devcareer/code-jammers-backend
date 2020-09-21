@@ -1,5 +1,6 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
+<<<<<<< HEAD:src/tests/user-test.js
 import server from "../app";
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -11,6 +12,13 @@ import {
 >>>>>>> 600939d... modified database/config.js
 =======
 >>>>>>> ea6a4c6... Enabled Json web token
+=======
+import server from "../../app";
+import {
+  user,
+  user2
+} from "./user-test-data";
+>>>>>>> 30aa778... fix undefined error:src/tests/userTest/user-test.js
 
 // assertion style
 

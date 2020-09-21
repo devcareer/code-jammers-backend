@@ -1,6 +1,7 @@
 import "./index-test";
 import "./models/user";
 import "./models/profile";
+<<<<<<< HEAD
 import "./models/food.spec";
 import "./models/music.spec";
 import "./models/country.spec";
@@ -17,3 +18,6 @@ import "./models/user";
 import "./models/profile";
 import "./controllers/userSignUpTest/user-test";
 import "./user-test";
+=======
+import "./userTest/user-test";
+>>>>>>> 30aa778... fix undefined error

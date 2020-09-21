@@ -35,6 +35,7 @@ export default (sequelize, DataTypes) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   Profile.associate = models => {
 <<<<<<< HEAD
     Profile.belongsTo(models.Users, {
@@ -60,5 +61,12 @@ export default (sequelize, DataTypes) => {
     });
   };
 >>>>>>> eeefdaf... fix JWT
+=======
+  Profile.associate = models => {
+    Profile.belongsTo(models.Users, {
+      as: "profileDetails", foreignKey: "userId",
+    });
+  };
+>>>>>>> 30aa778... fix undefined error
   return Profile;
 };
