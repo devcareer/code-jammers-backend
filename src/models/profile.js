@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 module.exports = (sequelize, DataTypes) => {
-<<<<<<< HEAD
   const Profile = sequelize.define("Profiles", {
     userId: {
       type: DataTypes.STRING,
@@ -9,15 +7,6 @@ module.exports = (sequelize, DataTypes) => {
         model: "Users",
         key: "id",
       },
-=======
-=======
-export default (sequelize, DataTypes) => {
->>>>>>> eeefdaf... fix JWT
-  const Profile = sequelize.define("Profile", {
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
->>>>>>> de8b767... add profile and user model
     },
     firstName: {
       type: DataTypes.STRING,
@@ -32,41 +21,10 @@ export default (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  Profile.associate = models => {
-<<<<<<< HEAD
-    Profile.belongsTo(models.Users, {
-=======
-    Profile.belongsTo(models.User, {
->>>>>>> e6f281f... resolve merge conflict
-      as: "profileDetails", foreignKey: "userId",
-    });
-  };
-=======
-  // Profile.associate = models => {
-  //   Profile.belongsTo(models.User, {
-  //     as: "profileDetails", foreignKey: "userId",
-  //   });
-  // };
->>>>>>> 1bb0234... rebase develop
-=======
->>>>>>> de8b767... add profile and user model
-=======
-  Profile.associate = models => {
-    Profile.belongsTo(models.User, {
-      as: "profileDetails", foreignKey: "userId",
-    });
-  };
->>>>>>> eeefdaf... fix JWT
-=======
   Profile.associate = models => {
     Profile.belongsTo(models.Users, {
       as: "profileDetails", foreignKey: "userId",
     });
   };
->>>>>>> 30aa778... fix undefined error
   return Profile;
 };

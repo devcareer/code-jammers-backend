@@ -101,7 +101,7 @@ export default (sequelize, DataTypes) => {
       as: "touristCenters",
       foreignKey: "countryId",
     });
-  }
+  };
 
   return Country;
 };
