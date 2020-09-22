@@ -6,10 +6,6 @@ require("dotenv").config();
 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-<<<<<<< HEAD
-=======
-
->>>>>>> bc297a9... feature(get country routes): create get country routes
 const config = require(`${__dirname}/../database/config/config.js`)[env];
 const db = {};
 let sequelize;

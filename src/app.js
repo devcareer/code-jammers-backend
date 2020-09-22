@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
+import router from "./routes";
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,6 +16,10 @@ const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", adminRoutes);
 app.use("/api/v1/", userRoutes);
+
+app.use(express.json());
+
+app.use("/api/v1", router);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
