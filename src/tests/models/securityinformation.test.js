@@ -24,7 +24,7 @@ describe("src/models/securityinformation", () => {
 
   context("properties", () => {
     ["countryId", "about", "location"].forEach(
-      checkPropertyExists(securityinformation),
+      checkPropertyExists(securityinformation)
     );
   });
 

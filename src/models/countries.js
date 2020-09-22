@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Country.associate = models => {
+  Country.associate = (models) => {
     Country.hasMany(models.Cultures, {
       as: "cultureCountry",
       foreignKey: "countryId",

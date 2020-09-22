@@ -24,7 +24,7 @@ describe("src/models/historicalfact", () => {
 
   context("properties", () => {
     ["countryId", "about", "location", "gallery"].forEach(
-      checkPropertyExists(historicalfact),
+      checkPropertyExists(historicalfact)
     );
   });
 
