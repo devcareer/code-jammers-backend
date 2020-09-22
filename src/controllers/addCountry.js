@@ -10,15 +10,10 @@ export default class adminController {
         nameOfCountry, gallery, capital, population, officialLanguage, region, currency,
       };
       const createdCountry = await addCountry(newCountry);
-      const data = {
-        nameOfCountry: createdCountry.nameOfCountry,
-        capital: createdCountry.gallery,
-        region: createdCountry.region,
-      };
       return res.status(200).json({
         status: 200,
         message: "A country has been added.",
-        data: [data],
+        data: [createdCountry],
       });
     } catch (error) {
       return res.status(400).json({
