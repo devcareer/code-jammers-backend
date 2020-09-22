@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 module.exports = (sequelize, DataTypes) => {
   const Profile = sequelize.define("Profiles", {
     userId: {
@@ -30,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Profile;
 };
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 module.exports = (sequelize, DataTypes) => {
@@ -96,3 +96,5 @@ module.exports = (sequelize, DataTypes) => {
 };
 >>>>>>> feature(get country routes): create get country routes
 >>>>>>> 001e47a... feature(get country routes): create get country routes
+=======
+>>>>>>> a8b21a5... feature(get country routes): create get country routes
