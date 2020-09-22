@@ -17,7 +17,7 @@ export default class loginController {
       const { email, password } = req.body;
       const userEmail = await User.checkEmail(email);
       if (!userEmail) {
-        return res.status(400).send({ message: "Email adoes not exist." });
+        return res.status(400).send({ message: "Email does not exist." });
       }
       const validpass = await bcrypt.compare(password, userEmail.password);
       if (!validpass) {

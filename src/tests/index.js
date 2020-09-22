@@ -10,3 +10,4 @@ import "./models/country.spec";
 import "./models/culture.spec";
 import "./models/comment.spec";
 import "./models/newsletter.spec";
+import "./controllers/userSignUpTest/user-sign-in-test";
