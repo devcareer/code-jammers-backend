@@ -36,7 +36,7 @@ describe("src/models/countries", () => {
       Country.associate({ Cultures });
     });
 
-    it("defined a hasMany association with Culture", () => {
+    it("defined a hasMany association with Cultures", () => {
       expect(Country.hasMany).to.have.been.calledWith(Cultures);
     });
   });
