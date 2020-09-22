@@ -21,14 +21,14 @@ describe("src/models/food", () => {
     ["countryId", "type", "methodOfPreparation", "gallery"].forEach(checkPropertyExists(food));
   });
   context("associations", () => {
-    const Country = "Country";
+    const Countries = "Countries";
 
     before(() => {
-      Food.associate({ Country });
+      Food.associate({ Countries });
     });
 
-    it("defined a belongsTo association with Country", () => {
-      expect(Food.belongsTo).to.have.been.calledWith(Country);
+    it("defined a belongsTo association with Countries", () => {
+      expect(Food.belongsTo).to.have.been.calledWith(Countries);
     });
   });
 });
