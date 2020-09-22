@@ -1,6 +1,4 @@
 import "./index-test";
-import "./models/user";
-import "./models/profile";
 import "./models/food.spec";
 import "./models/music.spec";
 import "./models/country.spec";
