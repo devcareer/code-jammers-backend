@@ -91,7 +91,22 @@ const countriesController = {
         where: {
           id,
         },
-        attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
+        attributes: [
+          "id",
+          "nameOfCountry",
+          "gallery",
+          "capital",
+          "population",
+          "officialLanguage",
+          "region",
+          "currency",
+        ],
+      });
+
+      res.status(200).send({
+        status: 200,
+        message: `Successfully retrived country with id ${id}`,
+        data: country,
       });
 
       // delete country from database
@@ -138,7 +153,6 @@ const countriesController = {
       });
     }
   },
-
 };
 
 export default countriesController;
