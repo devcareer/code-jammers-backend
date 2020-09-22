@@ -36,6 +36,7 @@ describe("src/models/Tourist Center", () => {
     });
 
     it("defined a belongsTo association with Country", () => {
+      // expect(TouristCenter.belongsTo).to.have.been.calledWith(Country);
       expect(TouristCenter.belongsTo).to.have.been.calledWith(CountryModel, {
         as: "touristCenters",
         foreignKey: "countryId",

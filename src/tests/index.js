@@ -1,6 +1,9 @@
 import "./index-test";
+<<<<<<< HEAD
 import "./models/user.spec";
 import "./models/profile.spec";
+=======
+>>>>>>> feature(get country routes): create get country routes
 import "./models/food.spec";
 import "./models/music.spec";
 import "./models/comment.spec";
