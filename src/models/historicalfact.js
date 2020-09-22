@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Historicalfact.associate = models => {
-    Historicalfact.belongsTo(models.Country, {
+    Historicalfact.belongsTo(models.Countries, {
       as: "countryHistoricalFacts",
       foreignKey: "countryId",
     });
