@@ -35,7 +35,7 @@ describe("src/models/historicalfact", () => {
       Historicalfact.associate({ Countries });
     });
 
-    it("defined a belongsTo association with Country", () => {
+    it("defined a belongsTo association with Countries", () => {
       expect(Historicalfact.belongsTo).to.have.been.calledWith(Countries);
     });
   });
