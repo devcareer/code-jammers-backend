@@ -10,9 +10,11 @@ const util = new Util();
 export default class userController {
   static async createUser(req, res) {
     try {
-      const { error } = registerValidation(req.body);
+      const { error } = registerValidation(req.body, {
+        abortEarly: false
+      });
       if (error) {
-        return res.status(400).send(error.details[0].message);
+        JSON.stringify(error, null, 2);
       }
       const { email, username, password } = req.body;
       const userEmail = await User.checkEmail(email);
