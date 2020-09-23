@@ -1,6 +1,9 @@
 import express from "express";
-let router = express.Router();
 
-router.get("/user/profile/edit_profile");
+import { editProfile } from "../controllers/user.controller";
+
+const router = express.Router();
+
+router.put("/:username/edit", editProfile);
 
 module.exports = router;
