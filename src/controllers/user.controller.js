@@ -9,10 +9,9 @@ exports.editProfile = (req, res) => {
 
   if (email || username || password) {
     const updateUser = { email, username, password };
-    Object.keys(updateUser).forEach(key => (updateUser[key] === null
-      || updateUser[key] === undefined
-      || updateUser[key] === ""
-      ? delete updateUser[key]
+    // eslint-disable-next-line max-len
+    Object.keys(updateUser).forEach(key => (updateUser[key] === null || updateUser[key]
+      === undefined || updateUser[key] === "" ? delete updateUser[key]
       : {}));
 
     Users.update(updateUser, {
@@ -34,8 +33,8 @@ exports.editProfile = (req, res) => {
             lastName: lastname,
             profilePicture: profilepicture,
           };
-          Object.keys(updateProfile).forEach(key => (updateProfile[key] === null
-            || updateProfile[key] === undefined
+          // eslint-disable-next-line max-len
+          Object.keys(updateProfile).forEach(key => (updateProfile[key] === null || updateProfile[key] === undefined
             || updateProfile[key] === ""
             ? delete updateProfile[key]
             : {}));
