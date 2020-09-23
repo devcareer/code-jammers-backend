@@ -9,3 +9,5 @@ import "./models/historicalfact.test";
 import "./models/securityinformation.test";
 import "./models/State.spec";
 import "./models/TouristCenter.spec";
+import "./unit/controllers/CountriesController.spec";
+import "./intergration/CountriesRoutes.spec";
