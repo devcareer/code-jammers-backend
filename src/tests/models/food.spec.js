@@ -23,14 +23,14 @@ describe("src/models/food", () => {
     );
   });
   context("associations", () => {
-    const Country = "Country";
+    const Countries = "Country";
 
     before(() => {
-      Food.associate({ Country });
+      Food.associate({ Countries });
     });
 
     it("defined a belongsTo association with Country", () => {
-      expect(Food.belongsTo).to.have.been.calledWith(Country);
+      expect(Food.belongsTo).to.have.been.calledWith(Countries);
     });
   });
 });
