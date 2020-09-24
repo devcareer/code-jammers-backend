@@ -2,9 +2,8 @@ import Joi from "joi";
 
 const registerValidation = user => {
   const schema = Joi.object({
-    username: Joi.string()
-      .alphanum().min(3).max(30)
-      .required()
+    username: Joi.string().required().alphanum().min(3)
+      .max(30)
       .empty()
       .messages({
         "string.alphanum": "Sorry, Username must contain only alphanumeric characters",
