@@ -1,54 +1,31 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-restricted-syntax */
 import Joi from "joi";
-
-const errorMessage = (message, path) => () => ({
-  toString: () => message,
-  message,
-  path,
-});
 
 const registerValidation = user => {
   const schema = Joi.object({
-    username: Joi.string().alphanum().min(3).max(30)
+    username: Joi.string()
+      .alphanum().min(3).max(30)
       .required()
-      .error(errors => {
-        for (err of errors) {
-          switch (err.code) {
-            case ("string.min" || "string.max"): {
-              return errorMessage("username must be between 3 and 30 characters", ["username"])();
-            }
-            case "any.required": {
-              return errorMessage("Please input a Username", ["username"])();
-            }
-            case "string.alphanum": {
-              return errorMessage("Sorry, Username must contain only alphanumeric characters")();
-            }
-            default: {
-              return errorMessage("username has error", ["username"])();
-            }
-          }
-        }
+      .empty()
+      .messages({
+        "string.alphanum": "Sorry, Username must contain only alphanumeric characters",
+        "string.empty": "usernames cannot be an empty field",
+        "string.min": "username should have a minimum length of 3",
+        "string.max": "username should have a maximum length of 30",
+        "any.required": "Sorry, you have to enter a username field"
       }),
     email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co"] } }).min(5)
-      .max(50)
-      .error(errorMessage("Sorry, Email is required for you to signup", ["email"])),
-    password: Joi.string().alphanum().required().error(errors => {
-      for (err of errors) {
-        switch (err.code) {
-          case ("string.min" || "string.max"): {
-            return errorMessage("Sorry, Password must have between 5 and 50 characters", ["password"])();
-          }
-          case "any.required": {
-            return errorMessage("Please input password", ["password"])();
-          }
-          default: {
-            return errorMessage("password has error", ["password"])();
-          }
-        }
-      }
-    }),
-  });
+      .max(100),
+    password: Joi.string().required().empty().min(5)
+      .max(40)
+      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+      .messages({
+        "string.pattern.base": "Password must contain only alphanumeric characters.",
+        "any.required": "Sorry, you have to enter a password field",
+        "string.empty": "Sorry, password cannot be an empty field",
+        "string.min": "Password should have a minimum length of 5",
+        "string.max": "Password should have a maximum length of 40",
+      }),
+  }).options({ abortEarly: false });
   return schema.validate(user);
 };
 
