@@ -1,1 +1,2 @@
 import "./adminRoutes";
+import "./userRoutes";

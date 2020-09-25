@@ -1,5 +1,19 @@
 import database from "../../models";
 
-const addCountry = newCountry => database.Countries.create(newCountry);
+export default class Admin {
+  static async addCountry(newCountry) {
+    try {
+      return await database.Countries.create(newCountry);
+    } catch (error) {
+      throw error;
+    }
+  }
 
-export default addCountry;
+  static async checkCountry(nameOfCountry) {
+    try {
+      return await database.Countries.findOne({ where: { nameOfCountry } });
+    } catch (error) {
+      throw error;
+    }
+  }
+}

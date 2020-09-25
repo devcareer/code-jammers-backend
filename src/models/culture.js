@@ -33,6 +33,5 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-
   return Culture;
 };

@@ -15,7 +15,7 @@ export default (sequelize, DataTypes) => {
     },
     role: {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
-      defaultValue: "user",
+      defaultValue: "User",
     },
   });
   return User;
