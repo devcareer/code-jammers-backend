@@ -1,1 +1,1 @@
-{}
+import "./user";
