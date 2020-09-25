@@ -106,6 +106,7 @@ describe("Countries api routes", () => {
         });
     });
 
+<<<<<<< HEAD
     it("returns an error when id is not provided when updating a country", done => {
       chai
         .request(server)
@@ -121,6 +122,8 @@ describe("Countries api routes", () => {
         });
     });
 
+=======
+>>>>>>> 1e51b24... feature(get country routes): create get country routes
     it("returns country which matches mock", done => {
       chai
         .request(server)
@@ -147,6 +150,7 @@ describe("Countries api routes", () => {
         });
     });
   });
+<<<<<<< HEAD
 
   describe("DELETE country with specific id route", () => {
     beforeEach(async () => {
@@ -251,4 +255,6 @@ describe("Countries api routes", () => {
         });
     });
   });
+=======
+>>>>>>> 1e51b24... feature(get country routes): create get country routes
 });
