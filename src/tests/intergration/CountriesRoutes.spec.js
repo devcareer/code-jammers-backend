@@ -131,20 +131,5 @@ describe("Countries api routes", () => {
           done();
         });
     });
-
-    it("returns a 404 error if no country matches id", done => {
-      chai
-        .request(server)
-        .get("/api/v1/get-country?id=6003fb36-5112-463e-a1f9-c8944e")
-        .end((err, res) => {
-          const { status, body } = res;
-
-          expect(status).to.equal(404);
-          expect(body.status).to.equal(404);
-          expect(body.error).to.equal("Country with  id '6003fb36-5112-463e-a1f9-c8944e' not found");
-
-          done();
-        });
-    });
   });
 });

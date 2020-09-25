@@ -4,7 +4,6 @@ import sinonChai from "sinon-chai";
 import countriesController from "../../../controllers/countriesController";
 import countriesMockData from "../../__mock__/countriesMockData";
 import countryMockData from "../../__mock__/countryMockData";
-import CountriesModel from "../../../models/countries";
 import db from "../../../models";
 
 chai.use(sinonChai);
