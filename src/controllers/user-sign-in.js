@@ -27,6 +27,7 @@ export default class loginController {
       util.setSuccess(201, "User Logged in!", data);
     } catch (error) {
       util.setError(400, error.message);
-    } return util.send(res);
+      util.send(res);
+    }
   }
 }
