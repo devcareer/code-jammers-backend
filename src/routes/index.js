@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import "./userRoutes";
-=======
->>>>>>> 558dcee... feature(get country routes): create get country routes
 import Router from "express";
 import controllers from "../controllers";
 
