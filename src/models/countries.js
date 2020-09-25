@@ -87,11 +87,7 @@ export default (sequelize, DataTypes) => {
     },
   });
 
-<<<<<<< HEAD
   Country.associate = (models) => {
-=======
-  Country.associate = models => {
->>>>>>> feature(get country routes): create get country routes
     Country.hasMany(models.Cultures, {
       as: "cultureCountry",
       foreignKey: "countryId",

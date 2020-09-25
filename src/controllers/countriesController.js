@@ -60,13 +60,13 @@ const countriesController = {
         ],
       });
 
-      res.status(200).send({
+      return res.status(200).send({
         status: 200,
         message: `Successfully retrived country with id ${id}`,
         data: country,
       });
     } catch (error) {
-      res.status(404).send({
+      return res.status(404).send({
         status: 404,
         error: `Country with  id '${id}' not found`,
       });
