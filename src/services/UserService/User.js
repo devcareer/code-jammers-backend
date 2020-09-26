@@ -32,4 +32,18 @@ export default class User {
       throw error;
     }
   }
+
+  static async updateUserVerification(email) {
+    try {
+      return await database.Users.update({ verified: true }, {
+        where: {
+          email
+        },
+        returning: true,
+        plain: true
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 }

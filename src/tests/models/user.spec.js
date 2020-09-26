@@ -1,22 +1,23 @@
-export default (sequelize, DataTypes) => {
-  const User = sequelize.define("Users", {
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    role: {
-      type: DataTypes.ENUM("Super Admin", "Admin", "User"),
-      defaultValue: "User",
-    },
+import chai, { expect } from "chai";
+
+import sinonChai from "sinon-chai";
+import {
+  sequelize,
+  dataTypes,
+  checkModelName,
+  checkPropertyExists,
+} from "sequelize-test-helpers";
+
+import UserModel from "../../models/User";
+
+chai.use(sinonChai);
+describe("src/models/User", () => {
+  const User = UserModel(sequelize, dataTypes);
+  const user = new User();
+  checkModelName(User)("Users");
+  context("properties", () => {
+    ["email", "username", "password", "role", "verified"].forEach(
+      checkPropertyExists(user),
+    );
   });
-  return User;
-};
+});

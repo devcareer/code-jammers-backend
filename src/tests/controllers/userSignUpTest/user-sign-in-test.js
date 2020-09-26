@@ -4,9 +4,8 @@ import server from "../../../app";
 import {
   user,
   user2,
-  user3,
-  user4
-} from "./user-test-data";
+  user3
+} from "./user-sign-in-test-data";
 
 // assertion style
 
@@ -15,26 +14,26 @@ chai.should();
 chai.use(chaiHttp);
 
 describe("Should test all users", async () => {
-  describe("/api/v1/users/signup should create a user", () => {
-    it("it should create a user with complete details successfully", done => {
+  describe("/api/v1/users/signin should sign in a user", () => {
+    it("it should sign in a user with complete details successfully", done => {
       chai
         .request(server)
-        .post("/api/v1/users/signup")
+        .post("/api/v1/users/signin")
         .set("Accept", "application/json")
         .send(user)
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a("object");
           res.body.should.have.property("status").eql("success");
-          res.body.should.have.property("message").eql("User created! An email has been sent to you to verify your account");
+          res.body.should.have.property("message").eql("User Logged in!");
           res.body.should.have.property("data");
           done();
         });
     });
-    it("it should not create a user with incomplete details", done => {
+    it("it should not sign in a user with incomplete details", done => {
       chai
         .request(server)
-        .post("/api/v1/users/signup")
+        .post("/api/v1/users/signin")
         .set("Accept", "application/json")
         .send(user2)
         .end((err, res) => {
@@ -42,15 +41,15 @@ describe("Should test all users", async () => {
           done();
         });
     });
-    it("it should not signup a user with an already registered email", done => {
+    it("it should not sign in a user without a registered email", done => {
       chai
         .request(server)
-        .post("/api/v1/users/signup")
+        .post("/api/v1/users/signin")
         .set("Accept", "application/json")
         .send(user3)
         .end((err, res) => {
-          res.should.have.status(409);
-          res.body.should.have.property("message").eql("Email already used by another user.");
+          res.should.have.status(400);
+          res.body.should.have.property("message").eql("Email does not exist.");
           done();
         });
     });

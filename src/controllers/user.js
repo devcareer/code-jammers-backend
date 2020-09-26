@@ -1,8 +1,15 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import sgMail from "@sendgrid/mail";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
 import { registerValidation } from "../validation/userValidation";
+import sgMailService from "../utilities/sendgrid";
+
+dotenv.config();
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -28,11 +35,23 @@ export default class userController {
       const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      util.setSuccess(201, "User created!", token);
+      await sgMail.send(sgMailService.data(email, token));
+      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
       throw util.send(res);
+    }
+  }
+
+  static async verifyUser(req, res) {
+    try {
+      const { createdUser: { email } } = jwt.verify(req.params.token, process.env.JWT_KEY);
+      const updatedUser = await User.updateUserVerification(email);
+      util.setSuccess(200, "User Verified successfully!", { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified });
+      util.send(res);
+    } catch (e) {
+      res.send(e);
     }
   }
 }

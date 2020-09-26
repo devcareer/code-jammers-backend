@@ -22,11 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
   Profile.associate = models => {
-<<<<<<< HEAD
     Profile.belongsTo(models.Users, {
-=======
-    Profile.belongsTo(models.User, {
->>>>>>> e6f281f... resolve merge conflict
       as: "profileDetails", foreignKey: "userId",
     });
   };

@@ -1,7 +1,7 @@
-import bcrypt from "bcrypt";
 import Util from "../utilities/util";
-import User from "../UserService/User";
-import jwtHelper from "../UserService/Jwt";
+import User from "../services/UserService/User";
+import jwtHelper from "../utilities/Jwt";
+import { registerValidation, validateSignInInputs } from "../validation/userValidation";
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -10,21 +10,21 @@ export default class loginController {
   // eslint-disable-next-line consistent-return
   static async loginUser(req, res) {
     try {
+      const { error } = registerValidation(req.body);
+      if (error) {
+        return res.status(400).send(error.details[0].message);
+      }
       const { email, password } = req.body;
-      const userEmail = await User.checkEmail(email);
-      if (!userEmail) {
-        return res.status(400).send({ message: "Email adoes not exist." });
+      const user = await User.checkEmail(email);
+      const validationResult = await validateSignInInputs(user, password, res);
+      if (validationResult === "pass") {
+        const token = await generateToken({ user });
+        util.setSuccess(201, "User Logged in!", {
+          email: user.email, username: user.username, role: user.role, token
+        });
+      } else {
+        return validationResult;
       }
-      const validpass = await bcrypt.compare(password, userEmail.password);
-      if (!validpass) {
-        return res.status(400).send({ message: "Password does not exist." });
-      }
-      const token = await generateToken({ userEmail });
-      const data = {
-        email: userEmail.email, username: userEmail.username, role: userEmail.role
-      };
-      data.token = token;
-      util.setSuccess(201, "User Logged in!", data);
     } catch (error) {
       util.setError(400, error.message);
       util.send(res);

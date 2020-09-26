@@ -22,21 +22,12 @@ describe("src/models/Profile", () => {
     );
   });
   context("associations", () => {
-<<<<<<< HEAD
     const Users = "Profile data";
     before(() => {
       Profile.associate({ Users });
     });
     it("defined a belongsTo association with Profile", () => {
       expect(Profile.belongsTo).to.have.been.calledWith(Users);
-=======
-    const User = "Profile data";
-    before(() => {
-      Profile.associate({ User });
-    });
-    it("defined a belongsTo association with Profile", () => {
-      expect(Profile.belongsTo).to.have.been.calledWith(User);
->>>>>>> e6f281f... resolve merge conflict
     });
   });
 });

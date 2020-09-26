@@ -15,3 +15,5 @@ package-lock.json
 
 build/
 
+
+sendgrid.env

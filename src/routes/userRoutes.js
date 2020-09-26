@@ -4,6 +4,7 @@ import loginController from "../controllers/user-sign-in";
 
 const router = Router();
 router.post("/users/signup", userController.createUser);
+router.get("/users/signup/verify/:token", userController.verifyUser);
 router.post("/users/signin", loginController.loginUser);
 
 export default router;
