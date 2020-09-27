@@ -19,6 +19,10 @@ export default class userController {
       if (userEmail) {
         return res.status(409).json({ message: "Email already used by another user." });
       }
+      const userName = await User.checkUsername(username);
+      if (userName) {
+        return res.status(409).json({ message: `Sorry, ${username} is not available. Please choose another username` });
+      }
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);

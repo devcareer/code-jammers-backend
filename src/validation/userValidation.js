@@ -13,7 +13,14 @@ const registerValidation = user => {
         "any.required": "Sorry, you have to enter a username field"
       }),
     email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co"] } }).min(5)
-      .max(100),
+      .max(100).empty()
+      .messages({
+        "string.email": "Please enter a valid email",
+        "string.empty": "email cannot be empty",
+        "string.min": "email should have a minimum length of 3",
+        "string.max": "email should have a maximum length of 30",
+        "any.required": "Sorry, you have to enter an email field"
+      }),
     password: Joi.string().required().empty().min(5)
       .max(40)
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))

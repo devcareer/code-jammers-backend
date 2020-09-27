@@ -16,4 +16,12 @@ export default class User {
       throw error;
     }
   }
+
+  static async checkUsername(username) {
+    try {
+      return await database.Users.findOne({ where: { username } });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
