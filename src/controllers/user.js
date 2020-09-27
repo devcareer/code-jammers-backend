@@ -15,24 +15,19 @@ export default class userController {
         return res.status(400).json({ error: error.message });
       }
       const { email, username, password } = req.body;
-      const userEmail = await User.checkEmail(email);
-      if (userEmail) {
+      const emailExist = await User.emailExist(email);
+      if (emailExist) {
         return res.status(409).json({ message: "Email already used by another user." });
       }
-      const userName = await User.checkUsername(username);
-      if (userName) {
-        return res.status(409).json({ message: `Sorry, ${username} is not available. Please choose another username` });
+      const usernameExist = await User.usernameExist(username);
+      if (usernameExist) {
+        return res.status(409).json({ message: `Sorry, ${username} is not available. Please pick another username` });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      const data = {
-        email: createdUser.email,
-        username: createdUser.username
-      };
-      data.token = token;
-      util.setSuccess(201, "User created!", data);
+      util.setSuccess(201, "User created!", token);
       return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
