@@ -15,8 +15,6 @@ const registerValidation = user => {
       .empty()
       .messages({
         "string.email": "Please enter a valid email",
-        "string.empty": "email cannot be empty",
-        "string.min": "email should have a minimum length of 5 and a maximum length of 100",
       }),
     password: Joi.string().required().empty().min(5)
       .max(1024)

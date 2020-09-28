@@ -12,7 +12,7 @@ export default class userController {
     try {
       const { error } = registerValidation(req.body);
       if (error) {
-        util.validationError(400, "Validation Error", error.message);
+        util.setError(400, "Validation Error", error.message);
         return util.send(res);
       }
       const { email, username, password } = req.body;

@@ -14,13 +14,7 @@ export default class Util {
     this.type = "success";
   }
 
-  setError(statusCode, message) {
-    this.statusCode = statusCode;
-    this.message = message;
-    this.type = "error";
-  }
-
-  validationError(statusCode, message, errors) {
+  setError(statusCode, message, errors) {
     this.statusCode = statusCode;
     this.message = message;
     this.errors = errors;
@@ -32,7 +26,6 @@ export default class Util {
       status: this.type,
       message: this.message,
       data: this.data,
-      errors: this.errors
     };
 
     if (this.type === "success") {
