@@ -1,13 +1,12 @@
 import passport from "passport";
 import dotenv from "dotenv";
-import strategy from "passport-facebook";
+import FacebookStrategy from "passport-facebook";
 import model from "../../models";
 
 const { Users } = model;
 
-const FacebookStrategy = strategy.Strategy;
-
 dotenv.config();
+
 passport.serializeUser((user, done) => {
   done(null, user);
 });
@@ -16,23 +15,42 @@ passport.deserializeUser((obj, done) => {
   done(null, obj);
 });
 
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: "723215311598159",
-      clientSecret: "5c6f878bf5163c5915c137feaf5c221e",
-      callbackURL: "http://localhost:3000/auth/facebook/callback",
-      profileFields: ["email", "name"]
-    },
-    ((accessToken, refreshToken, profile, done) => {
-      const { email, firstName, lastName } = profile.json;
-      const userData = {
-        email,
-        firstName,
-        lastName
-      };
-      done(null, profile);
-    })
-  )
-);
-export { FacebookStrategy };
+const fbStrategy = new FacebookStrategy({
+  clientID: process.env.FACEBOOK_CLIENT_ID,
+  clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+  callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+},
+async (accessToken, refreshToken, profile, cb) => {
+  console.log("profile", profile);
+  console.log("profile email", profile.emails[0].value);
+  console.log("profile photo", profile.photos[0].value);
+  console.log("profile displayName", profile.displayName);
+  console.log("profile provider", profile.provider);
+  try {
+    const email = profile.emails ? profile.emails[0].value : null;
+    const { id } = profile;
+    // check if user already exists our database
+    const currentUser = await Users.findOne({
+      id,
+    });
+    console.log("user", currentUser);
+    if (currentUser) {
+      return cb(null, currentUser);
+    }
+    const { displayName } = profile;
+    const [lastName, firstName] = displayName.split(" ");
+    const newUser = {
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      id,
+      role: "user"
+    };
+    await createUser(newUser);
+    return cb(null, newUser);
+  } catch (err) {
+    return cb(err, false);
+  }
+});
+
+export { fbStrategy };
