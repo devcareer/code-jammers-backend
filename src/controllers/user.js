@@ -12,7 +12,8 @@ export default class userController {
     try {
       const { error } = registerValidation(req.body);
       if (error) {
-        return res.status(400).json({ error: error.message });
+        util.validationError(400, "Validation Error", error.message);
+        return util.send(res);
       }
       const { email, username, password } = req.body;
       const emailExist = await User.emailExist(email);
