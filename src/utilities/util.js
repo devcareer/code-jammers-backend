@@ -4,6 +4,7 @@ export default class Util {
     this.type = null;
     this.data = null;
     this.message = null;
+    this.errors = null;
   }
 
   setSuccess(statusCode, message, data) {
@@ -13,9 +14,10 @@ export default class Util {
     this.type = "success";
   }
 
-  setError(statusCode, message) {
+  setError(statusCode, message, errors) {
     this.statusCode = statusCode;
     this.message = message;
+    this.errors = errors;
     this.type = "error";
   }
 
@@ -32,6 +34,7 @@ export default class Util {
     return res.status(this.statusCode).json({
       status: this.type,
       message: this.message,
+      errors: this.errors
     });
   }
 }
