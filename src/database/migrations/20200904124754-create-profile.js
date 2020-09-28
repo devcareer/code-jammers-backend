@@ -30,5 +30,5 @@ module.exports = {
       },
     }));
   },
-  down: queryInterface => queryInterface.dropTable("Profile"),
+  down: queryInterface => queryInterface.dropTable("Profiles"),
 };

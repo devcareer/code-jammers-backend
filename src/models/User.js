@@ -8,6 +8,7 @@ export default (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,
@@ -15,7 +16,7 @@ export default (sequelize, DataTypes) => {
     },
     role: {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
-      defaultValue: "user",
+      defaultValue: "User",
     },
   });
   return User;

@@ -22,8 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  TouristCenter.associate = (models) => {
-    TouristCenter.belongsTo(models.Country, {
+  TouristCenter.associate = models => {
+    TouristCenter.belongsTo(models.Countries, {
       as: "countryTouristCenter",
       foreignKey: "countryId",
     });

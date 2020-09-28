@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  State.associate = (models) => {
-    State.belongsTo(models.Country, {
+  State.associate = models => {
+    State.belongsTo(models.Countries, {
       as: "countryState",
       foreignKey: "countryId",
     });
