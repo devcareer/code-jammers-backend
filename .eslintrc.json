@@ -19,10 +19,7 @@
       "no-unused-vars":"off",
       "no-undef":"off",
       "comma-dangle":"off",
-<<<<<<< HEAD
-=======
       "consistent-return":"off",
->>>>>>> 96a3e8e35699b1b33afe9997e1431b4397baa040
       "no-tabs":"off",
       "global-require":"off",
       "import/no-unresolved":"off",
