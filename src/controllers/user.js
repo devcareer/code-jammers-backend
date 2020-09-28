@@ -32,7 +32,7 @@ export default class userController {
       return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
-      return util.send(res);
+      throw util.send(res);
     }
   }
 }
