@@ -32,7 +32,7 @@ export default class User {
       throw error;
     }
   }
-  
+
   static async updateUserProfile(id, updateProfile) {
     try {
       const userToUpdate = await database.Users.findOne({ where: { id } });
