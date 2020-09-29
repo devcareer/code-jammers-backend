@@ -46,14 +46,14 @@ export default class UserController {
       const { email, username, password } = req.body;
       const user = await User.emailExist(email);
       if (username) {
-        throw res.status(400).send({ message: "Username is not required" });
+        throw res.status(405).send({ message: "Username is not required" });
       }
       if (!user) {
-        return res.status(400).send({ message: "Email does not exist." });
+        return res.status(404).send({ message: "Email does not exist." });
       }
       const validpass = await bcrypt.compare(password, user.password);
       if (!validpass) {
-        return res.status(400).send({ message: "Password is not correct!." });
+        return res.status(404).send({ message: "Password is not correct!." });
       }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
