@@ -26,14 +26,7 @@ export default (sequelize, DataTypes) => {
       type: Date,
       required: false,
     },
-    resetPasswordToken: {
-      type: String,
-      required: false,
-    },
-    resetpasswordExpires: {
-      type: Date,
-      required: false,
-    },
+ 
   });
   return User;
 };
