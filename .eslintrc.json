@@ -6,6 +6,7 @@
     "es6": true,
     "mocha": true
   },
+<<<<<<< HEAD
     "parser": "babel-eslint",
     "parserOptions": {
       "ecmaVersion": 2015,
@@ -29,6 +30,43 @@
       "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
       "arrow-parens": [2, "as-needed"],
       "require-jsdoc": [2, {
+=======
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2015,
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-unused-vars": "off",
+    "no-undef": "off",
+    "import/no-dynamic-require": "off",
+    "no-tabs": "off",
+    "no-console": "off",
+    "no-param-reassign": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "arrow-parens": [
+      2,
+      "as-needed"
+    ],
+    "require-jsdoc": [
+      2,
+      {
+>>>>>>> 02b28a3... Add reset password files
         "require": {
             "FunctionDeclaration": true,
             "MethodDefinition": false,
