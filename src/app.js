@@ -4,6 +4,7 @@ import cors from "cors";
 import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
 import router from "./routes";
+import countryRoutes from "./routes/countryRoutes";
 
 const app = express();
 app.use(bodyParser.json());
@@ -23,6 +24,7 @@ app.use(express.json());
 
 app.use("/api/v1", router);
 
+app.use("/api/v1", countryRoutes);
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
 });
