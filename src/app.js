@@ -8,6 +8,8 @@ import { googleStrategy } from "./database/config/passport"
 import dotenv from 'dotenv';
 
 dotenv.config();
+import cors from "cors";
+import userRoutes from "./routes/userRoutes";
 
 const app = express();
 app.use(bodyParser.json());

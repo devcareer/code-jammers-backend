@@ -7,7 +7,7 @@ import {
 import chai, { expect } from "chai";
 
 import sinonChai from "sinon-chai";
-import CountryModel from "../../../models/countries";
+import CountryModel from "../../models/countries";
 
 chai.use(sinonChai);
 
@@ -30,14 +30,14 @@ describe("src/models/countries", () => {
   });
 
   context("associations", () => {
-    const Culture = "culture data";
+    const Cultures = "culture data";
 
     before(() => {
-      Country.associate({ Culture });
+      Country.associate({ Cultures });
     });
 
     it("defined a hasMany association with Culture", () => {
-      expect(Country.hasMany).to.have.been.calledWith(Culture);
+      expect(Country.hasMany).to.have.been.calledWith(Cultures);
     });
   });
 });

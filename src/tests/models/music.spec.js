@@ -7,7 +7,7 @@ import {
   checkPropertyExists,
 } from "sequelize-test-helpers";
 
-import musicModel from "../../../models/music";
+import musicModel from "../../models/music";
 
 describe("src/models/music", () => {
   const Music = musicModel(sequelize, dataTypes);
@@ -21,14 +21,14 @@ describe("src/models/music", () => {
   });
 
   context("associations", () => {
-    const Country = "Nigeria";
+    const Countries = "Nigeria";
 
     before(() => {
-      Music.associate({ Country });
+      Music.associate({ Countries });
     });
 
     it("defined a belongsTo association with Country", () => {
-      expect(Music.belongsTo).to.have.been.calledWith(Country);
+      expect(Music.belongsTo).to.have.been.calledWith(Countries);
     });
   });
 });
