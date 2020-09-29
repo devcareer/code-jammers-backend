@@ -18,11 +18,11 @@ export default class UserController {
       const { email, username, password } = req.body;
       const emailExist = await User.emailExist(email);
       if (emailExist) {
-        return res.status(409).json({ message: "Email already used by another user." });
+        return res.status(403).json({ message: "Email already used by another user." });
       }
       const usernameExist = await User.usernameExist(username);
       if (usernameExist) {
-        return res.status(409).json({ message: `Sorry, ${username} is not available. Please pick another username` });
+        return res.status(403).json({ message: `Sorry, ${username} is not available. Please pick another username` });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email, username, password: hashedPassword };
