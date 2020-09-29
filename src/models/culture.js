@@ -33,5 +33,12 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+
+  Culture.associate = models => {
+    Culture.belongsTo(models.Countries, {
+      as: "countryCulture",
+      foreignKey: "countryId",
+    });
+  };
   return Culture;
 };

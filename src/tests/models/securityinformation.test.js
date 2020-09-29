@@ -29,14 +29,14 @@ describe("src/models/securityinformation", () => {
   });
 
   context("associations", () => {
-    const Country = "Nigeria";
+    const Countries = "Nigeria";
 
     before(() => {
-      Securityinformation.associate({ Country });
+      Securityinformation.associate({ Countries });
     });
 
     it("defined a belongsTo association with Country", () => {
-      expect(Securityinformation.belongsTo).to.have.been.calledWith(Country);
+      expect(Securityinformation.belongsTo).to.have.been.calledWith(Countries);
     });
   });
 });
