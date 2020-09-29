@@ -3,9 +3,9 @@ import bodyParser from "body-parser";
 import passport from "passport";
 import cookieSession from "cookie-session";
 import cors from "cors";
+import dotenv from 'dotenv';
 import userRoutes from "./routes/userRoutes";
 import { googleStrategy } from "./database/config/passport";
-import dotenv from 'dotenv';
 
 dotenv.config();
 
