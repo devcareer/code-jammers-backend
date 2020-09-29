@@ -24,7 +24,7 @@ export default class loginController {
       if (!validpass) {
         return res.status(400).send({ message: "Password is not correct!." });
       }
-      if (!user.verified) return res.status(400).send({ message: "Please Verify your account to continue. click on the link provided in your mail" });
+      validateSignInInputs(user, res);
       const token = await generateToken({ user });
       util.setSuccess(201, "User Logged in!", token);
     } catch (error) {

@@ -48,18 +48,8 @@ const loginValidation = user => {
   return schema.validate(user);
 };
 
-const validateSignInInputs = async (userDelails, inputedPassword, res) => {
-  try {
-    if (!userDelails) {
-      return res.status(400).send({ message: "Email does not exist." });
-    }
-    const validpass = await bcrypt.compare(inputedPassword, userDelails.password);
-    if (!validpass) return res.status(400).send({ message: "Password does not exist." });
-    if (!userDelails.verified) return res.status(400).send({ message: "Please Verify your account to continue. click on the link provided in your mail" });
-  } catch (e) {
-    throw e;
-  }
-  return "pass";
+const validateSignInInputs = (userDelails, res) => {
+  if (!userDelails.verified) return res.status(400).send({ message: "Please Verify your account to continue. click on the link provided in your mail" });
 };
 
 export { registerValidation, validateSignInInputs, loginValidation };

@@ -24,9 +24,7 @@ export default class userController {
       }
       const { email, username, password } = req.body;
       const emailExist = await User.emailExist(email);
-      if (emailExist) {
-        return res.status(409).json({ message: "Email already used by another user." });
-      }
+      if (emailExist) return res.status(409).json({ message: "Email already used by another user." });
       const usernameExist = await User.usernameExist(username);
       if (usernameExist) {
         return res.status(409).json({ message: `Sorry, ${username} is not available. Please pick another username` });
