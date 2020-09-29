@@ -2,15 +2,15 @@ export default class Util {
   constructor() {
     this.statusCode = null;
     this.type = null;
-    this.data = null;
+    this.token = null;
     this.message = null;
     this.errors = null;
   }
 
-  setSuccess(statusCode, message, data) {
+  setSuccess(statusCode, message, token) {
     this.statusCode = statusCode;
     this.message = message;
-    this.data = data;
+    this.token = token;
     this.type = "success";
   }
 
@@ -25,7 +25,7 @@ export default class Util {
     const result = {
       status: this.type,
       message: this.message,
-      data: this.data,
+      token: this.token,
     };
 
     if (this.type === "success") {
