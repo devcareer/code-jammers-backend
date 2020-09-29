@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import passport from "passport";
 import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
 
@@ -21,8 +20,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server Running on: ${port}`);
 });
 
-export default app;
+module.exports = server;

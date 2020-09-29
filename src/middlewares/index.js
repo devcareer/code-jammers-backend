@@ -1,2 +1,2 @@
 import "./isAdmin";
-import "./isLoggedIn";
+import "./loggedIn";

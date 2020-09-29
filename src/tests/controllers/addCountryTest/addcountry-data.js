@@ -7,12 +7,10 @@ const country = {
   region: "West Africa",
   currency: "Naira"
 };
-
-const user = {
-  email: "fiyin4@gmail.com",
-  username: "fiyin4",
-  role: "User",
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiYmU4NDc4M2YtNWJjNi00Y2RlLWIzOGEtYjcxZjVmYTg1NTFhIiwiZW1haWwiOiJmaXlpbjRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmaXlpbjQiLCJwYXNzd29yZCI6IiQyYiQxMCRjR3dmRUdWc0JsNHRlSHNRVHRCVjhPN3JpbVYwclpteVpuakRiMjBHYmlrbW1SbHUyaW1YdSIsInJvbGUiOiJVc2VyIiwiY3JlYXRlZEF0IjoiMjAyMC0wOS0yNFQxNDozMToxMS4zNTRaIiwidXBkYXRlZEF0IjoiMjAyMC0wOS0yNFQxNDozMToxMS4zNTRaIn0sImlhdCI6MTYwMDk1Nzg3NywiZXhwIjoxNjAxMDQ0Mjc3fQ.zHtBc4mVfAtkcanrV5x66xIiW4HeA5sMh_PvuxRyL-U"
+const payload = {
+  user: {
+    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNTJiZjc0M2MtZjUzYi00NmNlLTllYmEtZDBhOTk5M2NkZGFjIiwiZW1haWwiOiJmaXlpbjRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmaXlpbjQiLCJwYXNzd29yZCI6IiQyYiQxMCRqRTU1d2hIbnFhVDVxQmFpQXFKdkF1S3o2YjBFUXdjVS5FNmFyY2RkV0JqeENaN01HalUzVyIsInJvbGUiOiJVc2VyIiwiY3JlYXRlZEF0IjoiMjAyMC0wOS0yNVQxMzoyMToyNC40MDRaIiwidXBkYXRlZEF0IjoiMjAyMC0wOS0yNVQxMzoyMToyNC40MDRaIn0sImlhdCI6MTYwMTA0MDA5NSwiZXhwIjoxNjAxMTI2NDk1fQ.4r7qKsGiX6YJUE3HFZXETH2UEsYsaBrS2TY1qjWQMBM",
+    role: "User"
+  }
 };
-
-export { country };
+export { country, payload };

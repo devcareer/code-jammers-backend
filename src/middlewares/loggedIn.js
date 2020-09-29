@@ -8,9 +8,6 @@ module.exports = (req, res, next) => {
       const result = jwt.verify(
         token,
         process.env.JWT_KEY,
-        {
-          expiresIn: "24hr"
-        }
       );
       req.decoded = result;
       console.log(req.decoded);

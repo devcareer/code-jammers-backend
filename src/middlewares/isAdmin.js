@@ -1,8 +1,8 @@
 // eslint-disable-next-line consistent-return
-module.exports = (req, res, next) => {
+exports.isAdmin = (req, res, next) => {
   const payload = req.decoded;
   console.log("Role: ", payload.user.role);
-  if (payload && payload.user.role === "User") {
+  if (payload && payload.user.role === "Admin") {
     next();
   } else {
     return res.status(403).send("Access denied.");

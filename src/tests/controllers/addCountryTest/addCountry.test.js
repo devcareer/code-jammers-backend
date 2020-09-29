@@ -1,43 +1,34 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import server from "../../../app";
-import country from "./addcountry-data";
+import sinon from "sinon";
+import auth from "../../../middlewares/isAdmin";
+import { country, payload } from "./addcountry-data";
+
+let server;
 
 chai.should();
 
+const { expect } = chai;
 chai.use(chaiHttp);
 
-describe("Add a country", () => {
-//   it("it should not add a country that already exists", done => {
-//     const book = {
-//       title: "The Lord of the Rings",
-//       author: "J.R.R. Tolkien",
-//       year: 1954
-//     };
-//     chai.request(server)
-//       .post("/book")
-//       .send(book)
-//       .end((err, res) => {
-//         res.should.have.status(200);
-//         res.body.should.be.a("object");
-//         res.body.should.have.property("errors");
-//         res.body.errors.should.have.property("pages");
-//         res.body.errors.pages.should.have.property("kind").eql("required");
-//         done();
-//       });
-//   });
-  it("it should add a country ", done => {
+describe("Admin user can add country", () => {
+  let isAdminStub;
+  before(() => {
+    isAdminStub = sinon.stub(auth, "isAdmin").callsFake((req, res, next) => {
+      console.log("Stubbed");
+      next();
+    });
+    server = require("../../../app");
+  });
+
+  it("should allow user with admin role add a country", done => {
     chai
       .request(server)
       .post("/api/v1/admin/addcountry")
-      .set("Accept", "application/json")
-      .send(country)
+      .send(payload, country)
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a("object");
-        res.body.should.have.property("message").eql("A country has been added.");
-        res.body.should.have.property("status").eql("200");
-        res.body.should.have.property("data");
+        expect(res).to.have.status(201);
+        isAdminStub.restore();
         done();
       });
   });
