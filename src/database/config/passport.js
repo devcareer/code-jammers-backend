@@ -14,11 +14,7 @@ const googleStrategy = new Strategy({
   },
   
   async (accessToken, refreshToken, profile, cb) => {
-      console.log("profile", profile);
-      console.log("profile email", profile.emails[0].value);
-      console.log("profile photo", profile.photos[0].value);
-      console.log("profile displayName", profile.displayName);
-      console.log("profile provider", profile.provider);
+      
     try {
       const email = profile.emails[0].value;
       const profilePicture =  profile.photos[0].value

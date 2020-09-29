@@ -2,7 +2,6 @@ import bcrypt from "bcrypt";
 import Util from "../utilities/util";
 import User from "../UserService/User";
 import jwtHelper from "../UserService/Jwt";
-
 const { generateToken } = jwtHelper;
 const util = new Util();
 export default class userController {
