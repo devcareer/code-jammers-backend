@@ -1,7 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import { checkPreferences } from "joi";
 import userRoutes from "./routes/userRoutes";
+import countryRoutes from "./routes/countryRoutes";
 
 const app = express();
 app.use(bodyParser.json());
