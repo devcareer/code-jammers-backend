@@ -19,13 +19,9 @@ app.use("/api/v1/", adminRoutes);
 app.use("/api/v1/", userRoutes);
 app.use("/api/v1", resetPasswordRoutes);
 
-const path = require("path");
-
-app.engine("handlebars", handlebars());
-app.set("view engine", "handlebars");
-app.set("views", path.join(__dirname, "views"));
-
 app.use(express.json());
+
+require("./routes/index");
 
 app.use("", router);
 

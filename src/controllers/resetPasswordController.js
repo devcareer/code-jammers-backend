@@ -1,40 +1,34 @@
+import bcrypt from "bcrypt-nodejs";
 import db from "../models/index";
 
 import signToken from "../utilities/signToken";
-import utils from "../utilities";
+import sendEmail from "../utilities/sendEmail";
 import hashPassword from "../utilities/hashPassword";
 
-const { sendEmail } = utils;
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
-let hostURL;
-
 export default {
-  recover: async (req, res) => {
-    try {
-      const user = await db.Users.findOne({
-        where: { email: req.body.email },
-        attributes: ["id", "username", "email", "password"],
+  recover: (req, res) => {
+    db.Users.findOne({
+      where: { email: req.body.email },
+      attributes: ["id", "username", "email", "password"],
+    })
+      .then(user => {
+        if (!user) {
+          return res.status(404).json({
+            status: 404,
+            error: `The email address ${req.body.email}is not associated with any account. `,
+          });
+        }
+
+        const signed = signToken(user.toJSON(), user.password);
+
+        const link = `http://localhost:3000/reset-password/${user.id}/${signed}`;
+
+        sendEmail(link, user, res);
+        return null;
       });
-      if (!user) {
-        return res.status(404).json({
-          status: 404,
-          error: `The email address ${req.body.email} is not associated with any account.`,
-        });
-      }
-
-      const signed = signToken(user.toJSON(), user.password);
-      if (process.env.NODE_ENV === "production") {
-        hostURL = "https://know-africa.herokuapp.com";
-      } else { hostURL = `http://localhost:${process.env.PORT || 3000}`; }
-
-      const link = `${hostURL}/api/v1/users/reset/${user.id}/${signed}`;
-
-      return sendEmail(link, user, res);
-    } catch (error) {
-      console.log(error);
-    }
   },
 
   reset: (req, res) => {
