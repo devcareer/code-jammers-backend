@@ -37,7 +37,6 @@ const loginValidation = user => {
       .messages({
         "string.alphanum": "Sorry, Username is not required",
         "string.empty": "Sorry, username is not required",
-        "string.min": "Sorry, username is not required"
       }),
     email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co", "io"] } }).min(5)
       .max(100)

@@ -58,8 +58,9 @@ export default class userController {
       }
       const token = await generateToken({ user });
       util.setSuccess(201, "User Logged in!", token);
+      return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
-    } return util.send(res);
+    } throw util.send(res);
   }
 }
