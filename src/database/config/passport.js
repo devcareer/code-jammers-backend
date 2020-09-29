@@ -1,5 +1,5 @@
 import { Strategy } from "passport-google-oauth20";
-import { createUser } from "../../UserService/User";
+import User from "../../services/UserService/User";
 import model from "../../models";
 import dotenv from "dotenv";
 
@@ -14,19 +14,12 @@ const googleStrategy = new Strategy({
   },
   
   async (accessToken, refreshToken, profile, cb) => {
-      
     try {
       const email = profile.emails[0].value;
       const profilePicture =  profile.photos[0].value
-      const provider = profile.provider
-      
-      const { googleId: id } = profile
-      // check if user already exists our database
+    
       const currentUser = await Users.findOne({
-        where: {
-          id
-        }
-        
+        googleId: profile.id
       })
       console.log("user",currentUser);
   
@@ -35,17 +28,17 @@ const googleStrategy = new Strategy({
       }
 
       const newUser = {
-        userame: profile.name.givenName,
+        username: profile.name.givenName,
         lastName:  profile.name.familyName,
         profilePicture,
+        password: "",
         email,
-        id,
-        provider,
-        role: 'user'
+        googleId: profile.id,
+        provider: "google",
+        role: 'User'
       };
-      // store in database
-      await createUser(newUser);
-  
+ 
+     await User.createUser(newUser);
       return cb(null, newUser);
     } catch (err) {
       return cb(err, false);

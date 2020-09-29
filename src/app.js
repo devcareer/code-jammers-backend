@@ -39,13 +39,9 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-app.get("/auth/google", passport.authenticate("google", {
-  scope: ["profile", "email"]
+app.get("/auth/google/callback", passport.authenticate("google", {
+  successRedirect: '/',
 }));
-
-app.get("/auth/google/callback", passport.authenticate("google"), (req, res) => {
-  res.send(req.user);
-});
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
