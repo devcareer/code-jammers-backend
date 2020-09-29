@@ -1,7 +1,7 @@
 import { Strategy } from "passport-google-oauth20";
 import { createUser } from "../../UserService/User";
 import model from "../../models";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
 const { Users } = model;
 

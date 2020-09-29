@@ -9,12 +9,4 @@ export default class User {
       throw error;
     }
   }
-
-  static async checkEmail(email) {
-    try {
-      return await database.Users.findOne({ where: { email } });
-    } catch (error) {
-      throw error;
-    }
-  }
 }
