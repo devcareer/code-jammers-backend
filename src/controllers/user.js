@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
@@ -47,7 +46,7 @@ export default class userController {
       const { email, username, password } = req.body;
       const user = await User.emailExist(email);
       if (username) {
-        return res.status(400).send({ message: "Username is not required" });
+        throw res.status(400).send({ message: "Username is not required" });
       }
       if (!user) {
         return res.status(400).send({ message: "Email does not exist." });
