@@ -4,12 +4,11 @@ import passport from "passport";
 import cookieSession from "cookie-session";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes";
-import { googleStrategy } from "./database/config/passport"
+import { googleStrategy } from "./database/config/passport";
 import dotenv from 'dotenv';
 
 dotenv.config();
-import cors from "cors";
-import userRoutes from "./routes/userRoutes";
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,34 +18,34 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use(cookieSession({
-  maxAge: 24*60*60*1000,
+  maxAge: 24 * 60 * 60 * 1000,
   keys: process.env.COOKIE_KEY
 
-}))
+}));
 app.use(passport.initialize());
-app.use(passport.session())
+app.use(passport.session());
 
 const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", userRoutes);
 
 // Google authentication
-passport.use(googleStrategy)
+passport.use(googleStrategy);
 
 passport.serializeUser((user, cb) => {
-  cb(null, user)
-})
+  cb(null, user);
+});
 passport.deserializeUser((user, cb) => {
-  cb(null, user)
-})
+  cb(null, user);
+});
 
 app.get("/auth/google", passport.authenticate("google", {
   scope: ["profile", "email"]
-}))
+}));
 
-app.get("/auth/google/callback", passport.authenticate("google"), (req,res) => {
+app.get("/auth/google/callback", passport.authenticate("google"), (req, res) => {
   res.send(req.user);
-})
+});
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");

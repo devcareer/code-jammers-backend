@@ -23,7 +23,10 @@ const googleStrategy = new Strategy({
       const { googleId: id } = profile
       // check if user already exists our database
       const currentUser = await Users.findOne({
-         id
+        where: {
+          id
+        }
+        
       })
       console.log("user",currentUser);
   
