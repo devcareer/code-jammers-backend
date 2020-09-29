@@ -7,7 +7,7 @@ import { registerValidation, loginValidation } from "../validation/userValidatio
 const { generateToken } = jwtHelper;
 const util = new Util();
 
-export default class userController {
+export default class UserController {
   static async createUser(req, res) {
     try {
       const { error } = registerValidation(req.body);
@@ -56,7 +56,7 @@ export default class userController {
         return res.status(400).send({ message: "Password is not correct!." });
       }
       const token = await generateToken({ user });
-      util.setSuccess(201, "User Logged in!", token);
+      util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
