@@ -40,8 +40,9 @@ passport.deserializeUser((user, cb) => {
 });
 
 app.get("/auth/google/callback", passport.authenticate("google", {
-  successRedirect: '/',
-}));
+  successRedirect: "/",
+})
+);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
