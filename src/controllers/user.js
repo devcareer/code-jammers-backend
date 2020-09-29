@@ -46,8 +46,8 @@ export default class userController {
 
   static async verifyUser(req, res) {
     try {
-      const { createdUser: { email } } = jwt.verify(req.params.token, process.env.JWT_KEY);
-      const updatedUser = await User.updateUserVerification(email);
+      const { createdUser: { userId } } = jwt.verify(req.params.token, process.env.JWT_KEY);
+      const updatedUser = await User.updateUserVerification(userId);
       util.setSuccess(200, "User Verified successfully!", { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified });
       util.send(res);
     } catch (e) {

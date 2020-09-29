@@ -33,12 +33,10 @@ export default class User {
     }
   }
 
-  static async updateUserVerification(email) {
+  static async updateUserVerification(id) {
     try {
       return await database.Users.update({ verified: true }, {
-        where: {
-          email
-        },
+        where: { id },
         returning: true,
         plain: true
       });
