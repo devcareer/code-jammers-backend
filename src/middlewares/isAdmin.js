@@ -1,4 +1,3 @@
-// eslint-disable-next-line consistent-return
 exports.isAdmin = (req, res, next) => {
   const payload = req.decoded;
   console.log("Role: ", payload.user.role);

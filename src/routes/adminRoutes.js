@@ -1,9 +1,9 @@
 import { Router } from "express";
 import adminController from "../controllers/addCountry";
-import loggedIn from "../middlewares/loggedIn";
-import auth from "../middlewares/isAdmin";
+import loginAuth from "../middlewares/loggedIn";
+import adminAuth from "../middlewares/isAdmin";
 
 const router = Router();
-router.post("/admin/addcountry", auth.isAdmin, adminController.addCountry);
+router.post("/admin/addcountry", loginAuth.loggedIn, adminAuth.isAdmin, adminController.addCountry);
 
 export default router;

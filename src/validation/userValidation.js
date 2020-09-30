@@ -28,4 +28,13 @@ const registerValidation = user => {
   return schema.validate(user);
 };
 
-export { registerValidation };
+const loginValidation = user => {
+  const schema = Joi.object({
+    email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co", "io"] } }).min(5)
+      .max(300),
+    password: Joi.string().required().min(5).max(1024),
+  });
+  return schema.validate(user);
+};
+
+export { registerValidation, loginValidation };

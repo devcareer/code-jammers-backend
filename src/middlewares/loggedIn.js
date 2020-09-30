@@ -1,6 +1,5 @@
-import jwt from "jsonwebtoken";
-// eslint-disable-next-line consistent-return
-module.exports = (req, res, next) => {
+exports.loggedIn = (req, res, next) => {
+  const jwt = require("jsonwebtoken");
   const authorizationHeader = req.headers.authorization;
   if (authorizationHeader) {
     const token = req.headers.authorization.split(" ")[1]; // Bearer <token>
