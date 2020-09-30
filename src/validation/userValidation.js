@@ -60,4 +60,6 @@ const loginValidation = user => {
   return schema.validate(user);
 };
 
+// const validateinputs
+
 export { registerValidation, loginValidation };
