@@ -75,7 +75,7 @@ export default class UserController {
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
-      util.setError(400, error.message);
+      util.setError(500, error.message);
     } throw util.send(res);
   }
 }
