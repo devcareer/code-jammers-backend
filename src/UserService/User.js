@@ -1,6 +1,5 @@
 import database from "../models";
 
-
 export default class User {
   static async createUser(newUser) {
     try {

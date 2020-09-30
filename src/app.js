@@ -9,7 +9,6 @@ import { googleStrategy } from "./database/config/passport";
 
 dotenv.config();
 
-
 const app = express();
 app.use(bodyParser.json());
 
@@ -41,8 +40,7 @@ passport.deserializeUser((user, cb) => {
 
 app.get("/auth/google/callback", passport.authenticate("google", {
   successRedirect: "/",
-})
-);
+}));
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
