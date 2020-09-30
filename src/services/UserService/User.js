@@ -18,15 +18,26 @@ export default class User {
     }
   }
 
-  static async createUser(newUser) {
+  // static async useEmail() {
+
+  // }
+
+  static async createUser({ newUser }, { emailUser }) {
     try {
-      const createUser = await database.Users.create(newUser);
+      if (newUser) {
+        const createUser = await database.Users.create(newUser);
+        return createUser;
+      // eslint-disable-next-line no-else-return
+      } else {
+        const createUser = await database.Users.create(emailUser);
+      }
       const userToUpdate = await database.Users.findOne({ where: { id: createUser.id } });
       if (userToUpdate) {
         const newProfile = {
           userId: userToUpdate.id
         };
-        return await database.Profiles.create(newProfile);
+        await database.Profiles.create(newProfile);
+        return createUser;
       }
     } catch (error) {
       throw error;
