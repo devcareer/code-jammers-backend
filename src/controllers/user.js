@@ -18,11 +18,11 @@ export default class UserController {
       const { email, username, password } = req.body;
       const emailExist = await User.emailExist(email);
       if (emailExist) {
-        return res.status(409).json({ status: 403, error: "Email already used by another user." });
+        return res.status(409).json({ status: 409, error: "Email already used by another user." });
       }
       const usernameExist = await User.usernameExist(username);
       if (usernameExist) {
-        return res.status(409).json({ status: 403, error: `Sorry, ${username} is not available. Please pick another username` });
+        return res.status(409).json({ status: 409, error: `Sorry, ${username} is not available. Please pick another username` });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email, username, password: hashedPassword };
@@ -46,11 +46,11 @@ export default class UserController {
       const { email, username, password } = req.body;
       const user = await User.emailExist(email);
       if (!user) {
-        return res.status(409).json({ status: 404, error: "Email does not exist." });
+        return res.status(409).json({ status: 409, error: "Email does not exist." });
       }
       const validpass = await bcrypt.compare(password, user.password);
       if (!validpass) {
-        return res.status(409).json({ status: 404, error: "Password is not correct!." });
+        return res.status(409).json({ status: 409, error: "Password is not correct!." });
       }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
