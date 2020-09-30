@@ -2,12 +2,12 @@ export default (sequelize, DataTypes) => {
   const User = sequelize.define("Users", {
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
     },
     password: {
