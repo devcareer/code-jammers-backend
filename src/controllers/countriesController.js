@@ -1,5 +1,15 @@
 import db from "../models";
 
+const countriesAttributes = [
+  "id",
+  "nameOfCountry",
+  "gallery",
+  "capital",
+  "population",
+  "officialLanguage",
+  "region",
+  "currency",
+];
 const countriesController = {
   /**
    * gets a list of all countries
@@ -10,16 +20,7 @@ const countriesController = {
   async listCountries(req, res) {
     try {
       const countries = await db.Countries.findAll({
-        attributes: [
-          "id",
-          "nameOfCountry",
-          "gallery",
-          "capital",
-          "population",
-          "officialLanguage",
-          "region",
-          "currency",
-        ],
+        attributes: countriesAttributes,
       });
       res.status(200).send({
         status: 200,
@@ -47,16 +48,7 @@ const countriesController = {
         where: {
           id,
         },
-        attributes: [
-          "id",
-          "nameOfCountry",
-          "gallery",
-          "capital",
-          "population",
-          "officialLanguage",
-          "region",
-          "currency",
-        ],
+        attributes: countriesAttributes,
       });
 
       return res.status(200).send({
