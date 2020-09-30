@@ -91,16 +91,7 @@ const countriesController = {
         where: {
           id,
         },
-        attributes: [
-          "id",
-          "nameOfCountry",
-          "gallery",
-          "capital",
-          "population",
-          "officialLanguage",
-          "region",
-          "currency",
-        ],
+        attributes: countriesAttributes,
       });
 
       return res.status(200).send({
