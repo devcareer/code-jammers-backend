@@ -34,10 +34,10 @@ export default class User {
     }
   }
 
-  static async updateUserVerification(id) {
+  static async updateUserVerification(email) {
     try {
       return await database.Users.update({ verified: true }, {
-        where: { id },
+        where: { email },
         returning: true,
         plain: true
       });

@@ -5,7 +5,7 @@ import sgMail from "@sendgrid/mail";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
-import { registerValidation, loginValidation } from "../validation/userValidation";
+import { registerValidation, loginValidation, checkIfVerified } from "../validation/userValidation";
 import sgMailService from "../utilities/sendgrid";
 
 dotenv.config();
@@ -31,7 +31,7 @@ export default class UserController {
       const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      await sgMail.send(sgMailService.data(email, token));
+      await sgMail.send(sgMailService.data(email));
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
@@ -41,11 +41,9 @@ export default class UserController {
   }
 
   static async verifyUser(req, res) {
-    try {
-      const { createdUser: { userId } } = jwt.verify(req.params.token, process.env.JWT_KEY);
-      const updatedUser = await User.updateUserVerification(userId);
-      util.setSuccess(200, "User Verified successfully!", { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified });
-      util.send(res);
+    try {      
+      const updatedUser = await User.updateUserVerification(req.params.email);
+      res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified }});
     } catch (e) {
       res.send(e);
     }
@@ -67,6 +65,7 @@ export default class UserController {
       if (!validpass) {
         return res.status(400).json({ status: 400, error: "Password is not correct!." });
       }
+      checkIfVerified(user, res);
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);

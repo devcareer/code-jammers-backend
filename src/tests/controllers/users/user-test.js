@@ -30,6 +30,17 @@ describe("Should test all users", async () => {
           done();
         });
     });
+    it("it should verify a user's account", done => {
+      chai
+        .request(server)
+        .get(`/api/v1/users/signup/verify/${user.email}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.property("message").eql("User Verified successfully!");
+          res.body.data.should.have.property("verified").eql(true);
+          done();
+        });
+    });
     it("it should not create a user with incomplete details", done => {
       chai
         .request(server)

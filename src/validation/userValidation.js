@@ -56,8 +56,8 @@ const loginValidation = user => {
   return schema.validate(user);
 };
 
-const validateSignInInputs = (userDelails, res) => {
+const checkIfVerified = (userDelails, res) => {
   if (!userDelails.verified) return res.status(400).send({ message: "Please Verify your account to continue. click on the link provided in your mail" });
 };
 
-export { registerValidation, validateSignInInputs, loginValidation };
+export { registerValidation, checkIfVerified, loginValidation };
