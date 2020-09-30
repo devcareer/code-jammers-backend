@@ -23,13 +23,13 @@ app.use(passport.session());
 
 passport.use(fbStrategy);
 
-app.get("/auth/facebook", passport.authenticate("facebook", fbStrategy, {
+app.get("/auth/facebook", passport.authenticate("facebook", {
   scope: ["profile", "email"]
 }));
 
 app.get(
   "/auth/facebook/callback",
-  passport.authenticate("facebook", fbStrategy, { failureRedirect: "/login" }),
+  passport.authenticate("facebook", { failureRedirect: "/login" }),
   (req, res) => {
     // Successful authentication, redirect home.
     res.redirect("/");

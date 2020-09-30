@@ -1,9 +1,7 @@
 import passport from "passport";
 import dotenv from "dotenv";
 import FacebookStrategy from "passport-facebook";
-import model from "../../models";
-
-const { Users } = model;
+import Users from "../../models";
 
 dotenv.config();
 

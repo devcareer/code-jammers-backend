@@ -16,4 +16,20 @@ export default class User {
       throw error;
     }
   }
+
+  static async createUser(newUser) {
+    try {
+      const createUser = await database.Users.create(newUser);
+      const userToUpdate = await database.Users.findOne({ where: { id: createUser.id } });
+      if (userToUpdate) {
+        const newProfile = {
+          userId: userToUpdate.id
+        };
+        await database.Profiles.create(newProfile);
+        return createUser;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
 }
