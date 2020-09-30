@@ -31,8 +31,7 @@ export default class UserController {
       util.setSuccess(201, "User created!", token);
       return util.send(res);
     } catch (error) {
-      util.setError(500, error.message);
-      throw util.send(res);
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 
@@ -56,7 +55,7 @@ export default class UserController {
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
-      util.setError(500, error.message);
-    } throw util.send(res);
+      return res.status(500).json({ status: 500, error: "Server Error" });
+    }
   }
 }
