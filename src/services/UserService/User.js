@@ -26,7 +26,8 @@ export default class User {
         const newProfile = {
           userId: userToUpdate.id
         };
-        return await database.Profiles.create(newProfile);
+        await database.Profiles.create(newProfile);
+        return createUser;
       }
     } catch (error) {
       throw error;

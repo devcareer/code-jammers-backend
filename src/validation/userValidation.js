@@ -31,11 +31,19 @@ const registerValidation = user => {
 
 const loginValidation = user => {
   const schema = Joi.object({
+    username: Joi.string().alphanum().min(3)
+      .max(255)
+      .empty()
+      .messages({
+        "string.alphanum": "Sorry, Username is not required",
+        "string.empty": "Sorry, username is not required",
+      }),
     email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co", "io"] } }).min(5)
       .max(100)
       .empty()
       .messages({
         "string.email": "Please enter a valid email",
+        "string.empty": "Sorry, Email cannot be an empty field",
       }),
     password: Joi.string().required().min(5).max(1024)
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
