@@ -24,22 +24,6 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      id: "57af7c29-efb2-434e-9fce-b87c77447aab",
-      email: "bislonzulu1@outlook.com",
-      username: "balldash",
-      password: "dingus",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
-      id: "57af7c29-efb2-434e-9fce-b87c77447adf",
-      email: "bislonaz@gmail.com",
-      username: "thunderbolt",
-      password: "mintaka",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
       id: "57af7c29-efb2-434e-9fce-b87c77447aaa",
       email: "godspower@gmail.com",
       username: "therealgodspower",

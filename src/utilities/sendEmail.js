@@ -41,6 +41,6 @@ export default (link, user, res) => {
   transporter.sendMail(mailOptions, (err, data) => {
     if (err) return res.status(500).json({ message: err.message });
 
-    return res.status(200).json({ message: "A reset email has been sent" });
+    return res.status(200).json({ status: 200, message: "A reset email has been sent" });
   });
 };
