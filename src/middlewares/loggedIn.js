@@ -1,5 +1,6 @@
-exports.loggedIn = (req, res, next) => {
-  const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
+
+const loggedIn = (req, res, next) => {
   const authorizationHeader = req.headers.authorization;
   if (authorizationHeader) {
     const token = req.headers.authorization.split(" ")[1]; // Bearer <token>
@@ -9,7 +10,7 @@ exports.loggedIn = (req, res, next) => {
         process.env.JWT_KEY,
       );
       req.decoded = result;
-      console.log(req.decoded);
+      // console.log(req.decoded);
       next();
     } catch (err) {
       return res.json({ err });
@@ -18,3 +19,5 @@ exports.loggedIn = (req, res, next) => {
     return res.status(401).json({ error: "Authentication error. Token required." });
   }
 };
+
+export default loggedIn;
