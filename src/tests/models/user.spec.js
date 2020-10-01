@@ -16,7 +16,11 @@ describe("src/models/User", () => {
   const user = new User();
   checkModelName(User)("Users");
   context("properties", () => {
+<<<<<<< HEAD
     ["email", "username", "password", "role", "verified"].forEach(
+=======
+    ["email", "username", "password", "role", "resetPasswordToken", "resetPasswordExpires"].forEach(
+>>>>>>> cd38d9f... Add changes to test files
       checkPropertyExists(user),
     );
   });
