@@ -4,6 +4,7 @@ const user = {
   id: "80e13d8c-b0aa-431f-a107-8aad5bd9324c",
   username: "Billy",
   email: "bislonzulu1@outlook.com",
+<<<<<<< HEAD
   password: "thunderbolt",
   toJSON: () => ({
     id: "80e13d8c-b0aa-431f-a107-8aad5bd9324c",
@@ -24,6 +25,16 @@ const newPassword = {
   toJSON: () => ({
     newPassword: "firebolt",
   })
+=======
+  password: "thunderbolt"
+};
+const notUser = {
+  email: "balldash@live.com"
+};
+
+const newPassword = {
+  newPassword: "firebolt"
+>>>>>>> cd38d9f... Add changes to test files
 };
 const signed = signToken(user, user.password);
 export {
