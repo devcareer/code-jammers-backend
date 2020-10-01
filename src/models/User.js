@@ -20,9 +20,9 @@ export default (sequelize, DataTypes) => {
     },
     resetPasswordToken: {
       type: String,
-      required: false,
+      allowNull: true,
     },
-    resetpasswordExpires: {
+    resetPasswordExpires: {
       type: Date,
       required: false,
     },

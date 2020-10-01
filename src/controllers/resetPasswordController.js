@@ -18,7 +18,7 @@ export default {
         if (!user) {
           return res.status(404).json({
             status: 404,
-            error: `The email address ${req.body.email}is not associated with any account. `,
+            error: `The email address ${req.body.email} is not associated with any account.`,
           });
         }
 
@@ -40,17 +40,20 @@ export default {
     })
       .then(user => {
         if (!user) {
-          res.send({ error: "user does not exist" });
+          res.send({ status: 200, error: "user does not exist" });
         }
         try {
           jwt.verify(token, user.password);
           const hashedPass = hashPassword(newPassword);
           user.password = hashedPass;
           user.save();
-          res.send({ success: "password has been reset" });
+          return res.status(200).json({
+            status: 200,
+            success: "password has been reset"
+          });
         } catch (error) {
           console.log(error);
-          res.send({ error: "link has already been used please request for another one" });
+          res.send({ status: 200, error: "link has already been used please request for another one" });
         }
       });
   },
