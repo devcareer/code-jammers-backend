@@ -15,7 +15,9 @@ export default class UserController {
         util.setError(400, "Validation Error", error.message);
         return util.send(res);
       }
-      const { email, username, password } = req.body;
+      const {
+        email, username, password, role
+      } = req.body;
       const emailExist = await User.emailExist(email);
       if (emailExist) {
         return res.status(409).json({ status: 409, error: "Email already used by another user." });
@@ -25,7 +27,9 @@ export default class UserController {
         return res.status(409).json({ status: 409, error: `Sorry, ${username} is not available. Please pick another username` });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
-      const newUser = { email, username, password: hashedPassword };
+      const newUser = {
+        email, username, password: hashedPassword, role
+      };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
       util.setSuccess(201, "User created!", token);
@@ -43,7 +47,9 @@ export default class UserController {
         util.setError(400, "Validation Error", error.message);
         return util.send(res);
       }
-      const { email, username, password } = req.body;
+      const {
+        email, username, password, role
+      } = req.body;
       const user = await User.emailExist(email);
       if (!user) {
         return res.status(404).json({ status: 404, error: "Email does not exist." });

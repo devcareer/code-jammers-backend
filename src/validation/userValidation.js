@@ -16,6 +16,9 @@ const registerValidation = user => {
       .messages({
         "string.email": "Please enter a valid email",
       }),
+    role: Joi.string().min(4)
+      .max(11)
+      .empty(),
     password: Joi.string().required().empty().min(5)
       .max(1024)
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))

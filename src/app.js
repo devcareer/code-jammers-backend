@@ -20,8 +20,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
 });
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server Running on: ${port}`);
 });
 
-module.exports = server;
+export default app;
