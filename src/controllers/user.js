@@ -49,7 +49,7 @@ export default class UserController {
       }
       const validpass = await bcrypt.compare(password, user.password);
       if (!validpass) {
-        return res.status(400).json({ status: 400, error: "Password is not correct!." });
+        return res.status(404).json({ status: 400, error: "Password is not correct!." });
       }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
