@@ -13,20 +13,20 @@ const googleStrategy = new Strategy({
     callbackURL: process.env.GOOGLE_CALLBACK_URL,
   },
   
-  async (accessToken, refreshToken, profile, cb) => {
+  async (accessToken, refreshToken, profile, done) => {
     try {
       const email = profile.emails[0].value;
       const profilePicture =  profile.photos[0].value
     
-      const currentUser = await Users.findOne({
+      const userExist = await Users.findOne({
         googleId: profile.id
       })
-      console.log("user",currentUser);
+      console.log("user",userExist);
   
-      if (currentUser) {
-        return cb(null,currentUser);
+      if (userExist) {
+        return done(null,userExist);
       }
-
+      
       const newUser = {
         username: profile.name.givenName,
         lastName:  profile.name.familyName,
@@ -39,9 +39,9 @@ const googleStrategy = new Strategy({
       };
  
      await User.createUser(newUser);
-      return cb(null, newUser);
+      return done(null, newUser);
     } catch (err) {
-      return cb(err, false);
+      return done(err, false);
     }
   });
   

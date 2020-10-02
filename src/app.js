@@ -5,7 +5,7 @@ import cookieSession from "cookie-session";
 import cors from "cors";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes";
-import { googleStrategy } from "./database/config/passport";
+import { googleStrategy } from "./database/config/google-passport";
 
 dotenv.config();
 
@@ -31,14 +31,15 @@ app.use("/api/v1/", userRoutes);
 // Google authentication
 passport.use(googleStrategy);
 
-passport.serializeUser((user, cb) => {
-  cb(null, user);
+passport.serializeUser((user, done) => {
+  done(null, user);
 });
-passport.deserializeUser((user, cb) => {
-  cb(null, user);
+passport.deserializeUser((user, done) => {
+  done(null, user);
 });
 
 app.get("/auth/google/callback", passport.authenticate("google", {
+  scope: ["profile", "email"],
   successRedirect: "/",
 }));
 
