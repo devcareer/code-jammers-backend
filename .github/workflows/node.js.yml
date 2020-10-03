@@ -11,23 +11,17 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 14.x]
-              # Service containers to run with `runner-job`
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        # Set health checks to wait until postgres has started
-        options: >-
+  services:
+    postgres:
+      image: postgres
+      env:
+        POSTGRES_PASSWORD: postgres
+      options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
         ports:
-          # Maps tcp port 5432 on service container to the host
           - 5432:5432
     steps:
     - uses: actions/checkout@v2
@@ -38,17 +32,17 @@ jobs:
     - run: npm install
     - run: npm run build --if-present
     - name: Connect to PostgreSQL
-        run: node app.js
-        env:
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: 5432
+      run: node app.js
     - run: npm run coverage
+    - run: npm test
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         COVERALLS_GIT_BRANCH: ${{ github.ref }}
+        JWT_KEY: gibbrish
+        POSTGRES_PORT: 5432
+        POSTGRES_HOST: localhost
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-      
