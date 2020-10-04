@@ -25,8 +25,6 @@ jobs:
     - name: Coveralls
       uses: coverallsapp/github-action@master
       env:
-        DEV_DATABASE_URL: postgres://ncluostv:Iew1dAa503BwNGeuSXMzKUWaxXOWi98J@lallah.db.elephantsql.com:5432/ncluostv
-        JWT_KEY: secret
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         COVERALLS_GIT_BRANCH: ${{ github.ref }}
       with:
