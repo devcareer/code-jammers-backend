@@ -43,11 +43,11 @@ export default class UserController {
   static async updateUserRole(req, res) {
     try {
       const { id } = req.params;
-      const { username, role } = req.body;
-      const updateUserRole = { username, role };
+      const { role } = req.body;
+      const updateUserRole = { role };
       const updatedRole = await User.updateUserRole(id, updateUserRole);
       if (!updatedRole) {
-        util.setError(404, `Cannot make ${username} an admin`);
+        util.setError(404, "Cannot make an admin");
       } else {
         util.setSuccess(200, "User role updated", updatedRole);
       }
