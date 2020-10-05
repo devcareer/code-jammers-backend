@@ -32,16 +32,11 @@ jobs:
     - run: npm run build --if-present
     - run: npm run coverage
 
-    - name: Import DB seed data
-        run: psql -d ${{ secrets.TEST_DATABASE_URL}}
-        working-directory: ./src/database/seeders
-        env:
-          PGPASSWORD: password
-
-      - name: Test some module
-        run: npm test
-        env:
-          CI_DB_URL: ${{ secrets.TEST_DATABASE_URL }}
+    - name: Test some module
+      run: npm test
+      env:
+        CI_DB_URL: ${{ secrets.TEST_DATABASE_URL }}
+        
     - name: Coveralls
       uses: coverallsapp/github-action@master
       env:
