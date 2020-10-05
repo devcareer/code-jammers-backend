@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-const password = "1234";
+const password = "12345";
 const hash = bcrypt.hashSync(password, 10);
 
 module.exports = {

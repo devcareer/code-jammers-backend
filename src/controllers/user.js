@@ -16,7 +16,7 @@ export default class UserController {
         return util.send(res);
       }
       const {
-        email, username, password, role
+        email, username, password
       } = req.body;
       const emailExist = await User.emailExist(email);
       if (emailExist) {
@@ -28,7 +28,7 @@ export default class UserController {
       }
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = {
-        email, username, password: hashedPassword, role
+        email, username, password: hashedPassword
       };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
@@ -37,6 +37,23 @@ export default class UserController {
     } catch (error) {
       util.setError(400, error.message);
       throw util.send(res);
+    }
+  }
+
+  static async updateUserRole(req, res) {
+    try {
+      const { id } = req.params;
+      const { username, role } = req.body;
+      const updateUserRole = { username, role };
+      const updatedRole = await User.updateUserRole(id, updateUserRole);
+      if (!updatedRole) {
+        util.setError(404, `Cannot make ${username} an admin`);
+      } else {
+        util.setSuccess(200, "User role updated", updatedRole);
+      }
+      return util.send(res);
+    } catch (error) {
+      throw error;
     }
   }
 
