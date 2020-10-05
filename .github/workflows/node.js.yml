@@ -7,10 +7,20 @@ on: ["push"]
 jobs:
   build:
     name: Build
-    runs-on: windows-latest
+    runs-on: [ windows-latest, linux-latest ]
     strategy:
       matrix:
         node-version: [12.x, 14.x]
+
+  services:
+      postgres:
+        image: postgis/postgis:10-2.5
+        env:
+          POSTGRES_PASSWORD: admin
+          POSTGRES_DB: test_db
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -21,6 +31,17 @@ jobs:
     - run: npm install
     - run: npm run build --if-present
     - run: npm run coverage
+
+    - name: Import DB seed data
+        run: psql -d postgresql://postgresql://postgres:admin@localhost:5432/test_db
+        working-directory: ./src/database/seeders
+        env:
+          PGPASSWORD: password
+
+      - name: Test some module
+        run: npm test
+        env:
+          CI_DB_URL: postgresql://postgres:admin@localhost:5432/test_db
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
