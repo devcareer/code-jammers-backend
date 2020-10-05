@@ -33,7 +33,7 @@ jobs:
     - run: npm run coverage
 
     - name: Import DB seed data
-        run: psql -d postgresql://postgres:admin@localhost:5432/test_db
+        run: psql -d postgresql://postgres:admin@postgres:5432/test_db
         working-directory: ./src/database/seeders
         env:
           PGPASSWORD: password
@@ -41,7 +41,7 @@ jobs:
       - name: Test some module
         run: npm test
         env:
-          CI_DB_URL: postgresql://postgres:admin@localhost:5432/test_db
+          CI_DB_URL: postgresql://postgres:admin@postgres:5432/test_db
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
