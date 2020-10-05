@@ -1,6 +1,6 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import { user } from "../users/user-sign-in-test-data";
+import { user, user4 } from "../users/user-sign-in-test-data";
 import {
   country, country2, country3
 } from "./addcountry-data";
@@ -31,15 +31,14 @@ describe("Add country", () => {
       .request(server)
       .post("/api/v1/users/signin")
       .set("Accept", "application/json")
-      .send(user)
+      .send(user4)
       .end((err, res) => {
         if (err) throw err;
-        adminToken = res.body.token;
+        userToken = res.body.token;
         done();
       });
   });
   it("should allow user with admin role add a country", done => {
-    console.log(`Token: ${adminToken}`);
     chai
       .request(server)
       .post("/api/v1/admin/addcountry")
@@ -85,16 +84,16 @@ describe("Add country", () => {
         done();
       });
   });
-  // it("should not allow user without admin role add a country", done => {
-  //   chai
-  //     .request(server)
-  //     .post("/api/v1/admin/addcountry")
-  //     .set("Authorization", `Bearer ${userToken}`)
-  //     .set("Accept", "application/json")
-  //     .send(country3)
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(403);
-  //       done();
-  //     });
-  // });
+  it("should not allow user without admin role add a country", done => {
+    chai
+      .request(server)
+      .post("/api/v1/admin/addcountry")
+      .set("Authorization", `Bearer ${userToken}`)
+      .set("Accept", "application/json")
+      .send(country3)
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        done();
+      });
+  });
 });

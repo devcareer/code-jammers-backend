@@ -5,6 +5,7 @@ import {
   user,
   user2,
   user3,
+  user4,
   decoder, newRole
 } from "./user-test-data";
 
@@ -16,6 +17,17 @@ chai.use(chaiHttp);
 
 describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
+    before(done => {
+      chai
+        .request(server)
+        .post("/api/v1/users/signup")
+        .set("Accept", "application/json")
+        .send(user4)
+        .end((err, res) => {
+          if (err) throw err;
+          done();
+        });
+    });
     let userId;
     it("it should create a user with complete details successfully", done => {
       chai
