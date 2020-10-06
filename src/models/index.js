@@ -14,11 +14,13 @@ if (config.url) {
     config.database,
     config.username,
     config.password,
-    config.host,
     config.port,
     config.name,
-    config.dialect,
     config,
+    {
+      host: config.host,
+      dialect: "postgres"
+    }
   );
 }
 fs
