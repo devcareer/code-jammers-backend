@@ -7,12 +7,12 @@ on: ["push"]
 jobs:
   build:
     name: Build
-    runs-on: [ windows-latest, linux-latest ]
+    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [12.x, 14.x]
-  
-  steps:
+
+    steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
