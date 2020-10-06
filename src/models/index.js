@@ -17,6 +17,7 @@ if (config.url) {
     config.host,
     config.port,
     config.name,
+    config.dialect,
     config,
   );
 }
