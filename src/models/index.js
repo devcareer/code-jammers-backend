@@ -14,9 +14,6 @@ if (config.url) {
     config.database,
     config.username,
     config.password,
-    config.port,
-    config.name,
-    config,
     {
       host: '127.0.0.1',
       dialect: "postgres"
