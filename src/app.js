@@ -10,7 +10,10 @@ import { fbStrategy } from "./database/config/facebookpassport";
 dotenv.config();
 
 const app = express();
+
 app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
@@ -23,9 +26,7 @@ app.use(passport.session());
 
 passport.use(fbStrategy);
 
-app.get("/auth/facebook", passport.authenticate("facebook", {
-  scope: ["profile", "email"]
-}));
+app.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }));
 
 app.get(
   "/auth/facebook/callback",
@@ -35,8 +36,6 @@ app.get(
     res.redirect("/");
   }
 );
-
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
