@@ -33,6 +33,14 @@ jobs:
         POSTGRES_PORT: 5432
     - run: npm run coverage
 
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        COVERALLS_GIT_BRANCH: ${{ github.ref }}
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
     services:
       # Label used to access the service container
       postgres:
@@ -52,11 +60,3 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
-
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        COVERALLS_GIT_BRANCH: ${{ github.ref }}
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
