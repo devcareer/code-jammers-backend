@@ -12,6 +12,24 @@ jobs:
       matrix:
         node-version: [12.x, 14.x]
 
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:        
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -28,7 +46,7 @@ jobs:
       # a new PostgreSQL client.
       env:
         # The hostname used to communicate with the PostgreSQL service container
-        POSTGRES_HOST: localhost
+        POSTGRES_HOST: postgres
         # The default PostgreSQL port
         POSTGRES_PORT: 5432
     - run: npm run coverage
@@ -40,23 +58,3 @@ jobs:
         COVERALLS_GIT_BRANCH: ${{ github.ref }}
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_DB: testdb        
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
