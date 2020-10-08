@@ -18,7 +18,7 @@ describe("src/models/Profile", () => {
   checkModelName(Profile)("Profiles");
   context("properties", () => {
     ["firstName", "lastName", "profilePicture", "userId"].forEach(
-      checkPropertyExists(profile),
+      checkPropertyExists(profile)
     );
   });
   context("associations", () => {

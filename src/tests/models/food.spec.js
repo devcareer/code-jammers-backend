@@ -19,7 +19,7 @@ describe("src/models/food", () => {
 
   context("properties", () => {
     ["countryId", "type", "methodOfPreparation", "gallery"].forEach(
-      checkPropertyExists(food),
+      checkPropertyExists(food)
     );
   });
   context("associations", () => {

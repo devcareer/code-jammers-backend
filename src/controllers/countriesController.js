@@ -1,15 +1,27 @@
 import db from "../models";
 
+const countriesAttributes = [
+  "id",
+  "nameOfCountry",
+  "gallery",
+  "capital",
+  "population",
+  "officialLanguage",
+  "region",
+  "currency",
+];
 const countriesController = {
   /**
-        * gets a list of all countries
-        * @param {object} req
-        * @param {object} res
-        * @returns {object} list of countries
-      */
+   * gets a list of all countries
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} list of countries
+   */
   async listCountries(req, res) {
     try {
-      const countries = await db.Countries.findAll({ attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"] });
+      const countries = await db.Countries.findAll({
+        attributes: countriesAttributes,
+      });
       res.status(200).send({
         status: 200,
         message: "Successfully retrived all countries",
@@ -24,11 +36,11 @@ const countriesController = {
   },
 
   /**
-    * gets a country with a specific id
-    * @param {object} req
-    * @param {object} res
-    * @returns {object} country with specific id
-    */
+   * gets a country with a specific id
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} country with specific id
+   */
   async getCountry(req, res) {
     const { id } = req.query;
 
@@ -44,7 +56,7 @@ const countriesController = {
         where: {
           id,
         },
-        attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
+        attributes: countriesAttributes,
       });
 
       return res.status(200).send({
@@ -59,6 +71,7 @@ const countriesController = {
       });
     }
   },
+<<<<<<< HEAD
   /**
     * deletes a country with the specified id
     * @param {object} req
@@ -127,6 +140,8 @@ const countriesController = {
     }
   },
 
+=======
+>>>>>>> 943642a258b3ce9ec2dd6c7682f78db6a9f6ee88
 };
 
 export default countriesController;
