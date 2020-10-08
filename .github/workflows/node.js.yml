@@ -8,6 +8,10 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: /code-jammers-backend/code-jammers-backend
     strategy:
       matrix:
         node-version: [12.x, 14.x]
@@ -42,7 +46,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build --if-present
-      working-directory: '/code-jammers-backend/code-jammers-backend'
     - name: Connect to PostgreSQL
       # Runs a script that creates a PostgreSQL client, populates
       # the client with data, and retrieves data
