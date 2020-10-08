@@ -16,7 +16,7 @@ if (config.url) {
     config.username,
     config.password,
     {
-      host: "postgres",
+      host: "host.docker.internal",
       dialect: "postgres"
     }
   );
