@@ -29,7 +29,7 @@ module.exports = {
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
     host: process.env.POSTGRES_HOST,
-    dialect: "postgres",
+    dialect: "postgres:12.4",
   },
   production: {
     url: process.env.DATABASE_URL,
