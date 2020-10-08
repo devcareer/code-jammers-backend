@@ -11,6 +11,9 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 14.x]
+    
+    container:
+      image: node:10.18-jessie
 
     services:
       # Label used to access the service container
@@ -19,11 +22,9 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
-          POSTGRES_DB: testdb        
-          POSTGRES_PASSWORD: postgres
           POSTGRES_USER: postgres
-          POSTGRES_HOST: 127.0.0.1
-          POSTGRES_PORT: 5432
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -42,6 +43,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build --if-present
+      env:
+        JWT_KEY: ${{ secrets.JWT_KEY }}
     - name: Connect to PostgreSQL
       # Runs a script that creates a PostgreSQL client, populates
       # the client with data, and retrieves data
