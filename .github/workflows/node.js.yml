@@ -11,7 +11,9 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x, 14.x]
-
+    
+    container: node:10.18-jessie
+    
     services:
       # Label used to access the service container
       postgres:
