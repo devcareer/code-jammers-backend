@@ -18,7 +18,8 @@ jobs:
         # Docker Hub image
         image: postgres
         # Provide the password for postgres
-        env:    
+        env:   
+          NODE_ENV: test 
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: testdb
@@ -49,6 +50,7 @@ jobs:
       # Environment variable used by the `client.js` script to create
       # a new PostgreSQL client.
       env:
+        NODE_ENV: test
         # The hostname used to communicate with the PostgreSQL service container
         POSTGRES_HOST: postgres
         # The default PostgreSQL port
@@ -60,5 +62,6 @@ jobs:
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         COVERALLS_GIT_BRANCH: ${{ github.ref }}
+        NODE_ENV: test
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
