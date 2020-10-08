@@ -1,9 +1,8 @@
 import passport from "passport";
 import dotenv from "dotenv";
 import FacebookStrategy from "passport-facebook";
-import model from "../../models";
-
-const { Users } = model;
+import { Users } from "../../models";
+import User from "../../services/UserService/User";
 
 dotenv.config();
 
@@ -25,22 +24,26 @@ async (accessToken, refreshToken, profile, done) => {
   console.log("profile", profile);
   try {
     const email = profile.emails[0].value;
-    // check if user already exists our database
-    const userExist = await Users.findOne({ where: { password: profile.id }, email });
-    console.log("user", userExist);
-    if (userExist) {
-      return done(null, userExist);
+    // check if user already exists in our database
+    const userExist = await Users.findOne({ facebookId: profile.id });
+    if (!userExist) {
+      const newUser = {
+        email,
+        username: profile.displayName,
+        password: "facebook",
+        role: "User",
+        facebookId: profile.id,
+        provider: "facebook",
+
+      };
+      await User.createUser(newUser);
+      return done(null, newUser);
     }
 
-    const newUser = await Users.create({
-      email,
-      username: profile.displayName,
-      password: profile.id,
-      role: "User",
-    });
-    return done(null, newUser);
+    return done(null, userExist);
   } catch (err) {
     return done(err, false);
   }
 });
+
 export { fbStrategy };
