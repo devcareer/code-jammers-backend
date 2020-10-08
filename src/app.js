@@ -25,6 +25,7 @@ app.use(express.json());
 app.use("/api/v1", router);
 
 app.use("/api/v1", countryRoutes);
+
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
 });

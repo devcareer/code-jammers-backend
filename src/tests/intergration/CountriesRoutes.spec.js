@@ -106,6 +106,21 @@ describe("Countries api routes", () => {
         });
     });
 
+    it("returns an error when id is not provided when updating a country", done => {
+      chai
+        .request(server)
+        .delete("/api/v1/delete-country?")
+        .end((err, res) => {
+          const { status, body } = res;
+
+          // status should be 200
+          expect(status).to.equal(404);
+          expect(body.status).to.equal(404);
+          expect(body.error).to.equal("id not provided please provide an id");
+          done();
+        });
+    });
+
     it("returns country which matches mock", done => {
       chai
         .request(server)
@@ -128,6 +143,110 @@ describe("Countries api routes", () => {
 
           expect(data.currency).to.equal("Naira");
 
+          done();
+        });
+    });
+  });
+
+  describe("DELETE country with specific id route", () => {
+    beforeEach(async () => {
+      await db.Countries.create(countryMockData);
+    });
+
+    it("deletes country with specific id", done => {
+      chai
+        .request(server)
+        .delete("/api/v1/delete-country?id=6003fb36-5112-463e-a1f9-c8944e72412f")
+        .end((err, res) => {
+          const { status, body } = res;
+
+          // status should be 200
+          expect(status).to.equal(200);
+          expect(body.status).to.equal(200);
+          expect(body.message).to.equal("Successfully deleted country with id 6003fb36-5112-463e-a1f9-c8944e72412f");
+          done();
+        });
+    });
+
+    it("returns 404 when deleting country which is not in db", done => {
+      chai
+        .request(server)
+        .delete("/api/v1/delete-country?id=6003fb36")
+        .end((err, res) => {
+          const { status, body } = res;
+
+          // status should be 200
+          expect(status).to.equal(404);
+          expect(body.status).to.equal(404);
+          expect(body.error).to.equal("Country with  id '6003fb36' not found");
+          done();
+        });
+    });
+
+    it("returns an error when id is not provided when deleteing a country", done => {
+      chai
+        .request(server)
+        .delete("/api/v1/delete-country?")
+        .end((err, res) => {
+          const { status, body } = res;
+
+          // status should be 200
+          expect(status).to.equal(404);
+          expect(body.status).to.equal(404);
+          expect(body.error).to.equal("id not provided please provide an id");
+          done();
+        });
+    });
+  });
+
+  describe("UPDATE country with specific id route", () => {
+    beforeEach(async () => {
+      await db.Countries.create(countryMockData);
+    });
+
+    it("updates country with specific id", done => {
+      chai
+        .request(server)
+        .put("/api/v1/update-country?id=6003fb36-5112-463e-a1f9-c8944e72412f")
+        .set("content-type", "application/json")
+        .send({ population: 50000 })
+        .end((err, res) => {
+          const { status, body } = res;
+
+          // status should be 200
+          expect(status).to.equal(200);
+          expect(body.status).to.equal(200);
+          expect(body.message).to.equal("Successfully updated country with id 6003fb36-5112-463e-a1f9-c8944e72412f");
+          done();
+        });
+    });
+
+    it("returns 404 when updating country which is not in db", done => {
+      chai
+        .request(server)
+        .delete("/api/v1/delete-country?id=6003fb36")
+        .end((err, res) => {
+          const { status, body } = res;
+
+          // status should be 200
+          expect(status).to.equal(404);
+          expect(body.status).to.equal(404);
+          expect(body.error).to.equal("Country with  id '6003fb36' not found");
+          done();
+        });
+    });
+
+    it("returns an error when id is not provided when updating a country", done => {
+      chai
+        .request(server)
+        .delete("/api/v1/delete-country?")
+        .end((err, res) => {
+          const { status, body } = res;
+
+          // status should be 200
+          expect(status).to.equal(404);
+          expect(body.status).to.equal(404);
+          expect(body.error).to.equal("id not provided please provide an id");
           done();
         });
     });
