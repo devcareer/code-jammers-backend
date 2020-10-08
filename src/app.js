@@ -16,6 +16,7 @@ const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", userRoutes);
 app.use("/api/v1", countryRoutes);
+
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
 });
