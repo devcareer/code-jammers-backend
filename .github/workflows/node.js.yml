@@ -55,7 +55,6 @@ jobs:
         # The hostname used to communicate with the PostgreSQL service container
         POSTGRES_HOST: postgres
         # The default PostgreSQL port
-        POSTGRES_HOST: postgres
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
     - run: npm run coverage
 
