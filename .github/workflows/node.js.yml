@@ -16,31 +16,15 @@ jobs:
       image: node:10.18-jessie
 
     services:
-      web:
-        image: node
-        command: npm start
-        ports:
-          - "8000:4242"
-        # links:
-        #   - db
-        working_dir: /src
-        environment:
-          SEQ_DB: mypgdatabase
-          SEQ_USER: username
-          SEQ_PW: password
-          PORT: 4242
-          DEV_DATABASE_URL: "postgres://username:password@db:5432/mypgdatabase"
-        volumes:
-            - ./:/src
-      db:
+      # Label used to access the service container
+      postgres:
         # Docker Hub image
         image: postgres
         # Provide the password for postgres
-        ports:
-        - "5432:5432"
-          environment:
-            POSTGRES_USER: username
-            POSTGRES_PASSWORD: password
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -69,7 +53,7 @@ jobs:
       # a new PostgreSQL client.
       env:
         # The hostname used to communicate with the PostgreSQL service container
-        POSTGRES_HOST: db
+        POSTGRES_HOST: docker-machine ip
         # The default PostgreSQL port
         POSTGRES_PORT: 5432
     - run: npm run coverage
