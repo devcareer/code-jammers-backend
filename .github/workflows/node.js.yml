@@ -56,7 +56,7 @@ jobs:
         POSTGRES_HOST: postgres
         # The default PostgreSQL port
         POSTGRES_PORT: 5432
-      - name: Run migration
+    - name: Run migration
       run: npm run migration
 
     - run: npm run coverage
