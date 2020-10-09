@@ -44,7 +44,7 @@ jobs:
       env:
         POSTGRES_HOST: postgres
         POSTGRES_PORT: 5432
-        
+
     - run: npm run coverage
       env:
         NODE_ENV: test
