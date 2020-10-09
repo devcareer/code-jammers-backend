@@ -59,6 +59,8 @@ jobs:
       env:
         NODE_ENV: test
         JWT_KEY: ${{ secrets.JWT_KEY }}
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
