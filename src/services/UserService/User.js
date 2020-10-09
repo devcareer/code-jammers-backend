@@ -1,5 +1,4 @@
 import database from "../../models";
-import util from "../../utilities/util";
 
 export default class User {
   static async usernameExist(username) {
@@ -44,8 +43,6 @@ export default class User {
         });
         return updateUserRole;
       }
-      // util.setError(400, `Sorry, cannot make ${username} an admin`);
-      // return util.send(res);
     } catch (error) {
       throw error;
     }
