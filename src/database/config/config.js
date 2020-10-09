@@ -2,10 +2,7 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    username: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-    host: process.env.POSTGRES_HOST,
+    url: process.env.DEV_DATABASE_URL,
     dialect: "postgres",
   },
   test: {
@@ -16,10 +13,7 @@ module.exports = {
     dialect: "postgres"
   },
   production: {
-    username: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-    host: process.env.POSTGRES_HOST,
+    url: process.env.DATABASE_URL,
     dialect: "postgres",
   }
 };
