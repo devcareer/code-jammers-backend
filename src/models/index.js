@@ -19,7 +19,8 @@ if (config.url) {
     {
       host: "postgres",
       dialect: "postgres"
-    }
+    },
+    config
   );
 }
 fs
