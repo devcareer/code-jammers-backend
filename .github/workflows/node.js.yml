@@ -57,7 +57,8 @@ jobs:
         POSTGRES_PORT: 5432
     - run: npm run coverage
       env:
-          JWT_KEY: ${{ secrets.JWT_KEY }}
+        NODE_ENV: ${{ secrets.NODE_ENV }}
+        JWT_KEY: ${{ secrets.JWT_KEY }}
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
