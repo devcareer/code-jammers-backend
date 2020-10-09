@@ -57,7 +57,7 @@ jobs:
         POSTGRES_PORT: 5432
     - run: npm run coverage
       env:
-        NODE_ENV: ${{ secrets.NODE_ENV }}
+        NODE_ENV: test
         JWT_KEY: ${{ secrets.JWT_KEY }}
 
     - name: Coveralls
