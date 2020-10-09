@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
-    "database": "postgres",
+    "password": "Power1050",
+    "database": "dev_db",
     "host": "postgres",
     "dialect": "postgres"
   },
