@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import sgMail from "@sendgrid/mail";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
@@ -9,7 +8,6 @@ import { registerValidation, loginValidation, checkIfVerified } from "../validat
 import sgMailService from "../utilities/sendgrid";
 
 dotenv.config();
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -31,9 +29,14 @@ export default class UserController {
       const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      await sgMail.send(sgMailService.data(email));
-      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
-      return util.send(res);
+      const emailSent = await sgMailService(email);
+      if (emailSent) {
+        util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
+        return util.send(res);
+      }
+      res.send({
+        status: 201, message: "User created! Verification email wasn't sent. Please contact administrator", token
+      });
     } catch (error) {
       util.setError(400, error.message);
       throw util.send(res);
