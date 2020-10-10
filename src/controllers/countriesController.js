@@ -144,6 +144,10 @@ const countriesController = {
       });
     }
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 59e2f4d... fixed failing test for delete cuontries route
 };
 
 export default countriesController;
