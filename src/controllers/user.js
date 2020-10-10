@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import bcrypt from "bcrypt";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
@@ -6,7 +7,6 @@ import { registerValidation, loginValidation } from "../validation/userValidatio
 
 const { generateToken } = jwtHelper;
 const util = new Util();
-
 export default class UserController {
   static async createUser(req, res) {
     try {
@@ -15,45 +15,38 @@ export default class UserController {
         util.setError(400, "Validation Error", error.message);
         return util.send(res);
       }
-      const {
-        email, username, password
-      } = req.body;
-      const emailExist = await User.emailExist(email);
-      if (emailExist) {
-        return res.status(409).json({ status: 409, error: "Email already used by another user." });
-      }
-      const usernameExist = await User.usernameExist(username);
-      if (usernameExist) {
-        return res.status(409).json({ status: 409, error: `Sorry, ${username} is not available. Please pick another username` });
-      }
+      const { email, username, password } = req.body;
+      const Email = email.toLowerCase();
+      const Username = username.toLowerCase();
+      const emailExist = await User.emailExist(Email);
+      if (emailExist) return res.status(409).json({ status: 409, error: "Email already used by another user." });
+      const usernameExist = await User.usernameExist(Username);
+      if (usernameExist) return res.status(409).json({ status: 409, error: `Sorry, ${username} is not available. Please pick another username` });
       const hashedPassword = await bcrypt.hash(password, 10);
-      const newUser = {
-        email, username, password: hashedPassword
-      };
+      const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
       util.setSuccess(201, "User created!", token);
       return util.send(res);
     } catch (error) {
-      util.setError(400, error.message);
-      throw util.send(res);
+      res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 
-  static async updateUserRole(req, res) {
-    try {
-      const { id } = req.params;
-      const { role } = req.body;
-      const updateUserRole = { role };
-      const updatedRole = await User.updateUserRole(id, updateUserRole);
-      if (!updatedRole) {
-        util.setError(404, "Cannot make an admin");
-      } else {
-        util.setSuccess(200, "User role updated", updatedRole);
+  static async updateUserRole(req, res) {
+    try {
+      const { id } = req.params;
+      const { role } = req.body;
+      const updateUserRole = { role };
+      const updatedRole = await User.updateUserRole(id, updateUserRole);
+      if (!updatedRole) {
+        util.setError(404, "Cannot make an admin");
+      } else {
+        util.setSuccess(200, "User role updated", updatedRole);
       }
-      return util.send(res);
-    } catch (error) {
-      throw error;
+      return util.send(res);
+    } catch (error) {
+      throw error;
     }
   }
 
@@ -64,22 +57,21 @@ export default class UserController {
         util.setError(400, "Validation Error", error.message);
         return util.send(res);
       }
-      const {
-        email, username, password, role
-      } = req.body;
-      const user = await User.emailExist(email);
+      const { email, username, password } = req.body;
+      const Email = email.toLowerCase();
+      const user = await User.emailExist(Email);
       if (!user) {
         return res.status(404).json({ status: 404, error: "Email does not exist." });
       }
       const validpass = await bcrypt.compare(password, user.password);
       if (!validpass) {
-        return res.status(400).json({ status: 400, error: "Password is not correct!." });
+        return res.status(404).json({ status: 400, error: "Password is not correct!." });
       }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
-      util.setError(400, error.message);
-    } throw util.send(res);
+      res.status(500).json({ status: 500, error: "Server Error" });
+    }
   }
 }
