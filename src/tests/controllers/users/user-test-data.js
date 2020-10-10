@@ -29,7 +29,6 @@ const decoder = token => {
     process.env.JWT_KEY,
   );
   const payload = result;
-  console.log(payload);
   const userId = payload.createdUser.id;
   return userId;
 };

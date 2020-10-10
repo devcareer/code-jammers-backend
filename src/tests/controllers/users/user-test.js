@@ -9,8 +9,6 @@ import {
   decoder, newRole
 } from "./user-test-data";
 
-// assertion style
-
 chai.should();
 
 chai.use(chaiHttp);

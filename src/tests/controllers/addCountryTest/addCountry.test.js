@@ -41,7 +41,7 @@ describe("Add country", () => {
   it("should allow user with admin role add a country", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/addcountry")
+      .post("/api/v1/admin/country")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(country)
@@ -53,7 +53,7 @@ describe("Add country", () => {
   it("should not allow admin add the same country twice", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/addcountry")
+      .post("/api/v1/admin/country")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(country)
@@ -65,7 +65,7 @@ describe("Add country", () => {
   it("should not allow admin add a country with incomplete details", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/addcountry")
+      .post("/api/v1/admin/country")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(country2)
@@ -74,10 +74,10 @@ describe("Add country", () => {
         done();
       });
   });
-  it("should not allow user without login auth add a country", done => {
+  it("should not allow user without token add a country", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/addcountry")
+      .post("/api/v1/admin/country")
       .send(country3)
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -87,7 +87,7 @@ describe("Add country", () => {
   it("should not allow user without admin role add a country", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/addcountry")
+      .post("/api/v1/admin/country")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
       .send(country3)

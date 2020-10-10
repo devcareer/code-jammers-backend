@@ -7,8 +7,6 @@ import {
   user3
 } from "./user-sign-in-test-data";
 
-// assertion style
-
 chai.should();
 
 chai.use(chaiHttp);

@@ -10,20 +10,20 @@ export default class adminController {
       if (country) {
         return res.status(409).json({ status: 409, message: "This country already exists in the database." });
       }
+      const countryName = nameOfCountry[0].toUpperCase() + nameOfCountry.slice(1);
       const newCountry = {
-        nameOfCountry, gallery, capital, population, officialLanguage, region, currency,
+        nameOfCountry: countryName,
+        gallery,
+        capital,
+        population,
+        officialLanguage,
+        region,
+        currency,
       };
       const createdCountry = await Admin.addCountry(newCountry);
-      return res.status(201).json({
-        status: 201,
-        message: "A country has been added.",
-        data: createdCountry,
-      });
+      return res.status(201).json({ status: 201, message: "A country has been added.", data: createdCountry, });
     } catch (error) {
-      return res.status(400).json({
-        status: 400,
-        error: [error.message],
-      });
+      return res.status(400).json({ status: 400, error: [error.message], });
     }
   }
 }

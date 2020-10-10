@@ -1,11 +1,21 @@
-const isAdmin = (req, res, next) => {
-  const payload = req.decoded;
-  console.log("Role: ", payload.user.role);
-  if (payload && payload.user.role === "Admin") {
-    next();
-  } else {
-    return res.status(403).send("Access denied.");
-  }
-};
+import Auth from "../services/AdminServices/authServices";
 
-export default isAdmin;
+export default class Authentication {
+  static async verifyAdmin(req, res, next) {
+    const authorizationHeader = req.headers.authorization;
+    let decoded;
+    if (authorizationHeader) {
+      const token = req.headers.authorization.split(" ")[1];
+      decoded = await Auth.verifyToken(token);
+    } else {
+      return res.status(401).json({ error: "Authentication error. Token required." });
+    }
+
+    const { id } = decoded.user;
+    const user = await Auth.checkId(id);
+    if (user) {
+      return next();
+    }
+    return res.status(403).json({ error: " Access denied." });
+  }
+}
