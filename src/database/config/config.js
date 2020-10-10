@@ -6,11 +6,14 @@ module.exports = {
     dialect: "postgres",
   },
   test: {
-    url: process.env.TEST_DATABASE_URL,
-    dialect: "postgres",
+    username: "postgres",
+    password: "postgres",
+    database: "postgres",
+    host: "postgres",
+    dialect: "postgres"
   },
   production: {
     url: process.env.DATABASE_URL,
     dialect: "postgres",
-  },
+  }
 };
