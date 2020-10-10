@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import cookieSession from "cookie-session";
 import passport from "passport";
 import userRoutes from "./routes/userRoutes";
+import authRoutes from "./routes/authRoutes";
+
 import { fbStrategy } from "./database/config/facebookpassport";
 
 dotenv.config();
@@ -42,6 +44,7 @@ app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", userRoutes);
+// app.use("/api/v1/", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");

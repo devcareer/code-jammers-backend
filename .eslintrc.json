@@ -19,6 +19,7 @@
       "no-unused-vars":"off",
       "no-undef":"off",
       "comma-dangle":"off",
+      "consistent-return":"off",
       "no-tabs":"off",
       "global-require":"off",
       "import/no-unresolved":"off",

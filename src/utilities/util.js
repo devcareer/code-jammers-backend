@@ -13,14 +13,14 @@ export default class Util {
     this.message = message;
     this.token = token;
     this.data = data;
-    this.type = statusCode;
+    this.type = "success";
   }
 
   setError(statusCode, message, error) {
     this.statusCode = statusCode;
     this.message = message;
     this.error = error;
-    this.type = "success";
+    this.type = "error";
   }
 
   send(res) {
@@ -29,13 +29,12 @@ export default class Util {
       message: this.message,
       token: this.token,
     };
-
-    if (this.type === this.statusCode) {
+    if (this.type === "success") {
       return res.status(this.statusCode).json(result);
     }
     return res.status(this.statusCode).json({
-      status: this.type,
-      message: this.message,
+      status: this.statusCode,
+      error: this.error
     });
   }
 }

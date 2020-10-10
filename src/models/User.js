@@ -10,6 +10,10 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
+    facebookId: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

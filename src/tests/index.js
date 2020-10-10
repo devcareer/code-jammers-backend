@@ -1,12 +1,10 @@
 import "./index-test";
-import "./controllers/userSignUpTest/user-test";
 import "./models/food.spec";
 import "./models/music.spec";
 import "./models/comment.spec";
 import "./models/newsletter.spec";
 import "./models/historicalfact.test";
 import "./models/securityinformation.test";
-import "./controllers/userSignUpTest/user-sign-in-test";
 import "./models/State.spec";
 import "./models/TouristCenter.spec";
 import "./models/country.spec";

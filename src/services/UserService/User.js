@@ -1,15 +1,16 @@
 import database from "../../models";
 
 export default class User {
-  static async createUser(newUser) {
+  static async usernameExist(username) {
     try {
-      return await database.Users.create(newUser);
+      const usernameExist = await database.Users.findOne({ where: { username } });
+      return usernameExist;
     } catch (error) {
       throw error;
     }
   }
 
-  static async checkEmail(email) {
+  static async emailExist(email) {
     try {
       return await database.Users.findOne({ where: { email } });
     } catch (error) {

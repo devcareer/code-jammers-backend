@@ -13,6 +13,9 @@ module.exports = {
       username: {
         type: Sequelize.STRING,
       },
+      facebookId: {
+        type: Sequelize.STRING,
+      },
       password: {
         type: Sequelize.STRING,
       },
