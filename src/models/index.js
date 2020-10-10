@@ -3,6 +3,8 @@ const path = require("path");
 const Sequelize = require("sequelize");
 require('dotenv').config();
 
+require("dotenv").config();
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(`${__dirname}/../database/config/config.js`)[env];
@@ -18,7 +20,12 @@ if (config.url) {
     {
       host: config.host,
       dialect: "postgres"
+<<<<<<< HEAD
     }
+=======
+    },
+    config
+>>>>>>> 09bec5e3b905d9ba6e4d1877edb4a3c144663718
   );
 }
 fs
