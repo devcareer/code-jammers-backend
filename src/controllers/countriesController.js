@@ -71,7 +71,6 @@ const countriesController = {
       });
     }
   },
-<<<<<<< HEAD
   /**
     * deletes a country with the specified id
     * @param {object} req
@@ -140,8 +139,6 @@ const countriesController = {
     }
   },
 
-=======
->>>>>>> 943642a258b3ce9ec2dd6c7682f78db6a9f6ee88
 };
 
 export default countriesController;
