@@ -4,8 +4,7 @@ import server from "../../../app";
 import {
   user,
   user2,
-  user3,
-  user4
+  user3
 } from "./user-test-data";
 import sendGrid from "../../../utilities/sendgrid"
 
