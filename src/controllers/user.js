@@ -1,10 +1,9 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
-import { registerValidation, loginValidation, checkIfVerified } from "../validation/userValidation";
+import { registerValidation, loginValidation } from "../validation/userValidation";
 import sendGrid from "../utilities/sendgrid";
 
 dotenv.config();
@@ -41,7 +40,7 @@ export default class UserController {
   static async verifyUser(req, res) {
     try {
       console.log(req.params.email);
-      
+
       const updatedUser = await User.updateUserVerification(req.params.email);
       res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified } });
     } catch (e) {

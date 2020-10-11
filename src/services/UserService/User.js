@@ -34,7 +34,7 @@ export default class User {
     }
   }
 
-  static checkIfVerified(userDelails, res){
+  static checkIfVerified(userDelails, res) {
     if (!userDelails.verified) return res.status(400).send({ message: "Please Verify your account to continue. click on the link provided in your mail" });
   }
 

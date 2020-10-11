@@ -24,6 +24,7 @@ export default class {
   static sandboxMode() {
     msg.mail_settings.sandbox_mode.enable = true;
   }
+
   static async sendVerificationEmail(email) {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const link = `${hostURL}/api/v1/users/signup/verify/${email}`;
@@ -34,5 +35,5 @@ export default class {
     } catch (err) {
       console.error(err.message);
     }
-  };
+  }
 }
