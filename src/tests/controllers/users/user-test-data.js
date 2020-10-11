@@ -1,17 +1,17 @@
 const user = {
-  username: "GarryT",
-  email: "Garrasdy@gmail.com",
+  username: "garryT",
+  email: "garrasdy@gmail.com",
   password: "123456",
 };
 
 const user2 = {
-  email: "Garry@gmail.com",
+  email: "garry@gmail.com",
   password: "123456",
 };
 
 const user3 = {
-  username: "Grace",
-  email: "Garrasdy@gmail.com",
+  username: "grace",
+  email: "garrasdy@gmail.com",
   password: "123456",
 };
 

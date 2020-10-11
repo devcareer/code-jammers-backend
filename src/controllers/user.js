@@ -30,7 +30,7 @@ export default class UserController {
       const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      await sendGrid.sendVerificationEmail(email);
+      await sendGrid.sendVerificationEmail(Email);
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
@@ -40,6 +40,8 @@ export default class UserController {
 
   static async verifyUser(req, res) {
     try {
+      console.log(req.params.email);
+      
       const updatedUser = await User.updateUserVerification(req.params.email);
       res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified } });
     } catch (e) {
@@ -64,7 +66,7 @@ export default class UserController {
       if (!validpass) {
         return res.status(404).json({ status: 400, error: "Password is not correct!." });
       }
-      checkIfVerified(user, res);
+      User.checkIfVerified(user, res);
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);

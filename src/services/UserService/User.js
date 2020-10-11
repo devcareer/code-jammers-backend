@@ -34,6 +34,10 @@ export default class User {
     }
   }
 
+  static checkIfVerified(userDelails, res){
+    if (!userDelails.verified) return res.status(400).send({ message: "Please Verify your account to continue. click on the link provided in your mail" });
+  }
+
   static async updateUserVerification(email) {
     try {
       return await database.Users.update({ verified: true }, {
