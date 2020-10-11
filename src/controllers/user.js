@@ -5,7 +5,7 @@ import Util from "../utilities/util";
 import User from "../services/UserService/User";
 import jwtHelper from "../utilities/Jwt";
 import { registerValidation, loginValidation, checkIfVerified } from "../validation/userValidation";
-import sgMailService from "../utilities/sendgrid";
+import sendGrid from "../utilities/sendgrid";
 
 dotenv.config();
 
@@ -29,14 +29,9 @@ export default class UserController {
       const newUser = { email, username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      const emailSent = await sgMailService(email);
-      if (emailSent) {
-        util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
-        return util.send(res);
-      }
-      res.send({
-        status: 201, message: "User created! Verification email wasn't sent. Please contact administrator", token
-      });
+      await sendGrid.sendVerificationEmail(email);
+      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
+      return util.send(res);
     } catch (error) {
       util.setError(400, error.message);
       throw util.send(res);

@@ -7,9 +7,10 @@ import {
   user3,
   user4
 } from "./user-test-data";
+import sendGrid from "../../../utilities/sendgrid"
 
 // assertion style
-
+sendGrid.sandboxMode();
 chai.should();
 
 chai.use(chaiHttp);
