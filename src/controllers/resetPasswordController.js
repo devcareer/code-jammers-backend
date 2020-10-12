@@ -1,34 +1,35 @@
-import bcrypt from "bcrypt-nodejs";
 import db from "../models/index";
 
 import signToken from "../utilities/signToken";
-import sendEmail from "../utilities/sendEmail";
+import utils from "../utilities";
 import hashPassword from "../utilities/hashPassword";
 
+const { sendEmail } = utils;
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 export default {
-  recover: (req, res) => {
-    db.Users.findOne({
-      where: { email: req.body.email },
-      attributes: ["id", "username", "email", "password"],
-    })
-      .then(user => {
-        if (!user) {
-          return res.status(404).json({
-            status: 404,
-            error: `The email address ${req.body.email} is not associated with any account.`,
-          });
-        }
-
-        const signed = signToken(user.toJSON(), user.password);
-
-        const link = `http://localhost:3000/reset-password/${user.id}/${signed}`;
-
-        sendEmail(link, user, res);
-        return null;
+  recover: async (req, res) => {
+    try {
+      const user = await db.Users.findOne({
+        where: { email: req.body.email },
+        attributes: ["id", "username", "email", "password"],
       });
+      if (!user) {
+        return res.status(404).json({
+          status: 404,
+          error: `The email address ${req.body.email} is not associated with any account.`,
+        });
+      }
+
+      const signed = signToken(user.toJSON(), user.password);
+
+      const link = `http://localhost:3000/reset-password/${user.id}/${signed}`;
+
+      return sendEmail(link, user, res);
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   reset: (req, res) => {
@@ -40,6 +41,7 @@ export default {
     })
       .then(user => {
         if (!user) {
+<<<<<<< HEAD
 <<<<<<< HEAD
           return res.send({ status: 200, error: "user does not exist" });
         } try {
@@ -56,6 +58,9 @@ export default {
         } catch (error) {
 =======
           res.send({ status: 200, error: "user does not exist" });
+=======
+          return res.send({ status: 200, error: "user does not exist" });
+>>>>>>> 23c2935... add test files for reset password
         }
         try {
           jwt.verify(token, user.password);

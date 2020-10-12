@@ -6,13 +6,11 @@ import {
   user2,
   user3
 } from "./user-test-data";
-<<<<<<< HEAD
 import sendGrid from "../../../utilities/sendgrid";
 
 sendGrid.sandboxMode();
-=======
+
 // assertion style
->>>>>>> 23c2935... add test files for reset password
 chai.should();
 chai.use(chaiHttp);
 describe("Should test all users", async () => {

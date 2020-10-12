@@ -12,10 +12,9 @@ const user3 = {
   email: "garrasdy@gmail.com",
   password: "123456",
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> 23c2935... add test files for reset password
 export {
-  user, user2, user3,
+  user,
+  user2,
+  user3,
 };

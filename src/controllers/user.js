@@ -31,6 +31,7 @@ export default class UserController {
       }
       const { email, username, password } = req.body;
 <<<<<<< HEAD
+<<<<<<< HEAD
       const Email = email.toLowerCase();
       const Username = username.toLowerCase();
       const emailExist = await User.emailExist(Email);
@@ -40,6 +41,8 @@ export default class UserController {
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email: Email, username: Username, password: hashedPassword };
 =======
+=======
+>>>>>>> 23c2935... add test files for reset password
 
       const emailExist = await User.emailExist(email);
       console.log(email, username, password);
@@ -53,6 +56,9 @@ export default class UserController {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const newUser = { email, username, password };
+<<<<<<< HEAD
+>>>>>>> 23c2935... add test files for reset password
+=======
 >>>>>>> 23c2935... add test files for reset password
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
@@ -60,6 +66,7 @@ export default class UserController {
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
+<<<<<<< HEAD
 <<<<<<< HEAD
       res.status(500).json({ status: 500, error: "Server Error" });
     }
@@ -78,6 +85,8 @@ export default class UserController {
       util.setError(500, "Server Error", e);
       return util.send(res);
 =======
+=======
+>>>>>>> 23c2935... add test files for reset password
       console.log("ERRRRRR");
       util.setError(400, error.message);
       throw util.send(res);
