@@ -58,10 +58,10 @@ export default class UserController {
       const { email, username, password } = req.body;
       const Email = email.toLowerCase();
       const user = await User.emailExist(Email);
-      if (!user) return res.status(404).json({ status: 404, error: "Email does not exist." });   
+      if (!user) return res.status(404).json({ status: 404, error: "Email does not exist." });
       const validpass = await bcrypt.compare(password, user.password);
       if (!validpass) return res.status(404).json({ status: 400, error: "Password is not correct!." });
-      if (!user.verified){
+      if (!user.verified) {
         return res.status(400).send({
           message: "Please Verify your account to continue. click on the link provided in your mail"
         });
