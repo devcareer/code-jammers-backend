@@ -1,12 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-<<<<<<< HEAD
 import adminRoutes from "./routes/adminRoutes";
-import userRoutes from "./routes/userRoutes";
-=======
->>>>>>> e62269e... resolve conflicts
-import handlebars from "express-handlebars";
 import userRoutes from "./routes/userRoutes";
 import router from "./routes";
 
