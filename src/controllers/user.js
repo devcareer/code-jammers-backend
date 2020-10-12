@@ -19,6 +19,7 @@ export default class UserController {
         return util.send(res);
       }
       const { email, username, password } = req.body;
+<<<<<<< HEAD
       const Email = email.toLowerCase();
       const Username = username.toLowerCase();
       const emailExist = await User.emailExist(Email);
@@ -27,12 +28,28 @@ export default class UserController {
       if (usernameExist) return res.status(409).json({ status: 409, error: `Sorry, ${username} is not available. Please pick another username` });
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email: Email, username: Username, password: hashedPassword };
+=======
+
+      const emailExist = await User.emailExist(email);
+      console.log(email, username, password);
+      if (emailExist) {
+        return res.status(409).json({ status: 409, error: "Email already used by another user." });
+      }
+      const usernameExist = await User.usernameExist(username);
+      if (usernameExist) {
+        return res.status(409).json({ status: 409, error: `Sorry, ${username} is not available. Please pick another username` });
+      }
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const newUser = { email, username, password };
+>>>>>>> 23c2935... add test files for reset password
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
       await sendGrid.sendVerificationEmail(Email);
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
+<<<<<<< HEAD
       res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
@@ -44,6 +61,11 @@ export default class UserController {
     } catch (e) {
       util.setError(500, "Server Error", e);
       return util.send(res);
+=======
+      console.log("ERRRRRR");
+      util.setError(400, error.message);
+      throw util.send(res);
+>>>>>>> 23c2935... add test files for reset password
     }
   }
 

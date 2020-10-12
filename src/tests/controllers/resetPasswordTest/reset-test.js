@@ -11,7 +11,6 @@ chai.should();
 chai.use(chaiHttp);
 
 db.Users.create(user);
-console.log("jndjsnjdnsjndjn", signed);
 
 describe("Should test reset password", async () => {
   describe("/api/v1/users/reset-request should send recover email", () => {
@@ -47,7 +46,7 @@ describe("Should test reset password", async () => {
         .send(newPassword)
         .end((err, res) => {
           res.should.have.status(200);
-          // res.body.should.have.property("success").eql("password has been reset");
+          res.body.should.have.property("success").eql("password has been reset");
           done();
         });
     });
