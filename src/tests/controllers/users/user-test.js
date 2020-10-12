@@ -4,16 +4,11 @@ import server from "../../../app";
 import {
   user,
   user2,
-  user3,
-  user4
+  user3
 } from "./user-test-data";
-
 // assertion style
-
 chai.should();
-
 chai.use(chaiHttp);
-
 describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
     it("it should create a user with complete details successfully", done => {

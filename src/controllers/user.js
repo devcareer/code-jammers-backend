@@ -16,7 +16,9 @@ export default class UserController {
         return util.send(res);
       }
       const { email, username, password } = req.body;
+
       const emailExist = await User.emailExist(email);
+      console.log(email, username, password);
       if (emailExist) {
         return res.status(409).json({ status: 409, error: "Email already used by another user." });
       }
@@ -25,12 +27,14 @@ export default class UserController {
         return res.status(409).json({ status: 409, error: `Sorry, ${username} is not available. Please pick another username` });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
-      const newUser = { email, username, password: hashedPassword };
+
+      const newUser = { email, username, password };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
       util.setSuccess(201, "User created!", token);
       return util.send(res);
     } catch (error) {
+      console.log("ERRRRRR");
       util.setError(400, error.message);
       throw util.send(res);
     }

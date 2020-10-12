@@ -17,16 +17,7 @@ export default (sequelize, DataTypes) => {
     role: {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
       defaultValue: "User",
-    },
-    resetPasswordToken: {
-      type: String,
-      allowNull: true,
-    },
-    resetPasswordExpires: {
-      type: Date,
-      required: false,
-    },
- 
+    }
   });
   return User;
 };

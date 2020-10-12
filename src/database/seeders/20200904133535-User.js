@@ -1,7 +1,9 @@
 import bcrypt from "bcrypt";
+import utils from "../../utilities/index";
 
 const password = "1234";
 const hash = bcrypt.hashSync(password, 10);
+const { randomTokenGenerator } = utils;
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -12,6 +14,8 @@ module.exports = {
       password: hash,
       createdAt: new Date(),
       updatedAt: new Date(),
+      resetPasswordToken: randomTokenGenerator(),
+      resetPasswordExpires: new Date(),
     },
     {
       id: "fc1f4e85-8e83-4a38-ab1e-8e4da2c6ddbb",
@@ -20,6 +24,8 @@ module.exports = {
       password: hash,
       createdAt: new Date(),
       updatedAt: new Date(),
+      resetPasswordToken: randomTokenGenerator(),
+      resetPasswordExpires: new Date(), 
     },
     {
       id: "57af7c29-efb2-434e-9fce-b87c77447aaa",
@@ -28,6 +34,8 @@ module.exports = {
       password: hash,
       createdAt: new Date(),
       updatedAt: new Date(),
+      resetPasswordToken: randomTokenGenerator(),
+      resetPasswordExpires: new Date(),
     }], {});
   },
 
