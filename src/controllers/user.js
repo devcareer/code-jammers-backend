@@ -39,8 +39,6 @@ export default class UserController {
 
   static async verifyUser(req, res) {
     try {
-      console.log(req.params.email);
-
       const updatedUser = await User.updateUserVerification(req.params.email);
       res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified } });
     } catch (e) {
