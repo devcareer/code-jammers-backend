@@ -47,32 +47,18 @@ export default {
       .then(user => {
         if (!user) {
           return res.send({ status: 200, error: "user does not exist" });
-        }
-        try {
+        } try {
           jwt.verify(token, user.password);
           const hashedPass = hashPassword(newPassword);
-          user.password = hashedPass;
-
           try {
-            db.Users.update({
-              password: hashedPass,
-            }, {
-              where: {
-                id: user.id
-              },
+            db.Users.update({ password: hashedPass, }, {
+              where: { id: user.id },
               returning: true,
               plain: true
             });
-          } catch (error) {
-            throw error;
-          }
-
-          return res.status(200).json({
-            status: 200,
-            success: "password has been reset"
-          });
+          } catch (error) { throw error; }
+          return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
-          console.log(error);
           res.send({ status: 200, error: "link has already been used please request for another one" });
         }
       });
