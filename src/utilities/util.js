@@ -3,38 +3,46 @@ export default class Util {
     this.statusCode = null;
     this.type = null;
     this.data = null;
+    this.token = null;
     this.message = null;
-    this.errors = null;
+    this.error = null;
   }
 
-  setSuccess(statusCode, message, data) {
+  setSuccess(statusCode, message, token, data) {
+    this.statusCode = statusCode;
+    this.message = message;
+    this.token = token;
+    this.data = data;
+    this.type = "success";
+  }
+
+  profileSuccess(statusCode, message, data) {
     this.statusCode = statusCode;
     this.message = message;
     this.data = data;
     this.type = "success";
   }
 
-  setError(statusCode, message, errors) {
+  setError(statusCode, message, error) {
     this.statusCode = statusCode;
     this.message = message;
-    this.errors = errors;
+    this.error = error;
     this.type = "error";
   }
 
   send(res) {
     const result = {
-      status: this.type,
+      status: this.statusCode,
       message: this.message,
       data: this.data,
+      token: this.token,
     };
-
     if (this.type === "success") {
       return res.status(this.statusCode).json(result);
     }
     return res.status(this.statusCode).json({
-      status: this.type,
-      message: this.message,
-      errors: this.errors
+      status: this.statusCode,
+      error: this.error
     });
   }
 }

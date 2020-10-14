@@ -12,3 +12,4 @@ import "./models/TouristCenter.spec";
 import "./models/country.spec";
 import "./models/culture.spec";
 import "./controllers/userSignUpTest/user-test";
+import "./controllers/userProfileTest/profile";

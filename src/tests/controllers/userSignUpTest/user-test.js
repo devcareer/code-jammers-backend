@@ -25,7 +25,7 @@ describe("Should test all users", async () => {
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a("object");
-          res.body.should.have.property("status").eql("success");
+          res.body.should.have.property("status").eql(201);
           res.body.should.have.property("message").eql("User created!");
           res.body.should.have.property("data");
           done();
@@ -50,7 +50,7 @@ describe("Should test all users", async () => {
         .send(user3)
         .end((err, res) => {
           res.should.have.status(409);
-          res.body.should.have.property("message").eql("Email already used by another user.");
+          res.body.should.have.property("error").eql("Email already used by another user.");
           done();
         });
     });
