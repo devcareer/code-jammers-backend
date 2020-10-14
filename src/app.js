@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
+import resetPasswordRoutes from "./routes/resetPasswordRoutes";
 import router from "./routes";
 
 const app = express();
@@ -16,10 +17,9 @@ const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", adminRoutes);
 app.use("/api/v1/", userRoutes);
+app.use("/api/v1", resetPasswordRoutes);
 
 const path = require("path");
-
-require("./routes/index");
 
 app.engine("handlebars", handlebars());
 app.set("view engine", "handlebars");
