@@ -16,7 +16,7 @@ describe("src/models/User", () => {
   const user = new User();
   checkModelName(User)("Users");
   context("properties", () => {
-    ["email", "username", "password", "role", "resetPasswordToken", "resetPasswordExpires"].forEach(
+    ["email", "username", "password", "role"].forEach(
       checkPropertyExists(user),
     );
   });

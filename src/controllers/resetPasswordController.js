@@ -8,6 +8,8 @@ const { sendEmail } = utils;
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
+let hostURL;
+
 export default {
   recover: async (req, res) => {
     try {
@@ -23,8 +25,11 @@ export default {
       }
 
       const signed = signToken(user.toJSON(), user.password);
+      if (process.env.NODE_ENV === "production") {
+        hostURL = "https://know-africa.herokuapp.com";
+      } else { hostURL = `http://localhost:${process.env.PORT || 3000}`; }
 
-      const link = `http://localhost:3000/reset-password/${user.id}/${signed}`;
+      const link = `${hostURL}/api/v1/users/reset/${user.id}/${signed}`;
 
       return sendEmail(link, user, res);
     } catch (error) {
@@ -47,7 +52,21 @@ export default {
           jwt.verify(token, user.password);
           const hashedPass = hashPassword(newPassword);
           user.password = hashedPass;
-          user.save();
+
+          try {
+            db.Users.update({
+              password: hashedPass,
+            }, {
+              where: {
+                id: user.id
+              },
+              returning: true,
+              plain: true
+            });
+          } catch (error) {
+            throw error;
+          }
+
           return res.status(200).json({
             status: 200,
             success: "password has been reset"

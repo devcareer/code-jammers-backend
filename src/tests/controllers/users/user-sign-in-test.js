@@ -18,7 +18,6 @@ describe("Should test all users", async () => {
         .set("Accept", "application/json")
         .send(user)
         .end((err, res) => {
-          console.log(res.body);
           res.should.have.status(200);
           res.body.should.be.a("object");
           res.body.should.have.property("status").eql(200);
