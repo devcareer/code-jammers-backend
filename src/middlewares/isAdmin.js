@@ -18,7 +18,7 @@ export default class Authentication {
       const token = req.headers.authorization.split(" ")[1];
       decoded = await Auth.verifyToken(token);
     } else {
-      return res.status(401).json({ error: "Authentication error. Token required." });
+      return res.status(401).json({ status: 401, error: "Please login." });
     }
 
     const { id } = decoded.user;
@@ -26,6 +26,6 @@ export default class Authentication {
     if (user) {
       return next();
     }
-    return res.status(403).json({ error: " Access denied." });
+    return res.status(403).json({ status: 403, error: "Access denied." });
   }
 }

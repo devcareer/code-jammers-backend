@@ -9,9 +9,9 @@ export default class Admin {
     }
   }
 
-  static async checkCountry(nameOfCountry) {
+  static async checkCountry(countryName) {
     try {
-      return await database.Countries.findOne({ where: { nameOfCountry } });
+      return await database.Countries.findOne({ where: { nameOfCountry: countryName } });
     } catch (err) {
       throw err;
     }
