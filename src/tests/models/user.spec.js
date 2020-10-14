@@ -17,10 +17,14 @@ describe("src/models/User", () => {
   checkModelName(User)("Users");
   context("properties", () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     ["email", "username", "password", "role", "verified"].forEach(
 =======
     ["email", "username", "password", "role", "resetPasswordToken", "resetPasswordExpires"].forEach(
 >>>>>>> cd38d9f... Add changes to test files
+=======
+    ["email", "username", "password", "role"].forEach(
+>>>>>>> 8a5572a... refactor code to follow standards
       checkPropertyExists(user),
     );
   });
