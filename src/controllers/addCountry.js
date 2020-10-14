@@ -8,9 +8,7 @@ export default class adminController {
         nameOfCountry, gallery, capital, population, officialLanguage, region, currency,
       } = req.body;
       let countryName;
-      if (nameOfCountry && typeof nameOfCountry !== "string") {
-        return res.status(400).json({ status: 400, error: "Country name must be a string." });
-      }
+      if (nameOfCountry && typeof nameOfCountry !== "string") return res.status(400).json({ status: 400, error: "Country name must be a string." });
       if (nameOfCountry) {
         countryName = nameOfCountry[0].toUpperCase() + nameOfCountry.slice(1).toLowerCase();
       }
@@ -18,13 +16,9 @@ export default class adminController {
         nameOfCountry: countryName, gallery, capital, population, officialLanguage, region, currency
       };
       const { error } = validation(newCountry);
-      if (error) {
-        return res.status(400).json({ status: 400, error: error.message });
-      }
+      if (error) return res.status(400).json({ status: 400, error: error.message });
       const country = await Admin.checkCountry(countryName);
-      if (country) {
-        return res.status(409).json({ status: 409, message: "This country already exists in the database." });
-      }
+      if (country) return res.status(409).json({ status: 409, message: "This country already exists in the database." });
       const createdCountry = await Admin.addCountry(newCountry);
       return res.status(201).json({ status: 201, message: "A country has been added.", data: createdCountry, });
     } catch (error) {
