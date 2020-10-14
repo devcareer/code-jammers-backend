@@ -46,8 +46,6 @@ export default {
     })
       .then(user => {
         if (!user) {
-<<<<<<< HEAD
-<<<<<<< HEAD
           return res.send({ status: 200, error: "user does not exist" });
         } try {
           jwt.verify(token, user.password);
@@ -61,39 +59,7 @@ export default {
           } catch (error) { throw error; }
           return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
-=======
-          res.send({ status: 200, error: "user does not exist" });
-=======
-          return res.send({ status: 200, error: "user does not exist" });
->>>>>>> 23c2935... add test files for reset password
-        }
-        try {
-          jwt.verify(token, user.password);
-          const hashedPass = hashPassword(newPassword);
-          user.password = hashedPass;
-
-          try {
-            db.Users.update({
-              password: hashedPass,
-            }, {
-              where: {
-                id: user.id
-              },
-              returning: true,
-              plain: true
-            });
-          } catch (error) {
-            throw error;
-          }
-
-          return res.status(200).json({
-            status: 200,
-            success: "password has been reset"
-          });
-        } catch (error) {
-          console.log(error);
->>>>>>> cd38d9f... Add changes to test files
-          res.send({ status: 200, error: "link has already been used please request for another one" });
+          throw error;
         }
       });
   },
