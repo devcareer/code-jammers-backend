@@ -8,7 +8,6 @@ export default class adminController {
         nameOfCountry, gallery, capital, population, officialLanguage, region, currency,
       } = req.body;
       let countryName;
-
       if (nameOfCountry && typeof nameOfCountry !== "string") {
         return res.status(400).json({ status: 400, error: "Country name must be a string." });
       }
@@ -16,13 +15,7 @@ export default class adminController {
         countryName = nameOfCountry[0].toUpperCase() + nameOfCountry.slice(1).toLowerCase();
       }
       const newCountry = {
-        nameOfCountry: countryName,
-        gallery,
-        capital,
-        population,
-        officialLanguage,
-        region,
-        currency,
+        nameOfCountry: countryName, gallery, capital, population, officialLanguage, region, currency
       };
       const { error } = validation(newCountry);
       if (error) {
