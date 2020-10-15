@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 
+require("dotenv").config();
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require(`${__dirname}/../database/config/config.js`)[env];
@@ -14,7 +16,11 @@ if (config.url) {
     config.database,
     config.username,
     config.password,
-    config,
+    {
+      host: config.host,
+      dialect: "postgres"
+    },
+    config
   );
 }
 fs
