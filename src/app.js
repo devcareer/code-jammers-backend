@@ -7,7 +7,7 @@ import passport from "passport";
 import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";
 
-import { fbStrategy } from "./database/config/facebookpassport";
+import { fbStrategy } from "./database/config/fbpassport";
 
 dotenv.config();
 
@@ -26,10 +26,6 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(fbStrategy);
-
-app.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }));
-
 app.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", { failureRedirect: "/login" }),
@@ -38,6 +34,7 @@ app.get(
     res.redirect("/");
   }
 );
+passport.use(fbStrategy);
 
 app.use(cors());
 

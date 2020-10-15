@@ -1,7 +1,8 @@
 import passport from "passport";
 import dotenv from "dotenv";
 import FacebookStrategy from "passport-facebook";
-import { Users } from "../../models";
+import database from "../../models";
+import User from "../../services/UserService/User";
 
 dotenv.config();
 
@@ -9,8 +10,8 @@ passport.serializeUser((user, done) => {
   done(null, user);
 });
 
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
+passport.deserializeUser((user, done) => {
+  done(null, user);
 });
 
 const fbStrategy = new FacebookStrategy({
@@ -20,27 +21,31 @@ const fbStrategy = new FacebookStrategy({
   profileFields: ["id", "name", "email", "displayName"]
 },
 async (accessToken, refreshToken, profile, done) => {
-  console.log("profile", profile);
   try {
     const username = (profile.displayName).toLowerCase();
     const email = profile.emails[0].value;
     // check if user already exists in our database
-    const userExist = await Users.findOne({ where: { facebookId: profile.password } });
-    console.log("user", userExist, profile.id);
+    const userExist = await database.Users.findOne({ where: { facebookId: profile.id } });
 
     if (userExist) {
       return done(null, userExist);
     }
-    console.log("inva");
-    console.log("userExist");
-    const newUser = {
-      email,
-      username,
-      password: facebookId,
-      role: "User",
-    };
-    await Users.create(newUser);
-    return done(null, newUser);
+    const emailExist = await database.Users.findOne({ where: { email } });
+
+    if (emailExist) {
+      return done(null, "Email already exist, please sign in with your email and password");
+    }
+    if (!userExist) {
+      const newUser = {
+        email,
+        username,
+        facebookId: profile.id,
+        password: "",
+        role: "User",
+      };
+      await User.createUser(newUser);
+      return done(null, newUser);
+    }
   } catch (err) {
     return done(err, false);
   }

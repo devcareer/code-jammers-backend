@@ -1,4 +1,4 @@
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const Country = sequelize.define("Countries", {
     nameOfCountry: {
       type: DataTypes.ENUM(

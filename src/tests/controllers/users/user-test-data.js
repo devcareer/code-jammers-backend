@@ -14,4 +14,9 @@ const user3 = {
   email: "Garrasdy@gmail.com",
   password: "123456",
 };
-export { user, user2, user3 };
+
+export {
+  user,
+  user2,
+  user3,
+};
