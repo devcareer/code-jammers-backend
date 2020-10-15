@@ -1,16 +1,6 @@
 import Auth from "../services/AdminServices/authServices";
 
-import database from "../models";
-
 export default class Authentication {
-  static async checkId(userId) {
-    try {
-      return database.Users.findOne({ where: { id: userId, role: "Admin" } });
-    } catch (err) {
-      throw err;
-    }
-  }
-
   static async verifyAdmin(req, res, next) {
     const authorizationHeader = req.headers.authorization;
     let decoded;
@@ -22,7 +12,7 @@ export default class Authentication {
     }
 
     const { id } = decoded.user;
-    const user = await Authentication.checkId(id);
+    const user = await Auth.checkRole(id);
     if (user) {
       return next();
     }
