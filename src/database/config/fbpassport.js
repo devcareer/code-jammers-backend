@@ -9,11 +9,9 @@ dotenv.config();
 passport.serializeUser((user, done) => {
   done(null, user);
 });
-
 passport.deserializeUser((user, done) => {
   done(null, user);
 });
-
 const fbStrategy = new FacebookStrategy({
   clientID: process.env.FACEBOOK_CLIENT_ID,
   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
@@ -26,7 +24,6 @@ async (accessToken, refreshToken, profile, done) => {
     const email = profile.emails[0].value;
     // check if user already exists in our database
     const userExist = await database.Users.findOne({ where: { facebookId: profile.id } });
-
     if (userExist) {
       return done(null, userExist);
     }
