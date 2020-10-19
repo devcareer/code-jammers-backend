@@ -11,5 +11,6 @@ import "./models/State.spec";
 import "./models/TouristCenter.spec";
 import "./models/country.spec";
 import "./models/culture.spec";
-import "./controllers/userSignUpTest/user-test";
+import "./controllers/users/user-test";
+import "./controllers/users/user-sign-in-test";
 import "./controllers/userProfileTest/profile";

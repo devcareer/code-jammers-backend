@@ -1,17 +1,31 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: NodeJS CI
 on: ["push"]
-
 jobs:
   build:
     name: Build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12.x, 14.x]
-
+    container:
+      image: node:10.18-jessie
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+          
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -20,8 +34,17 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build --if-present
-    - run: npm run coverage
+    - name: Connect to PostgreSQL
 
+      run: node src/models/index
+      env:
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: 5432
+
+    - run: npm run coverage
+      env:
+        NODE_ENV: test
+        JWT_KEY: ${{ secrets.JWT_KEY }}
     - name: Coveralls
       uses: coverallsapp/github-action@master
       env:

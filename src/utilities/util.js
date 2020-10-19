@@ -16,13 +16,6 @@ export default class Util {
     this.type = "success";
   }
 
-  profileSuccess(statusCode, message, data) {
-    this.statusCode = statusCode;
-    this.message = message;
-    this.data = data;
-    this.type = "success";
-  }
-
   setError(statusCode, message, error) {
     this.statusCode = statusCode;
     this.message = message;

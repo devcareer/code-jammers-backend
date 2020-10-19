@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require("dotenv").config();
 
 module.exports = {
@@ -14,3 +15,5 @@ module.exports = {
     dialect: "postgres",
   },
 };
+=======
+>>>>>>> 09bec5e3b905d9ba6e4d1877edb4a3c144663718
