@@ -61,4 +61,18 @@ export default class User {
       throw error;
     }
   }
+
+  static async updateUserRole(id, updateUserRole) {
+    try {
+      const userRoleToUpdate = await database.Users.findOne({ where: { id } });
+      if (userRoleToUpdate) {
+        await database.Users.update(updateUserRole, {
+          where: { id }
+        });
+        return updateUserRole;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
 }

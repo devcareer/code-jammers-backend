@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     verified: {
-      type: Sequelize.BOOLEAN,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
     newsletter: {

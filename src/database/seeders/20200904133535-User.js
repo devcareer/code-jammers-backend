@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-const password = "1234";
+const password = "12345";
 const hash = bcrypt.hashSync(password, 10);
 
 module.exports = {
@@ -11,15 +11,17 @@ module.exports = {
       username: "iamfrancis",
       password: hash,
       verified: true,
+      role: "Super Admin",
       createdAt: new Date(),
       updatedAt: new Date(),
     },
     {
       id: "fc1f4e85-8e83-4a38-ab1e-8e4da2c6ddbb",
-      email: "donald@gmail.com",
-      username: "obioflagos",
+      email: "ufuoma@gmail.com",
+      username: "bellogo",
       password: hash,
       verified: false,
+      role: "Admin",
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -29,6 +31,7 @@ module.exports = {
       username: "therealgodspower",
       password: hash,
       verified: false,
+      role: "User",
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
