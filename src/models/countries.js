@@ -101,6 +101,11 @@ module.exports = (sequelize, DataTypes) => {
       as: "touristCenters",
       foreignKey: "countryId",
     });
+
+    Country.hasMany(models.Music, {
+      as: "music",
+      foreignKey: "countryId",
+    });
   };
 
   return Country;

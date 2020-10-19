@@ -16,6 +16,7 @@
       "linebreak-style": 0,
       "quotes": ["error", "double"],
       "semi": ["error", "always"],
+      "camelcase":"off",
       "no-unused-vars":"off",
       "no-undef":"off",
       "comma-dangle":"off",
