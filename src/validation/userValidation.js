@@ -1,5 +1,4 @@
 import Joi from "joi";
-import bcrypt from "bcrypt";
 
 const registerValidation = user => {
   const schema = Joi.object({
@@ -60,7 +59,5 @@ const loginValidation = user => {
   });
   return schema.validate(user);
 };
-
-// const validateinputs
 
 export { registerValidation, loginValidation };
