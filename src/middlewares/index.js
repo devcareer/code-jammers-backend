@@ -1,1 +1,1 @@
-import "./isAdmin";
+import "./authenticate";

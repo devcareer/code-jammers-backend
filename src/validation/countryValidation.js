@@ -60,7 +60,7 @@ const validation = country => {
       "Seychelles")
       .messages({
         "any.required": "Sorry, country name is required.",
-        "string.valid": "Country must be an African country.",
+        "any.only": "Country must be an African country.",
         "string.empty": "Country cannot be an empty field.",
         "string.base": "Country name must contain only alphabetical characters."
       }),

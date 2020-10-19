@@ -1,11 +1,11 @@
 import { Router } from "express";
-import adminController from "../controllers/addCountry";
-import Authentication from "../middlewares/isAdmin";
+import adminController from "../controllers/country";
+import Authentication from "../middlewares/authenticate";
 
 const { addCountry } = adminController;
-const { verifyAdmin } = Authentication;
+const { verifyAdmin, verifyToken } = Authentication;
 
 const router = Router();
-router.post("/admin/country", verifyAdmin, addCountry);
+router.post("/admin/country", verifyToken, verifyAdmin, addCountry);
 
 export default router;

@@ -1,7 +1,7 @@
 import Admin from "../services/AdminServices/countryService";
 import { validation } from "../validation/countryValidation";
 
-export default class adminController {
+export default class AdminController {
   static async addCountry(req, res) {
     try {
       const {
