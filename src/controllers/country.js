@@ -8,9 +8,9 @@ export default class AdminController {
         nameOfCountry, gallery, capital, population, officialLanguage, region, currency,
       } = req.body;
       let countryName;
-      if (nameOfCountry && typeof nameOfCountry !== "string") return res.status(400).json({ status: 400, error: "Country name must be a string." });
       if (nameOfCountry) {
-        countryName = nameOfCountry[0].toUpperCase() + nameOfCountry.slice(1).toLowerCase();
+        const stringCountry = String(nameOfCountry);
+        countryName = stringCountry[0].toUpperCase() + stringCountry.slice(1).toLowerCase();
       }
       const newCountry = {
         nameOfCountry: countryName, gallery, capital, population, officialLanguage, region, currency

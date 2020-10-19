@@ -1,6 +1,6 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
-import { user, user4 } from "../users/user-sign-in-test-data";
+import { user4, user5 } from "../users/user-sign-in-test-data";
 import {
   country, country2, country3
 } from "./addcountry-data";
@@ -19,7 +19,7 @@ describe("Add country", () => {
       .request(server)
       .post("/api/v1/users/signin")
       .set("Accept", "application/json")
-      .send(user)
+      .send(user4)
       .end((err, res) => {
         if (err) throw err;
         adminToken = res.body.token;
@@ -31,7 +31,7 @@ describe("Add country", () => {
       .request(server)
       .post("/api/v1/users/signin")
       .set("Accept", "application/json")
-      .send(user4)
+      .send(user5)
       .end((err, res) => {
         if (err) throw err;
         userToken = res.body.token;

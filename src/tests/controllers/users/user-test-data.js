@@ -17,12 +17,6 @@ const user3 = {
   password: "123456",
 };
 
-const user4 = {
-  username: "JaneDoe",
-  email: "Janedoe@gmail.com",
-  password: "123456",
-};
-
 const decoder = token => {
   const result = jwt.verify(
     token,
@@ -37,5 +31,5 @@ const newRole = {
   role: "Admin"
 };
 export {
-  user, user2, user3, user4, decoder, newRole
+  user, user2, user3, decoder, newRole
 };

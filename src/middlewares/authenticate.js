@@ -1,7 +1,9 @@
 import jwt from "jsonwebtoken";
+import sequelize from "sequelize";
 import db from "../models";
 
-const { Users } = db;
+const { Op } = sequelize;
+
 require("dotenv").config();
 
 export default class Authentication {
@@ -24,10 +26,8 @@ export default class Authentication {
   static async verifyAdmin(req, res, next) {
     try {
       const { id } = req.decoded.user;
-      console.log(req.decoded);
-      const user = Authentication.findAdminById(id);
+      const user = await Authentication.findAdminById(id);
       if (user) {
-        console.log(user);
         return next();
       }
       return res.status(403).json({ status: 403, error: "Access denied." });
@@ -36,7 +36,18 @@ export default class Authentication {
     }
   }
 
-  static findAdminById(id) {
-    return db.Users.findOne({ where: { id, role: "Admin", } });
+  static async findAdminById(id) {
+    try {
+      return await db.Users.findOne({
+        where: {
+          id,
+          role: {
+            [Op.or]: ["Admin", "Super Admin"]
+          }
+        }
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 }

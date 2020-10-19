@@ -16,8 +16,8 @@ module.exports = {
     },
     {
       id: "fc1f4e85-8e83-4a38-ab1e-8e4da2c6ddbb",
-      email: "donald@gmail.com",
-      username: "obioflagos",
+      email: "ufuoma@gmail.com",
+      username: "bellogo",
       password: hash,
       role: "Admin",
       createdAt: new Date(),

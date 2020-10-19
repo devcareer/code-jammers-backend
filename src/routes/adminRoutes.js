@@ -1,8 +1,8 @@
 import { Router } from "express";
-import adminController from "../controllers/country";
+import AdminController from "../controllers/country";
 import Authentication from "../middlewares/authenticate";
 
-const { addCountry } = adminController;
+const { addCountry } = AdminController;
 const { verifyAdmin, verifyToken } = Authentication;
 
 const router = Router();
