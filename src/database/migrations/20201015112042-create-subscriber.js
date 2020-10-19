@@ -13,8 +13,9 @@ module.exports = {
       firstName: {
         type: Sequelize.STRING
       },
-      subscribed: {
-        type: Sequelize.BOOLEAN
+      verified: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       newsletter: {
         type: Sequelize.ARRAY(Sequelize.STRING),

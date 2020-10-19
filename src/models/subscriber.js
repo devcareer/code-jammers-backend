@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    subscribed: {
-      type: DataTypes.BOOLEAN,
+    verified: {
+      type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
     newsletter: {

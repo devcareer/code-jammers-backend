@@ -1,8 +1,12 @@
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
 import Util from "../../utilities/util";
 import User from "../../services/UserService/User";
 import jwtHelper from "../../utilities/Jwt";
 import { registerValidation, loginValidation } from "../../validation/userValidation";
+import sendGrid from "../../utilities/sendgrid";
+
+dotenv.config();
 
 const { generateToken } = jwtHelper;
 const util = new Util();
@@ -25,10 +29,21 @@ export default class UserController {
       const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      util.setSuccess(201, "User created!", token);
+      await sendGrid.sendVerificationEmail(Email);
+      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
       res.status(500).json({ status: 500, error: "Server Error" });
+    }
+  }
+
+  static async verifyUser(req, res) {
+    try {
+      const updatedUser = await User.updateUserVerification(req.params.email);
+      res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified } });
+    } catch (e) {
+      util.setError(500, "Server Error");
+      return util.send(res);
     }
   }
 
@@ -42,12 +57,13 @@ export default class UserController {
       const { email, username, password } = req.body;
       const Email = email.toLowerCase();
       const user = await User.emailExist(Email);
-      if (!user) {
-        return res.status(404).json({ status: 404, error: "Email does not exist." });
-      }
+      if (!user) return res.status(404).json({ status: 404, error: "Email does not exist." });
       const validpass = await bcrypt.compare(password, user.password);
-      if (!validpass) {
-        return res.status(404).json({ status: 400, error: "Password is not correct!." });
+      if (!validpass) return res.status(404).json({ status: 400, error: "Password is not correct!." });
+      if (!user.verified) {
+        return res.status(400).send({
+          message: "Please Verify your account to continue. click on the link provided in your mail"
+        });
       }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
