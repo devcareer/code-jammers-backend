@@ -25,6 +25,4 @@ const country3 = {
   region: "West Africa",
   currency: "Ghanaian cedi"
 };
-export {
-  country, country2, country3
-};
+export { country, country2, country3 };

@@ -1,9 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import { user4, user5 } from "../users/user-sign-in-test-data";
-import {
-  country, country2, country3
-} from "./addcountry-data";
+import { country, country2, country3 } from "./addcountry-data";
 import server from "../../../app";
 
 chai.should();
