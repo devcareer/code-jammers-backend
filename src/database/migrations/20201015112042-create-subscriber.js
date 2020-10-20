@@ -19,7 +19,7 @@ module.exports = {
       },
       newsletter: {
         type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: true,
+        defaultValue: ["Welcome to Know Africa"]
       },
       createdAt: {
         allowNull: false,

@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     newsletter: {
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: true,
+      defaultValue: ["Welcome to Know Africa"]
     }
   });
   Subscriber.associate = models => {

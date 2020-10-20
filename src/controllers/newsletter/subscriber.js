@@ -1,7 +1,8 @@
 import { subscriberValidation } from "../../validation/userValidation";
 import Subscriber from "../../services/newsletterServices/subsciber";
 import Util from "../../utilities/util";
-import Nodemailer from "../../utilities/nodemailer";
+// import Nodemailer from "../../utilities/nodemailer";
+import sendGrid from "../../utilities/sendgrid";
 
 const util = new Util();
 export default class subscriber {
@@ -18,18 +19,21 @@ export default class subscriber {
       const emailExist = await Subscriber.emailExist(Email);
       if (emailExist) return res.status(409).json({ status: 409, error: "Sorry, You're already subscribed to this newsletter." });
       const subscriberDetails = { email: Email, firstName };
-      await Subscriber.subscribe(subscriberDetails);
-      const mailOptions = {
-        from: "'Know Africa Newsletter' <codejammers1@gmail.com>",
-        to: Email,
-        subject: "Welcome To Know Africa",
-        text: `Dear ${firstName}, Thank you for subscribing to Know Africa. We look forward to sharing the many beauties of Africa with you!`
-      };
-      await Nodemailer.sendWelcomeMail(mailOptions);
-      const subscribedUser = await Subscriber.emailExist(Email);
-      return res.status(201).json({ status: 201, message: "Yay!!! You just subscribed", data: subscribedUser });
+      const subscribedUser = await Subscriber.subscribe(subscriberDetails);
+      await sendGrid.sendVerificationEmail(Email, "subscriber");
+      return res.status(201).json({ status: 201, message: "Please verify that you own this email", data: subscribedUser });
     } catch (error) {
       res.status(500).json({ status: 500, error: "Server Error" });
+    }
+  }
+
+  static async verifySubscriber(req, res) {
+    try {
+      const updatedSubscriber = await Subscriber.updateSubscriberVerification(req.params.email);
+      res.status(200).json({ status: 200, message: "Yay!!! You just subscribed successfully", data: { email: updatedSubscriber[1].email, verified: updatedSubscriber[1].verified } });
+    } catch (e) {
+      util.setError(500, "Server Error");
+      return util.send(res);
     }
   }
 

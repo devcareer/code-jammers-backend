@@ -2,7 +2,7 @@ import Util from "../../utilities/util";
 import { newsletterValidation } from "../../validation/userValidation";
 import Newsletter from "../../services/newsletterServices/newsletter";
 import Subscriber from "../../services/newsletterServices/subsciber";
-import Nodemailer from "../../utilities/nodemailer";
+import sendGrid from "../../utilities/sendgrid";
 
 const util = new Util();
 export default class Newsletters {
@@ -17,26 +17,19 @@ export default class Newsletters {
       const newsletterDetails = { title, message };
       const newsletters = await Newsletter.createNewsletter(newsletterDetails);
       const getSubscribers = await Subscriber.subscribers();
-      const newsletter = {
-        title: newsletterDetails.title
-      };
+      // console.log(getSubscribers);
       if (getSubscribers) {
         getSubscribers.forEach(async element => {
-          const mailOptions = {
-            from: "Know Africa Newsletter <codejammers1@gmail.com>",
-            replyTo: "codejammers1@gmail.com",
-            to: element.email,
-            subject: title,
-            text: message,
-          };
-          const saveNewsletter = await Subscriber.receivedMail(element.email, newsletter);
-          await Nodemailer.sendWelcomeMail(mailOptions);
+          await sendGrid.sendNewsletter(element.email, title, message);
+          console.log(element.email);
+          await Subscriber.updateNewsletter(element.email, newsletterDetails.title);
         });
       }
       if (newsletters) {
         return res.status(201).json({ status: 201, message: "Newsletter created!", data: newsletters });
       }
     } catch (error) {
+      console.log(error);
       res.status(500).json({ status: 500, error: "Server Error" });
     }
   }

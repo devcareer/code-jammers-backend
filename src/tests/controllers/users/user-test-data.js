@@ -1,5 +1,3 @@
-import jwt from "jsonwebtoken";
-
 const user = {
   username: "garryT",
   email: "garrasdy@gmail.com",
@@ -17,19 +15,6 @@ const user3 = {
   password: "123456",
 };
 
-const decoder = token => {
-  const result = jwt.verify(
-    token,
-    process.env.JWT_KEY,
-  );
-  const payload = result;
-  const userId = payload.createdUser.id;
-  return userId;
-};
-
-const newRole = {
-  role: "Admin"
-};
 export {
-  user, user2, user3, decoder, newRole
+  user, user2, user3,
 };

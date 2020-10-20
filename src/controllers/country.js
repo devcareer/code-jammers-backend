@@ -22,6 +22,7 @@ export default class AdminController {
       const createdCountry = await Admin.addCountry(newCountry);
       return res.status(201).json({ status: 201, message: "A country has been added.", data: createdCountry, });
     } catch (error) {
+      console.log(`error: ${error}`);
       return res.status(500).json({ status: 500, error });
     }
   }

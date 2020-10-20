@@ -6,7 +6,7 @@ module.exports = {
       email: "Donald@gmail.com",
       verified: true,
       newsletter: [
-        "Welcome message",
+        "Welcome to Know Africa",
         " Africa Not a country",
         " Africa is beautiful",
       ],
