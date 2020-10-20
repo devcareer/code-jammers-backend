@@ -12,6 +12,7 @@ const msg = {
     }
   }
 };
+
 export default class {
   static sandboxMode() {
     msg.mail_settings.sandbox_mode.enable = true;
