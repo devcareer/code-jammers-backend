@@ -10,6 +10,7 @@ module.exports = {
       email: "francis@gmail.com",
       username: "iamfrancis",
       password: hash,
+      verified: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -18,6 +19,7 @@ module.exports = {
       email: "donald@gmail.com",
       username: "obioflagos",
       password: hash,
+      verified: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -26,6 +28,7 @@ module.exports = {
       email: "godspower@gmail.com",
       username: "therealgodspower",
       password: hash,
+      verified: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
