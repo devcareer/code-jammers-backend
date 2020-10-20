@@ -16,8 +16,12 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "joi": "^17.2.1",
-    "jsonwebtoken": "^8.5.1",
     "express-handlebars": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+<<<<<<< HEAD
+    "express-handlebars": "^5.1.0",
+=======
+>>>>>>> c509ffe209034dbf398f28f309411e5b21f249e1
     "nodemailer": "^6.4.11",
     "nodemailer-express-handlebars": "^4.0.0",
     "path": "^0.12.7",
