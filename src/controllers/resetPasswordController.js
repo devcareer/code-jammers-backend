@@ -1,10 +1,9 @@
 import db from "../models/index";
 
 import signToken from "../utilities/signToken";
-import utils from "../utilities";
 import hashPassword from "../utilities/hashPassword";
+import sendGrid from "../utilities/sendgrid";
 
-const { sendEmail } = utils;
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
@@ -15,12 +14,11 @@ export default {
     try {
       const user = await db.Users.findOne({
         where: { email: req.body.email },
-        attributes: ["id", "username", "email", "password"],
       });
-      if (!user) {
+      if (!user || user.verified === false) {
         return res.status(404).json({
           status: 404,
-          error: `The email address ${req.body.email} is not associated with any account.`,
+          error: `The email address ${req.body.email} is not associated with any account or is not verified.`,
         });
       }
 
@@ -30,8 +28,7 @@ export default {
       } else { hostURL = `http://localhost:${process.env.PORT || 3000}`; }
 
       const link = `${hostURL}/api/v1/users/reset/${user.id}/${signed}`;
-
-      return sendEmail(link, user, res);
+      return await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +39,6 @@ export default {
     const { newPassword } = req.body;
     db.Users.findOne({
       where: { id },
-      attributes: ["id", "username", "email", "password"],
     })
       .then(user => {
         if (!user) {

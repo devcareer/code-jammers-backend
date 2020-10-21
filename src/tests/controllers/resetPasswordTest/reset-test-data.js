@@ -3,19 +3,19 @@ import signToken from "../../../utilities/signToken";
 const user = {
   id: "80e13d8c-b0aa-431f-a107-8aad5bd9324c",
   username: "Billy",
-  email: "bislonzulu1@outlook.com",
+  email: "balldash@live.com",
   password: "thunderbolt",
   toJSON: () => ({
     id: "80e13d8c-b0aa-431f-a107-8aad5bd9324c",
     username: "Billy",
-    email: "bislonzulu1@outlook.com",
+    email: "balldash@live.com",
     password: "thunderbolt",
   })
 };
 const notUser = {
-  email: "balldash@live.com",
+  email: "jadeclaw@notuser.com",
   toJSON: () => ({
-    email: "balldash@live.com",
+    email: "jadeclaw@notuser.com",
   })
 };
 

@@ -6,9 +6,8 @@ import {
   user, notUser, newPassword, signed
 } from "./reset-test-data";
 import db from "../../../models";
-import utils from "../../../utilities/index";
+import sendgrid from "../../../utilities/sendgrid";
 
-const { sendEmail } = utils;
 chai.use(sinonChai);
 
 const { expect } = chai;
@@ -31,12 +30,11 @@ describe("send recover email", () => {
       send: () => user,
     };
     sandbox.stub(db.Users, "findOne").returns(user);
-    sandbox.stub(utils, "sendEmail").returns({ status: 200, message: "A reset email has been sent" });
+    sandbox.stub(sendgrid, "sendResetPasswordEmail").returns({ status: 200, message: "A reset email has been sent" });
 
     resetPasswordController.recover(req, res);
 
     expect(db.Users.findOne).to.have.been.calledOnce.and.calledWith({
-      attributes: ["id", "username", "email", "password"],
       where: { email: user.email }
     });
   });
@@ -58,7 +56,6 @@ describe("fail send recovery email", () => {
     sandbox.stub(db.Users, "findOne").returns(null);
     resetPasswordController.recover(req, res);
     expect(db.Users.findOne).to.have.been.calledOnce.and.calledWith({
-      attributes: ["id", "username", "email", "password"],
       where: { email: notUser.email }
     });
   });
@@ -83,7 +80,6 @@ describe("change password", () => {
     resetPasswordController.reset(req, res);
     expect(db.Users.findOne).to.have.been.calledOnce.and.calledWith({
       where: { id },
-      attributes: ["id", "username", "email", "password"]
     });
   });
 });
