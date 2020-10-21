@@ -11,4 +11,4 @@ import "./models/country.spec";
 import "./models/culture.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
-import "./fbOAuth.spec.test";
+import "./fbOAuth-test.spec";

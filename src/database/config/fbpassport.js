@@ -25,12 +25,12 @@ async (accessToken, refreshToken, profile, done) => {
     // check if user already exists in our database
     const userExist = await database.Users.findOne({ where: { facebookId: profile.id } });
     if (userExist) {
-      return done(null, userExist);
+      // return done(null, userExist);
     }
     const emailExist = await database.Users.findOne({ where: { email } });
 
     if (emailExist) {
-      return done(null, "Email already exist, please sign in with your email and password");
+      // return done(null, "Email already exist, please sign in with your email and password");
     }
     if (!userExist) {
       const newUser = {
@@ -44,7 +44,7 @@ async (accessToken, refreshToken, profile, done) => {
       return done(null, newUser);
     }
   } catch (err) {
-    return done(err, false);
+    // return done(err, false);
   }
 });
 

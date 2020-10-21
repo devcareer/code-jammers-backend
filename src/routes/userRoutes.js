@@ -6,7 +6,7 @@ const router = Router();
 router.post("/users/signup", userController.createUser);
 router.post("/users/signin", userController.loginUser);
 router.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }));
-router.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRedirect: "/login" }),
+router.get("/auth/facebook/callback", passport.authenticate("facebook", { successRedirect: "/", failureRedirect: "/fail" }),
   (req, res) => {
     res.redirect("/");
   });
