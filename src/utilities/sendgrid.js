@@ -13,11 +13,20 @@ const msg = {
   }
 };
 
+/**
+ *
+ */
 export default class {
+  /**
+   *
+   */
   static sandboxMode() {
     msg.mail_settings.sandbox_mode.enable = true;
   }
 
+  /**
+   * @param {string} email - The user email
+   */
   static async sendVerificationEmail(email) {
     if (process.env.NODE_ENV === "production") {
       hostURL = "https://know-africa.herokuapp.com";

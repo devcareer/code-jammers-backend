@@ -1,11 +1,14 @@
 import database from "../../models";
 
 /**
- *
+ * @class User
+ * @description User services
+ * @exports User
  */
 export default class User {
   /**
-   * @param username
+   * @param {string} username - The user name
+   * @returns {object} - An instance of the Users model class
    */
   static async usernameExist(username) {
     try {
@@ -21,7 +24,8 @@ export default class User {
   }
 
   /**
-   * @param email
+   * @param {string} email  - The user email
+   * @returns {object} - An instance of the Users model class
    */
   static async emailExist(email) {
     try {
@@ -36,7 +40,8 @@ export default class User {
   }
 
   /**
-   * @param newUser
+   * @param {object} newUser - The user details
+   * @returns {object} - An instance of the Users model class
    */
   static async createUser(newUser) {
     try {
@@ -59,7 +64,8 @@ export default class User {
   }
 
   /**
-   * @param email
+   * @param {string} email - The user email
+   * @returns {object} - An instance of the Users model class
    */
   static async updateUserVerification(email) {
     try {

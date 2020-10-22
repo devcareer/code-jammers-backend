@@ -6,7 +6,18 @@ const { Op } = sequelize;
 
 require("dotenv").config();
 
+/**
+ * @class Authentication
+ * @description authenticate token and roles
+ * @exports Authentication
+ */
 export default class Authentication {
+  /**
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
+   * @returns {Function} errorResponse | next
+   */
   static async verifyToken(req, res, next) {
     try {
       const { authorization } = req.headers;
@@ -23,6 +34,12 @@ export default class Authentication {
     }
   }
 
+  /**
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
+   * @returns {Function} errorResponse | next
+   */
   static async verifyAdmin(req, res, next) {
     try {
       const { id } = req.decoded.user;
@@ -36,6 +53,10 @@ export default class Authentication {
     }
   }
 
+  /**
+   * @param {string} id - The user ID
+   * @returns {object} - An instance of the Users model class
+   */
   static async findAdminById(id) {
     try {
       return await db.Users.findOne({
