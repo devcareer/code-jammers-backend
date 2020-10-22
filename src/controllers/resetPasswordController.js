@@ -9,8 +9,8 @@ const jwt = require("jsonwebtoken");
 
 let hostURL;
 
-export default {
-  recover: async (req, res) => {
+export default class {
+  static async recover(req, res) {
     try {
       const { email } = req.body;
       const user = await db.Users.findOne({
@@ -33,9 +33,9 @@ export default {
     } catch (error) {
       console.log(error);
     }
-  },
+  }
 
-  reset: (req, res) => {
+  static async reset(req, res) {
     const { id, token } = req.params;
     const { newPassword } = req.body;
     db.Users.findOne({
@@ -59,5 +59,5 @@ export default {
           res.send({ status: 200, error: "link has already been used please request for another one" });
         }
       });
-  },
-};
+  }
+}
