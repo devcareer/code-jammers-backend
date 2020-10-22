@@ -1,7 +1,7 @@
 { 
   "root": true,
-  "extends": ["airbnb-base", "jsdoc"],
-  "plugins": ["plugin:jsdoc/recommended", "jsdoc"],
+  "plugins": ["jsdoc"],
+  "extends": ["airbnb-base", "plugin:jsdoc/recommended", "jsdoc"],
   "env": {
     "node": true,
     "es6": true,
@@ -30,6 +30,7 @@
     "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
     "arrow-parens": [2, "as-needed"],
     "no-useless-catch":"off",
+    "jsdoc/no-undefined-types": "off",
     "jsdoc/require-jsdoc": ["error", {"require": {
       "FunctionDeclaration": true,
       "MethodDefinition": true,

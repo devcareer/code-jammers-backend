@@ -1,4 +1,3 @@
-/* eslint-disable no-irregular-whitespace */
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import Util from "../utilities/util";
@@ -11,6 +10,7 @@ dotenv.config();
 
 const { generateToken } = jwtHelper;
 const util = new Util();
+
 /**
  * @class UserController
  * @description create, verify and log in user
@@ -49,9 +49,9 @@ export default class UserController {
   }
 
   /**
-   * @param {object} req - The user request object
-   * @param {object} res - The user response object
-   * @returns {object} Success message
+   * @param {Object} req - The user request object
+   * @param {Object} res - The user response object
+   * @returns {Object} Success message
    */
   static async verifyUser(req, res) {
     try {
@@ -64,9 +64,9 @@ export default class UserController {
   }
 
   /**
-   * @param {object} req - The user request object
-   * @param {object} res - The user response object
-   * @returns {object} Success message
+   * @param {Object} req - The user request object
+   * @param {Object} res - The user response object
+   * @returns {Object} Success message
    */
   static async loginUser(req, res) {
     try {
