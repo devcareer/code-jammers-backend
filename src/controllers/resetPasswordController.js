@@ -14,6 +14,7 @@ export default class {
     try {
       const { email } = req.body;
       const user = await db.Users.findOne({
+        attributes: ["id", "username", "password", "verified"],
         where: { email },
       });
       if (!user || !user.verified) {
