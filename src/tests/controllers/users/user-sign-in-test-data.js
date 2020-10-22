@@ -1,10 +1,10 @@
 const user = {
-  email: "Garrasdy@gmail.com",
+  email: "garrasdy@gmail.com",
   password: "123456",
 };
 
 const user2 = {
-  email: "Garry@gmail.com",
+  email: "garry@gmail.com",
 };
 
 const user3 = {

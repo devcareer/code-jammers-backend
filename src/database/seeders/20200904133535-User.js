@@ -11,6 +11,7 @@ module.exports = {
       username: "iamfrancis",
       password: hash,
       role: "Super Admin",
+      verified: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -20,6 +21,7 @@ module.exports = {
       username: "bellogo",
       password: hash,
       role: "Admin",
+      verified: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -29,6 +31,7 @@ module.exports = {
       username: "therealgodspower",
       password: hash,
       role: "User",
+      verified: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

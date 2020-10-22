@@ -1,28 +1,51 @@
 import database from "../../models";
 
+/**
+ *
+ */
 export default class User {
+  /**
+   * @param username
+   */
   static async usernameExist(username) {
     try {
-      const usernameExist = await database.Users.findOne({ where: { username } });
-      console.log(usernameExist);
+      const usernameExist = await database.Users.findOne({
+        where: {
+          username
+        }
+      });
       return usernameExist;
     } catch (error) {
       throw error;
     }
   }
 
+  /**
+   * @param email
+   */
   static async emailExist(email) {
     try {
-      return await database.Users.findOne({ where: { email } });
+      return await database.Users.findOne({
+        where: {
+          email
+        }
+      });
     } catch (error) {
       throw error;
     }
   }
 
+  /**
+   * @param newUser
+   */
   static async createUser(newUser) {
     try {
       const createUser = await database.Users.create(newUser);
-      const userToUpdate = await database.Users.findOne({ where: { id: createUser.id } });
+      const userToUpdate = await database.Users.findOne({
+        where: {
+          id: createUser.id
+        }
+      });
       if (userToUpdate) {
         const newProfile = {
           userId: userToUpdate.id
@@ -35,15 +58,20 @@ export default class User {
     }
   }
 
-  static async updateUserRole(id, updateUserRole) {
+  /**
+   * @param email
+   */
+  static async updateUserVerification(email) {
     try {
-      const userRoleToUpdate = await database.Users.findOne({ where: { id } });
-      if (userRoleToUpdate) {
-        await database.Users.update(updateUserRole, {
-          where: { id }
-        });
-        return updateUserRole;
-      }
+      return await database.Users.update({
+        verified: true
+      }, {
+        where: {
+          email
+        },
+        returning: true,
+        plain: true
+      });
     } catch (error) {
       throw error;
     }
