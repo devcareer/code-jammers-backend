@@ -4,6 +4,7 @@ export default class User {
   static async usernameExist(username) {
     try {
       const usernameExist = await database.Users.findOne({ where: { username } });
+      console.log(usernameExist);
       return usernameExist;
     } catch (error) {
       throw error;

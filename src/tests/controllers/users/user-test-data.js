@@ -1,5 +1,3 @@
-import jwt from "jsonwebtoken";
-
 const user = {
   username: "GarryT",
   email: "Garrasdy@gmail.com",
