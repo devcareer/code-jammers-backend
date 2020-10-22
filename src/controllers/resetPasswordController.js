@@ -12,8 +12,9 @@ let hostURL;
 export default {
   recover: async (req, res) => {
     try {
+      const { email } = req.body;
       const user = await db.Users.findOne({
-        where: { email: req.body.email },
+        where: { email },
       });
       if (!user || user.verified === false) {
         return res.status(404).json({
