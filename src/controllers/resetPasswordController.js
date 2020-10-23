@@ -14,13 +14,18 @@ export default class {
     try {
       const { email } = req.body;
       const user = await db.Users.findOne({
-        attributes: ["id", "username", "password", "verified"],
         where: { email },
       });
-      if (!user || !user.verified) {
+      if (!user) {
         return res.status(404).json({
           status: 404,
           error: `The email address ${req.body.email} is not associated with any account or is not verified.`,
+        });
+      }
+      if (!user.verified) {
+        return res.status(404).json({
+          status: 404,
+          error: "The acount is not verified. Please check your email inbox for verification email.",
         });
       }
 
