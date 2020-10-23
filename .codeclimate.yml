@@ -2,7 +2,7 @@ version: "2"
 plugins:
   eslint:
     enabled: true
-    channel: "eslint-4"
+    channel: "eslint-7"
     config:
       config: ".eslintrc.json"
 exclude_patterns:
