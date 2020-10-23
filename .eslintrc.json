@@ -1,6 +1,6 @@
 { 
   "root": true,
-  "extends": ["airbnb-base", "plugin:jsdoc/recommended", "jsdoc"],
+  "extends": ["airbnb-base", "plugin:jsdoc/recommended"],
   "plugins": ["jsdoc"],
   "env": {
     "node": true,
