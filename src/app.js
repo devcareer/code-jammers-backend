@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes";
+import touristCenterRoutes from "./routes/touristCenterRoutes";
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,6 +15,8 @@ app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", userRoutes);
+
+app.use("/api/v1", touristCenterRoutes);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
