@@ -16,7 +16,5 @@ const user3 = {
 };
 
 export {
-  user,
-  user2,
-  user3,
+  user, user2, user3,
 };
