@@ -7,11 +7,6 @@ import { validation } from "../validation/countryValidation";
  * @exports AdminController
  */
 export default class AdminController {
-  /**
-   * @param {Object} req - The user request object
-   * @param {Object} res - The user response object
-   * @returns {Object} Success message
-   */
   static async addCountry(req, res) {
     try {
       const {

@@ -18,9 +18,9 @@ const util = new Util();
  */
 export default class UserController {
   /**
-   * @param {object} req - The user request object
-   * @param {object} res - The user response object
-   * @returns {object} Success message
+   * @param {Object} req - The user request object
+   * @param {Object} res - The user response object
+   * @returns {Object} Success message
    */
   static async createUser(req, res) {
     try {
