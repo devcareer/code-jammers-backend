@@ -30,6 +30,7 @@
     "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
     "arrow-parens": [2, "as-needed"],
     "no-useless-catch":"off",
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
     "jsdoc/require-jsdoc": ["error", {"require": {
       "FunctionDeclaration": true,
       "MethodDefinition": true,
