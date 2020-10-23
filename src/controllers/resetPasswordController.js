@@ -2,7 +2,6 @@ import db from "../models/index";
 import signToken from "../utilities/signToken";
 import hashPassword from "../utilities/hashPassword";
 import sendGrid from "../utilities/sendgrid";
-import User from "../services/UserService/User";
 
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
@@ -12,8 +11,9 @@ let hostURL;
 export default class {
   static async recover(req, res) {
     try {
-      const { email } = req.body;
-      const user = await User.recoverPassword(email);
+      const user = await db.Users.findOne({
+        where: { email: req.body.email },
+      });
       if (!user) {
         return res.status(404).json({
           status: 404,
