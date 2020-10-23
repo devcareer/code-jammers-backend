@@ -20,7 +20,7 @@ export default class Admin {
 
   /**
    * @param {string} countryName - The country name
-   * @returns {object} An instance of the Countries model class
+   * @returns {Object} An instance of the Countries model class
    */
   static async checkCountry(countryName) {
     try {
