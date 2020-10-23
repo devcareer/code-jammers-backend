@@ -17,7 +17,6 @@ const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", adminRoutes);
 app.use("/api/v1/", userRoutes);
-
 app.use("/api/v1", touristCenterRoutes);
 
 app.get("/", (req, res) => {
