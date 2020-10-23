@@ -13,9 +13,9 @@ require("dotenv").config();
  */
 export default class Authentication {
   /**
-   * @param {Object} req - The res body object
-   * @param {Object} res - The res body object
-   * @param {Object} next -  The function to call next
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
    * @returns {Function} errorResponse | next
    */
   static async verifyToken(req, res, next) {
@@ -35,9 +35,9 @@ export default class Authentication {
   }
 
   /**
-   * @param {Object} req - The res body object
-   * @param {Object} res - The res body object
-   * @param {Object} next -  The function to call next
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
    * @returns {Function} errorResponse | next
    */
   static async verifyAdmin(req, res, next) {
@@ -55,7 +55,7 @@ export default class Authentication {
 
   /**
    * @param {string} id - The user ID
-   * @returns {Object} - An instance of the Users model class
+   * @returns {object} - An instance of the Users model class
    */
   static async findAdminById(id) {
     try {

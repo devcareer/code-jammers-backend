@@ -1,6 +1,6 @@
 { 
   "root": true,
-  "extends": ["airbnb-base", "eslint-plugin-jsdoc/recommended"],
+  "extends": ["airbnb-base", "plugin:jsdoc/recommended"],
   "plugins": ["jsdoc"],
   "env": {
     "node": true,
