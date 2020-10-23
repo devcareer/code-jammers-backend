@@ -82,14 +82,4 @@ export default class User {
       throw error;
     }
   }
-
-  static async recoverPassword(email) {
-    try {
-      return await db.Users.findOne({
-        where: { email },
-      });
-    } catch (error) {
-      throw error;
-    }
-  }
 }
