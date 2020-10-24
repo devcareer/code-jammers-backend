@@ -46,6 +46,22 @@ export default class User {
     }
   }
 
+  static async updateUserVerification(email) {
+    try {
+      return await database.Users.update({
+        verified: true
+      }, {
+        where: {
+          email
+        },
+        returning: true,
+        plain: true
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async updateUserProfile(id, updateProfile) {
     try {
       const userToUpdate = await database.Users.findOne({ where: { id } });

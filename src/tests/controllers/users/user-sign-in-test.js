@@ -20,7 +20,6 @@ describe("Should test all users", async () => {
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a("object");
-          res.body.should.have.property("status").eql(200);
           res.body.should.have.property("message").eql("User Logged in!");
           done();
         });
@@ -44,6 +43,7 @@ describe("Should test all users", async () => {
         .send(user3)
         .end((err, res) => {
           res.should.have.status(404);
+          res.body.should.have.property("error").eql("Email does not exist.");
           done();
         });
     });

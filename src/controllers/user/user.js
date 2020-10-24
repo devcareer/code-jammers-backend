@@ -1,13 +1,12 @@
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import Util from "../utilities/util";
-import User from "../services/UserService/User";
-import jwtHelper from "../utilities/Jwt";
-import { registerValidation, loginValidation } from "../validation/userValidation";
-import sendGrid from "../utilities/sendgrid";
+import Util from "../../utilities/util";
+import User from "../../services/UserService/User";
+import jwtHelper from "../../utilities/Jwt";
+import { registerValidation, loginValidation } from "../../validation/userValidation";
+import sendGrid from "../../utilities/sendgrid";
 
 dotenv.config();
-
 const { generateToken } = jwtHelper;
 const util = new Util();
 export default class UserController {
@@ -33,7 +32,7 @@ export default class UserController {
       };
       const token = await generateToken({ createdUser });
       await sendGrid.sendVerificationEmail(Email);
-      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
+      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token, data);
       return util.send(res);
     } catch (error) {
       res.status(500).json({ status: 500, error: "Server Error" });
@@ -45,7 +44,7 @@ export default class UserController {
       const updatedUser = await User.updateUserVerification(req.params.email);
       res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified } });
     } catch (e) {
-      util.setError(500, "Server Error", e);
+      util.setError(500, "Server Error");
       return util.send(res);
     }
   }
