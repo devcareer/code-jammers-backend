@@ -2,5 +2,9 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
-    "eslint.validate": ["javascript"]
+    "eslint.validate": ["javascript"],
+    "eslint.options": {
+      "configFile": "C:\\Users\\user\\code-jammers-backend\\.eslintrc.json",
+      "resolvePluginsRelativeTo": "C:\\Users\\user\\code-jammers-backend\\AppData\\Roaming\\npm"
+    }
    }
