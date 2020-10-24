@@ -67,7 +67,7 @@ export default class UserController {
       }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
-      return util.send(res);
+      util.send(res);
     } catch (error) {
       res.status(500).json({ status: 500, error: "Server Error" });
     }
