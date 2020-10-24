@@ -27,9 +27,7 @@ export default class UserController {
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
-      const data = {
-        id: createdUser.id
-      };
+      const data = { id: createdUser.id };
       const token = await generateToken({ createdUser });
       await sendGrid.sendVerificationEmail(Email);
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token, data);
@@ -84,7 +82,7 @@ export default class UserController {
       if (!updatedProfile) {
         util.setError(404, "User does not exist");
       } else {
-        return res.status(200).json({ status: 200, message: "User profile updated", data: updateProfile, });
+        res.status(200).json({ status: 200, message: "User profile updated", data: updateProfile, });
       }
       return util.send(res);
     } catch (error) {
