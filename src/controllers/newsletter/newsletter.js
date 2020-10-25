@@ -1,5 +1,5 @@
 import Util from "../../utilities/util";
-import { newsletterValidation } from "../../validation/userValidation";
+import newsletterValidation from "../../validation/newsletterValidation";
 import Newsletter from "../../services/newsletterServices/newsletter";
 import Subscriber from "../../services/newsletterServices/subsciber";
 import sendGrid from "../../utilities/sendgrid";
@@ -17,12 +17,11 @@ export default class Newsletters {
       const newsletterDetails = { title, message };
       const newsletters = await Newsletter.createNewsletter(newsletterDetails);
       const getSubscribers = await Subscriber.subscribers();
-      // console.log(getSubscribers);
       if (getSubscribers) {
         getSubscribers.forEach(async element => {
           await sendGrid.sendNewsletter(element.email, title, message);
-          console.log(element.email);
-          await Subscriber.updateNewsletter(element.email, newsletterDetails.title);
+          await Subscriber.receivedMail(element.email, newsletterDetails.title);
+          await Newsletter.updateNewsletterId(element.id, newsletters.dataValues.id);
         });
       }
       if (newsletters) {

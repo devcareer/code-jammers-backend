@@ -3,13 +3,22 @@ import database from "../../models";
 export default class Newsletter {
   static async createNewsletter(newsletterDetails) {
     try {
-      const newsletter = await database.Newsletters.create(newsletterDetails);
-      if (newsletter) {
-        return newsletter;
-      }
+      return await database.Newsletters.create(newsletterDetails);
     } catch (error) {
       throw error;
     }
+  }
+
+  static async updateNewsletterId(subscriberId, newsletter_id) {
+    const newSub = await database.Newsletter_Subscribers.findOne({
+      where: { subscriberId }
+    });
+    newSub.newsletterId.push(newsletter_id);
+    await database.Newsletter_Subscribers.update({
+      newsletterId: newSub.newsletterId
+    }, {
+      where: { subscriberId }
+    });
   }
 
   static async getNewsletter(title) {

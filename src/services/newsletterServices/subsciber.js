@@ -11,7 +11,20 @@ export default class Subscriber {
 
   static async subscribe(subscriberDetails) {
     try {
-      return await database.Subscribers.create(subscriberDetails);
+      const createSubscriber = await database.Subscribers.create(subscriberDetails);
+      const subscriber = await database.Subscribers.findOne(
+        {
+          where: {
+            id: createSubscriber.id
+          }
+        }
+      );
+      if (subscriber) {
+        const subscriberId = {
+          subscriberId: subscriber.id
+        };
+        await database.Newsletter_Subscribers.create(subscriberId);
+      }
     } catch (error) {
       throw error;
     }
@@ -33,24 +46,7 @@ export default class Subscriber {
     }
   }
 
-  // User.find({
-  //   where: {
-  //     fb_id: req.user.fb_id
-  //   }
-  // })
-  // .then((user) => {
-  //   user.library.push(req.body._isbn)
-  //   user.update({
-  //     library: user.library
-  //   },{
-  //     where: {
-  //       fb_id: req.user.fb_id
-  //     }
-  //   })
-  //   .then(user => res.json(user))
-  // })
-
-  static async updateNewsletter(email, title) {
+  static async receivedMail(email, title) {
     try {
       const subscriber = await database.Subscribers.findOne({
         where: { email }
@@ -61,25 +57,6 @@ export default class Subscriber {
       }, {
         where: { email },
       });
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  static async receivedMail(email, title) {
-    try {
-      const subscriber = await database.Subscribers.findOne({
-        where: { email }
-      });
-      if (subscriber) {
-        return await database.Subscribers.update(
-          {
-            newsletter: title
-          }, {
-            where: { email: subscriber.email }
-          }
-        );
-      }
     } catch (error) {
       throw error;
     }
@@ -106,4 +83,21 @@ export default class Subscriber {
       throw error;
     }
   }
+
+  // static async deleteUnverifiedSubscriber(email) {
+  //   try {
+  //     const unverifiedSubscriber = await database.Subscribers.findOne({
+  //       where: { email }
+  //     });
+  //     if (unverifiedSubscriber) {
+  //       await database.Subscribers.destroy({
+  //         where: {
+  //           verified: false
+  //         }
+  //       });
+  //     }
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 }

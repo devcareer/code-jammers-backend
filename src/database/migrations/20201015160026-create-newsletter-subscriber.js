@@ -9,7 +9,7 @@ module.exports = {
       },
       newsletterId: {
         type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: false,
+        defaultValue: ["7cc6de97-2ed6-4422-9ce2-9ff22cc5e97f"]
       },
       subscriberId: {
         type: Sequelize.STRING,
