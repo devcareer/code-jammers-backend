@@ -1,3 +1,3 @@
 import "./adminRoutes";
 import "./userRoutes";
-import "./touristCenterRoutes"
+import "./touristCenterRoutes";

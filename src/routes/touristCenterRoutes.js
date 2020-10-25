@@ -7,5 +7,4 @@ const router = Router();
 router.get("/get-tourist-center", getTouristCenter);
 router.get("/get-tourist-centers", getAllTouristCenters);
 
-
 export default router;

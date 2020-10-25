@@ -1,3 +1,3 @@
 import "./country";
 import "./user";
-import "./touristCenterController"
+import "./touristCenterController";

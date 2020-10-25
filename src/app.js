@@ -5,7 +5,6 @@ import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
 import touristCenterRoutes from "./routes/touristCenterRoutes";
 
-
 const app = express();
 app.use(bodyParser.json());
 
