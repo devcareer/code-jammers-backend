@@ -1,10 +1,11 @@
 import Router from "express";
-import controller from "../controllers/touristCenterController";
+import touristCenterController from "../controllers/touristCenterController";
 
+const { getAllTouristCenters, getTouristCenter } = touristCenterController;
 const router = Router();
 
-router.get("/get-tourist-center/:id", );
-router.get("/get-tourist-centers", );
+router.get("/get-tourist-center", getTouristCenter);
+router.get("/get-tourist-centers", getAllTouristCenters);
 
 
 export default router;

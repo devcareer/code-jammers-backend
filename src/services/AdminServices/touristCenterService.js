@@ -45,4 +45,48 @@ export default class db {
             throw err;
         }
     }
+    static async listTouristCenters() {
+        try{
+            return await database.TouristCenters.findAll();
+        } catch (err) {
+            throw err;
+        } 
+    }
+    static async findTouristCenterById(id) {
+        try {
+            return await database.TouristCenters.findOne({
+                where: {
+                    id,
+                }
+            });
+        } catch (err) {
+            throw err;
+        }
+    }
+    static async editTouristCenter(id, touristCenter) {
+        try {
+           return await database.TouristCenters.update(touristCenter, {
+                where: { id },
+        returning: true,
+        plain: true
+              });
+        } catch (err) {
+            throw err;
+        }
+    }
+    static async delTouristCenter(id) {
+        try {
+            const touristCenter = await database.TouristCenters.findOne({
+                where: {
+                    id,
+                }
+            });
+            if(touristCenter === null){
+                return 0;
+            }
+        return await touristCenter.destroy();
+        } catch (err) {
+            throw err;
+        }
+    }
 }

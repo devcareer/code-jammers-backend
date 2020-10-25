@@ -4,13 +4,13 @@ import touristCenterController from "../controllers/touristCenterController";
 import Authentication from "../middlewares/authenticate";
 
 const { addCountry } = AdminController;
-const { addTouristCenter } = touristCenterController;
+const { addTouristCenter, updateTouristCenter, deleteTouristCenter } = touristCenterController;
 const { verifyAdmin, verifyToken } = Authentication;
 
 const router = Router();
 router.post("/admin/country", verifyToken, verifyAdmin, addCountry);
 router.post("/admin/tourist-center", verifyToken, verifyAdmin, addTouristCenter);
-router.delete("/delete-tourist-center/:id", );
-router.put("/update-tourist-center/:id", );
+router.put("/admin/update-tourist-center", verifyToken, verifyAdmin, updateTouristCenter);
+router.delete("/admin/delete-tourist-center", verifyToken, verifyAdmin, deleteTouristCenter);
 
 export default router;
