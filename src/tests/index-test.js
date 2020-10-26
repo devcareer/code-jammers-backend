@@ -2,8 +2,6 @@ import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../app";
 
-// assertion style
-
 chai.should();
 
 chai.use(chaiHttp);
