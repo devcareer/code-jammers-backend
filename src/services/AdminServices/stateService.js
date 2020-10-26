@@ -1,15 +1,6 @@
 import database from "../../models";
 
-/**
- * @class Admin
- * @description allows admin user create and check country details
- * @exports Admin
- */
 export default class Admin {
-  /**
-   * @param {string} newState - The state details
-   * @returns {object} An instance of the States model class
-   */
   static async addState(newState) {
     try {
       return await database.States.create(newState);
@@ -18,10 +9,6 @@ export default class Admin {
     }
   }
 
-  /**
-   * @param {string} stateName - The state name
-   * @returns {object} An instance of the States model class
-   */
   static async checkState(stateName) {
     try {
       return await database.States.findOne({ where: { name: stateName } });
@@ -29,16 +16,47 @@ export default class Admin {
       throw err;
     }
   }
-  static async checkCountryId(countryId) {
+
+  static async checkCountryId(id) {
     try {
-      return await database.States.findOne({ where: { countryId: countryId } });
+      return await database.Countries.findOne({ where: { id } });
     } catch (err) {
       throw err;
     }
   }
-  static async getAllStates () {
+
+  static async getAllStates() {
     try {
-      return await database.States.findAll({ attributes: [ "name", "countryId", "capital", "gallery"] });
+      return await database.States.findAll({ attributes: ["name", "countryId", "capital", "gallery"] });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async getState(name) {
+    try {
+      return await database.States.findOne({ where: { name } });
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async deleteState(name) {
+    try {
+      const state = await database.States.findOne({ where: { name } });
+      return await state.destroy();
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async updateState(id, state) {
+    try {
+      return await database.States.update(state, {
+        where: { name: id },
+        returning: true,
+        plain: true
+      });
     } catch (err) {
       throw err;
     }

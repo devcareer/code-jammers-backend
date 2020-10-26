@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import Util from "../utilities/util";
@@ -10,7 +11,17 @@ dotenv.config();
 
 const { generateToken } = jwtHelper;
 const util = new Util();
+/**
+ * @class UserController
+ * @description create, verify and log in user
+ * @exports UserController
+ */
 export default class UserController {
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async createUser(req, res) {
     try {
       const { error } = registerValidation(req.body);
@@ -37,6 +48,11 @@ export default class UserController {
     }
   }
 
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async verifyUser(req, res) {
     try {
       const updatedUser = await User.updateUserVerification(req.params.email);
@@ -47,6 +63,11 @@ export default class UserController {
     }
   }
 
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async loginUser(req, res) {
     try {
       const { error } = loginValidation(req.body);
@@ -54,7 +75,7 @@ export default class UserController {
         util.setError(400, "Validation Error", error.message);
         return util.send(res);
       }
-      const { email, username, password } = req.body;
+      const { email, password } = req.body;
       const Email = email.toLowerCase();
       const user = await User.emailExist(Email);
       if (!user) return res.status(404).json({ status: 404, error: "Email does not exist." });

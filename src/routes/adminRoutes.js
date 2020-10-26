@@ -4,12 +4,17 @@ import AdminStateController from "../controllers/state";
 import Authentication from "../middlewares/authenticate";
 
 const { addCountry } = AdminController;
-const { addState } = AdminStateController;
-const { listStates } = AdminStateController;
+const {
+  addState, listStates, getState, deleteState, updateState
+} = AdminStateController;
 const { verifyAdmin, verifyToken } = Authentication;
 
 const router = Router();
-router.get("/get-state", listStates);
+router.get("/get-states", listStates);
+router.get("/get-state", getState);
+
+router.delete("/delete-state", verifyToken, verifyAdmin, deleteState);
+router.put("/update-state", verifyToken, verifyAdmin, updateState);
 
 router.post("/admin/country", verifyToken, verifyAdmin, addCountry);
 router.post("/admin/state", verifyToken, verifyAdmin, addState);
