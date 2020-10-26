@@ -43,6 +43,7 @@ export default class Util {
 
   /**
    * @param {object} res - The res body object
+   * @returns {object} Success or Error message
    */
   send(res) {
     const result = {
