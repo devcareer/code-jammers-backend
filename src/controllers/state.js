@@ -1,18 +1,33 @@
 import Admin from "../services/AdminServices/stateService";
 import { validation } from "../validation/stateValidation";
 
+/**
+ * @class AdminStateController
+ * @description create state, get all states, get a state, delete a state, update a state
+ * @exports AdminController
+ */
 export default class AdminStateController {
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async addState(req, res) {
     try {
       const {
         name, countryId, gallery, capital
       } = req.body;
-      const state = await Admin.checkState(name);
-      if (state) return res.status(409).json({ status: 409, message: "This state already exists in the database." });
+      let stateName;
+      if (name) {
+        const stringCountry = String(name);
+        stateName = stringCountry[0].toUpperCase() + stringCountry.slice(1).toLowerCase();
+      }
+      const state = await Admin.checkState(stateName);
+      if (state) return res.status(409).json({ status: 409, message: `${stateName} state already exists in the database.` });
       const stateId = await Admin.checkCountryId(countryId);
-      if (!stateId) return res.status(404).json({ status: 404, message: "Country ID does not exist in the database." });
+      if (!stateId) return res.status(404).json({ status: 404, message: ` ${countryId}Country ID does not exist in the database.` });
       const newState = {
-        name: state.name, gallery, capital, countryId
+        name: stateName, gallery, capital, countryId
       };
       const { error } = validation(newState);
       if (error) return res.status(400).json({ status: 400, error: error.message });
@@ -23,6 +38,11 @@ export default class AdminStateController {
     }
   }
 
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async listStates(req, res) {
     try {
       const states = await Admin.getAllStates();
@@ -39,6 +59,11 @@ export default class AdminStateController {
     }
   }
 
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async getState(req, res) {
     const { name } = req.query;
     if (!name) {
@@ -49,8 +74,8 @@ export default class AdminStateController {
       });
     }
     try {
-      const newName = await Admin.checkState(name);
-      const state = await Admin.getState(newName.name);
+      const stateName = await Admin.checkState(name);
+      const state = await Admin.getState(stateName.name);
       return res.status(200).send({
         status: 200,
         message: `Successfully retrived ${name} state`,
@@ -64,6 +89,11 @@ export default class AdminStateController {
     }
   }
 
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async deleteState(req, res) {
     const { name } = req.query;
 
@@ -75,8 +105,8 @@ export default class AdminStateController {
       });
     }
     try {
-      const newName = await Admin.checkState(name);
-      await Admin.deleteState(newName.name);
+      const deleteName = await Admin.checkState(name);
+      await Admin.deleteState(deleteName.name);
       return res.status(200).send({
         status: 200,
         message: `Successfully Deleted ${name} state`,
@@ -89,6 +119,11 @@ export default class AdminStateController {
     }
   }
 
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async updateState(req, res) {
     try {
       const { id } = req.query;

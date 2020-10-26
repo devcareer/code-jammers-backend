@@ -1,14 +1,15 @@
 import database from "../../models";
 
+/**
+ * @class Admin
+ * @description allows admin user create and check country details
+ * @exports Admin
+ */
 export default class Admin {
-  // static async checkstatename(name) {
-  //   if (name) {
-  //     const stringState = String(name);
-  //     stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
-  //     return stateName;
-  //   }
-  // }
-
+  /**
+   * @param {string} newState - The state details
+   * @returns {object} An instance of the States model class
+   */
   static async addState(newState) {
     try {
       return await database.States.create(newState);
@@ -17,6 +18,10 @@ export default class Admin {
     }
   }
 
+  /**
+   * @param {string} stateName - The state name
+   * @returns {object} An instance of the States model class
+   */
   static async checkState(stateName) {
     try {
       const stringState = String(stateName);
@@ -27,14 +32,21 @@ export default class Admin {
     }
   }
 
-  static async checkCountryId(id) {
+  /**
+   * @param {string} countryid - The country id details
+   * @returns {object} An instance of the States country class
+   */
+  static async checkCountryId(countryid) {
     try {
-      return await database.Countries.findOne({ where: { id } });
+      return await database.Countries.findOne({ where: { id: countryid } });
     } catch (err) {
       throw err;
     }
   }
 
+  /**
+   * @returns {object} An instance of the States model class
+   */
   static async getAllStates() {
     try {
       return await database.States.findAll({ attributes: ["name", "countryId", "capital", "gallery"] });
@@ -43,14 +55,22 @@ export default class Admin {
     }
   }
 
-  static async getState(name) {
+  /**
+   * @param {string} nameOfState - The state name
+   * @returns {object} An instance of the States model class
+   */
+  static async getState(nameOfState) {
     try {
-      return await database.States.findOne({ where: { name } });
+      return await database.States.findOne({ where: { name: nameOfState } });
     } catch (err) {
       throw err;
     }
   }
 
+  /**
+   * @param {string} name - The state name
+   * @returns {object} An instance of the States model class
+   */
   static async deleteState(name) {
     try {
       const state = await database.States.findOne({ where: { name } });
@@ -60,6 +80,11 @@ export default class Admin {
     }
   }
 
+  /**
+   * @param {string} id - The old state name
+   * @param {string} state - The new state details
+   * @returns {object} An instance of the States model class
+   */
   static async updateState(id, state) {
     try {
       return await database.States.update(state, {

@@ -1,3 +1,4 @@
+/* eslint-disable valid-jsdoc */
 /**
  * @class Util
  */
@@ -31,7 +32,7 @@ export default class Util {
   /**
    * @param {number} statusCode - The res status code
    * @param {string} message - The error message
-   * @param {object} error - The error message
+   * @param {string} error - The error message
    */
   setError(statusCode, message, error) {
     this.statusCode = statusCode;
@@ -42,7 +43,6 @@ export default class Util {
 
   /**
    * @param {object} res - The res body object
-   * @returns {object} - The res body object
    */
   send(res) {
     const result = {
