@@ -21,6 +21,7 @@ const msg = {
  *
  */
 export default class {
+  // eslint-disable-next-line valid-jsdoc
   /**
    *
    */
@@ -28,6 +29,7 @@ export default class {
     msg.mail_settings.sandbox_mode.enable = true;
   }
 
+  // eslint-disable-next-line valid-jsdoc
   /**
    * @param {string} email - The user email
    */

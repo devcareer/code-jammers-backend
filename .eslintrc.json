@@ -31,11 +31,12 @@
     "arrow-parens": [2, "as-needed"],
     "no-useless-catch":"off",
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
-    "jsdoc/require-jsdoc": ["error", {"require": {
+    "require-jsdoc": ["error", {"require": {
       "FunctionDeclaration": true,
       "MethodDefinition": true,
       "ClassDeclaration": true,
       "FunctionExpression": true
-    }}]
+    }}],
+    "valid-jsdoc": "error"
   }
 }

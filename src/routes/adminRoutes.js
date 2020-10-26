@@ -5,6 +5,7 @@ import Authentication from "../middlewares/authenticate";
 
 const { addCountry } = AdminController;
 const { addTouristCenter, updateTouristCenter, deleteTouristCenter } = touristCenterController;
+
 const { verifyAdmin, verifyToken } = Authentication;
 
 const router = Router();
