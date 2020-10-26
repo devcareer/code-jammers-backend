@@ -1,6 +1,14 @@
 import database from "../../models";
 
 export default class Admin {
+  // static async checkstatename(name) {
+  //   if (name) {
+  //     const stringState = String(name);
+  //     stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
+  //     return stateName;
+  //   }
+  // }
+
   static async addState(newState) {
     try {
       return await database.States.create(newState);
@@ -11,7 +19,9 @@ export default class Admin {
 
   static async checkState(stateName) {
     try {
-      return await database.States.findOne({ where: { name: stateName } });
+      const stringState = String(stateName);
+      const Name = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
+      return await database.States.findOne({ where: { name: Name } });
     } catch (err) {
       throw err;
     }

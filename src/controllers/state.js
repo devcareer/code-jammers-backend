@@ -7,24 +7,19 @@ export default class AdminStateController {
       const {
         name, countryId, gallery, capital
       } = req.body;
-      let stateName;
-      if (name) {
-        const stringState = String(name);
-        stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
-      }
-      const newState = {
-        name: stateName, gallery, capital, countryId
-      };
-      const { error } = validation(newState);
-      if (error) return res.status(400).json({ status: 400, error: error.message });
-      const state = await Admin.checkState(stateName);
+      const state = await Admin.checkState(name);
       if (state) return res.status(409).json({ status: 409, message: "This state already exists in the database." });
       const stateId = await Admin.checkCountryId(countryId);
       if (!stateId) return res.status(404).json({ status: 404, message: "Country ID does not exist in the database." });
+      const newState = {
+        name: state.name, gallery, capital, countryId
+      };
+      const { error } = validation(newState);
+      if (error) return res.status(400).json({ status: 400, error: error.message });
       const createdState = await Admin.addState(newState);
       return res.status(201).json({ status: 201, message: "A state has been added.", data: createdState, });
     } catch (error) {
-      return res.status(500).json({ status: 500, error: "Server error." });
+      res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -54,12 +49,8 @@ export default class AdminStateController {
       });
     }
     try {
-      let stateName;
-      if (name) {
-        const stringState = String(name);
-        stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
-      }
-      const state = await Admin.getState(stateName);
+      const newName = await Admin.checkState(name);
+      const state = await Admin.getState(newName.name);
       return res.status(200).send({
         status: 200,
         message: `Successfully retrived ${name} state`,
@@ -84,12 +75,8 @@ export default class AdminStateController {
       });
     }
     try {
-      let stateName;
-      if (name) {
-        const stringState = String(name);
-        stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
-      }
-      await Admin.deleteState(stateName);
+      const newName = await Admin.checkState(name);
+      await Admin.deleteState(newName.name);
       return res.status(200).send({
         status: 200,
         message: `Successfully Deleted ${name} state`,
@@ -106,39 +93,21 @@ export default class AdminStateController {
     try {
       const { id } = req.query;
       if (!id) {
-      // if id is not provided
-        return res.status(404).send({
-          status: 404,
-          error: "id not provided please provide an id",
-        });
+        return res.status(404).send({ status: 404, error: "id not provided please provide an id", });
       }
       const {
         name, countryId, capital, gallery,
       } = req.body;
-
-      let stateName;
-      if (name) {
-        const stringState = String(name);
-        stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
-      }
+      const newName = await Admin.checkState(id);
       const newState = {
-        name: stateName, gallery, capital, countryId
+        name, gallery, capital, countryId
       };
       const { error } = validation(newState);
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const stateId = await Admin.checkCountryId(countryId);
-      if (!stateId) return res.status(404).json({ status: 404, message: "Country ID does not exist in the database." });
-      const state = await Admin.updateState(id, newState);
-      return res.status(200).send({
-        status: 200,
-        message: `Successfully updated country with id ${id}`,
-        data: state[1],
-      });
+      const state = await Admin.updateState(newName.name, newState);
+      return res.status(200).send({ status: 200, message: `Successfully updated ${newName.name} State`, data: state[1], });
     } catch (error) {
-      return res.status(404).send({
-        status: 404,
-        error: `Country with  id ${id} not found`,
-      });
+      return res.status(404).send({ status: 404, error: "sorry State does not exist in the database", });
     }
   }
 }
