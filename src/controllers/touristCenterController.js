@@ -2,14 +2,15 @@ import db from "../services/AdminServices/touristCenterService";
 import { validation, validateId, validateCountryId } from "../validation/touristCenterValidation";
 
 /**
- * @class AdminController
- * @description create country
- * @exports AdminController
+ * @class touristCenterController
+ * @description create, read, update & delete touristcenter
+ * @exports touristCenterController
  */
 export default class touristCenterController {
   /**
-   * @param req
-   * @param res
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
    */
   static async addTouristCenter(req, res) {
     try {
@@ -25,7 +26,7 @@ export default class touristCenterController {
       const country = await db.findCountry(countryId);
       if (!country) return res.status(400).json({ status: 400, error: "Country does not exist" });
       const centerName = await db.findTouristCenter(newName);
-      if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists for this Country." });
+      if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
       const createdTouristCenter = await db.addTouristCenter(newTouristCenter);
       return res.status(201).json({ status: 201, message: "A Tourist Center has been added.", data: createdTouristCenter, });
     } catch (error) {
@@ -34,11 +35,9 @@ export default class touristCenterController {
   }
 
   /**
-   * gets a list of all countries
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} list of countries
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
    */
   static async getAllTouristCenters(req, res) {
     try {
@@ -50,11 +49,9 @@ export default class touristCenterController {
   }
 
   /**
-   * gets a list of all countries
-   *
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} list of countries
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
    */
   static async getTouristCenter(req, res) {
     try {
@@ -70,8 +67,9 @@ export default class touristCenterController {
   }
 
   /**
-   * @param req
-   * @param res
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
    */
   static async updateTouristCenter(req, res) {
     try {
@@ -91,7 +89,7 @@ export default class touristCenterController {
       if (name) {
         newname = name.toLowerCase();
         const centerName = await db.findTouristCenter(newname);
-        if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists for this Country." });
+        if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
       }
       const oldTouristCenter = await db.findTouristCenterById(id);
       const newTouristCenter = {
@@ -100,14 +98,17 @@ export default class touristCenterController {
       };
       const center = await db.editTouristCenter(id, newTouristCenter);
       return res.status(200).json({ status: 200, message: `Successfully updated Tourist Center with id ${id}`, data: center[1], });
-    } catch (error) {
-      return res.status(500).json({ status: 500, error: "Server error." });
+    } catch (err) {
+      console.log(err);
+
+      return res.status(500).json({ status: 500, error: "Server error.", err });
     }
   }
 
   /**
-   * @param req
-   * @param res
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
    */
   static async deleteTouristCenter(req, res) {
     try {

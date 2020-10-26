@@ -19,9 +19,8 @@ export default class db {
   }
 
   /**
-   * @param {string} TouristCenterName - The TouristCenter name
-   * @param name
-   * @returns {object} An instance of the TouristCenters model class
+   * @param {string} name - TouristCenter name
+   * @returns {object} An instance of the TouristCenter model class
    */
   static async findTouristCenter(name) {
     try {
@@ -36,7 +35,8 @@ export default class db {
   }
 
   /**
-   * @param id
+   * @param {string} id - TouristCenter id
+   * @returns {object} An instance of the TouristCenter model class
    */
   static async findCountry(id) {
     try {
@@ -51,7 +51,7 @@ export default class db {
   }
 
   /**
-   *
+   * @returns {object} All instances of the TouristCenter model class
    */
   static async listTouristCenters() {
     try {
@@ -62,7 +62,8 @@ export default class db {
   }
 
   /**
-   * @param id
+   * @param {string} id - TouristCenter id
+   * @returns {object} An instance of the TouristCenter model class
    */
   static async findTouristCenterById(id) {
     try {
@@ -77,8 +78,9 @@ export default class db {
   }
 
   /**
-   * @param id
-   * @param touristCenter
+   * @param {string} id - TouristCenter id
+   * @param {string} touristCenter - TouristCenter object
+   * @returns {object} An updated instance of the TouristCenter model class
    */
   static async editTouristCenter(id, touristCenter) {
     try {
@@ -93,7 +95,8 @@ export default class db {
   }
 
   /**
-   * @param id
+   * @param {string} id - TouristCenter id
+   * @returns {object} 0 for false, [] for true
    */
   static async delTouristCenter(id) {
     try {

@@ -30,6 +30,8 @@ export default class Authentication {
       }
       return res.status(401).json({ status: 401, error: "Please login." });
     } catch (error) {
+      console.log(error);
+
       return res.status(500).json({ status: 500, error: "Server Error." });
     }
   }
@@ -49,6 +51,8 @@ export default class Authentication {
       }
       return res.status(403).json({ status: 403, error: "Access denied." });
     } catch (error) {
+      console.log(error);
+
       return res.status(500).json({ status: 500, error: "Server Error." });
     }
   }
