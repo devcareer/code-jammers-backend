@@ -75,7 +75,7 @@ const countriesController = {
     * deletes a country with the specified id
     * @param {object} req - request object
     * @param {object} res - response object
-    * @return {object} returns result
+    * @returns {object} - result
     */
   async deleteCountry(req, res) {
     const { id } = req.query;
@@ -91,13 +91,7 @@ const countriesController = {
         where: {
           id,
         },
-        attributes: countriesAttributes,
-      });
-
-      return res.status(200).send({
-        status: 200,
-        message: `Successfully retrived country with id ${id}`,
-        data: country,
+        attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
       });
 
       // delete country from database
@@ -118,7 +112,7 @@ const countriesController = {
     * updates a country with a specified id
     * @param {object} req - request object
     * @param {object} res - response object
-    * @returns {object} - returns result
+    * @returns {object} - result
     */
   async updateCountry(req, res) {
     const { id } = req.query;
@@ -144,10 +138,7 @@ const countriesController = {
       });
     }
   },
-<<<<<<< HEAD
-=======
 
->>>>>>> 59e2f4d... fixed failing test for delete cuontries route
 };
 
 export default countriesController;

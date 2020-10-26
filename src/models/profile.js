@@ -21,40 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
-  Profile.associate = (models) => {
-    Profile.belongsTo(models.Users, {
-      as: "profileDetails",
-      foreignKey: "userId",
-    });
-  };
-  return Profile;
-};
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-module.exports = (sequelize, DataTypes) => {
-  const Profile = sequelize.define("Profiles", {
-    userId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: "Users",
-        key: "id",
-      },
-    },
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    profilePicture: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-  });
   Profile.associate = models => {
     Profile.belongsTo(models.Users, {
       as: "profileDetails", foreignKey: "userId",
@@ -62,39 +28,3 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Profile;
 };
->>>>>>> 558dcee... feature(get country routes): create get country routes
-=======
-module.exports = (sequelize, DataTypes) => {
-  const Profile = sequelize.define("Profiles", {
-    userId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      references: {
-        model: "Users",
-        key: "id",
-      },
-    },
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    profilePicture: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-  });
-  Profile.associate = models => {
-    Profile.belongsTo(models.Users, {
-      as: "profileDetails", foreignKey: "userId",
-    });
-  };
-  return Profile;
-};
->>>>>>> feature(get country routes): create get country routes
->>>>>>> 001e47a... feature(get country routes): create get country routes
-=======
->>>>>>> a8b21a5... feature(get country routes): create get country routes
