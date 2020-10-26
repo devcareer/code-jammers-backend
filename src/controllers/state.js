@@ -19,8 +19,8 @@ export default class AdminStateController {
       } = req.body;
       let stateName;
       if (name) {
-        const stringCountry = String(name);
-        stateName = stringCountry[0].toUpperCase() + stringCountry.slice(1).toLowerCase();
+        const stringState = String(name);
+        stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
       }
       const state = await Admin.checkState(stateName);
       if (state) return res.status(409).json({ status: 409, message: `${stateName} state already exists in the database.` });
@@ -95,9 +95,9 @@ export default class AdminStateController {
    * @returns {object} Success message
    */
   static async deleteState(req, res) {
-    const { name } = req.query;
+    const { stateName } = req.query;
 
-    if (!name) {
+    if (!stateName) {
       // if id is not provided
       return res.status(404).send({
         status: 404,
@@ -105,16 +105,16 @@ export default class AdminStateController {
       });
     }
     try {
-      const deleteName = await Admin.checkState(name);
+      const deleteName = await Admin.checkState(stateName);
       await Admin.deleteState(deleteName.name);
       return res.status(200).send({
         status: 200,
-        message: `Successfully Deleted ${name} state`,
+        message: `Successfully Deleted ${stateName} state`,
       });
     } catch (error) {
       return res.status(404).send({
         status: 404,
-        error: `'${name}' state does not exists in the database`,
+        error: `'${stateName}' state does not exists in the database`,
       });
     }
   }
