@@ -7,13 +7,13 @@ import router from "./routes";
 import countryRoutes from "./routes/countryRoutes";
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
-
-const port = process.env.PORT || 3000;
 
 app.use("/api/v1/", adminRoutes);
 app.use("/api/v1/", userRoutes);

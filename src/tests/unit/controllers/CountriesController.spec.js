@@ -20,11 +20,7 @@ describe("create", () => {
     const req = {
     };
     sinon.stub(db.Countries, "findAll").returns(countriesMockData);
-<<<<<<< HEAD
     await countriesController.listCountries(req, res);
-=======
-    countriesController.listCountries(req, res);
->>>>>>> 1e51b24... feature(get country routes): create get country routes
     expect(db.Countries.findAll).to.have.been.calledOnce.and.calledWith({
       attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
     });
@@ -42,11 +38,7 @@ describe("create", () => {
       },
     };
     sinon.stub(db.Countries, "findOne").returns(countryMockData);
-<<<<<<< HEAD
     await countriesController.getCountry(req, res);
-=======
-    countriesController.getCountry(req, res);
->>>>>>> 1e51b24... feature(get country routes): create get country routes
     expect(db.Countries.findOne).to.have.been.calledWith({
       attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
       where: { id: req.query.id },
