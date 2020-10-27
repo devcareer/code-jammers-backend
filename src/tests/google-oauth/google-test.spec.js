@@ -1,7 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../../app";
-import { user } from "./google-mock-data";
+import { newUser, user } from "./google-mock-data";
 
 chai.should();
 
@@ -16,8 +16,15 @@ describe("Signin a user with google oauth", () => {
     chai.request(server).get("/auth/google/callback");
     done();
   });
-  it("it should create a new user", done => {
-    chai.request(server).post("/api/v1/users/signup").send(user);
+  it("it should save new user", done => {
+    chai.request(server).post("/api/v1/users/signup").send(newUser);
+    done();
+  });
+  it("it should not signup a user with an already registered id", done => {
+    chai
+      .request(server)
+      .post("/api/v1/users/signup")
+      .send(user);
     done();
   });
 });

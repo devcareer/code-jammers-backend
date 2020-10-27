@@ -14,10 +14,7 @@ const googleStrategy = new Strategy({
   },
   
   async (accessToken, refreshToken, profile, done) => {
-    try {
-      const email = profile.emails[0].value;
-      const profilePicture =  profile.photos[0].value
-    
+    try {     
       const userExist = await Users.findOne({
         googleId: profile.id
       });
@@ -25,19 +22,17 @@ const googleStrategy = new Strategy({
       if (userExist) {
         return done(null,userExist);
       }
-      
-      const newUser = {
-        username: profile.name.givenName,
-        lastName:  profile.name.familyName,
-        profilePicture,
-        password: "",
-        email,
-        googleId: profile.id,
-        provider: "google",
-        role: 'User'
-      };
  
-     await User.createUser(newUser);
+     await User.createUser({
+      username: profile.name.givenName,
+      lastName:  profile.name.familyName,
+      profilePicture: profile.photos[0].value,
+      password: "",
+      email: profile.emails[0].value,
+      googleId: profile.id,
+      provider: "google",
+      role: 'User'
+    });
       return done(null, newUser);
     } catch (err) {
       return done(err, false);
