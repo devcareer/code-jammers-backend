@@ -20,8 +20,7 @@ const googleStrategy = new Strategy({
     
       const userExist = await Users.findOne({
         googleId: profile.id
-      })
-      console.log("user",userExist);
+      });
   
       if (userExist) {
         return done(null,userExist);
