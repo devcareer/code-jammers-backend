@@ -84,7 +84,11 @@ export default class db {
    */
   static async editTouristCenter(id, touristCenter) {
     try {
-      return await database.TouristCenters.update(touristCenter, {
+      const newTouristCenter = touristCenter;
+      if (newTouristCenter.name) {
+        newTouristCenter.name = newTouristCenter.name.toLowerCase();
+      }
+      return await database.TouristCenters.update(newTouristCenter, {
         where: { id },
         returning: true,
         plain: true
