@@ -14,3 +14,4 @@ import "./models/culture.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
 import "./google-test.spec"
+import "./controllers/admin/addCountry.test";

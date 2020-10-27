@@ -8,7 +8,6 @@ import {
 } from "./user-test-data";
 import sendGrid from "../../../utilities/sendgrid";
 
-// assertion style
 sendGrid.sandboxMode();
 chai.should();
 

@@ -4,6 +4,7 @@ import passport from "passport";
 import cookieSession from "cookie-session";
 import cors from "cors";
 import dotenv from "dotenv";
+import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
 import { googleStrategy } from "./database/config/google-passport";
 
@@ -26,6 +27,7 @@ app.use(passport.session());
 
 const port = process.env.PORT || 3000;
 
+app.use("/api/v1/", adminRoutes);
 app.use("/api/v1/", userRoutes);
 
 // Google authentication
