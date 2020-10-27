@@ -10,6 +10,17 @@ const countriesAttributes = [
   "region",
   "currency",
 ];
+
+const getOneCountry = async id => {
+  const country = await db.Countries.findOne({
+    where: {
+      id,
+    },
+    attributes: countriesAttributes,
+  });
+  return country;
+};
+
 const countriesController = {
   /**
    * gets a list of all countries
@@ -52,13 +63,7 @@ const countriesController = {
       });
     }
     try {
-      const country = await db.Countries.findOne({
-        where: {
-          id,
-        },
-        attributes: countriesAttributes,
-      });
-
+      const country = await getOneCountry(id);
       return res.status(200).send({
         status: 200,
         message: `Successfully retrived country with id ${id}`,
@@ -87,15 +92,10 @@ const countriesController = {
       });
     }
     try {
-      const country = await db.Countries.findOne({
-        where: {
-          id,
-        },
-        attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
-      });
+      const country = await getOneCountry(id);
 
       // delete country from database
-      await country.destroy();
+      await country.destroy({ cascade: true });
 
       return res.status(200).send({
         status: 200,

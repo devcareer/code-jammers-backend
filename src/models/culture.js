@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     Culture.belongsTo(models.Countries, {
       as: "countryCulture",
       foreignKey: "countryId",
+      onDelete: 'cascade',
     });
   };
   return Culture;

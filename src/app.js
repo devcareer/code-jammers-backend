@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
-import router from "./routes";
 import countryRoutes from "./routes/countryRoutes";
 
 const app = express();
@@ -20,13 +19,7 @@ app.use("/api/v1/", userRoutes);
 
 app.use(express.json());
 
-app.use("/api/v1", router);
-
 app.use(express.json());
-
-app.use(express.json());
-
-app.use("/api/v1", router);
 
 app.use("/api/v1", countryRoutes);
 
