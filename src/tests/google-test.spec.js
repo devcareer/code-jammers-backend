@@ -15,4 +15,4 @@ describe("Signin a user with google oauth", () => {
         chai.request(server).get("/auth/google/callback");
         done();
     })
-})
+});
