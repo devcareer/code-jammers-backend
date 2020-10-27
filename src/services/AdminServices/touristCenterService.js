@@ -94,21 +94,17 @@ export default class db {
     }
   }
 
+  // eslint-disable-next-line valid-jsdoc
   /**
-   * @param {string} id - TouristCenter id
-   * @returns {object} 0 for false, [] for true
+   * @param {string} id - TouristCenter object
    */
   static async delTouristCenter(id) {
     try {
-      const touristCenter = await database.TouristCenters.findOne({
+      await database.TouristCenters.destroy({
         where: {
           id,
         }
       });
-      if (touristCenter === null) {
-        return 0;
-      }
-      return await touristCenter.destroy();
     } catch (err) {
       throw err;
     }

@@ -42,7 +42,7 @@ const validation = touristCenter => {
   return schema.validate(touristCenter);
 };
 
-const validateId = id => {
+const validateId = ids => {
   const schema = Joi.object({
     id: Joi.string().required()
       .empty().guid({ version: "uuidv4" })
@@ -51,19 +51,13 @@ const validateId = id => {
         "string.empty": "ID cannot be an empty field.",
         "string.base": "ID must be a string.",
         "string.guid": "ID must be a UUID"
-      })
-  }).options({ abortEarly: false });
-  return schema.validate(id);
-};
-
-const validateCountryId = id => {
-  const schema = Joi.object({
+      }),
     countryId: Joi.string().guid({ version: "uuidv4" })
       .messages({
         "string.guid": "CountryId must be a UUID"
       })
   }).options({ abortEarly: false });
-  return schema.validate(id);
+  return schema.validate(ids);
 };
 
-export { validation, validateId, validateCountryId };
+export { validation, validateId };

@@ -1,5 +1,5 @@
 import db from "../services/AdminServices/touristCenterService";
-import { validation, validateId, validateCountryId } from "../validation/touristCenterValidation";
+import { validation, validateId } from "../validation/touristCenterValidation";
 
 /**
  * @class touristCenterController
@@ -74,14 +74,14 @@ export default class touristCenterController {
   static async updateTouristCenter(req, res) {
     try {
       const { id } = req.query;
-      const { error } = validateId({ id });
-      if (error) return res.status(400).json({ status: 400, error: error.message });
       const {
         countryId, gallery, name, location, about
       } = req.body;
+      const { error } = validateId({ id, countryId });
+      if (error) return res.status(400).json({ status: 400, error: error.message });
+      const oldTouristCenter = await db.findTouristCenterById(id);
+      if (!oldTouristCenter) return res.status(404).json({ status: 404, error: `Tourist Center with  id '${id}' not found` });
       if (countryId) {
-        const { err } = validateCountryId({ countryId });
-        if (err) return res.status(400).json({ status: 400, error: err.message });
         const country = await db.findCountry(countryId);
         if (!country) return res.status(400).json({ status: 400, error: "Country does not exist" });
       }
@@ -91,17 +91,14 @@ export default class touristCenterController {
         const centerName = await db.findTouristCenter(newname);
         if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
       }
-      const oldTouristCenter = await db.findTouristCenterById(id);
       const newTouristCenter = {
         // eslint-disable-next-line max-len
         countryId: countryId || oldTouristCenter.countryId, gallery: gallery || oldTouristCenter.gallery, name: newname || oldTouristCenter.name, location: location || oldTouristCenter.location, about: about || oldTouristCenter.about
       };
       const center = await db.editTouristCenter(id, newTouristCenter);
       return res.status(200).json({ status: 200, message: `Successfully updated Tourist Center with id ${id}`, data: center[1], });
-    } catch (err) {
-      console.log(err);
-
-      return res.status(500).json({ status: 500, error: "Server error.", err });
+    } catch (e) {
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -115,8 +112,9 @@ export default class touristCenterController {
       const { id } = req.query;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const touristCenter = await db.delTouristCenter(id);
+      const touristCenter = await db.findTouristCenterById(id);
       if (!touristCenter) return res.status(404).json({ status: 404, error: `Tourist Center with  id '${id}' not found` });
+      await db.delTouristCenter(id);
       return res.status(200).json({ status: 200, message: `Successfully deleted Tourist Center with id ${id}` });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
