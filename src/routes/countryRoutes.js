@@ -1,22 +1,25 @@
-import Router from "express";
-import controllers from "../controllers";
+import { Router } from "express";
+import AdminController from "../controllers/country";
 import Authentication from "../middlewares/authenticate";
-
-const { verifyAdmin, verifyToken } = Authentication;
+import controllers from "../controllers";
 
 const { countriesController } = controllers;
 const {
   listCountries, getCountry, deleteCountry, updateCountry
 } = countriesController;
 
+const { addCountry } = AdminController;
+const { verifyAdmin, verifyToken } = Authentication;
+
 const router = Router();
+router.post("/admin/country", verifyToken, verifyAdmin, addCountry);
 
-router.get("/get-country", getCountry);
+router.get("/country/:id", getCountry);
 
-router.get("/get-countries", listCountries);
+router.get("/countries", listCountries);
 
-router.delete("/delete-country", verifyToken, verifyAdmin, deleteCountry);
+router.delete("/admin/country/:id", verifyToken, verifyAdmin, deleteCountry);
 
-router.put("/update-country", verifyToken, verifyAdmin, updateCountry);
+router.patch("/admin/country/:id", verifyToken, verifyAdmin, updateCountry);
 
 export default router;

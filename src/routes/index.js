@@ -1,2 +1,2 @@
-import "./adminRoutes";
+import "./countryRoutes";
 import "./userRoutes";

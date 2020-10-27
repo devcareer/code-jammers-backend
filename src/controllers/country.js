@@ -89,15 +89,8 @@ export default class AdminController {
    * @returns {object} country with specific id
    */
   static async getCountry(req, res) {
-    const { id } = req.query;
-
-    if (!id) {
-      // if id is not provided
-      return res.status(404).send({
-        status: 404,
-        error: "id not provided please provide an id",
-      });
-    }
+    console.log("------------------", req.params);
+    const { id } = req.params;
     try {
       const country = await getOneCountry(id);
       return res.status(200).send({
@@ -120,14 +113,7 @@ export default class AdminController {
     * @returns {object} - result
     */
   static async deleteCountry(req, res) {
-    const { id } = req.query;
-    if (!id) {
-      // if id is not provided
-      return res.status(404).send({
-        status: 404,
-        error: "id not provided please provide an id",
-      });
-    }
+    const { id } = req.params;
     try {
       const country = await getOneCountry(id);
 
@@ -153,14 +139,7 @@ export default class AdminController {
     * @returns {object} - result
     */
   static async updateCountry(req, res) {
-    const { id } = req.query;
-    if (!id) {
-      // if id is not provided
-      return res.status(404).send({
-        status: 404,
-        error: "id not provided please provide an id",
-      });
-    }
+    const { id } = req.params;
     try {
       await db.Countries.update(req.body, {
         where: { id },

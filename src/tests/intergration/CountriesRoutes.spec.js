@@ -30,7 +30,7 @@ describe("Countries api routes", () => {
     it("returns all countries ", done => {
       chai
         .request(server)
-        .get("/api/v1/get-countries")
+        .get("/api/v1/countries")
         .end((err, res) => {
           const { status, body } = res;
           const { data } = body;
@@ -61,7 +61,7 @@ describe("Countries api routes", () => {
     it("returns country with specific id", done => {
       chai
         .request(server)
-        .get("/api/v1/get-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30")
+        .get("/api/v1/country/030f7257-5fa4-4015-a1f0-b17408a11e30")
         .end((err, res) => {
           const { status, body } = res;
           const { data } = body;
@@ -79,7 +79,7 @@ describe("Countries api routes", () => {
     it("returns country with all properties", done => {
       chai
         .request(server)
-        .get("/api/v1/get-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30")
+        .get("/api/v1/country/030f7257-5fa4-4015-a1f0-b17408a11e30")
         .end((err, res) => {
           const { body } = res;
           const { data } = body;
@@ -100,7 +100,7 @@ describe("Countries api routes", () => {
     it("returns country which matches mock", done => {
       chai
         .request(server)
-        .get("/api/v1/get-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30")
+        .get("/api/v1/country/030f7257-5fa4-4015-a1f0-b17408a11e30")
         .end((err, res) => {
           const { body } = res;
           const { data } = body;
@@ -128,7 +128,7 @@ describe("Countries api routes", () => {
     it("deletes country with specific id", done => {
       chai
         .request(server)
-        .delete("/api/v1/delete-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30").set("Authorization", `Bearer ${adminToken}`)
+        .delete("/api/v1/admin/country/030f7257-5fa4-4015-a1f0-b17408a11e30").set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
@@ -143,7 +143,7 @@ describe("Countries api routes", () => {
     it("returns 404 when deleting country which is not in db", done => {
       chai
         .request(server)
-        .delete("/api/v1/delete-country?id=6003fb36").set("Authorization", `Bearer ${adminToken}`)
+        .delete("/api/v1/admin/country/6003fb36").set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
@@ -154,28 +154,13 @@ describe("Countries api routes", () => {
           done();
         });
     });
-
-    it("returns an error when id is not provided when deleting a country", done => {
-      chai
-        .request(server)
-        .delete("/api/v1/delete-country?").set("Authorization", `Bearer ${adminToken}`)
-        .end((err, res) => {
-          const { status, body } = res;
-
-          // status should be 200
-          expect(status).to.equal(404);
-          expect(body.status).to.equal(404);
-          expect(body.error).to.equal("id not provided please provide an id");
-          done();
-        });
-    });
   });
 
   describe("UPDATE country with specific id route", () => {
     it("updates country with specific id", done => {
       chai
         .request(server)
-        .put("/api/v1/update-country?id=074019c3-2bc6-40e4-88e2-dd347ed74712")
+        .patch("/api/v1/admin/country/074019c3-2bc6-40e4-88e2-dd347ed74712")
         .set("content-type", "application/json").set("Authorization", `Bearer ${adminToken}`)
         .send({ population: 50000 })
         .end((err, res) => {
@@ -192,7 +177,7 @@ describe("Countries api routes", () => {
     it("returns 404 when updating country which is not in db", done => {
       chai
         .request(server)
-        .put("/api/v1/update-country?id=6003fb36").send({ population: 50000 }).set("Authorization", `Bearer ${adminToken}`)
+        .patch("/api/v1/admin/country/6003fb36").send({ population: 50000 }).set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
@@ -200,21 +185,6 @@ describe("Countries api routes", () => {
           expect(status).to.equal(404);
           expect(body.status).to.equal(404);
           expect(body.error).to.equal("Country with  id '6003fb36' not found");
-          done();
-        });
-    });
-
-    it("returns an error when id is not provided when updating a country", done => {
-      chai
-        .request(server)
-        .put("/api/v1/update-country?").send({ population: 50000 }).set("Authorization", `Bearer ${adminToken}`)
-        .end((err, res) => {
-          const { status, body } = res;
-
-          // status should be 200
-          expect(status).to.equal(404);
-          expect(body.status).to.equal(404);
-          expect(body.error).to.equal("id not provided please provide an id");
           done();
         });
     });
