@@ -25,7 +25,6 @@ const newPassword = {
     newPassword: "firebolt",
   })
 };
-
 const signed = signToken(user, user.password);
 export {
   user, notUser, newPassword, signed

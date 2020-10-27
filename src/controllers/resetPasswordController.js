@@ -75,7 +75,7 @@ export default class {
           } catch (error) { throw error; }
           return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
-          throw error;
+          res.send({ status: 200, error: "link has already been used please request for another one" });
         }
       });
   }
