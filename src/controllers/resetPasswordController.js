@@ -8,7 +8,17 @@ const jwt = require("jsonwebtoken");
 
 let hostURL;
 
+/**
+ * @class
+ * @description recover and reset
+ * @exports
+ */
 export default class {
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async recover(req, res) {
     try {
       const user = await db.Users.findOne({
@@ -39,6 +49,11 @@ export default class {
     }
   }
 
+  /**
+   * @param {object} req - The reset request object
+   * @param {object} res - The reset response object
+   * @returns {object} Success message
+   */
   static async reset(req, res) {
     const { id, token } = req.params;
     const { newPassword } = req.body;

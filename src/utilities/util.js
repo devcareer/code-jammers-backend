@@ -1,4 +1,5 @@
 /* eslint-disable valid-jsdoc */
+/* eslint-disable jsdoc/require-returns */
 /**
  * @class Util
  */
@@ -43,6 +44,7 @@ export default class Util {
 
   /**
    * @param {object} res - The res body object
+   * @returns {object} res - The res success object
    */
   send(res) {
     const result = {

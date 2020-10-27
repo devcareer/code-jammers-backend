@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-returns */
 import dotenv from "dotenv";
 import sgMail from "@sendgrid/mail";
 
@@ -41,7 +42,17 @@ export default class {
       await sgMail.send(msg);
     } catch (err) { console.error(err.message); }
   }
+  /**
+   *
+   * @typedef {(number|string)} uuid
+   */
 
+  /**
+   * @param {string} email - The user email
+   * @param {uuid} id - The user ID
+   * @param {string} token - The session token
+   * @param {object} res - The reset response object
+   */
   static async sendResetPasswordEmail(email, id, token, res) {
     const link = `${hostURL}/api/v1/users/reset/${id}/${token}`;
     msg.subject = "Password change request email";
