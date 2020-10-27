@@ -27,12 +27,12 @@ export default class {
       if (!user) {
         return res.status(404).json({
           status: 404,
-          error: `The email address ${req.body.email} is not associated with any account or is not verified.`,
+          error: `The email address ${req.body.email} is not associated with any account.`,
         });
       }
       if (!user.verified) {
-        return res.status(404).json({
-          status: 404,
+        return res.status(409).json({
+          status: 409,
           error: "The acount is not verified. Please check your email inbox for verification email.",
         });
       }
@@ -75,7 +75,7 @@ export default class {
           } catch (error) { throw error; }
           return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
-          res.send({ status: 200, error: "link has already been used please request for another one" });
+          res.send({ status: 410, error: "link has expired. please request for a new link." });
         }
       });
   }
