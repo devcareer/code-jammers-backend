@@ -1,29 +1,31 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import server from "../../app";
+import { user4 } from "../controllers/users/user-sign-in-test-data";
 import db from "../../models";
-import countriesMockData from "../__mock__/countriesMockData";
 import countryMockData from "../__mock__/countryMockData";
 
 chai.use(chaiHttp);
 const { expect } = chai;
 
 describe("Countries api routes", () => {
-  beforeEach(async () => {
-    // remove any rows from database before testing
-    await db.Countries.destroy({
-      where: {
-      },
-      trancate: {
-        cascade: true,
-      },
-    });
+  let adminToken;
+  before(done => {
+    chai
+      .request(server)
+      .post("/api/v1/users/signin")
+      .set("Accept", "application/json")
+      .send(user4)
+      .end((err, res) => {
+        if (err) throw err;
+        adminToken = res.body.token;
+        done();
+      });
   });
 
   describe("GET multiple countries api route", () => {
     beforeEach(async () => {
-      await db.Countries.create(countriesMockData[0]);
-      await db.Countries.create(countriesMockData[1]);
+      await db.Countries.create(countryMockData);
     });
     it("returns all countries ", done => {
       chai
@@ -48,10 +50,6 @@ describe("Countries api routes", () => {
             expect(country).to.have.property("region");
             expect(country).to.have.property("currency");
           });
-
-          // check if all countries are recieved
-          expect(data).to.have.length(2);
-
           // check that body is of the correct data type
           expect(data).to.be.an("array");
           done();
@@ -60,24 +58,17 @@ describe("Countries api routes", () => {
   });
 
   describe("GET country with specific id route", () => {
-    beforeEach(async () => {
-      await db.Countries.create(countryMockData);
-    });
-
     it("returns country with specific id", done => {
       chai
         .request(server)
-        .get("/api/v1/get-country?id=6003fb36-5112-463e-a1f9-c8944e72412f")
+        .get("/api/v1/get-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30")
         .end((err, res) => {
           const { status, body } = res;
           const { data } = body;
           // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
-          expect(body.message).to.equal("Successfully retrived country with id 6003fb36-5112-463e-a1f9-c8944e72412f");
-
-          // check if all countries are recieved
-          // expect(data).to.have.length(2);
+          expect(body.message).to.equal("Successfully retrived country with id 030f7257-5fa4-4015-a1f0-b17408a11e30");
 
           // check that body is of the correct data type
           expect(data).to.be.an("object");
@@ -88,7 +79,7 @@ describe("Countries api routes", () => {
     it("returns country with all properties", done => {
       chai
         .request(server)
-        .get("/api/v1/get-country?id=6003fb36-5112-463e-a1f9-c8944e72412f")
+        .get("/api/v1/get-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30")
         .end((err, res) => {
           const { body } = res;
           const { data } = body;
@@ -106,30 +97,15 @@ describe("Countries api routes", () => {
         });
     });
 
-    it("returns an error when id is not provided when updating a country", done => {
-      chai
-        .request(server)
-        .delete("/api/v1/delete-country?")
-        .end((err, res) => {
-          const { status, body } = res;
-
-          // status should be 200
-          expect(status).to.equal(404);
-          expect(body.status).to.equal(404);
-          expect(body.error).to.equal("id not provided please provide an id");
-          done();
-        });
-    });
-
     it("returns country which matches mock", done => {
       chai
         .request(server)
-        .get("/api/v1/get-country?id=6003fb36-5112-463e-a1f9-c8944e72412f")
+        .get("/api/v1/get-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30")
         .end((err, res) => {
           const { body } = res;
           const { data } = body;
 
-          expect(data.id).to.equal("6003fb36-5112-463e-a1f9-c8944e72412f");
+          expect(data.id).to.equal("030f7257-5fa4-4015-a1f0-b17408a11e30");
 
           expect(data.nameOfCountry).to.equal("Nigeria");
 
@@ -149,21 +125,17 @@ describe("Countries api routes", () => {
   });
 
   describe("DELETE country with specific id route", () => {
-    beforeEach(async () => {
-      await db.Countries.create(countryMockData);
-    });
-
     it("deletes country with specific id", done => {
       chai
         .request(server)
-        .delete("/api/v1/delete-country?id=6003fb36-5112-463e-a1f9-c8944e72412f")
+        .delete("/api/v1/delete-country?id=030f7257-5fa4-4015-a1f0-b17408a11e30").set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
           // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
-          expect(body.message).to.equal("Successfully deleted country with id 6003fb36-5112-463e-a1f9-c8944e72412f");
+          expect(body.message).to.equal("Successfully deleted country with id 030f7257-5fa4-4015-a1f0-b17408a11e30");
           done();
         });
     });
@@ -171,7 +143,7 @@ describe("Countries api routes", () => {
     it("returns 404 when deleting country which is not in db", done => {
       chai
         .request(server)
-        .delete("/api/v1/delete-country?id=6003fb36")
+        .delete("/api/v1/delete-country?id=6003fb36").set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
@@ -183,10 +155,10 @@ describe("Countries api routes", () => {
         });
     });
 
-    it("returns an error when id is not provided when deleteing a country", done => {
+    it("returns an error when id is not provided when deleting a country", done => {
       chai
         .request(server)
-        .delete("/api/v1/delete-country?")
+        .delete("/api/v1/delete-country?").set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
@@ -200,15 +172,11 @@ describe("Countries api routes", () => {
   });
 
   describe("UPDATE country with specific id route", () => {
-    beforeEach(async () => {
-      await db.Countries.create(countryMockData);
-    });
-
     it("updates country with specific id", done => {
       chai
         .request(server)
-        .put("/api/v1/update-country?id=6003fb36-5112-463e-a1f9-c8944e72412f")
-        .set("content-type", "application/json")
+        .put("/api/v1/update-country?id=074019c3-2bc6-40e4-88e2-dd347ed74712")
+        .set("content-type", "application/json").set("Authorization", `Bearer ${adminToken}`)
         .send({ population: 50000 })
         .end((err, res) => {
           const { status, body } = res;
@@ -216,7 +184,7 @@ describe("Countries api routes", () => {
           // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
-          expect(body.message).to.equal("Successfully updated country with id 6003fb36-5112-463e-a1f9-c8944e72412f");
+          expect(body.message).to.equal("Successfully updated country with id 074019c3-2bc6-40e4-88e2-dd347ed74712");
           done();
         });
     });
@@ -224,7 +192,7 @@ describe("Countries api routes", () => {
     it("returns 404 when updating country which is not in db", done => {
       chai
         .request(server)
-        .delete("/api/v1/delete-country?id=6003fb36")
+        .put("/api/v1/update-country?id=6003fb36").send({ population: 50000 }).set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
@@ -239,7 +207,7 @@ describe("Countries api routes", () => {
     it("returns an error when id is not provided when updating a country", done => {
       chai
         .request(server)
-        .delete("/api/v1/delete-country?")
+        .put("/api/v1/update-country?").send({ population: 50000 }).set("Authorization", `Bearer ${adminToken}`)
         .end((err, res) => {
           const { status, body } = res;
 
