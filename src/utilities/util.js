@@ -1,5 +1,4 @@
 /* eslint-disable valid-jsdoc */
-/* eslint-disable jsdoc/require-returns */
 /**
  * @class Util
  */
