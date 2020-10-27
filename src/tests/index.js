@@ -13,5 +13,5 @@ import "./models/country.spec";
 import "./models/culture.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
-import "./google-test.spec"
+import "./google-oauth/google-test.spec";
 import "./controllers/admin/addCountry.test";
