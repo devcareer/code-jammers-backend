@@ -6,8 +6,10 @@ import {
   touristCenter, touristCenter2, touristCenter3, touristCenter4, touristCenter5
 } from "./touristCenter-data";
 import server from "../../../app";
+import sendGrid from "../../../utilities/sendgrid";
 
 chai.should();
+sendGrid.sandboxMode();
 
 const { expect } = chai;
 chai.use(chaiHttp);
@@ -131,7 +133,7 @@ describe("Update Tourist Center", () => {
       .put("/api/v1/admin/update-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e575")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send({ location: "Abuja" })
+      .send({ name: "Aso rock" })
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equal("Successfully updated Tourist Center with id 8d585465-cd80-4030-b665-bdc3bbd3e575");
