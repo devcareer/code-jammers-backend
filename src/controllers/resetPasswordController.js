@@ -21,34 +21,17 @@ export default class {
    */
   static async recover(req, res) {
     try {
-      const user = await db.Users.findOne({
-        where: { email: req.body.email },
-      });
+      const user = await db.Users.findOne({ where: { email: req.body.email }, });
       if (!user) {
-        return res.status(404).json({
-          status: 404,
-          error: `The email address ${req.body.email} is not associated with any account.`,
-        });
+        return res.status(404).json({ status: 404, error: `The email address ${req.body.email} is not associated with any account.`, });
       }
       if (!user.verified) {
-        return res.status(403).json({
-          status: 403,
-          error: "The acount is not verified. Please check your email inbox for verification email.",
-        });
+        return res.status(403).json({ status: 403, error: "The acount is not verified. Please check your email inbox for verification email.", });
       }
-
       const signed = signToken(user.toJSON(), user.password);
-      if (process.env.NODE_ENV === "production") {
-        hostURL = "https://know-africa.herokuapp.com";
-      } else { hostURL = `http://localhost:${process.env.PORT || 3000}`; }
-
-      const link = `${hostURL}/api/v1/users/reset/${user.id}/${signed}`;
       return await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);
     } catch (error) {
-      return res.status(500).json({
-        status: 500,
-        error: "Server error",
-      });
+      return res.status(500).json({ status: 500, error: "Server error", });
     }
   }
 
@@ -74,16 +57,11 @@ export default class {
         const hashedPass = hashPassword(newPassword);
         try {
           db.Users.update({ password: hashedPass, }, {
-            where: { id: user.id },
-            returning: true,
-            plain: true
+            where: { id: user.id }, returning: true, plain: true
           });
           return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
-          return res.status(500).json({
-            status: 500,
-            error: "Server error",
-          });
+          return res.status(500).json({ status: 500, error: "Server error", });
         }
       });
   }
