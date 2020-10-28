@@ -17,7 +17,7 @@ export default class touristCenterController {
       const {
         countryId, gallery, name, location, about
       } = req.body;
-      const newName = name.toLowerCase();
+      const newName = name[0].toUpperCase() + name.slice(1).toLowerCase();
       const newTouristCenter = {
         countryId, gallery, name: newName, location, about
       };
@@ -87,7 +87,7 @@ export default class touristCenterController {
       }
       let newname;
       if (name) {
-        newname = name.toLowerCase();
+        newname = name[0].toUpperCase() + name.slice(1).toLowerCase();
         req.body.name = newname;
         const centerName = await db.findTouristCenter(newname);
         if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
