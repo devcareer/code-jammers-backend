@@ -98,7 +98,6 @@ describe("Create newsletter, create subscribers, enable subscribers to unsubscri
       .set("Accept", "application/json")
       .send(subscriber3)
       .end((err, res) => {
-        console.log(res.body);
         res.should.have.status(409);
         done();
       });
