@@ -13,16 +13,6 @@ const countriesAttributes = [
   "currency",
 ];
 
-const getOneCountry = async id => {
-  const country = await db.Countries.findOne({
-    where: {
-      id,
-    },
-    attributes: countriesAttributes,
-  });
-  return country;
-};
-
 /**
  * @class AdminController
  * @description create country
@@ -91,10 +81,16 @@ export default class AdminController {
   static async getCountry(req, res) {
     const { id } = req.params;
     try {
-      const country = await getOneCountry(id);
+      const country = await db.Countries.findOne({
+        where: {
+          id,
+        },
+        attributes: countriesAttributes,
+      });
+
       return res.status(200).send({
         status: 200,
-        message: `Successfully retrived country with id ${id}`,
+        message: "Successfully retrived country",
         data: country,
       });
     } catch (error) {
@@ -114,14 +110,19 @@ export default class AdminController {
   static async deleteCountry(req, res) {
     const { id } = req.params;
     try {
-      const country = await getOneCountry(id);
+      const country = await db.Countries.findOne({
+        where: {
+          id,
+        },
+        attributes: countriesAttributes,
+      });
 
       // delete country from database
       await country.destroy({ cascade: true });
 
       return res.status(200).send({
         status: 200,
-        message: `Successfully deleted country with id ${id}`,
+        message: "Successfully deleted country",
       });
     } catch (error) {
       return res.status(404).send({
@@ -145,7 +146,7 @@ export default class AdminController {
       });
       return res.status(200).send({
         status: 200,
-        message: `Successfully updated country with id ${id}`,
+        message: "Successfully updated country",
       });
     } catch (error) {
       return res.status(404).send({

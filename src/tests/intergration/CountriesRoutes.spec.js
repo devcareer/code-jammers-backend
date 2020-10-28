@@ -68,7 +68,7 @@ describe("Countries api routes", () => {
           // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
-          expect(body.message).to.equal("Successfully retrived country with id 030f7257-5fa4-4015-a1f0-b17408a11e30");
+          expect(body.message).to.equal("Successfully retrived country");
 
           // check that body is of the correct data type
           expect(data).to.be.an("object");
@@ -135,7 +135,7 @@ describe("Countries api routes", () => {
           // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
-          expect(body.message).to.equal("Successfully deleted country with id 030f7257-5fa4-4015-a1f0-b17408a11e30");
+          expect(body.message).to.equal("Successfully deleted country");
           done();
         });
     });
@@ -169,7 +169,7 @@ describe("Countries api routes", () => {
           // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
-          expect(body.message).to.equal("Successfully updated country with id 074019c3-2bc6-40e4-88e2-dd347ed74712");
+          expect(body.message).to.equal("Successfully updated country");
           done();
         });
     });
