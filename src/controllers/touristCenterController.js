@@ -55,7 +55,7 @@ export default class touristCenterController {
    */
   static async getTouristCenter(req, res) {
     try {
-      const { id } = req.query;
+      const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const touristCenter = await db.findTouristCenterById(id);
@@ -73,7 +73,7 @@ export default class touristCenterController {
    */
   static async updateTouristCenter(req, res) {
     try {
-      const { id } = req.query;
+      const { id } = req.params;
       const {
         countryId, gallery, name, location, about
       } = req.body;
@@ -106,7 +106,7 @@ export default class touristCenterController {
    */
   static async deleteTouristCenter(req, res) {
     try {
-      const { id } = req.query;
+      const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const touristCenter = await db.findTouristCenterById(id);

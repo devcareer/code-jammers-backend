@@ -130,7 +130,7 @@ describe("Update Tourist Center", () => {
   it("should allow Admin update a Tourist Center", done => {
     chai
       .request(server)
-      .put("/api/v1/admin/update-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ name: "Aso rock" })
@@ -144,7 +144,7 @@ describe("Update Tourist Center", () => {
   it("should not allow admin update a Tourist Center with invalid ID data type", done => {
     chai
       .request(server)
-      .put("/api/v1/admin/update-tourist-center?id=8d58")
+      .patch("/api/v1/admin/tourist-center/8d58")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ location: "Abuja" })
@@ -157,7 +157,7 @@ describe("Update Tourist Center", () => {
   it("should not allow admin update a Tourist Center with invalid countryId data type", done => {
     chai
       .request(server)
-      .put("/api/v1/admin/update-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ countryId: "2e11e4a" })
@@ -170,7 +170,7 @@ describe("Update Tourist Center", () => {
   it("returns 404 when updating tourist center which is not in db", done => {
     chai
       .request(server)
-      .put("/api/v1/admin/update-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e578")
+      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e578")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ location: "Rivers" })
@@ -183,7 +183,7 @@ describe("Update Tourist Center", () => {
   it("returns 400 when updating a tourist center's countryId which is not in db", done => {
     chai
       .request(server)
-      .put("/api/v1/admin/update-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ countryId: "8d585465-cd80-4030-b665-bdc3bbd3e519" })
@@ -196,7 +196,7 @@ describe("Update Tourist Center", () => {
   it("returns 409 when updating a tourist center's name already in db", done => {
     chai
       .request(server)
-      .put("/api/v1/admin/update-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ name: "Obudu Cattle Ranch" })
@@ -236,7 +236,7 @@ describe("Delete Tourist Center", () => {
   it("should allow Admin Delete a Tourist Center", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/delete-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .delete("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -248,7 +248,7 @@ describe("Delete Tourist Center", () => {
   it("should not allow admin delete a Tourist Center with invalid ID data type", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/delete-tourist-center?id=8d58")
+      .delete("/api/v1/admin/tourist-center/8d58")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -259,7 +259,7 @@ describe("Delete Tourist Center", () => {
   it("returns 404 when deleting tourist center which is not in db", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/delete-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e578")
+      .delete("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e578")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -284,7 +284,7 @@ describe("GET tourist center api route", () => {
   it("returns all tourist centers ", done => {
     chai
       .request(server)
-      .get("/api/v1/get-tourist-centers")
+      .get("/api/v1/tourist-centers")
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
@@ -315,7 +315,7 @@ describe("GET tourist center api route", () => {
   it("returns tourist center with specific id", done => {
     chai
       .request(server)
-      .get("/api/v1/get-tourist-center?id=8d585465-cd80-4030-b665-bdc3bbd3e400")
+      .get("/api/v1/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e400")
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
