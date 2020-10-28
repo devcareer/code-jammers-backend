@@ -89,7 +89,6 @@ export default class AdminController {
    * @returns {object} country with specific id
    */
   static async getCountry(req, res) {
-    console.log("------------------", req.params);
     const { id } = req.params;
     try {
       const country = await getOneCountry(id);
