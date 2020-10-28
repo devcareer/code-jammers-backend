@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import cookieSession from "cookie-session";
 import passport from "passport";
+import adminRoutes from "./routes/adminRoutes";
 import userRoutes from "./routes/userRoutes";
 
 import { fbStrategy } from "./database/config/fbpassport";
@@ -30,6 +31,7 @@ app.use(cors());
 
 const port = process.env.PORT || 3000;
 
+app.use("/api/v1/", adminRoutes);
 app.use("/api/v1/", userRoutes);
 
 app.get("/", (req, res) => {
