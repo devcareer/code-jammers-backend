@@ -31,8 +31,8 @@ export default class {
         });
       }
       if (!user.verified) {
-        return res.status(409).json({
-          status: 409,
+        return res.status(403).json({
+          status: 403,
           error: "The acount is not verified. Please check your email inbox for verification email.",
         });
       }
@@ -45,7 +45,10 @@ export default class {
       const link = `${hostURL}/api/v1/users/reset/${user.id}/${signed}`;
       return await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);
     } catch (error) {
-      console.log(error);
+      return res.status(500).json({
+        status: 500,
+        error: "Server error",
+      });
     }
   }
 
@@ -57,25 +60,30 @@ export default class {
   static async reset(req, res) {
     const { id, token } = req.params;
     const { newPassword } = req.body;
-    db.Users.findOne({
+    await db.Users.findOne({
       where: { id },
     })
       .then(user => {
         if (!user) {
-          return res.send({ status: 200, error: "user does not exist" });
+          return res.send({ status: 404, error: "user does not exist" });
         } try {
           jwt.verify(token, user.password);
-          const hashedPass = hashPassword(newPassword);
-          try {
-            db.Users.update({ password: hashedPass, }, {
-              where: { id: user.id },
-              returning: true,
-              plain: true
-            });
-          } catch (error) { throw error; }
+        } catch (error) {
+          return res.send({ status: 410, error: "link has expired. please request for a new link." });
+        }
+        const hashedPass = hashPassword(newPassword);
+        try {
+          db.Users.update({ password: hashedPass, }, {
+            where: { id: user.id },
+            returning: true,
+            plain: true
+          });
           return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
-          res.send({ status: 410, error: "link has expired. please request for a new link." });
+          return res.status(500).json({
+            status: 500,
+            error: "Server error",
+          });
         }
       });
   }
