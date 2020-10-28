@@ -1,7 +1,17 @@
 import Admin from "../services/AdminServices/countryService";
 import { validation } from "../validation/countryValidation";
 
+/**
+ * @class AdminController
+ * @description create country
+ * @exports AdminController
+ */
 export default class AdminController {
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
   static async addCountry(req, res) {
     try {
       const {
@@ -22,8 +32,7 @@ export default class AdminController {
       const createdCountry = await Admin.addCountry(newCountry);
       return res.status(201).json({ status: 201, message: "A country has been added.", data: createdCountry, });
     } catch (error) {
-      console.log(`error: ${error}`);
-      return res.status(500).json({ status: 500, error });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 }

@@ -5,7 +5,18 @@ import Subscriber from "../../services/newsletterServices/subsciber";
 import sendGrid from "../../utilities/sendgrid";
 
 const util = new Util();
+
+/**
+ * @class Newsletters
+ * @description create newsletter
+ * @exports Newsletters
+ */
 export default class Newsletters {
+  /**
+   * @param {object} req - The newsletter request object
+   * @param {object} res - The newsletter response object
+   * @returns {object} Success message
+   */
   static async createNewsletter(req, res) {
     try {
       const { error } = newsletterValidation(req.body);
@@ -28,8 +39,7 @@ export default class Newsletters {
         return res.status(201).json({ status: 201, message: "Newsletter created!", data: newsletters });
       }
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 }

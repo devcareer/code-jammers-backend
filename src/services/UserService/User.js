@@ -1,6 +1,15 @@
 import database from "../../models";
 
+/**
+ * @class User
+ * @description User services
+ * @exports User
+ */
 export default class User {
+  /**
+   * @param {string} username - The user name
+   * @returns {object} - An instance of the Users model class
+   */
   static async usernameExist(username) {
     try {
       const usernameExist = await database.Users.findOne({
@@ -14,6 +23,10 @@ export default class User {
     }
   }
 
+  /**
+   * @param {string} email  - The user email
+   * @returns {object} - An instance of the Users model class
+   */
   static async emailExist(email) {
     try {
       return await database.Users.findOne({
@@ -26,6 +39,10 @@ export default class User {
     }
   }
 
+  /**
+   * @param {object} newUser - The user details
+   * @returns {object} - An instance of the Users model class
+   */
   static async createUser(newUser) {
     try {
       const createUser = await database.Users.create(newUser);
@@ -46,6 +63,10 @@ export default class User {
     }
   }
 
+  /**
+   * @param {string} email - The user email
+   * @returns {object} - An instance of the Users model class
+   */
   static async updateUserVerification(email) {
     try {
       return await database.Users.update({
@@ -57,20 +78,6 @@ export default class User {
         returning: true,
         plain: true
       });
-    } catch (error) {
-      throw error;
-    }
-  }
-
-  static async updateUserRole(id, updateUserRole) {
-    try {
-      const userRoleToUpdate = await database.Users.findOne({ where: { id } });
-      if (userRoleToUpdate) {
-        await database.Users.update(updateUserRole, {
-          where: { id }
-        });
-        return updateUserRole;
-      }
     } catch (error) {
       throw error;
     }

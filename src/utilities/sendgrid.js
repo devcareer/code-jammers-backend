@@ -3,7 +3,10 @@ import sgMail from "@sendgrid/mail";
 
 dotenv.config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-let hostURL;
+let hostURL = "https://know-africa.herokuapp.com";
+if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
+  hostURL = `http://localhost:${process.env.PORT || 3000}`;
+}
 const msg = {
   from: `Know Africa Newsletter <${process.env.SENDGRID_EMAIL}>`,
   mail_settings: {
@@ -13,11 +16,25 @@ const msg = {
   }
 };
 
+/**
+
+ */
 export default class {
+  // eslint-disable-next-line valid-jsdoc
+  /**
+   *
+   */
   static sandboxMode() {
     msg.mail_settings.sandbox_mode.enable = true;
   }
 
+  /**
+   * @param {string} email - The subscriber's email
+   * @param {string} title - The newsletter's title
+   * @param {string} message - newsletter message
+   * @param {string} html - newsletter html content
+   * @returns {object} Newsletter
+   */
   static async sendNewsletter(email, title, message, html) {
     msg.to = email;
     msg.subject = title;
@@ -26,10 +43,13 @@ export default class {
     await sgMail.send(msg);
   }
 
+  /**
+   * @param {string} email - The user's email
+   * @param {string} User - The User's username
+   * @param {string} fillroute - Specifies route for verification
+   * @returns {object} Verification message
+   */
   static async sendVerificationEmail(email, User, fillroute) {
-    if (process.env.NODE_ENV === "production") {
-      hostURL = "https://know-africa.herokuapp.com";
-    } else { hostURL = `http://localhost:${process.env.PORT || 3000}`; }
     const link = `${hostURL}/api/v1/${fillroute}/verify/${email}`;
     msg.to = email;
     msg.subject = "Welcome to Know Africa! Confirm Your Email";
@@ -43,6 +63,8 @@ export default class {
         </div>`;
     try {
       await sgMail.send(msg);
-    } catch (err) { console.error(err.message); }
+    } catch (err) {
+      return err;
+    }
   }
 }

@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
         model: "Subscribers",
         key: "id",
       },
-      onDelete: "CASCADE"
     },
     newsletterId: {
       type: DataTypes.ARRAY(DataTypes.STRING),
@@ -16,17 +15,20 @@ module.exports = (sequelize, DataTypes) => {
         model: "Newsletters",
         key: "id",
       },
-      onDelete: "CASCADE"
     }
   });
   Newsletter_Subscribers.associate = models => {
     Newsletter_Subscribers.belongsTo(models.Subscribers, {
       as: "newsletterSubscriber",
-      foreignKey: "subscriberId"
+      foreignKey: "subscriberId",
+      onDelete: "CASCADE",
+      hooks: true
     });
     Newsletter_Subscribers.belongsTo(models.Newsletters, {
       as: "subscribedNewsletter",
-      foreignKey: "newsletterId"
+      foreignKey: "newsletterId",
+      onDelete: "CASCADE",
+      hooks: true
     });
   };
   return Newsletter_Subscribers;

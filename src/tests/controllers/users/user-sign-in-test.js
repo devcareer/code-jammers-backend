@@ -6,7 +6,7 @@ import {
   user2,
   user3
 } from "./user-sign-in-test-data";
-// assertion style
+
 chai.should();
 chai.use(chaiHttp);
 describe("Should test all users", async () => {

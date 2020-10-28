@@ -1,11 +1,21 @@
 import { subscriberValidation } from "../../validation/userValidation";
 import Subscriber from "../../services/newsletterServices/subsciber";
 import Util from "../../utilities/util";
-// import Nodemailer from "../../utilities/nodemailer";
 import sendGrid from "../../utilities/sendgrid";
 
 const util = new Util();
+
+/**
+ * @class subscriber
+ * @description create subscriber, verify subscriber, get all subscribers, unsubscribe a subscriber
+ * @exports subscriber
+ */
 export default class subscriber {
+  /**
+   * @param {object} req - The subscriber request object
+   * @param {object} res - The subscriber response object
+   * @returns {object} Success message
+   */
   static async createSubscriber(req, res) {
     try {
       const { error } = subscriberValidation(req.body);
@@ -22,33 +32,47 @@ export default class subscriber {
       await sendGrid.sendVerificationEmail(Email, firstName, "subscriber");
       return res.status(201).json({ status: 201, message: "Please verify that you own this email", data: subscribedUser });
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 
+  /**
+   * @param {object} req - The subscriber request object
+   * @param {object} res - The subscriber response object
+   * @returns {object} - Success message
+   */
   static async verifySubscriber(req, res) {
     try {
-      const updatedSubscriber = await Subscriber.updateSubscriberVerification(req.params.email);
+      const { email } = req.params;
+      const updatedSubscriber = await Subscriber.updateSubscriberVerification(email);
       res.status(200).json({ status: 200, message: "Yay!!! You just subscribed successfully", data: { email: updatedSubscriber[1].email, verified: updatedSubscriber[1].verified } });
-    } catch (e) {
-      util.setError(500, "Server Error");
-      return util.send(res);
+    } catch (error) {
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 
+  /**
+   * @param {object} req - The subscriber request object
+   * @param {object} res - The subscriber response object
+   * @returns {object} Success message
+   */
   static async allSubscribers(req, res) {
     try {
       const getSubscribers = await Subscriber.subscribers();
       if (getSubscribers.length > 0) {
-        res.status(200).json({ status: 200, message: "Subscribers Retrieved", data: getSubscribers });
+        return res.status(200).json({ status: 200, message: "Subscribers Retrieved", data: getSubscribers });
       }
       return res.status(404).json({ status: 404, message: "No Subscriber found" });
     } catch (error) {
-      res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 
+  /**
+   * @param {object} req - The subscriber request object
+   * @param {object} res - The subscriber response object
+   * @returns {object} Success message
+   */
   static async unsubscribe(req, res) {
     try {
       const { email } = req.body;
@@ -59,7 +83,7 @@ export default class subscriber {
       const unsubsrcibedUser = await Subscriber.unsubscribe(emailExist);
       if (unsubsrcibedUser) return res.status(200).json({ status: 200, message: "You've unsubscribed from this newsletter", data: email });
     } catch (error) {
-      res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 }

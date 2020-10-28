@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       through: "Newsletter_Subscriber",
       as: "newsletters",
       foreignKey: "subscriberId",
+      onDelete: "CASCADE",
+      hooks: true
     });
   };
   return Subscriber;

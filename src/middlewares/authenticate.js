@@ -6,7 +6,18 @@ const { Op } = sequelize;
 
 require("dotenv").config();
 
+/**
+ * @class Authentication
+ * @description authenticate token and roles
+ * @exports Authentication
+ */
 export default class Authentication {
+  /**
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
+   * @returns {Function} errorResponse | next
+   */
   static async verifyToken(req, res, next) {
     try {
       const { authorization } = req.headers;
@@ -19,11 +30,16 @@ export default class Authentication {
       }
       return res.status(401).json({ status: 401, error: "Please login." });
     } catch (error) {
-      console.log(`error: ${error}`);
       return res.status(500).json({ status: 500, error: "Server Error." });
     }
   }
 
+  /**
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
+   * @returns {Function} errorResponse | next
+   */
   static async verifyAdmin(req, res, next) {
     try {
       const { id } = req.decoded.user;
@@ -33,11 +49,14 @@ export default class Authentication {
       }
       return res.status(403).json({ status: 403, error: "Access denied." });
     } catch (error) {
-      console.log(`error: ${error}`);
       return res.status(500).json({ status: 500, error: "Server Error." });
     }
   }
 
+  /**
+   * @param {string} id - The user ID
+   * @returns {object} - An instance of the Users model class
+   */
   static async findAdminById(id) {
     try {
       return await db.Users.findOne({

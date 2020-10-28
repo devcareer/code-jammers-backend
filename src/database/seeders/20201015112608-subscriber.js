@@ -3,7 +3,7 @@ module.exports = {
     await queryInterface.bulkInsert("Subscribers", [{
       id: "6cbaa746-6e42-453e-91f4-c0de15fb4b9a",
       firstName: "Donald",
-      email: "Donald@gmail.com",
+      email: "donald@gmail.com",
       verified: true,
       newsletter: [
         "Welcome to Know Africa",
@@ -16,7 +16,7 @@ module.exports = {
     {
       id: "d3efec7e-480f-4cb3-b6d2-bed800b8989b",
       firstName: "Garry",
-      email: "Garry@gmail.com",
+      email: "garry@gmail.com",
       verified: true,
       newsletter: [
         "Welcome message",
