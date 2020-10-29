@@ -117,7 +117,6 @@ export default class AdminController {
         attributes: countriesAttributes,
       });
 
-      // delete country from database
       await country.destroy({ cascade: true });
 
       return res.status(200).send({

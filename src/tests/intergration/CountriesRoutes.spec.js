@@ -34,12 +34,11 @@ describe("Countries api routes", () => {
         .end((err, res) => {
           const { status, body } = res;
           const { data } = body;
-          // status should be 200
+
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
           expect(body.message).to.equal("Successfully retrived all countries");
 
-          // check that all entries have all required properties
           data.forEach(country => {
             expect(country).to.have.property("id");
             expect(country).to.have.property("nameOfCountry");
@@ -50,7 +49,7 @@ describe("Countries api routes", () => {
             expect(country).to.have.property("region");
             expect(country).to.have.property("currency");
           });
-          // check that body is of the correct data type
+
           expect(data).to.be.an("array");
           done();
         });
@@ -65,12 +64,11 @@ describe("Countries api routes", () => {
         .end((err, res) => {
           const { status, body } = res;
           const { data } = body;
-          // status should be 200
+
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
           expect(body.message).to.equal("Successfully retrived country");
 
-          // check that body is of the correct data type
           expect(data).to.be.an("object");
           done();
         });
@@ -132,7 +130,6 @@ describe("Countries api routes", () => {
         .end((err, res) => {
           const { status, body } = res;
 
-          // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
           expect(body.message).to.equal("Successfully deleted country");
@@ -147,7 +144,6 @@ describe("Countries api routes", () => {
         .end((err, res) => {
           const { status, body } = res;
 
-          // status should be 200
           expect(status).to.equal(404);
           expect(body.status).to.equal(404);
           expect(body.error).to.equal("Country with  id '6003fb36' not found");
@@ -166,7 +162,6 @@ describe("Countries api routes", () => {
         .end((err, res) => {
           const { status, body } = res;
 
-          // status should be 200
           expect(status).to.equal(200);
           expect(body.status).to.equal(200);
           expect(body.message).to.equal("Successfully updated country");
@@ -181,7 +176,6 @@ describe("Countries api routes", () => {
         .end((err, res) => {
           const { status, body } = res;
 
-          // status should be 200
           expect(status).to.equal(404);
           expect(body.status).to.equal(404);
           expect(body.error).to.equal("Country with  id '6003fb36' not found");
