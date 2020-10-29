@@ -88,6 +88,13 @@ export default class AdminController {
         attributes: countriesAttributes,
       });
 
+      if (!country) {
+        return res.status(404).send({
+          status: 404,
+          error: "Resource not found.",
+        });
+      }
+
       return res.status(200).send({
         status: 200,
         message: "Successfully retrived country",
@@ -96,7 +103,7 @@ export default class AdminController {
     } catch (error) {
       return res.status(404).send({
         status: 404,
-        error: `Country with  id '${id}' not found`,
+        error: "Resource not found.",
       });
     }
   }
@@ -126,7 +133,7 @@ export default class AdminController {
     } catch (error) {
       return res.status(404).send({
         status: 404,
-        error: `Country with  id '${id}' not found`,
+        error: "Resource not found.",
       });
     }
   }
@@ -140,17 +147,19 @@ export default class AdminController {
   static async updateCountry(req, res) {
     const { id } = req.params;
     try {
-      await db.Countries.update(req.body, {
+      const result = await db.Countries.update(req.body, {
         where: { id },
+        returning: true
       });
       return res.status(200).send({
         status: 200,
         message: "Successfully updated country",
+        data: result[1][0].get()
       });
     } catch (error) {
       return res.status(404).send({
         status: 404,
-        error: `Country with  id '${id}' not found`,
+        error: "Resource not found.",
       });
     }
   }

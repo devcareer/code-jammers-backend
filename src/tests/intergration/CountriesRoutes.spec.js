@@ -146,13 +146,29 @@ describe("Countries api routes", () => {
 
           expect(status).to.equal(404);
           expect(body.status).to.equal(404);
-          expect(body.error).to.equal("Country with  id '6003fb36' not found");
+          expect(body.error).to.equal("Resource not found.");
           done();
         });
     });
   });
 
-  describe("UPDATE country with specific id route", () => {
+  describe("UPDATE country with specific id route", async () => {
+    before(async () => {
+      await db.Countries.create({
+        id: "074019c3-2bc6-40e4-88e2-dd347ed74712",
+        nameOfCountry: "Zambia",
+        gallery:
+              "https://cdn.pixabay.com/photo/2013/07/13/14/18/zambia-162464_960_720.png",
+        capital: "Lusaka",
+        population: 17351708,
+        officialLanguage: "English",
+        region: "Southern Africa",
+        currency: "Kwacha",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },);
+    });
+
     it("updates country with specific id", done => {
       chai
         .request(server)
@@ -178,7 +194,7 @@ describe("Countries api routes", () => {
 
           expect(status).to.equal(404);
           expect(body.status).to.equal(404);
-          expect(body.error).to.equal("Country with  id '6003fb36' not found");
+          expect(body.error).to.equal("Resource not found.");
           done();
         });
     });
