@@ -28,9 +28,7 @@ export default class Newsletter {
       where: { subscriberId }
     });
     if (newSub) {
-      // const newsletterIDs = newSub.newsletterId;
       const NewsletterIDs = newSub.newsletterId.push(newsletter_id);
-      // newsletterIDs.push(newsletter_id);
       await database.Newsletter_Subscribers.update({
         newsletterId: NewsletterIDs
       }, {

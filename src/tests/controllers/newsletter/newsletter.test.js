@@ -13,6 +13,7 @@ import server from "../../../app";
 import sendGrid from "../../../utilities/sendgrid";
 
 sendGrid.sandboxMode();
+
 // assertion style
 chai.should();
 
