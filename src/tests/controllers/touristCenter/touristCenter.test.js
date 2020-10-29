@@ -136,7 +136,7 @@ describe("Update Tourist Center", () => {
       .send({ name: "Aso rock" })
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.equal("Successfully updated Tourist Center with id 8d585465-cd80-4030-b665-bdc3bbd3e575");
+        expect(res.body.message).to.equal("Successfully updated Tourist Center.");
         done();
       });
   });
@@ -176,7 +176,7 @@ describe("Update Tourist Center", () => {
       .send({ location: "Rivers" })
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Tourist Center with  id '8d585465-cd80-4030-b665-bdc3bbd3e578' not found");
+        expect(res.body.error).to.equal("Tourist Center not found");
         done();
       });
   });
@@ -240,7 +240,7 @@ describe("Delete Tourist Center", () => {
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.equal("Successfully deleted Tourist Center with id 8d585465-cd80-4030-b665-bdc3bbd3e575");
+        expect(res.body.message).to.equal("Successfully deleted Tourist Center.");
         done();
       });
   });
@@ -263,7 +263,7 @@ describe("Delete Tourist Center", () => {
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Tourist Center with  id '8d585465-cd80-4030-b665-bdc3bbd3e578' not found");
+        expect(res.body.error).to.equal("Tourist Center not found");
         done();
       });
   });
@@ -322,7 +322,7 @@ describe("GET tourist center api route", () => {
         // status should be 200
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
-        expect(body.message).to.equal("Successfully retrived Tourist Center with id 8d585465-cd80-4030-b665-bdc3bbd3e400");
+        expect(body.message).to.equal("Successfully retrived Tourist Center.");
         expect(data).to.have.property("id");
         expect(data).to.have.property("countryId");
         expect(data).to.have.property("gallery");
