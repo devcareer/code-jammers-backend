@@ -11,7 +11,6 @@ import sendgrid from "../../../utilities/sendgrid";
 chai.use(sinonChai);
 
 const { expect } = chai;
-const positiveResponse = { status: 200, message: "A reset email has been sent" };
 const sandbox = sinon.createSandbox();
 
 afterEach(() => { sandbox.restore(); });
@@ -20,7 +19,7 @@ describe("send recover email", () => {
   it("should send a recovery email to user email in db", async () => {
     const res = {
       json: sinon.spy(),
-      status: sandbox.stub().returns({ send: () => positiveResponse }),
+      status: sandbox.stub().returns({ send: sinon.spy(), json: sinon.spy() }),
       send: () => user,
     };
     const req = {
@@ -30,8 +29,7 @@ describe("send recover email", () => {
       send: () => user,
     };
     sandbox.stub(db.Users, "findOne").returns(user);
-    sandbox.stub(sendgrid, "sendResetPasswordEmail").returns({ status: 200, message: "A reset email has been sent" });
-
+    sandbox.stub(sendgrid, "sendResetPasswordEmail").withArgs(user.email, user.id, signed, res).returns({ status: 200, message: "A reset email has been sent" });
     resetPasswordController.recover(req, res);
 
     expect(db.Users.findOne).to.have.been.calledOnce.and.calledWith({
@@ -53,7 +51,7 @@ describe("fail send recovery email", () => {
       body: { email: notUser.email },
       send: () => notUser,
     };
-    sandbox.stub(db.Users, "findOne").returns(null);
+    sandbox.stub(db.Users, "findOne").returns(notUser);
     resetPasswordController.recover(req, res);
     expect(db.Users.findOne).to.have.been.calledOnce.and.calledWith({
       where: { email: notUser.email }

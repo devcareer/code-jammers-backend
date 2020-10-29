@@ -29,7 +29,8 @@ export default class {
         return res.status(403).json({ status: 403, error: "The acount is not verified. Please check your email inbox for verification email.", });
       }
       const signed = signToken(user.toJSON(), user.password);
-      return await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);
+      await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);
+      return res.status(200).json({ status: 200, message: "A reset email has been sent" });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error", });
     }
@@ -43,7 +44,7 @@ export default class {
   static async reset(req, res) {
     const { id, token } = req.params;
     const { newPassword } = req.body;
-    await db.Users.findOne({
+    db.Users.findOne({
       where: { id },
     })
       .then(user => {
@@ -52,7 +53,7 @@ export default class {
         } try {
           jwt.verify(token, user.password);
         } catch (error) {
-          return res.send({ status: 410, error: "link has expired. please request for a new link." });
+          return res.send({ status: 410, error: "link has expired or has been used. please request for a new link." });
         }
         const hashedPass = hashPassword(newPassword);
         try {
