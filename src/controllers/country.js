@@ -58,6 +58,7 @@ export default class AdminController {
     try {
       const countries = await db.Countries.findAll({
         attributes: countriesAttributes,
+        include: [{ model: db.TouristCenters, as: "touristCenters" }]
       });
       res.status(200).send({
         status: 200,
@@ -65,7 +66,7 @@ export default class AdminController {
         data: countries,
       });
     } catch (error) {
-      res.status(500).send({
+      return res.status(500).send({
         status: 500,
         error,
       });
@@ -86,6 +87,7 @@ export default class AdminController {
           id,
         },
         attributes: countriesAttributes,
+        include: [{ model: db.TouristCenters, as: "touristCenters" }]
       });
 
       if (!country) {
