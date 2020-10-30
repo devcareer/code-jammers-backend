@@ -95,9 +95,9 @@ export default class AdminStateController {
    * @returns {object} Success message
    */
   static async deleteState(req, res) {
-    const { stateName } = req.query;
+    const { name } = req.query;
 
-    if (!stateName) {
+    if (!name) {
       // if id is not provided
       return res.status(404).send({
         status: 404,
@@ -105,16 +105,16 @@ export default class AdminStateController {
       });
     }
     try {
-      const deleteName = await Admin.checkState(stateName);
+      const deleteName = await Admin.checkState(name);
       await Admin.deleteState(deleteName.name);
       return res.status(200).send({
         status: 200,
-        message: `Successfully Deleted ${stateName} state`,
+        message: `Successfully Deleted ${name} state`,
       });
     } catch (error) {
       return res.status(404).send({
         status: 404,
-        error: `'${stateName}' state does not exists in the database`,
+        error: `'${name}' state does not exists in the database`,
       });
     }
   }
