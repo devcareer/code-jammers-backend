@@ -14,3 +14,5 @@ import "./models/culture.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
 import "./controllers/admin/addCountry.test";
+import "./intergration/CountriesRoutes.spec";
+import "./unit/controllers/CountriesController.spec";

@@ -31,7 +31,7 @@ describe("src/models/comment", () => {
       Comment.associate({ Users });
     });
 
-    it("defined a belongsTo association with User", () => {
+    it("defined a belongsTo association with Users", () => {
       expect(Comment.belongsTo).to.have.been.calledWith(Users);
     });
   });

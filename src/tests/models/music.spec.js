@@ -16,7 +16,7 @@ describe("src/models/music", () => {
 
   context("properties", () => {
     ["countryId", "category", "gallery", "event"].forEach(
-      checkPropertyExists(music),
+      checkPropertyExists(music)
     );
   });
 
@@ -27,7 +27,7 @@ describe("src/models/music", () => {
       Music.associate({ Countries });
     });
 
-    it("defined a belongsTo association with Country", () => {
+    it("defined a belongsTo association with Countries", () => {
       expect(Music.belongsTo).to.have.been.calledWith(Countries);
     });
   });
