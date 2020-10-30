@@ -31,7 +31,6 @@ const registerValidation = user => {
   }).options({ abortEarly: false });
   return schema.validate(user);
 };
-
 const loginValidation = user => {
   const schema = Joi.object({
     email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co", "io"] } }).min(5)
@@ -53,4 +52,35 @@ const loginValidation = user => {
   return schema.validate(user);
 };
 
-export { registerValidation, loginValidation };
+const profileValidate = profile => {
+  const schema = Joi.object({
+    firstName: Joi.string().max(40).empty()
+      .messages({
+        "string.base": "firstName must be a string",
+        "string.max": "firstName cannot be above 40 characters",
+        "string.empty": "Sorry, firstName cannot be an empty field"
+      }),
+    lastName: Joi.string().max(40).empty()
+      .messages({
+        "string.base": "lastName must be a string",
+        "string.max": "lastName cannot be above 40 characters",
+        "string.empty": "Sorry, lastName cannot be an empty field",
+      }),
+    profilePicture: Joi.string().empty()
+      .messages({
+        "string.base": "Please provide a valid link",
+        "string.empty": "Sorry, profilePicture cannot be an empty field"
+      }),
+    id: Joi.string().required()
+      .empty().guid({ version: "uuidv4" })
+      .messages({
+        "any.required": "ID not provided. Please provide an ID.",
+        "string.empty": "ID cannot be an empty field.",
+        "string.base": "ID must be a string.",
+        "string.guid": "ID must be a UUID"
+      })
+  }).options({ abortEarly: false });
+  return schema.validate(profile);
+};
+
+export { registerValidation, loginValidation, profileValidate };

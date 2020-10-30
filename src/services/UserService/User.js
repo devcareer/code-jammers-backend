@@ -82,4 +82,33 @@ export default class User {
       throw error;
     }
   }
+
+  /**
+   * @param {string} id - The user id
+   * @param {string} profile - The user profile details
+   * @returns {object} - An instance of the Profile model class
+   */
+  static async updateUserProfile(id, profile) {
+    try {
+      return await database.Profiles.update(profile, {
+        where: { userId: id },
+        returning: true,
+        plain: true
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * @param {string} id - The user id
+   * @returns {object} - An instance of the Users model class
+   */
+  static async findUser(id) {
+    try {
+      return await database.Users.findOne({ where: { id } });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
