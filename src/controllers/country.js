@@ -83,30 +83,18 @@ export default class AdminController {
     const { id } = req.params;
     try {
       const country = await db.Countries.findOne({
-        where: {
-          id,
-        },
+        where: { id },
         attributes: countriesAttributes,
         include: [{ model: db.TouristCenters, as: "touristCenters" }]
       });
 
       if (!country) {
-        return res.status(404).send({
-          status: 404,
-          error: "Resource not found.",
-        });
+        return res.status(404).send({ status: 404, error: "Resource not found.", });
       }
 
-      return res.status(200).send({
-        status: 200,
-        message: "Successfully retrived country",
-        data: country,
-      });
+      return res.status(200).send({ status: 200, message: "Successfully retrived country", data: country, });
     } catch (error) {
-      return res.status(404).send({
-        status: 404,
-        error: "Resource not found.",
-      });
+      return res.status(404).send({ status: 404, error: "Resource not found.", });
     }
   }
 
