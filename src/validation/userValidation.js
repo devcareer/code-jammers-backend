@@ -54,19 +54,22 @@ const loginValidation = user => {
 
 const profileValidate = profile => {
   const schema = Joi.object({
-    firstName: Joi.string().max(40)
+    firstName: Joi.string().max(40).empty()
       .messages({
         "string.base": "firstName must be a string",
-        "string.max": "firstName cannot be above 40 characters"
+        "string.max": "firstName cannot be above 40 characters",
+        "string.empty": "Sorry, firstName cannot be an empty field"
       }),
-    lastName: Joi.string().max(40)
+    lastName: Joi.string().max(40).empty()
       .messages({
         "string.base": "lastName must be a string",
-        "string.max": "lastName cannot be above 40 characters"
+        "string.max": "lastName cannot be above 40 characters",
+        "string.empty": "Sorry, lastName cannot be an empty field",
       }),
-    profilePicture: Joi.string()
+    profilePicture: Joi.string().empty()
       .messages({
-        "string.base": "Please provide a valid link"
+        "string.base": "Please provide a valid link",
+        "string.empty": "Sorry, profilePicture cannot be an empty field"
       }),
     id: Joi.string().required()
       .empty().guid({ version: "uuidv4" })
