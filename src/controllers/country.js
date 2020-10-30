@@ -65,7 +65,7 @@ export default class AdminController {
         data: countries,
       });
     } catch (error) {
-      res.status(500).send({
+      return res.status(500).send({
         status: 500,
         error,
       });

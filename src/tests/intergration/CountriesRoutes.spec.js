@@ -17,7 +17,6 @@ describe("Countries api routes", () => {
       .set("Accept", "application/json")
       .send(user4)
       .end((err, res) => {
-        if (err) throw err;
         adminToken = res.body.token;
         done();
       });
