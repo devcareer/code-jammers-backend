@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import Util from "../../utilities/util";
-import User from "../../services/UserService/User";
-import jwtHelper from "../../utilities/Jwt";
-import { registerValidation, loginValidation, profileValidate } from "../../validation/userValidation";
-import sendGrid from "../../utilities/sendgrid";
+import Util from "../utilities/util";
+import User from "../services/UserService/User";
+import jwtHelper from "../utilities/Jwt";
+import { registerValidation, loginValidation, profileValidate } from "../validation/userValidation";
+import sendGrid from "../utilities/sendgrid";
 
 dotenv.config();
 const { generateToken } = jwtHelper;
