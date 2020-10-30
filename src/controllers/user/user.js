@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import Util from "../../utilities/util";
 import User from "../../services/UserService/User";
 import jwtHelper from "../../utilities/Jwt";
-import { registerValidation, loginValidation } from "../../validation/userValidation";
+import { registerValidation, loginValidation, profileValidate } from "../../validation/userValidation";
 import sendGrid from "../../utilities/sendgrid";
 
 dotenv.config();
@@ -44,7 +44,7 @@ export default class UserController {
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token, data);
       return util.send(res);
     } catch (error) {
-      res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -58,8 +58,7 @@ export default class UserController {
       const updatedUser = await User.updateUserVerification(req.params.email);
       res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified } });
     } catch (e) {
-      util.setError(500, "Server Error");
-      return util.send(res);
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -90,7 +89,7 @@ export default class UserController {
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
-      res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -102,17 +101,16 @@ export default class UserController {
   static async updateUserProfile(req, res) {
     try {
       const { id } = req.params;
-      const { firstName, lastName, profilePicture } = req.body;
-      const updateProfile = { firstName, lastName, profilePicture };
-      const updatedProfile = await User.updateUserProfile(id, updateProfile);
-      if (!updatedProfile) {
-        util.setError(404, "User does not exist");
-      } else {
-        res.status(200).json({ status: 200, message: "User profile updated", data: updateProfile, });
-      }
-      return util.send(res);
+      const request = req.body;
+      request.id = id;
+      const { error } = profileValidate(request);
+      if (error) return res.status(400).json({ status: 400, error: error.message });
+      const user = await User.findUser(id);
+      if (!user) return res.status(404).json({ status: 404, error: "User not found" });
+      const updatedProfile = await User.updateUserProfile(id, req.body);
+      return res.status(200).json({ status: 200, message: "User profile updated", data: updatedProfile[1] });
     } catch (error) {
-      res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 }

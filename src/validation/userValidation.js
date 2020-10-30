@@ -51,4 +51,33 @@ const loginValidation = user => {
   });
   return schema.validate(user);
 };
-export { registerValidation, loginValidation };
+
+const profileValidate = profile => {
+  const schema = Joi.object({
+    firstName: Joi.string().max(40)
+      .messages({
+        "string.base": "firstName must be a string",
+        "string.max": "firstName cannot be above 40 characters"
+      }),
+    lastName: Joi.string().max(40)
+      .messages({
+        "string.base": "lastName must be a string",
+        "string.max": "lastName cannot be above 40 characters"
+      }),
+    profilePicture: Joi.string()
+      .messages({
+        "string.base": "Please provide a valid link"
+      }),
+    id: Joi.string().required()
+      .empty().guid({ version: "uuidv4" })
+      .messages({
+        "any.required": "ID not provided. Please provide an ID.",
+        "string.empty": "ID cannot be an empty field.",
+        "string.base": "ID must be a string.",
+        "string.guid": "ID must be a UUID"
+      })
+  }).options({ abortEarly: false });
+  return schema.validate(profile);
+};
+
+export { registerValidation, loginValidation, profileValidate };

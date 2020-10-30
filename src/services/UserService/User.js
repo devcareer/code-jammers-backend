@@ -83,17 +83,30 @@ export default class User {
     }
   }
 
-  static async updateUserProfile(id, updateProfile) {
+  /**
+   * @param {string} id - The user id
+   * @param {string} profile - The user profile details
+   * @returns {object} - An instance of the Profile model class
+   */
+  static async updateUserProfile(id, profile) {
     try {
-      const userToUpdate = await database.Users.findOne({ where: { id } });
-      if (userToUpdate) {
-        await database.Profiles.update(updateProfile, {
-          where: { userId: userToUpdate.id }
-        });
-        return updateProfile;
-      }
-      util.setError(400, "No such user. Please check that your email is spelt correctly and try again");
-      return util.send(res);
+      return await database.Profiles.update(profile, {
+        where: { userId: id },
+        returning: true,
+        plain: true
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * @param {string} id - The user id
+   * @returns {object} - An instance of the Users model class
+   */
+  static async findUser(id) {
+    try {
+      return await database.Users.findOne({ where: { id } });
     } catch (error) {
       throw error;
     }

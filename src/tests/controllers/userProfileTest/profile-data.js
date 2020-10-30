@@ -1,11 +1,6 @@
-const user = {
-  username: "MarryK",
-  email: "MarryK@gmail.com",
-  password: "123456",
-};
-const updateProfile = {
+const profile = {
   firstName: "Mary",
   lastName: "Kelvin",
   profilePicture: "http:/facebook.com"
 };
-export { user, updateProfile };
+export { profile };
