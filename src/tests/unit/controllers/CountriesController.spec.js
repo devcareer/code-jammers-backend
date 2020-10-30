@@ -15,7 +15,6 @@ describe("countries controllers", () => {
     const res = {
       json: sinon.spy(),
       status: sinon.stub().returns({ send: sinon.spy() }),
-      // send: () => countriesMockData,
     };
     const req = {
     };
