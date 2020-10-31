@@ -50,6 +50,7 @@ export default class AdminController {
 
   /**
    * gets a list of all countries
+   *
    * @param {object} req - request object
    * @param {object} res - response object
    * @returns {object} list of countries
@@ -74,6 +75,7 @@ export default class AdminController {
 
   /**
    * gets a country with a specific id
+   *
    * @param {object} req - request object
    * @param {object} res - response object
    * @returns {object} country with specific id
@@ -109,11 +111,12 @@ export default class AdminController {
   }
 
   /**
-    * deletes a country with the specified id
-    * @param {object} req - request object
-    * @param {object} res - response object
-    * @returns {object} - result
-    */
+   * deletes a country with the specified id
+   *
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {object} - result
+   */
   static async deleteCountry(req, res) {
     const { id } = req.params;
     try {
@@ -139,11 +142,12 @@ export default class AdminController {
   }
 
   /**
-    * updates a country with a specified id
-    * @param {object} req - request object
-    * @param {object} res - response object
-    * @returns {object} - result
-    */
+   * updates a country with a specified id
+   *
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {object} - result
+   */
   static async updateCountry(req, res) {
     const { id } = req.params;
     try {
