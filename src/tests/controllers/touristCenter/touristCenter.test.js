@@ -188,7 +188,7 @@ describe("Update Tourist Center", () => {
       .set("Accept", "application/json")
       .send({ countryId: "8d585465-cd80-4030-b665-bdc3bbd3e519" })
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(404);
         expect(res.body.error).to.equal("Country does not exist");
         done();
       });

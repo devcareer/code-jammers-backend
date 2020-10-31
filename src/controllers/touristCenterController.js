@@ -17,14 +17,14 @@ export default class touristCenterController {
       const {
         countryId, gallery, name, location, about
       } = req.body;
+      const { error } = validation(req.body);
+      if (error) return res.status(400).json({ status: 400, error: error.message });
       const newName = name[0].toUpperCase() + name.slice(1).toLowerCase();
       const newTouristCenter = {
         countryId, gallery, name: newName, location, about
       };
-      const { error } = validation(newTouristCenter);
-      if (error) return res.status(400).json({ status: 400, error: error.message });
       const country = await db.findCountry(countryId);
-      if (!country) return res.status(400).json({ status: 400, error: "Country does not exist" });
+      if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
       const centerName = await db.findTouristCenter(newName);
       if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
       const createdTouristCenter = await db.addTouristCenter(newTouristCenter);
@@ -83,7 +83,7 @@ export default class touristCenterController {
       if (!oldCenter) return res.status(404).json({ status: 404, error: "Tourist Center not found" });
       if (countryId) {
         const country = await db.findCountry(countryId);
-        if (!country) return res.status(400).json({ status: 400, error: "Country does not exist" });
+        if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
       }
       let newname;
       if (name) {
