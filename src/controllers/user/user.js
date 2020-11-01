@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import Util from "../utilities/util";
-import User from "../services/UserService/User";
-import jwtHelper from "../utilities/Jwt";
-import { registerValidation, loginValidation } from "../validation/userValidation";
-import sendGrid from "../utilities/sendgrid";
+import Util from "../../utilities/util";
+import User from "../../services/UserService/User";
+import jwtHelper from "../../utilities/Jwt";
+import { registerValidation, loginValidation } from "../../validation/userValidation";
+import sendGrid from "../../utilities/sendgrid";
 
 dotenv.config();
 
@@ -40,7 +40,7 @@ export default class UserController {
       const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      await sendGrid.sendVerificationEmail(Email);
+      await sendGrid.sendVerificationEmail(Email, username, "users/signup");
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
