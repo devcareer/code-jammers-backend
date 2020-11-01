@@ -1,14 +1,7 @@
 import Joi from "joi";
 
-const validation = state => {
+const validation = touristCenter => {
   const schema = Joi.object({
-    name: Joi.string().required()
-      .messages({
-        "any.required": "Sorry, state name is required.",
-        "any.only": "State must be an African state.",
-        "string.empty": "State cannot be an empty field.",
-        "string.base": "State name must contain only alphabetical characters."
-      }),
     countryId: Joi.string().required()
       .empty().guid({ version: "uuidv4" })
       .messages({
@@ -17,23 +10,36 @@ const validation = state => {
         "string.base": "countryId must be a string.",
         "string.guid": "countryId must be a UUID"
       }),
+    name: Joi.string().required()
+      .empty()
+      .messages({
+        "any.required": "name is required.",
+        "string.empty": "name cannot be an empty field.",
+        "string.base": "name must be a string."
+      }),
     gallery: Joi.string().required()
       .empty()
       .messages({
         "any.required": "An image is required.",
-        "string.empty": "Image field cannot be an empty field.",
+        "string.empty": "gallery cannot be an empty field.",
         "string.base": "Please provide a valid link."
-
       }),
-    capital: Joi.string().required()
+    location: Joi.string().required()
       .empty()
       .messages({
-        "any.required": "Name of capital is required.",
-        "string.empty": "Capital cannot be an empty field.",
-        "string.base": "Capital must contain only alphabetical characters."
+        "any.required": "location is required.",
+        "string.empty": "location cannot be an empty field.",
+        "string.base": "location must contain only alphabetical characters."
+      }),
+    about: Joi.string().required()
+      .empty()
+      .messages({
+        "any.required": "about is required.",
+        "string.empty": "about cannot be an empty field.",
+        "string.base": "about must contain only alphabetical characters."
       }),
   }).options({ abortEarly: false });
-  return schema.validate(state);
+  return schema.validate(touristCenter);
 };
 
 const validateId = ids => {

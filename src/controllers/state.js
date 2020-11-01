@@ -15,22 +15,22 @@ export default class AdminStateController {
   static async addState(req, res) {
     try {
       const {
-        name, countryId, gallery, capital
+        name, gallery, capital
       } = req.body;
-      let stateName;
-      if (name) {
-        const stringState = String(name);
-        stateName = stringState[0].toUpperCase() + stringState.slice(1).toLowerCase();
-      }
-      const state = await Admin.checkState(name);
-      if (state) return res.status(409).json({ status: 409, message: `${stateName} state already exists in the database.` });
+      const { countryId } = req.params;
+      const { error } = validation({
+        countryId, name, gallery, capital
+      });
+      if (error) return res.status(400).json({ status: 400, error: error.message });
       const stateId = await Admin.checkCountryId(countryId);
-      if (!stateId) return res.status(404).json({ status: 404, message: ` ${countryId}Country ID does not exist in the database.` });
+      if (!stateId) return res.status(404).json({ status: 404, message: "Country does not exist in the database" });
+      const stateName = name[0].toUpperCase() + name.slice(1).toLowerCase();
+      const state = await Admin.checkState(stateName);
+      if (state) return res.status(409).json({ status: 409, message: "This state already exists in the database" });
       const newState = {
         name: stateName, gallery, capital, countryId
       };
-      const { error } = validation(newState);
-      if (error) return res.status(400).json({ status: 400, error: error.message });
+
       const createdState = await Admin.addState(newState);
       return res.status(201).json({ status: 201, message: "A state has been added.", data: createdState, });
     } catch (error) {
@@ -65,11 +65,12 @@ export default class AdminStateController {
    * @returns {object} Success message
    */
   static async getState(req, res) {
-    const { id } = req.params;
     try {
+      const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const state = await Admin.getState(id);
+      if (!state) return res.status(404).json({ status: 404, error: "State not found" });
       return res.status(200).send({
         status: 200,
         message: "Successfully retrived state",
@@ -93,6 +94,8 @@ export default class AdminStateController {
     try {
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
+      const state = await Admin.getState(id);
+      if (!state) return res.status(404).json({ status: 404, error: "State not found" });
       await Admin.deleteState(id);
       return res.status(200).send({
         status: 200,
@@ -118,13 +121,15 @@ export default class AdminStateController {
         name, countryId, capital, gallery,
       } = req.body;
       const newName = name[0].toUpperCase() + name.slice(1).toLowerCase();
-      const stateId = await Admin.checkCountryId(countryId);
-      if (!stateId) return res.status(404).json({ status: 404, message: "Country ID does not exist in the database." });
+      const checkCountryId = await Admin.checkCountryId(countryId);
+      if (!checkCountryId) return res.status(404).json({ status: 404, message: "Country ID does not exist in the database." });
       const newState = {
         name: newName, gallery, capital, countryId
       };
       const { error } = validation(newState);
       if (error) return res.status(400).json({ status: 400, error: error.message });
+      const stateId = await Admin.getState(id);
+      if (!stateId) return res.status(404).json({ status: 404, error: "State not found" });
       const state = await Admin.updateState(id, newState);
       return res.status(200).send({
         status: 200,

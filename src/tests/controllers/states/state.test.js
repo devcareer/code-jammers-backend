@@ -130,7 +130,7 @@ describe("Update state", () => {
   it("should allow Admin update a State", done => {
     chai
       .request(server)
-      .put("/api/v1/admin/state/c72134f2-69e2-4a13-bb1c-e0d60d43afa3")
+      .patch("/api/v1/admin/state/c72134f2-69e2-4a13-bb1c-e0d60d43afa3")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({

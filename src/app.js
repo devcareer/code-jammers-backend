@@ -1,8 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import userRoutes from "./routes/userRoutes";
 import stateRoutes from "./routes/stateRoutes";
+import userRoutes from "./routes/userRoute/userRoutes";
+import touristCenterRoutes from "./routes/touristCenterRoutes";
+import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
 import countryRoutes from "./routes/countryRoutes";
 
 const app = express();
@@ -17,6 +19,8 @@ app.use(cors());
 app.use("/api/v1", countryRoutes);
 app.use("/api/v1/", userRoutes);
 app.use("/api/v1/", stateRoutes);
+app.use("/api/v1", touristCenterRoutes);
+app.use("/api/v1/", newsletterRoutes);
 
 app.use(express.json());
 
