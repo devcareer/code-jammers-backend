@@ -1,10 +1,10 @@
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import Util from "../utilities/util";
-import User from "../services/UserService/User";
-import jwtHelper from "../utilities/Jwt";
-import { registerValidation, loginValidation, profileValidate } from "../validation/userValidation";
-import sendGrid from "../utilities/sendgrid";
+import Util from "../../utilities/util";
+import { registerValidation, loginValidation, profileValidate } from "../../validation/userValidation";
+import User from "../../services/UserService/User";
+import jwtHelper from "../../utilities/Jwt";
+import sendGrid from "../../utilities/sendgrid";
 
 dotenv.config();
 const { generateToken } = jwtHelper;
@@ -39,11 +39,11 @@ export default class UserController {
       const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
       const token = await generateToken({ createdUser });
-      await sendGrid.sendVerificationEmail(Email);
+      await sendGrid.sendVerificationEmail(Email, username, "users/signup");
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
-      return res.status(500).json({ status: 500, error: "Server error." });
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 
@@ -57,7 +57,7 @@ export default class UserController {
       const updatedUser = await User.updateUserVerification(req.params.email);
       res.status(200).json({ status: 200, message: "User Verified successfully!", data: { email: updatedUser[1].email, username: updatedUser[1].username, verified: updatedUser[1].verified } });
     } catch (e) {
-      return res.status(500).json({ status: 500, error: "Server error." });
+      return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
 
@@ -102,8 +102,6 @@ export default class UserController {
       const { id } = req.decoded.user;
       const { error } = profileValidate(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      console.log(req.body);
-
       const updatedProfile = await User.updateUserProfile(id, req.body);
       return res.status(200).json({ status: 200, message: "User profile updated", data: updatedProfile[1] });
     } catch (error) {
