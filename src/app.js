@@ -3,20 +3,24 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import userRoutes from "./routes/userRoute/userRoutes";
 import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
-import adminRoutes from "./routes/adminRoutes";
+import countryRoutes from "./routes/countryRoutes";
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-const port = process.env.PORT || 3000;
-
-app.use("/api/v1/", adminRoutes);
+app.use("/api/v1", countryRoutes);
 app.use("/api/v1/", userRoutes);
 app.use("/api/v1/", newsletterRoutes);
+
+app.use(express.json());
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");

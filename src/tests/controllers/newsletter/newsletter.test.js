@@ -106,9 +106,8 @@ describe("Create newsletter, create subscribers, enable subscribers to unsubscri
   it("it should unsubscribe a subscriber with registered email", done => {
     chai
       .request(server)
-      .delete("/api/v1/newsletter/unsubscribe")
+      .get(`/api/v1/newsletter/unsubscribe/${subscriber4.email}`)
       .set("Accept", "application/json")
-      .send(subscriber4)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a("object");

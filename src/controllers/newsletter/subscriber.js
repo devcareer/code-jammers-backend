@@ -28,10 +28,11 @@ export default class subscriber {
       const emailExist = await Subscriber.emailExist(Email);
       if (emailExist) return res.status(409).json({ status: 409, error: "Sorry, You're already subscribed to this newsletter." });
       const subscriberDetails = { email: Email, firstName };
-      const subscribedUser = await Subscriber.subscribe(subscriberDetails);
       await sendGrid.sendVerificationEmail(Email, firstName, "subscriber");
+      const subscribedUser = await Subscriber.subscribe(subscriberDetails);
       return res.status(201).json({ status: 201, message: "Please verify that you own this email", data: subscribedUser });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }
@@ -75,7 +76,7 @@ export default class subscriber {
    */
   static async unsubscribe(req, res) {
     try {
-      const { email } = req.body;
+      const { email } = req.params;
       if (!email) return res.status(400).json({ status: 400, error: "Please enter your email address." });
       const Email = email.toLowerCase();
       const emailExist = await Subscriber.emailExist(Email);

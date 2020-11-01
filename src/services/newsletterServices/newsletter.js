@@ -28,9 +28,9 @@ export default class Newsletter {
       where: { subscriberId }
     });
     if (newSub) {
-      const NewsletterIDs = newSub.newsletterId.push(newsletter_id);
+      newSub.newsletterId.push(newsletter_id);
       await database.Newsletter_Subscribers.update({
-        newsletterId: NewsletterIDs
+        newsletterId: newSub.newsletterId
       }, {
         where: { subscriberId }
       });

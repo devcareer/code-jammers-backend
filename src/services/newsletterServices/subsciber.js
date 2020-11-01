@@ -74,9 +74,9 @@ export default class Subscriber {
         where: { email }
       });
       if (subscriber) {
-        const Titles = subscriber.newsletter.push(title);
+        subscriber.newsletter.push(title);
         await database.Subscribers.update({
-          newsletter: Titles
+          newsletter: subscriber.newsletter
         }, {
           where: { email },
         });

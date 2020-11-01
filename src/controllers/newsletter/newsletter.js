@@ -30,7 +30,7 @@ export default class Newsletters {
       const getSubscribers = await Subscriber.subscribers();
       if (getSubscribers) {
         getSubscribers.forEach(async element => {
-          await sendGrid.sendNewsletter(element.email, title, message);
+          await sendGrid.sendNewsletter(element.email, element.firstName, title, message);
           await Subscriber.receivedMail(element.email, newsletterDetails.title);
           await Newsletter.updateNewsletterId(element.id, newsletters.dataValues.id);
         });

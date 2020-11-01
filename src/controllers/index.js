@@ -1,2 +1,6 @@
 import "./user/user";
-import "./country";
+import countriesController from "./country";
+
+export default {
+  countriesController,
+};

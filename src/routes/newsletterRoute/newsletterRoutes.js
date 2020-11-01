@@ -9,7 +9,7 @@ const { verifyAdmin, verifyToken } = Authentication;
 router.get("/newsletter/subscribers", subscriber.allSubscribers);
 router.get("/subscriber/verify/:email", subscriber.verifySubscriber);
 router.post("/newsletter/subscribe", subscriber.createSubscriber);
-router.delete("/newsletter/unsubscribe", subscriber.unsubscribe);
+router.get("/newsletter/unsubscribe/:email", subscriber.unsubscribe);
 router.post("/newsletter/admin/create_newsletter", verifyToken, verifyAdmin, createNewsletter);
 
 export default router;
