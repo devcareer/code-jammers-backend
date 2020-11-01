@@ -49,32 +49,36 @@ export default class Admin {
    */
   static async getAllStates() {
     try {
-      return await database.States.findAll({ attributes: ["name", "countryId", "capital", "gallery"] });
+      return await database.States.findAll({ attributes: ["id", "name", "countryId", "capital", "gallery"] });
     } catch (err) {
       throw err;
     }
   }
 
   /**
-   * @param {string} nameOfState - The state name
+   * @param {string} id - The state id
    * @returns {object} An instance of the States model class
    */
-  static async getState(nameOfState) {
+  static async getState(id) {
     try {
-      return await database.States.findOne({ where: { name: nameOfState } });
+      return await database.States.findOne({
+        where: {
+          id
+        }
+      });
     } catch (err) {
       throw err;
     }
   }
 
   /**
-   * @param {string} name - The state name
+   * @param {string} id - The state name
    * @returns {object} An instance of the States model class
    */
-  static async deleteState(name) {
+  static async deleteState(id) {
     try {
-      const state = await database.States.findOne({ where: { name } });
-      return await state.destroy();
+      const state = await database.States.findOne({ where: { id } });
+      return await state.destroy({ cascade: true });
     } catch (err) {
       throw err;
     }
@@ -88,7 +92,7 @@ export default class Admin {
   static async updateState(id, state) {
     try {
       return await database.States.update(state, {
-        where: { name: id },
+        where: { id },
         returning: true,
         plain: true
       });

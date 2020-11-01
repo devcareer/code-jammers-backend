@@ -1,7 +1,7 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import { user4, user5 } from "../users/user-sign-in-test-data";
-import { state, state2, state3 } from "./addstate-data";
+import { state, state2, state3 } from "./addState-data";
 import server from "../../../app";
 
 chai.should();
@@ -68,7 +68,7 @@ describe("Add state", () => {
       .set("Accept", "application/json")
       .send(state2)
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(409);
         done();
       });
   });

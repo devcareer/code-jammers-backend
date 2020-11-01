@@ -35,4 +35,22 @@ const validation = state => {
   return schema.validate(state);
 };
 
-export { validation };
+const validateId = ids => {
+  const schema = Joi.object({
+    id: Joi.string().required()
+      .empty().guid({ version: "uuidv4" })
+      .messages({
+        "any.required": "ID not provided. Please provide an ID.",
+        "string.empty": "ID cannot be an empty field.",
+        "string.base": "ID must be a string.",
+        "string.guid": "ID must be a UUID"
+      }),
+    countryId: Joi.string().guid({ version: "uuidv4" })
+      .messages({
+        "string.guid": "CountryId must be a UUID"
+      })
+  }).options({ abortEarly: false });
+  return schema.validate(ids);
+};
+
+export { validation, validateId };
