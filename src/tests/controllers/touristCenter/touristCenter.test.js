@@ -101,6 +101,18 @@ describe("Add Tourist Centers", () => {
         done();
       });
   });
+  it("should allow user with admin role add a Tourist Center", done => {
+    chai
+      .request(server)
+      .post("/api/v1/admin/tourist-center/4e11e4a9-441b-4426-9521-39adc64ccfad")
+      .set("Authorization", `Bearer ${adminToken}`)
+      .set("Accept", "application/json")
+      .send(touristCenter)
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
 });
 
 describe("Update Tourist Center", () => {
