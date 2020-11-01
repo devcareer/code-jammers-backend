@@ -71,14 +71,6 @@ const profileValidate = profile => {
         "string.base": "Please provide a valid link",
         "string.empty": "Sorry, profilePicture cannot be an empty field"
       }),
-    id: Joi.string().required()
-      .empty().guid({ version: "uuidv4" })
-      .messages({
-        "any.required": "ID not provided. Please provide an ID.",
-        "string.empty": "ID cannot be an empty field.",
-        "string.base": "ID must be a string.",
-        "string.guid": "ID must be a UUID"
-      })
   }).options({ abortEarly: false });
   return schema.validate(profile);
 };

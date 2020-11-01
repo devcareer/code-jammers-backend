@@ -38,10 +38,9 @@ export default class UserController {
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
-      const data = { id: createdUser.id };
       const token = await generateToken({ createdUser });
       await sendGrid.sendVerificationEmail(Email);
-      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token, data);
+      util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);
       return util.send(res);
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
@@ -100,13 +99,11 @@ export default class UserController {
    */
   static async updateUserProfile(req, res) {
     try {
-      const { id } = req.params;
-      const request = req.body;
-      request.id = id;
-      const { error } = profileValidate(request);
+      const { id } = req.decoded.user;
+      const { error } = profileValidate(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const user = await User.findUser(id);
-      if (!user) return res.status(404).json({ status: 404, error: "User not found" });
+      console.log(req.body);
+
       const updatedProfile = await User.updateUserProfile(id, req.body);
       return res.status(200).json({ status: 200, message: "User profile updated", data: updatedProfile[1] });
     } catch (error) {
