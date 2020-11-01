@@ -11,5 +11,15 @@ import db from "../../models/index";
  * @exports CultureServices
  */
 export default class CultureServices {
-
+  /**
+   * @param {uuid} id The country Id
+   * @returns {object} An instance of the Countries model class
+   */
+  static async getCulturesByCountry(id) {
+    try {
+      return await db.Cultures.findAll({ where: { countryId: id } });
+    } catch (error) {
+      throw error;
+    }
+  }
 }

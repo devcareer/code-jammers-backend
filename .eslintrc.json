@@ -1,7 +1,6 @@
 { 
   "root": true,
-  "extends": ["airbnb-base", "plugin:jsdoc/recommended"],
-  "plugins": ["jsdoc"],
+  "extends": "airbnb-base",
   "env": {
     "node": true,
     "es6": true,
@@ -31,11 +30,12 @@
     "arrow-parens": [2, "as-needed"],
     "no-useless-catch":"off",
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
-    "jsdoc/require-jsdoc": ["error", {"require": {
+    "require-jsdoc": ["error", {"require": {
       "FunctionDeclaration": true,
       "MethodDefinition": true,
       "ClassDeclaration": true,
       "FunctionExpression": true
-    }}]
+    }}],
+    "valid-jsdoc": "error"
   }
 }

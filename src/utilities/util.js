@@ -1,4 +1,4 @@
-/* eslint-disable jsdoc/require-returns */
+/* eslint-disable valid-jsdoc */
 /**
  *
  */
