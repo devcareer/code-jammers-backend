@@ -44,7 +44,7 @@ describe("Add Tourist Centers", () => {
   it("should allow user with admin role add a Tourist Center", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center")
+      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(touristCenter)
@@ -56,7 +56,7 @@ describe("Add Tourist Centers", () => {
   it("should not allow admin add the same Tourist Center name twice", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center")
+      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(touristCenter)
@@ -68,11 +68,13 @@ describe("Add Tourist Centers", () => {
   it("should not allow admin add a Tourist Center with incomplete details", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/country")
+      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(touristCenter2)
       .end((err, res) => {
+        console.log(res.body);
+
         expect(res).to.have.status(400);
         done();
       });
@@ -80,7 +82,7 @@ describe("Add Tourist Centers", () => {
   it("should not allow user without token add a Tourist Center", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center")
+      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .send(touristCenter3)
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -90,7 +92,7 @@ describe("Add Tourist Centers", () => {
   it("should not allow user without admin role add a Tourist Center", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center")
+      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
       .send(touristCenter3)
@@ -190,19 +192,6 @@ describe("Update Tourist Center", () => {
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body.error).to.equal("Country does not exist");
-        done();
-      });
-  });
-  it("returns 409 when updating a tourist center's name already in db", done => {
-    chai
-      .request(server)
-      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
-      .set("Authorization", `Bearer ${adminToken}`)
-      .set("Accept", "application/json")
-      .send({ name: "Obudu Cattle Ranch" })
-      .end((err, res) => {
-        expect(res).to.have.status(409);
-        expect(res.body.message).to.equal("This Tourist center already exists.");
         done();
       });
   });

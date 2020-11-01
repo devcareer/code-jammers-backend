@@ -15,18 +15,21 @@ export default class touristCenterController {
   static async addTouristCenter(req, res) {
     try {
       const {
-        countryId, gallery, name, location, about
+        gallery, name, location, about
       } = req.body;
-      const { error } = validation(req.body);
+      const { countryId } = req.params;
+      const { error } = validation({
+        countryId, gallery, name, location, about
+      });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const newName = name[0].toUpperCase() + name.slice(1).toLowerCase();
+      const country = await db.findCountry(countryId);
+      if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
+      const newName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+      const centerName = await db.findTouristCenter(newName);
+      if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
       const newTouristCenter = {
         countryId, gallery, name: newName, location, about
       };
-      const country = await db.findCountry(countryId);
-      if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
-      const centerName = await db.findTouristCenter(newName);
-      if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
       const createdTouristCenter = await db.addTouristCenter(newTouristCenter);
       return res.status(201).json({ status: 201, message: "A Tourist Center has been added.", data: createdTouristCenter, });
     } catch (error) {
@@ -87,10 +90,8 @@ export default class touristCenterController {
       }
       let newname;
       if (name) {
-        newname = name[0].toUpperCase() + name.slice(1).toLowerCase();
+        newname = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         req.body.name = newname;
-        const centerName = await db.findTouristCenter(newname);
-        if (centerName) return res.status(409).json({ status: 409, message: "This Tourist center already exists." });
       }
       const newTouristCenter = await db.editTouristCenter(id, req.body);
       return res.status(200).json({ status: 200, message: "Successfully updated Tourist Center.", data: newTouristCenter[1], });
