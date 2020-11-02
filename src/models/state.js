@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const State = sequelize.define("States", {
-    countryId: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    name: {
+    countryId: {
       type: DataTypes.STRING,
       allowNull: false,
     },

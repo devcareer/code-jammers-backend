@@ -6,12 +6,12 @@
     "es6": true,
     "mocha": true
   },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 2015,
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
-  },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2015,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    },
   "rules": {
     "linebreak-style": 0,
     "quotes": ["error", "double"],
@@ -26,6 +26,7 @@
     "import/prefer-default-export":"off",
     "import/no-dynamic-require":"off",
     "no-console": "off",
+    "camelcase":"off",
     "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
     "arrow-parens": [2, "as-needed"],
     "no-useless-catch":"off",
@@ -39,3 +40,4 @@
     "valid-jsdoc": "error"
   }
 }
+    

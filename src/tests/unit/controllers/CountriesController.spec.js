@@ -15,7 +15,6 @@ describe("countries controllers", () => {
     const res = {
       json: sinon.spy(),
       status: sinon.stub().returns({ send: sinon.spy() }),
-      // send: () => countriesMockData,
     };
     const req = {
     };
@@ -23,6 +22,7 @@ describe("countries controllers", () => {
     await countriesController.listCountries(req, res);
     expect(db.Countries.findAll).to.have.been.calledOnce.and.calledWith({
       attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
+      include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }]
     });
   });
 });

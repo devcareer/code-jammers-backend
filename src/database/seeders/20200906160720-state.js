@@ -4,12 +4,13 @@ module.exports = {
       "States",
 
       [
+        
         {
           countryId: "2e11e4a9-441b-4426-9521-39adc64ccfad",
 
-          name: "Lusaka",
+          name: "Gwarimpa",
 
-          capital: "Lusaka",
+          capital: "Gwarimpa",
 
           gallery:
             "https://en.wikipedia.org/wiki/Lusaka#/media/File:Downtown_Lusaka.JPG",

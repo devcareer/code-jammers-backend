@@ -51,6 +51,11 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
       hooks: true, 
     });
+
+    Country.hasMany(models.Music, {
+      as: "music",
+      foreignKey: "countryId",
+    });
   };
 
   return Country;
