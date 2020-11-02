@@ -25,6 +25,12 @@ app.use(cookieSession({
   keys: process.env.COOKIE_KEY
 }));
 
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
 app.use(passport.initialize());
 app.use(passport.session());
 
