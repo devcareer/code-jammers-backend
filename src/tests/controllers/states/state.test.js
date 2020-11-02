@@ -44,7 +44,7 @@ describe("Add States", () => {
   it("should allow user with admin role add a State", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/state")
+      .post("/api/v1/admin/state/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(state)
@@ -56,7 +56,7 @@ describe("Add States", () => {
   it("should not allow admin add the same State name twice", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/state")
+      .post("/api/v1/admin/state/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(state)
@@ -68,7 +68,7 @@ describe("Add States", () => {
   it("should not allow admin add a State with incomplete details", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/country")
+      .post("/api/v1/admin/state/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(state2)
@@ -80,7 +80,7 @@ describe("Add States", () => {
   it("should not allow user without token add a State", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/state")
+      .post("/api/v1/admin/state/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .send(state3)
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -90,7 +90,7 @@ describe("Add States", () => {
   it("should not allow user without admin role add a State", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/state")
+      .post("/api/v1/admin/state/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
       .send(state3)
@@ -201,7 +201,7 @@ describe("Delete State ", () => {
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Resource not found.");
+        expect(res.body.error).to.equal("State not found");
         done();
       });
   });

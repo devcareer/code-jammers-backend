@@ -1,17 +1,14 @@
 const state = {
-  countryId: "2e11e4a9-441b-4426-9521-39adc64ccfad",
   name: "Ondo",
   capital: "Akure",
   gallery: "https://en.wikipedia.org/wiki/Lusaka#/media/File:Downtown_Lusaka.JPG",
 };
 const state2 = {
-  name: "Lagos",
   capital: "Ikeja",
   gallery: "https://en.wikipedia.org/wiki/Lusaka#/media/File:Downtown_Lusaka.JPG",
 };
 
 const state3 = {
-  countryId: "2e11e4a9-441b-4426-9521-39adc64ccfad",
   name: "Anambra",
   capital: "Awka",
   gallery: "https://en.wikipedia.org/wiki/Lusaka#/media/File:Downtown_Lusaka.JPG",
