@@ -118,7 +118,7 @@ export default class AdminStateController {
     try {
       const { id } = req.params;
       const {
-        name, countryId, capital, gallery,
+        name, countryId, capital, gallery
       } = req.body;
       const { error } = validateId({ id, countryId });
       if (error) return res.status(400).json({ status: 400, error: error.message });
