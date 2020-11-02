@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import Util from "../../utilities/util";
@@ -9,7 +10,6 @@ import sendGrid from "../../utilities/sendgrid";
 dotenv.config();
 const { generateToken } = jwtHelper;
 const util = new Util();
-
 /**
  * @class UserController
  * @description create, verify and log in user

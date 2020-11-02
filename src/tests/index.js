@@ -20,3 +20,4 @@ import "./controllers/touristCenter/touristCenter.test";
 import "./controllers/newsletter/newsletter.test";
 import "./intergration/CountriesRoutes.spec";
 import "./unit/controllers/CountriesController.spec";
+import "./controllers/states/state.test";
