@@ -1,6 +1,6 @@
-import Admin from "../services/AdminServices/countryService";
-import { validation } from "../validation/countryValidation";
-import db from "../models";
+import Admin from "../../services/AdminServices/countryService";
+import { validation } from "../../validation/countryValidation";
+import db from "../../models";
 
 const countriesAttributes = [
   "id",

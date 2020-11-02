@@ -1,7 +1,7 @@
 import { Router } from "express";
-import AdminController from "../controllers/country";
-import Authentication from "../middlewares/authenticate";
-import controllers from "../controllers";
+import AdminController from "../../controllers/country/country";
+import Authentication from "../../middlewares/authenticate";
+import controllers from "../../controllers";
 
 const { countriesController } = controllers;
 const {
