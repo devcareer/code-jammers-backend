@@ -12,11 +12,11 @@ import musicModel from "../../models/music";
 describe("src/models/music", () => {
   const Music = musicModel(sequelize, dataTypes);
   const music = new Music();
-  checkModelName(Music)("Musics");
+  checkModelName(Music)("Music");
 
   context("properties", () => {
     ["countryId", "category", "gallery", "event"].forEach(
-      checkPropertyExists(music),
+      checkPropertyExists(music)
     );
   });
 
@@ -27,7 +27,7 @@ describe("src/models/music", () => {
       Music.associate({ Countries });
     });
 
-    it("defined a belongsTo association with Country", () => {
+    it("defined a belongsTo association with Countries", () => {
       expect(Music.belongsTo).to.have.been.calledWith(Countries);
     });
   });

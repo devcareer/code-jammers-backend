@@ -28,6 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "countryId",
     });
   };
-
+  
   return TouristCenter;
 };

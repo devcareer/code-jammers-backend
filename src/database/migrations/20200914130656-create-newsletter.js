@@ -8,7 +8,7 @@ module.exports = {
         type: Sequelize.UUID,
         defaultValue: Sequelize.literal("uuid_generate_v4()"),
       },
-      email: {
+      title: {
         type: Sequelize.STRING,
       },
       message: {
