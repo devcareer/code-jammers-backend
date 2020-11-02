@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
 }
 
 const msg = {
-  from: process.env.SENDGRID_EMAIL,
+  from: `Know Africa <${process.env.SENDGRID_EMAIL}>`,
   mail_settings: {
     sandbox_mode: {
       enable: false
