@@ -1,26 +1,15 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert(
-      "TouristCenters",
-
-      [
-        {
+    await queryInterface.bulkInsert("TouristCenters", [{
           countryId: "2e11e4a9-441b-4426-9521-39adc64ccfad",
-
-          name: "Victorial Falls",
-
           location: "Livingstone",
-
           gallery:
             "https://cdn.pixabay.com/photo/2017/04/13/09/11/waterfall-2227010_960_720.jpg",
-
           about: "Victoria Falls  is a waterfall on the Zambezi River in southern Africa, which provides habitat for several unique species of plants and animals. It is located on the border between Zambia and Zimbabwe[1] and is considered to be one of the world's largest waterfalls due to its width of 1,708 metres",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
-      ],
-
-      {}
+      ],{}
     );
   },
 
