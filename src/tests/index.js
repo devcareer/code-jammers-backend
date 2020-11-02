@@ -13,3 +13,7 @@ import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
 import "./fbOAuth-test.spec";
 import "./controllers/admin/addCountry.test";
+import "./controllers/touristCenter/touristCenter.test";
+import "./controllers/newsletter/newsletter.test";
+import "./intergration/CountriesRoutes.spec";
+import "./unit/controllers/CountriesController.spec";

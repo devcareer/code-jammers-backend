@@ -26,6 +26,7 @@
     "import/prefer-default-export":"off",
     "import/no-dynamic-require":"off",
     "no-console": "off",
+    "camelcase":"off",
     "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
     "arrow-parens": [2, "as-needed"],
     "no-useless-catch":"off",

@@ -21,6 +21,6 @@ describe("src/models/newsletter", () => {
   checkModelName(Newsletter)("Newsletters");
 
   context("properties", () => {
-    ["email", "message"].forEach(checkPropertyExists(newsletter));
+    ["title", "message"].forEach(checkPropertyExists(newsletter));
   });
 });

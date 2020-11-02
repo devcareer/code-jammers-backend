@@ -32,7 +32,7 @@ describe("src/models/State", () => {
       State.belongsTo(CountryModel, { as: "states", foreignKey: "countryId" });
     });
 
-    it("defined a belongsTo association with Country", () => {
+    it("defined a belongsTo association with Countries", () => {
       expect(State.belongsTo).to.have.been.calledWith(Countries);
       expect(State.belongsTo).to.have.been.calledWith(CountryModel, {
         as: "states",

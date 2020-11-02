@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Music = sequelize.define("Musics", {
+  const Music = sequelize.define("Music", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,

@@ -1,7 +1,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => queryInterface.sequelize
     .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
-    .then(() => queryInterface.createTable("Musics", {
+    .then(() => queryInterface.createTable("Music", {
       id: {
         allowNull: false,
         primaryKey: true,

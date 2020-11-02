@@ -4,14 +4,17 @@ import cors from "cors";
 import dotenv from "dotenv";
 import cookieSession from "cookie-session";
 import passport from "passport";
-import adminRoutes from "./routes/adminRoutes";
-import userRoutes from "./routes/userRoutes";
+import userRoutes from "./routes/userRoute/userRoutes";
+import touristCenterRoutes from "./routes/touristCenterRoutes";
+import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
+import countryRoutes from "./routes/countryRoutes";
 
 import { fbStrategy } from "./database/config/fbpassport";
 
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -29,10 +32,14 @@ passport.use(fbStrategy);
 
 app.use(cors());
 
-const port = process.env.PORT || 3000;
-
-app.use("/api/v1/", adminRoutes);
+app.use("/api/v1", countryRoutes);
 app.use("/api/v1/", userRoutes);
+app.use("/api/v1", touristCenterRoutes);
+app.use("/api/v1/", newsletterRoutes);
+
+app.use(express.json());
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Welcome to Know Africa");
