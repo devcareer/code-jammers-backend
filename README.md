@@ -46,10 +46,6 @@ An information and fact-based web application about Africa.
 - create a `.env` file and the contents in the sample file to it.
 - Run `npm run start-dev` to start the server and `npm test` to run the test suites
 
-## License:
-
-This project is available under the MIT license.
-
 ## Software Engineers / Mentees
 
 - Fiyin Akinsiku
@@ -66,13 +62,15 @@ This project is available under the MIT license.
 
 - Chidi Okoye - <a href="https://github.com/okoyecb">view github profile</a>
 
+## Author
+
+- Funmilayo Olaiya.
+
 ## Acknowledgements
 
 - DevCareer
 
-#
+## License:
 
-## Author
-
-- Funmilayo Olaiya.
+This project is available under the MIT license.
 
