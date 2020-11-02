@@ -38,58 +38,58 @@ describe("Add comment", () => {
       });
   });
 
-  // it("should allow logged in user to add a country", done => {
-  //   chai
-  //     .request(server)
-  //     .post("/api/v1/comment")
-  //     .set("Authorization", `Bearer ${userToken}`)
-  //     .set("Accept", "application/json")
-  //     .send(commentMockData)
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(201);
-  //       done();
-  //     });
-  // });
-  // it("should not allow user to add an empty comment", done => {
-  //   chai
-  //     .request(server)
-  //     .post("/api/v1/comment")
-  //     .set("Authorization", `Bearer ${userToken}`)
-  //     .set("Accept", "application/json")
-  //     .send({ comment: "" })
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(400);
-  //       expect(res.body.error).to.equal("comment cannot be an empty field.");
-  //       done();
-  //     });
-  // });
+  it("should allow logged in user to add a country", done => {
+    chai
+      .request(server)
+      .post("/api/v1/comment")
+      .set("Authorization", `Bearer ${userToken}`)
+      .set("Accept", "application/json")
+      .send(commentMockData)
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        done();
+      });
+  });
+  it("should not allow user to add an empty comment", done => {
+    chai
+      .request(server)
+      .post("/api/v1/comment")
+      .set("Authorization", `Bearer ${userToken}`)
+      .set("Accept", "application/json")
+      .send({ comment: "" })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.error).to.equal("comment cannot be an empty field.");
+        done();
+      });
+  });
 
-  // it("should not allow user to add a comment that is less than 3 characters", done => {
-  //   chai
-  //     .request(server)
-  //     .post("/api/v1/comment")
-  //     .set("Authorization", `Bearer ${userToken}`)
-  //     .set("Accept", "application/json")
-  //     .send({ comment: "12" })
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(400);
-  //       expect(res.body.error).to.equal("comment length must be at least 3 characters long");
-  //       done();
-  //     });
-  // });
+  it("should not allow user to add a comment that is less than 3 characters", done => {
+    chai
+      .request(server)
+      .post("/api/v1/comment")
+      .set("Authorization", `Bearer ${userToken}`)
+      .set("Accept", "application/json")
+      .send({ comment: "12" })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.error).to.equal("comment length must be at least 3 characters long");
+        done();
+      });
+  });
 
-  // it("should not allow user that is not logged in to add a comment", done => {
-  //   chai
-  //     .request(server)
-  //     .post("/api/v1/comment")
-  //     .set("Accept", "application/json")
-  //     .send(commentMockData)
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(401);
-  //       expect(res.body.error).to.equal("Please login.");
-  //       done();
-  //     });
-  // });
+  it("should not allow user that is not logged in to add a comment", done => {
+    chai
+      .request(server)
+      .post("/api/v1/comment")
+      .set("Accept", "application/json")
+      .send(commentMockData)
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body.error).to.equal("Please login.");
+        done();
+      });
+  });
 
   it("should not allow a user that is not logged in to get a comment", done => {
     chai.request(server)
