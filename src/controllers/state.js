@@ -120,17 +120,20 @@ export default class AdminStateController {
       const {
         name, countryId, capital, gallery,
       } = req.body;
-      const newName = name[0].toUpperCase() + name.slice(1).toLowerCase();
-      const checkCountryId = await Admin.checkCountryId(countryId);
-      if (!checkCountryId) return res.status(404).json({ status: 404, message: "Country ID does not exist in the database." });
-      const newState = {
-        name: newName, gallery, capital, countryId
-      };
-      const { error } = validation(newState);
+      const { error } = validateId({ id, countryId });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const stateId = await Admin.getState(id);
       if (!stateId) return res.status(404).json({ status: 404, error: "State not found" });
-      const state = await Admin.updateState(id, newState);
+      if (countryId) {
+        const country = await Admin.checkCountryId(countryId);
+        if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
+      }
+      let newname;
+      if (name) {
+        newname = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        req.body.name = newname;
+      }
+      const state = await Admin.updateState(id, req.body);
       return res.status(200).send({
         status: 200,
         message: "Successfully updated State",
