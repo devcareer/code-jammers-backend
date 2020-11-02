@@ -6,7 +6,7 @@
 An information and fact-based web application about Africa.
 - Africa isn't a country. Africa is a continent with 54 independent countries.
 
-## Features
+### Features
 
 - a user can sign up
 - a user can sign in
@@ -24,7 +24,7 @@ An information and fact-based web application about Africa.
 - an admin can add, delete, update tourist centers
 - an admin/super admin can send out newsletters.
 
-## The technologies used in creating this project are:
+### The technologies used in creating this project are:
 
 - JavaScript
 - Node.js
@@ -38,7 +38,7 @@ An information and fact-based web application about Africa.
 - Pivotal Tracker
 - Docker
 
-## :rocket: How to get started
+### :rocket: How to get started
 
 - Make sure to have Git and Node.js installed on your computer
 - You can use this link to clone the project: `https://github.com/devcareer/code-jammers-backend.git`
@@ -46,31 +46,31 @@ An information and fact-based web application about Africa.
 - create a `.env` file and the contents in the sample file to it.
 - Run `npm run start-dev` to start the server and `npm test` to run the test suites
 
-## Software Engineers / Mentees
+### Software Engineers / Mentees
 
 - Fiyin Akinsiku
 - Ufuoma Ogodo
 - Bislon Zulu
 - 
 
-## Mentors
+### Mentors
 
 - Funmilayo (codeliezel) Olaiya - <a href="https://github.com/codeliezel">view github profile</a>
 - Ayomikun Emmanuel - <a href="https://github.com/endowmissy">view github profile</a>
 
-## Organizers
+### Organizers
 
 - Chidi Okoye - <a href="https://github.com/okoyecb">view github profile</a>
 
-## Author
+### Author
 
 - Funmilayo Olaiya.
 
-## Acknowledgements
+### Acknowledgements
 
 - DevCareer
 
-## License:
+### License:
 
 This project is available under the MIT license.
 
