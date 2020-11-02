@@ -2,9 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import userRoutes from "./routes/userRoute/userRoutes";
-import touristCenterRoutes from "./routes/touristCenterRoutes";
+import touristCenterRoutes from "./routes/touristCenterRoute/touristCenterRoutes";
 import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
-import countryRoutes from "./routes/countryRoutes";
+import countryRoutes from "./routes/countryRoute/countryRoutes";
 
 const app = express();
 const port = process.env.PORT || 3000;

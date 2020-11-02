@@ -1,6 +1,6 @@
-import Admin from "../services/AdminServices/countryService";
-import { validation } from "../validation/countryValidation";
-import db from "../models";
+import Admin from "../../services/AdminServices/countryService";
+import { validation } from "../../validation/countryValidation";
+import db from "../../models";
 
 const countriesAttributes = [
   "id",
@@ -108,7 +108,9 @@ export default class AdminController {
     const { id } = req.params;
     try {
       const country = await db.Countries.findOne({
-        where: { id },
+        where: {
+          id,
+        },
         attributes: countriesAttributes,
       });
 

@@ -1,5 +1,5 @@
-import db from "../services/AdminServices/touristCenterService";
-import { validation, validateId } from "../validation/touristCenterValidation";
+import db from "../../services/AdminServices/touristCenterService";
+import { validation, validateId } from "../../validation/touristCenterValidation";
 
 /**
  * @class touristCenterController
