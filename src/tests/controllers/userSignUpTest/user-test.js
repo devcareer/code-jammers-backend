@@ -4,13 +4,14 @@ import server from "../../../app";
 import {
   user,
   user2,
-  user3
+  user3,
+  user4
 } from "./user-test-data";
-import sendGrid from "../../../utilities/sendgrid";
 
-sendGrid.sandboxMode();
 chai.should();
+
 chai.use(chaiHttp);
+
 describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
     it("it should create a user with complete details successfully", done => {
@@ -23,18 +24,8 @@ describe("Should test all users", async () => {
           res.should.have.status(201);
           res.body.should.be.a("object");
           res.body.should.have.property("status").eql(201);
-          res.body.should.have.property("message").eql("User created! An email has been sent to you to verify your account");
-          done();
-        });
-    });
-    it("it should verify a user's account", done => {
-      chai
-        .request(server)
-        .get(`/api/v1/users/signup/verify/${user.email}`)
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.have.property("message").eql("User Verified successfully!");
-          res.body.data.should.have.property("verified").eql(true);
+          res.body.should.have.property("message").eql("User created!");
+          res.body.should.have.property("data");
           done();
         });
     });
@@ -57,6 +48,7 @@ describe("Should test all users", async () => {
         .send(user3)
         .end((err, res) => {
           res.should.have.status(409);
+          res.body.should.have.property("error").eql("Email already used by another user.");
           done();
         });
     });

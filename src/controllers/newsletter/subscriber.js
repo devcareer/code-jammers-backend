@@ -32,7 +32,6 @@ export default class subscriber {
       const subscribedUser = await Subscriber.subscribe(subscriberDetails);
       return res.status(201).json({ status: 201, message: "Please verify that you own this email", data: subscribedUser });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ status: 500, error: "Server Error" });
     }
   }

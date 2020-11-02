@@ -52,6 +52,29 @@ const loginValidation = user => {
   return schema.validate(user);
 };
 
+const profileValidate = profile => {
+  const schema = Joi.object({
+    firstName: Joi.string().max(40).empty()
+      .messages({
+        "string.base": "firstName must be a string",
+        "string.max": "firstName cannot be above 40 characters",
+        "string.empty": "Sorry, firstName cannot be an empty field"
+      }),
+    lastName: Joi.string().max(40).empty()
+      .messages({
+        "string.base": "lastName must be a string",
+        "string.max": "lastName cannot be above 40 characters",
+        "string.empty": "Sorry, lastName cannot be an empty field",
+      }),
+    profilePicture: Joi.string().empty()
+      .messages({
+        "string.base": "Please provide a valid link",
+        "string.empty": "Sorry, profilePicture cannot be an empty field"
+      }),
+  }).options({ abortEarly: false });
+  return schema.validate(profile);
+};
+
 const subscriberValidation = user => {
   const schema = Joi.object({
     firstName: Joi.string().required().min(3).max(255)
@@ -76,4 +99,5 @@ export {
   registerValidation,
   loginValidation,
   subscriberValidation,
+  profileValidate
 };

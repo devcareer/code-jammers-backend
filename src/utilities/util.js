@@ -49,6 +49,7 @@ export default class Util {
     const result = {
       status: this.statusCode,
       message: this.message,
+      data: this.data,
       token: this.token,
     };
     if (this.type === "success") {
