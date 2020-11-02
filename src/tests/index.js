@@ -13,6 +13,7 @@ import "./models/country.spec";
 import "./models/culture.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
+import "./controllers/userProfileTest/profile-test";
 import "./controllers/admin/addCountry.test";
 import "./controllers/touristCenter/touristCenter.test";
 import "./controllers/newsletter/newsletter.test";
