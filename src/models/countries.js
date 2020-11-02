@@ -31,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Country.associate = (models) => {
-    Country.hasMany(models.Cultures, {
-      as: "cultureCountry",
+    Country.hasMany(models.EthnicGroups, {
+      as: "ethnicGroups",
       foreignKey: "countryId",
       onDelete: 'cascade',
       hooks: true, 
