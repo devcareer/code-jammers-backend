@@ -108,9 +108,7 @@ export default class AdminController {
     const { id } = req.params;
     try {
       const country = await db.Countries.findOne({
-        where: {
-          id,
-        },
+        where: { id },
         attributes: countriesAttributes,
       });
 

@@ -2,13 +2,12 @@
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import Util from "../../utilities/util";
+import { registerValidation, loginValidation, profileValidate } from "../../validation/userValidation";
 import User from "../../services/UserService/User";
 import jwtHelper from "../../utilities/Jwt";
-import { registerValidation, loginValidation } from "../../validation/userValidation";
 import sendGrid from "../../utilities/sendgrid";
 
 dotenv.config();
-
 const { generateToken } = jwtHelper;
 const util = new Util();
 /**
@@ -89,7 +88,24 @@ export default class UserController {
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
-      return res.status(500).json({ status: 500, error: "Server Error" });
+      return res.status(500).json({ status: 500, error: "Server error." });
+    }
+  }
+
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
+  static async updateUserProfile(req, res) {
+    try {
+      const { id } = req.decoded.user;
+      const { error } = profileValidate(req.body);
+      if (error) return res.status(400).json({ status: 400, error: error.message });
+      const updatedProfile = await User.updateUserProfile(id, req.body);
+      return res.status(200).json({ status: 200, message: "User profile updated", data: updatedProfile[1] });
+    } catch (error) {
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 }

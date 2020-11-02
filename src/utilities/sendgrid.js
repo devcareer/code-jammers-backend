@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
 }
 
 const msg = {
-  from: `Know Africa Newsletter <${process.env.SENDGRID_EMAIL}>`,
+  from: `Know Africa <${process.env.SENDGRID_EMAIL}>`,
   mail_settings: {
     sandbox_mode: {
       enable: false
@@ -102,5 +102,26 @@ export default class {
     } catch (err) {
       return err;
     }
+  }
+  /**
+   *
+   * @typedef {(number|string)} uuid
+   */
+
+  /**
+   * @param {string} email - The user email
+   * @param {uuid} id - The user ID
+   * @param {string} token - The session token
+   * @param {object} res - The reset response object
+   * @returns {object} Success message
+   */
+  static async sendResetPasswordEmail(email, id, token, res) {
+    const link = `${hostURL}/api/v1/users/reset/${id}/${token}`;
+    msg.subject = "Password change request email";
+    msg.to = email;
+    msg.html = `<strong>Please click the following link to reset your password: </strong> <a href="${link}" style ="text-decoration: none; padding: 5px 7px; color: black; background-color: rgb(103, 238, 114); border-radius: 3px; font-weight: bold;">RESET PASSWORD</a>`;
+    try {
+      sgMail.send(msg);
+    } catch (err) { console.error(err.message); }
   }
 }
