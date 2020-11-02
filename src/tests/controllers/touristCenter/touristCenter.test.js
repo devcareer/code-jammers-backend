@@ -73,8 +73,6 @@ describe("Add Tourist Centers", () => {
       .set("Accept", "application/json")
       .send(touristCenter2)
       .end((err, res) => {
-        console.log(res.body);
-
         expect(res).to.have.status(400);
         done();
       });

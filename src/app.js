@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import cookieSession from "cookie-session";
 import passport from "passport";
+import stateRoutes from "./routes/stateRoutes";
 import resetPasswordRoutes from "./routes/resetPasswordRoutes";
 import userRoutes from "./routes/userRoute/userRoutes";
 import touristCenterRoutes from "./routes/touristCenterRoutes";
@@ -18,7 +19,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieSession({
@@ -41,6 +41,7 @@ app.use(cors());
 
 app.use("/api/v1", countryRoutes);
 app.use("/api/v1/", userRoutes);
+app.use("/api/v1/", stateRoutes);
 app.use("/api/v1", touristCenterRoutes);
 app.use("/api/v1/", newsletterRoutes);
 app.use("/api/v1/", resetPasswordRoutes);
