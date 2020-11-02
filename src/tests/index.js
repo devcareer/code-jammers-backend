@@ -23,3 +23,4 @@ import "./intergration/CountriesRoutes.spec";
 import "./unit/controllers/CountriesController.spec";
 import "./controllers/states/state.test";
 import "./controllers/resetPasswordTest/resetPasswordWithSinonTest";
+import "./intergration/CommentsRoutes.spec";
