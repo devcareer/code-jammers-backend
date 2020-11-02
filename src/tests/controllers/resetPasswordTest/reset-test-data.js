@@ -14,16 +14,13 @@ const user = {
 };
 const notUser = {
   email: "jadeclaw@notuser.com",
-  toJSON: () => ({
-    email: "jadeclaw@notuser.com",
-  })
 };
 
 const newPassword = {
   newPassword: "firebolt",
-  toJSON: () => ({
-    newPassword: "firebolt",
-  })
+  // toJSON: () => ({
+  //   newPassword: "firebolt",
+  // })
 };
 const signed = signToken(user, user.password);
 export {

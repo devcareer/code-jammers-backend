@@ -20,13 +20,13 @@ describe("send recover email", () => {
     const res = {
       json: sinon.spy(),
       status: sandbox.stub().returns({ send: sinon.spy(), json: sinon.spy() }),
-      send: () => user,
+      // send: () => user,
     };
     const req = {
       json: sinon.spy(),
       status: sandbox.stub().returns({ send: sinon.spy() }),
       body: { email: user.email },
-      send: () => user,
+      // send: () => user,
     };
     sandbox.stub(db.Users, "findOne").returns(user);
     sandbox.stub(sendgrid, "sendResetPasswordEmail").withArgs(user.email, user.id, signed, res).returns({ status: 200, message: "A reset email has been sent" });
@@ -43,13 +43,13 @@ describe("fail send recovery email", () => {
       json: sinon.spy(),
       status: sandbox.stub().returns({ send: sinon.spy(), json: sinon.spy() }),
       body: { email: notUser.email },
-      send: () => notUser,
+      // send: () => notUser,
     };
     const req = {
       json: sinon.spy(),
       status: sandbox.stub().returns({ send: sinon.spy() }),
       body: { email: notUser.email },
-      send: () => notUser,
+      // send: () => notUser,
     };
     sandbox.stub(db.Users, "findOne").returns(notUser);
     resetPasswordController.recover(req, res);
@@ -64,13 +64,11 @@ describe("change password", () => {
       json: sinon.spy(),
       status: sandbox.stub().returns({ send: sinon.spy(), json: sinon.spy() }),
       body: { newPassword: newPassword.newPassword, id: user.id },
-      send: () => user,
     };
     const req = {
       json: sinon.spy(),
       status: sandbox.stub().returns({ send: sinon.spy() }),
       body: { newPassword: newPassword.newPassword, id: user.id },
-      send: () => user,
       params: { id: user.id, token: signed }
     };
     const { id } = user;
