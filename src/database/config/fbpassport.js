@@ -11,7 +11,7 @@ const fbStrategy = new FacebookStrategy({
   callbackURL: process.env.FACEBOOK_CALLBACK_URL,
   profileFields: ["id", "name", "email", "displayName"]
 },
-async (accessToken, refreshToken, profile, done) => {
+ async (accessToken, refreshToken, profile, done) => {
   try {
     const username = (profile.displayName).toLowerCase();
     const email = profile.emails[0].value;
@@ -23,13 +23,12 @@ async (accessToken, refreshToken, profile, done) => {
     if (userExist) {
       return done(null, userExist);
     }
-    const emailExist = await database.Users.findOne(
-      { where: { email } }
-    );
+    const emailExist = await database.Users.findOne({ where: { email } });
     if (emailExist) {
       return done(
         null, "Email already exist, please sign in with your email and password"
       );
+      
     }
     if (!userExist) {
       const newUser = {
