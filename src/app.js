@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import resetPasswordRoutes from "./routes/resetPasswordRoutes";
 import userRoutes from "./routes/userRoute/userRoutes";
 import touristCenterRoutes from "./routes/touristCenterRoutes";
 import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
@@ -19,8 +20,7 @@ app.use("/api/v1", countryRoutes);
 app.use("/api/v1/", userRoutes);
 app.use("/api/v1", touristCenterRoutes);
 app.use("/api/v1/", newsletterRoutes);
-
-app.use(express.json());
+app.use("/api/v1/", resetPasswordRoutes);
 
 app.use(express.json());
 
