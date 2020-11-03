@@ -12,7 +12,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID,
       },
-      genre: {
+      category: {
         allowNull: false,
         type: Sequelize.STRING,
       },

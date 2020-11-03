@@ -15,20 +15,20 @@ export default class musicController {
   static async addMusic(req, res) {
     try {
       const {
-        gallery, genre
+        gallery, category
       } = req.body;
       const { countryId } = req.params;
       const { error } = validation({
-        countryId, gallery, genre
+        countryId, gallery, category
       });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const country = await db.findCountry(countryId);
       if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
-      const newGenre = genre.charAt(0).toUpperCase() + genre.slice(1).toLowerCase();
-      const centerGenre = await db.findMusicByGenre(newGenre);
-      if (centerGenre) return res.status(409).json({ status: 409, message: "Music already exists." });
+      const newCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+      const centerCategory = await db.findMusicByCategory(newCategory);
+      if (centerCategory) return res.status(409).json({ status: 409, message: "Music already exists." });
       const newMusic = {
-        countryId, gallery, genre: newGenre
+        countryId, gallery, category: newCategory
       };
       const createdMusic = await db.addMusic(newMusic);
       return res.status(201).json({ status: 201, message: "Music has been added.", data: createdMusic, });
@@ -78,7 +78,7 @@ export default class musicController {
     try {
       const { id } = req.params;
       const {
-        countryId, gallery, genre
+        countryId, gallery, category
       } = req.body;
       const { error } = validateId({ id, countryId });
       if (error) return res.status(400).json({ status: 400, error: error.message });
@@ -88,10 +88,10 @@ export default class musicController {
         const country = await db.findCountry(countryId);
         if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
       }
-      let newGenre;
-      if (genre) {
-        newGenre = genre.charAt(0).toUpperCase() + genre.slice(1).toLowerCase();
-        req.body.genre = newGenre;
+      let newCategory;
+      if (category) {
+        newCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+        req.body.category = newCategory;
       }
       const newMusic = await db.editMusic(id, req.body);
       return res.status(200).json({ status: 200, message: "Successfully updated music.", data: newMusic[1], });

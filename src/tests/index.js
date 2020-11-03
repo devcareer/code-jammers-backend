@@ -14,6 +14,7 @@ import "./models/ethnicgroup.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
 import "./controllers/userProfileTest/profile-test";
+import "./controllers/music/music.test";
 import "./controllers/admin/addCountry.test";
 import "./controllers/touristCenter/touristCenter.test";
 import "./controllers/resetPasswordTest/resetPasswordWithSinonTest";

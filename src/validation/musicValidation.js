@@ -10,12 +10,12 @@ const validation = music => {
         "string.base": "countryId must be a string.",
         "string.guid": "countryId must be a UUID"
       }),
-    genre: Joi.string().required()
+    category: Joi.string().required()
       .empty()
       .messages({
-        "any.required": "genre is required.",
-        "string.empty": "genre cannot be an empty field.",
-        "string.base": "genre must be a string."
+        "any.required": "category is required.",
+        "string.empty": "category cannot be an empty field.",
+        "string.base": "category must be a string."
       }),
     gallery: Joi.string().required()
       .empty()

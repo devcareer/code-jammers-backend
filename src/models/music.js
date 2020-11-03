@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    genre: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -19,14 +19,14 @@ export default class db {
   }
 
   /**
-   * @param {string} genre - Music genre
+   * @param {string} category - Music category
    * @returns {object} An instance of the Music model class
    */
-  static async findMusicByGenre(genre) {
+  static async findMusicByCategory(category) {
     try {
       return await database.Music.findOne({
         where: {
-          genre,
+          category,
         }
       });
     } catch (err) {
