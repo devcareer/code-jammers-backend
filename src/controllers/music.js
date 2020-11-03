@@ -1,37 +1,37 @@
-import db from "../services/AdminServices/touristCenterService";
-import { validation, validateId } from "../validation/touristCenterValidation";
+import db from "../services/AdminServices/musicService";
+import { validation, validateId } from "../validation/musicValidation";
 
 /**
- * @class touristCenterController
+ * @class musicController
  * @description create, read, update & delete touristcenter
- * @exports touristCenterController
+ * @exports musicController
  */
-export default class touristCenterController {
+export default class musicController {
   /**
    * @param {object} req - The user request object
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async addTouristCenter(req, res) {
+  static async addMusic(req, res) {
     try {
       const {
-        gallery, name, location, about
+        gallery, genre
       } = req.body;
       const { countryId } = req.params;
       const { error } = validation({
-        countryId, gallery, name, location, about
+        countryId, gallery, genre
       });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const country = await db.findCountry(countryId);
       if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
-      const newName = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-      const centerName = await db.findTouristCenter(newName);
-      if (centerName) return res.status(409).json({ status: 409, message: "Music already exists." });
-      const newTouristCenter = {
-        countryId, gallery, name: newName, location, about
+      const newGenre = genre.charAt(0).toUpperCase() + genre.slice(1).toLowerCase();
+      const centerGenre = await db.findMusicByGenre(newGenre);
+      if (centerGenre) return res.status(409).json({ status: 409, message: "Music already exists." });
+      const newMusic = {
+        countryId, gallery, genre: newGenre
       };
-      const createdTouristCenter = await db.addTouristCenter(newTouristCenter);
-      return res.status(201).json({ status: 201, message: "Music has been added.", data: createdTouristCenter, });
+      const createdMusic = await db.addMusic(newMusic);
+      return res.status(201).json({ status: 201, message: "Music has been added.", data: createdMusic, });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
@@ -42,10 +42,10 @@ export default class touristCenterController {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async getAllTouristCenters(req, res) {
+  static async getAllMusic(req, res) {
     try {
-      const touristCenters = await db.listTouristCenters();
-      return res.status(200).json({ status: 200, message: "Successfully retrived all Tourist Centers", data: touristCenters, });
+      const music = await db.listMusic();
+      return res.status(200).json({ status: 200, message: "Successfully retrived all music", data: music, });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
@@ -56,14 +56,14 @@ export default class touristCenterController {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async getTouristCenter(req, res) {
+  static async getMusic(req, res) {
     try {
       const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const touristCenter = await db.findTouristCenterById(id);
-      if (!touristCenter) return res.status(404).json({ status: 404, error: "Tourist Center not found" });
-      return res.status(200).json({ status: 200, message: "Successfully retrived Tourist Center.", data: touristCenter, });
+      const music = await db.findMusicById(id);
+      if (!music) return res.status(404).json({ status: 404, error: "Music not found" });
+      return res.status(200).json({ status: 200, message: "Successfully retrived music.", data: music, });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
@@ -74,27 +74,27 @@ export default class touristCenterController {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async updateTouristCenter(req, res) {
+  static async updateMusic(req, res) {
     try {
       const { id } = req.params;
       const {
-        countryId, gallery, name, location, about
+        countryId, gallery, genre
       } = req.body;
       const { error } = validateId({ id, countryId });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const oldCenter = await db.findTouristCenterById(id);
-      if (!oldCenter) return res.status(404).json({ status: 404, error: "Tourist Center not found" });
+      const oldMusic = await db.findMusicById(id);
+      if (!oldMusic) return res.status(404).json({ status: 404, error: "Music not found" });
       if (countryId) {
         const country = await db.findCountry(countryId);
         if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
       }
-      let newname;
-      if (name) {
-        newname = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-        req.body.name = newname;
+      let newGenre;
+      if (genre) {
+        newGenre = genre.charAt(0).toUpperCase() + genre.slice(1).toLowerCase();
+        req.body.genre = newGenre;
       }
-      const newTouristCenter = await db.editTouristCenter(id, req.body);
-      return res.status(200).json({ status: 200, message: "Successfully updated Tourist Center.", data: newTouristCenter[1], });
+      const newMusic = await db.editMusic(id, req.body);
+      return res.status(200).json({ status: 200, message: "Successfully updated music.", data: newMusic[1], });
     } catch (e) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
@@ -105,15 +105,15 @@ export default class touristCenterController {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async deleteTouristCenter(req, res) {
+  static async deleteMusic(req, res) {
     try {
       const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const touristCenter = await db.findTouristCenterById(id);
-      if (!touristCenter) return res.status(404).json({ status: 404, error: "Tourist Center not found" });
-      await db.delTouristCenter(id);
-      return res.status(200).json({ status: 200, message: "Successfully deleted Tourist Center." });
+      const music = await db.findMusicById(id);
+      if (!music) return res.status(404).json({ status: 404, error: "Music not found" });
+      await db.delMusic(id);
+      return res.status(200).json({ status: 200, message: "Successfully deleted music." });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }

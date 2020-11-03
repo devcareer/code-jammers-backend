@@ -12,15 +12,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID,
       },
-      category: {
+      genre: {
         allowNull: false,
         type: Sequelize.STRING,
       },
       gallery: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      event: {
         allowNull: false,
         type: Sequelize.STRING,
       },

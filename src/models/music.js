@@ -8,15 +8,11 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    category: {
+    genre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     gallery: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    event: {
       type: DataTypes.STRING,
       allowNull: false,
     },

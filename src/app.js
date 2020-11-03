@@ -8,6 +8,7 @@ import touristCenterRoutes from "./routes/touristCenterRoutes";
 import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
 import countryRoutes from "./routes/countryRoutes";
 import ethnicRoutes from "./routes/ethnicgroup";
+import musicRoutes from "./routes/musicRoutes";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ app.use("/api/v1/", stateRoutes);
 app.use("/api/v1", touristCenterRoutes);
 app.use("/api/v1/", newsletterRoutes);
 app.use("/api/v1/", resetPasswordRoutes);
+app.use("/api/v1", musicRoutes);
 
 app.use(express.json());
 
