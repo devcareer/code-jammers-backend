@@ -37,7 +37,6 @@ export default class EthnicGroup {
       const created = await EthnicGroups.addEthnicGroup(newEthnicGroup);
       return res.status(201).json({ status: 201, message: "A new ethnic group has been added.", data: created, });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
@@ -53,7 +52,7 @@ export default class EthnicGroup {
     try {
       const ethnicgroups = await EthnicGroups.getAll();
       if (ethnicgroups.length === 0) return res.status(404).json({ status: 404, message: "Tell us about your ethnic group!" });
-      return res.status(200).json({ status: 200, EthnicGroups: ethnicgroups });
+      return res.status(200).json({ status: 200, data: ethnicgroups });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
@@ -73,7 +72,7 @@ export default class EthnicGroup {
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const ethnicgroup = await EthnicGroups.findById(id);
       if (!ethnicgroup) return res.status(404).json({ status: 404, error: "Ethnic Group not found" });
-      return res.status(200).json({ status: 200, ethnicGroup: ethnicgroup });
+      return res.status(200).json({ status: 200, data: ethnicgroup });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
@@ -102,13 +101,17 @@ export default class EthnicGroup {
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const ethnicgroup = await EthnicGroups.findById(id);
       if (!ethnicgroup) return res.status(404).json({ status: 404, error: "Ethnic Group not found" });
+      if (countryId) {
+        const countryExists = await Admin.checkCountryById(countryId);
+        if (!countryExists) return res.status(404).json({ status: 404, message: "This country does not exist." });
+      }
       let newname;
       if (name) {
         newname = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         req.body.name = newname;
       }
       const updatedEthnicGroup = await EthnicGroups.updateById(id, req.body);
-      return res.status(200).json({ status: 200, message: "Successfully updated Ethnic Group.", updated: updatedEthnicGroup[1], });
+      return res.status(200).json({ status: 200, message: "Successfully updated.", updated: updatedEthnicGroup[1], });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }

@@ -115,7 +115,6 @@ describe("Add Tourist Centers", () => {
 
 describe("Update Tourist Center", () => {
   beforeEach(async () => {
-    // remove any rows from database before testing
     await db.TouristCenters.destroy({
       where: {
       },
@@ -152,7 +151,6 @@ describe("Update Tourist Center", () => {
         done();
       });
   });
-  // validation tests
   it("should not allow admin update a Tourist Center with invalid ID data type", done => {
     chai
       .request(server)
@@ -209,7 +207,6 @@ describe("Update Tourist Center", () => {
 
 describe("Delete Tourist Center", () => {
   beforeEach(async () => {
-    // remove any rows from database before testing
     await db.TouristCenters.destroy({
       where: {
       },
@@ -243,7 +240,6 @@ describe("Delete Tourist Center", () => {
         done();
       });
   });
-  // validation tests
   it("should not allow admin delete a Tourist Center with invalid ID data type", done => {
     chai
       .request(server)
@@ -287,12 +283,10 @@ describe("GET tourist center api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-        // status should be 200
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived all Tourist Centers");
 
-        // check that all entries have all required properties
         data.forEach(touristCenters => {
           expect(touristCenters).to.have.property("id");
           expect(touristCenters).to.have.property("countryId");
@@ -302,10 +296,8 @@ describe("GET tourist center api route", () => {
           expect(touristCenters).to.have.property("about");
         });
 
-        // check if all countries are recieved
         expect(data).to.have.length(2);
 
-        // check that body is of the correct data type
         expect(data).to.be.an("array");
         done();
       });
@@ -318,7 +310,6 @@ describe("GET tourist center api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-        // status should be 200
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived Tourist Center.");
@@ -329,7 +320,6 @@ describe("GET tourist center api route", () => {
         expect(data).to.have.property("location");
         expect(data).to.have.property("about");
 
-        // check that body is of the correct data type
         expect(data).to.be.an("object");
         done();
       });
