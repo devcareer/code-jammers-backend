@@ -50,5 +50,5 @@ export default {
         },
       }));
   },
-  down: queryInterface => queryInterface.dropTable("Cultures"),
+  down: queryInterface => queryInterface.dropTable("EthnicGroups"),
 };

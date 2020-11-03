@@ -31,5 +31,5 @@ export default {
     ],
     {},
   ),
-  down: queryInterface => queryInterface.bulkDelete("Cultures", null, {}),
+  down: queryInterface => queryInterface.bulkDelete("EthnicGroups", null, {}),
 };

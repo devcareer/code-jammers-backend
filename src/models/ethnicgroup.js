@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Culture = sequelize.define("EthnicGroups", {
+  const EthnicGroup = sequelize.define("EthnicGroups", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -34,12 +34,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  Culture.associate = models => {
-    Culture.belongsTo(models.Countries, {
+  EthnicGroup.associate = models => {
+    EthnicGroup.belongsTo(models.Countries, {
       as: "countryEthnicGroup",
       foreignKey: "countryId",
       onDelete: 'cascade',
     });
   };
-  return Culture;
+  return EthnicGroup;
 };
