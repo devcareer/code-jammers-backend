@@ -59,7 +59,7 @@ export default class AdminController {
     try {
       const countries = await db.Countries.findAll({
         attributes: countriesAttributes,
-        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }]
+        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }]
       });
       res.status(200).send({
         status: 200,
@@ -87,7 +87,7 @@ export default class AdminController {
       const country = await db.Countries.findOne({
         where: { id },
         attributes: countriesAttributes,
-        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }]
+        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }]
       });
 
       if (!country) {

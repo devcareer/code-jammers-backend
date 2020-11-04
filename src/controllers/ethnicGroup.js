@@ -1,5 +1,5 @@
 import EthnicGroups from "../services/AdminServices/ethnicgroup";
-import { validation, validateId } from "../validation/ethnicgroup";
+import { validation, validateId, updateValidation } from "../validation/ethnicgroup";
 import Admin from "../services/AdminServices/countryService";
 
 /**
@@ -31,9 +31,9 @@ export default class EthnicGroup {
       const { error } = validation(newEthnicGroup);
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const checkCountryId = await Admin.checkCountryById(countryId);
-      if (!checkCountryId) return res.status(404).json({ status: 404, message: "This country does not exist in the database." });
+      if (!checkCountryId) return res.status(404).json({ status: 404, error: "This country does not exist in the database." });
       const ethnicgroup = await EthnicGroups.checkEthnicGroup(name);
-      if (ethnicgroup) return res.status(409).json({ status: 409, message: "This ethnic group already exists in the database." });
+      if (ethnicgroup) return res.status(409).json({ status: 409, error: "This ethnic group already exists in the database." });
       const created = await EthnicGroups.addEthnicGroup(newEthnicGroup);
       return res.status(201).json({ status: 201, message: "A new ethnic group has been added.", data: created, });
     } catch (error) {
@@ -51,7 +51,7 @@ export default class EthnicGroup {
   static async getAll(req, res) {
     try {
       const ethnicgroups = await EthnicGroups.getAll();
-      if (ethnicgroups.length === 0) return res.status(404).json({ status: 404, message: "Tell us about your ethnic group!" });
+      if (ethnicgroups.length === 0) return res.status(404).json({ status: 404, error: "Tell us about your ethnic group!" });
       return res.status(200).json({ status: 200, data: ethnicgroups });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
@@ -98,12 +98,14 @@ export default class EthnicGroup {
         culturalPractices,
       } = req.body;
       const { error } = validateId({ id });
+      const { updateError } = updateValidation(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.message });
+      if (updateError) return res.status(400).json({ status: 400, error: error.message });
       const ethnicgroup = await EthnicGroups.findById(id);
       if (!ethnicgroup) return res.status(404).json({ status: 404, error: "Ethnic Group not found" });
       if (countryId) {
         const countryExists = await Admin.checkCountryById(countryId);
-        if (!countryExists) return res.status(404).json({ status: 404, message: "This country does not exist." });
+        if (!countryExists) return res.status(404).json({ status: 404, error: "This country does not exist." });
       }
       let newname;
       if (name) {

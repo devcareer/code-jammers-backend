@@ -58,4 +58,41 @@ const validation = user => {
   return schema.validate(user);
 };
 
-export { validation, validateId };
+const updateValidation = user => {
+  const schema = Joi.object({
+    countryId: Joi.string().empty().guid({ version: "uuidv4" })
+      .messages({
+        "string.empty": "ID cannot be an empty field.",
+        "string.base": "ID must be a string.",
+        "string.guid": "ID must be a UUID"
+      }),
+    name: Joi.string().empty()
+      .messages({
+        "string.empty": "Name of ethnic group cannot be an empty field",
+      }),
+    festivals: Joi.string().empty()
+      .messages({
+        "string.empty": "Festival cannot be an empty field",
+      }),
+    dressing: Joi.string().empty()
+      .messages({
+        "string.empty": "Dressing style cannot be an empty field",
+      }),
+    language: Joi.string().empty()
+      .messages({
+        "string.empty": "Language cannot be an empty field",
+      }),
+    gallery: Joi.string().empty()
+      .messages({
+        "string.empty": "Gallery cannot be an empty field.",
+        "string.base": "Please provide a valid link."
+      }),
+    culturalPractices: Joi.string().empty()
+      .messages({
+        "string.empty": "CulturalPractices cannot be an empty field.",
+      }),
+  }).options({ abortEarly: false });
+  return schema.validate(user);
+};
+
+export { validation, validateId, updateValidation };
