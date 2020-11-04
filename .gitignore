@@ -15,10 +15,4 @@ package-lock.json
 
 build/
 
-//for facebook sign up details
-FACEBOOK_CLIENT_ID = 723215311598159
-FACEBOOK_CLIENT_SECRET = 5c6f878bf5163c5915c137feaf5c221e
-FACEBOOK_CALLBACK_URL = http://localhost:3000/api/v1/auth/facebook/redirect
-COOKIE_KEY = cookieKey
-
 sendgrid.env
