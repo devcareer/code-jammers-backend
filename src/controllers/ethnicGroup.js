@@ -98,9 +98,7 @@ export default class EthnicGroup {
         culturalPractices,
       } = req.body;
       const { error } = validateId({ id });
-      const { updateError } = updateValidation(req.body);
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      if (updateError) return res.status(400).json({ status: 400, error: error.message });
       const ethnicgroup = await EthnicGroups.findById(id);
       if (!ethnicgroup) return res.status(404).json({ status: 404, error: "Ethnic Group not found" });
       if (countryId) {
