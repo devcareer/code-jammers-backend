@@ -281,6 +281,7 @@ describe("GET Music api route", () => {
           expect(items).to.have.property("countryId");
           expect(items).to.have.property("gallery");
           expect(items).to.have.property("category");
+          expect(items).to.have.property("information");
         });
         expect(data).to.have.length(2);
         expect(data).to.be.an("array");
@@ -302,6 +303,7 @@ describe("GET Music api route", () => {
         expect(data).to.have.property("countryId");
         expect(data).to.have.property("gallery");
         expect(data).to.have.property("category");
+        expect(data).to.have.property("information");
         expect(data).to.be.an("object");
         done();
       });

@@ -15,7 +15,7 @@ describe("src/models/music", () => {
   checkModelName(Music)("Music");
 
   context("properties", () => {
-    ["countryId", "category", "gallery"].forEach(
+    ["countryId", "category", "information", "gallery"].forEach(
       checkPropertyExists(music)
     );
   });

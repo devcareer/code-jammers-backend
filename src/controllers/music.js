@@ -15,11 +15,11 @@ export default class musicController {
   static async addMusic(req, res) {
     try {
       const {
-        gallery, category
+        gallery, category, information
       } = req.body;
       const { countryId } = req.params;
       const { error } = validation({
-        countryId, gallery, category
+        countryId, gallery, category, information
       });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const country = await db.findCountry(countryId);
@@ -27,7 +27,7 @@ export default class musicController {
       const centerCategory = await db.findMusicByCategory(category);
       if (centerCategory) return res.status(409).json({ status: 409, message: "Music already exists." });
       const newMusic = {
-        countryId, gallery: [gallery], category
+        countryId, gallery: [gallery], category, information
       };
       const createdMusic = await db.addMusic(newMusic);
       return res.status(201).json({ status: 201, message: "Music has been added.", data: createdMusic, });
@@ -77,7 +77,7 @@ export default class musicController {
     try {
       const { id } = req.params;
       const {
-        countryId, gallery, category
+        countryId, gallery, category, information
       } = req.body;
       const { error } = validateId({ id, countryId });
       if (error) return res.status(400).json({ status: 400, error: error.message });

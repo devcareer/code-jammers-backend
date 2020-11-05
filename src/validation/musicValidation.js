@@ -17,6 +17,13 @@ const validation = music => {
         "string.empty": "category cannot be an empty field.",
         "string.base": "category must be a string."
       }),
+    information: Joi.string().required()
+      .empty()
+      .messages({
+        "any.required": "information is required.",
+        "string.empty": "information cannot be an empty field.",
+        "string.base": "information must be a string."
+      }),
     gallery: Joi.string().required()
       .empty()
       .messages({

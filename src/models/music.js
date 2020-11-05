@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    information: {
+      type: DataTypes.STRING(5000),
+      allowNull: false,
+    },
     gallery: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       defaultValue: [],

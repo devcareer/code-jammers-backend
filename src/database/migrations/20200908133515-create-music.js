@@ -16,6 +16,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      information: {
+        allowNull: false,
+        type: Sequelize.STRING(5000),
+      },
       gallery: {
         allowNull: false,
         type: Sequelize.ARRAY(Sequelize.STRING),
