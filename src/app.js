@@ -4,10 +4,10 @@ import cors from "cors";
 import stateRoutes from "./routes/stateRoutes";
 import resetPasswordRoutes from "./routes/resetPasswordRoutes";
 import userRoutes from "./routes/userRoute/userRoutes";
-import touristCenterRoutes from "./routes/touristCenterRoutes";
+import touristCenterRoutes from "./routes/touristCenterRoute/touristCenterRoutes";
 import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
-import countryRoutes from "./routes/countryRoutes";
 import ethnicRoutes from "./routes/ethnicgroup";
+import countryRoutes from "./routes/countryRoute/countryRoutes";
 
 const app = express();
 const port = process.env.PORT || 3000;
