@@ -18,9 +18,7 @@ const notUser = {
 
 const newPassword = {
   newPassword: "firebolt",
-  // toJSON: () => ({
-  //   newPassword: "firebolt",
-  // })
+
 };
 const signed = signToken(user, user.password);
 export {
