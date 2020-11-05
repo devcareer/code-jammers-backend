@@ -24,11 +24,10 @@ export default class musicController {
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const country = await db.findCountry(countryId);
       if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
-      const newCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-      const centerCategory = await db.findMusicByCategory(newCategory);
+      const centerCategory = await db.findMusicByCategory(category);
       if (centerCategory) return res.status(409).json({ status: 409, message: "Music already exists." });
       const newMusic = {
-        countryId, gallery: [gallery], category: newCategory
+        countryId, gallery: [gallery], category
       };
       const createdMusic = await db.addMusic(newMusic);
       return res.status(201).json({ status: 201, message: "Music has been added.", data: createdMusic, });
@@ -87,11 +86,6 @@ export default class musicController {
       if (countryId) {
         const country = await db.findCountry(countryId);
         if (!country) return res.status(404).json({ status: 404, error: "Country does not exist" });
-      }
-      let newCategory;
-      if (category) {
-        newCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-        req.body.category = newCategory;
       }
       const newMusic = await db.editMusic(oldMusic, req.body);
       return res.status(200).json({ status: 200, message: "Successfully updated music.", data: newMusic[1], });
