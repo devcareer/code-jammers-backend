@@ -30,26 +30,39 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+<<<<<<< HEAD
   Country.associate = (models) => {
     Country.hasMany(models.EthnicGroups, {
       as: "ethnicGroups",
+=======
+  Country.associate = models => {
+    Country.hasMany(models.Cultures, {
+      as: "cultureCountry",
+>>>>>>> 498d4cd... Rebase develop
       foreignKey: "countryId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
+    });
+
+    Country.hasMany(models.Foods, {
+      as: "countryFood",
+      foreignKey: "countryId",
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.States, {
       as: "states",
       foreignKey: "countryId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.TouristCenters, {
       as: "touristCenters",
       foreignKey: "countryId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.Music, {
