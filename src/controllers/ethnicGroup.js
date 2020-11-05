@@ -55,7 +55,7 @@ export default class EthnicGroup {
   }
 
   /**
-   *  Delete an ethnic group by id
+   *  Get an ethnic group by id
    *
    * @param {object} req - The user request object
    * @param {object} res - The user response object
