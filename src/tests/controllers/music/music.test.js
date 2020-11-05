@@ -49,8 +49,6 @@ describe("Add Music", () => {
       .set("Accept", "application/json")
       .send(music)
       .end((err, res) => {
-        console.log(err);
-        console.log(res.body);
         expect(res).to.have.status(201);
         done();
       });
@@ -75,8 +73,6 @@ describe("Add Music", () => {
       .set("Accept", "application/json")
       .send(music2)
       .end((err, res) => {
-        console.log(res.body);
-
         expect(res).to.have.status(400);
         done();
       });
@@ -111,7 +107,6 @@ describe("Add Music", () => {
       .set("Accept", "application/json")
       .send(music3)
       .end((err, res) => {
-        console.log(res.body);
         expect(res).to.have.status(404);
         done();
       });
@@ -192,7 +187,6 @@ describe("Update Music", () => {
       .set("Accept", "application/json")
       .send({ countryId: "ea26d3c7-4635-436f-ab2e-a463792301c9" })
       .end((err, res) => {
-        console.log(res.body);
         expect(res).to.have.status(404);
         expect(res.body.error).to.equal("Country does not exist");
         done();

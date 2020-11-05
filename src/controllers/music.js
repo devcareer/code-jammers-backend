@@ -33,7 +33,6 @@ export default class musicController {
       const createdMusic = await db.addMusic(newMusic);
       return res.status(201).json({ status: 201, message: "Music has been added.", data: createdMusic, });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
