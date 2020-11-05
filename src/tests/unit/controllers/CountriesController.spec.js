@@ -22,11 +22,7 @@ describe("countries controllers", () => {
     await countriesController.listCountries(req, res);
     expect(db.Countries.findAll).to.have.been.calledOnce.and.calledWith({
       attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
-<<<<<<< HEAD
-      include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }]
-=======
       include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }]
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
     });
   });
 });

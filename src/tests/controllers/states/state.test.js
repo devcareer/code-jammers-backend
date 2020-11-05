@@ -103,10 +103,6 @@ describe("Add States", () => {
 
 describe("Update state", () => {
   beforeEach(async () => {
-<<<<<<< HEAD
-    // remove any rows from database before testing
-=======
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
     await db.States.destroy({
       where: {
       },
@@ -185,10 +181,6 @@ describe("Delete State ", () => {
         done();
       });
   });
-<<<<<<< HEAD
-  // validation tests
-=======
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
   it("should not allow admin delete a state with invalid ID data type", done => {
     chai
       .request(server)
@@ -232,18 +224,10 @@ describe("GET state api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-<<<<<<< HEAD
-        // status should be 200
-=======
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived all States");
 
-<<<<<<< HEAD
-        // check that all entries have all required properties
-=======
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
         data.forEach(states => {
           expect(states).to.have.property("countryId");
           expect(states).to.have.property("gallery");
@@ -251,15 +235,8 @@ describe("GET state api route", () => {
           expect(states).to.have.property("capital");
         });
 
-<<<<<<< HEAD
-        // check if all states are recieved
         expect(data).to.have.length(2);
 
-        // check that body is of the correct data type
-=======
-        expect(data).to.have.length(2);
-
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
         expect(data).to.be.an("array");
         done();
       });
@@ -272,10 +249,6 @@ describe("GET state api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-<<<<<<< HEAD
-        // status should be 200
-=======
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived state");
@@ -285,10 +258,6 @@ describe("GET state api route", () => {
         expect(data).to.have.property("name");
         expect(data).to.have.property("capital");
 
-<<<<<<< HEAD
-        // check that body is of the correct data type
-=======
->>>>>>> a42e65d7473f098480d82e5f62d97baa83ddf374
         expect(data).to.be.an("object");
         done();
       });
