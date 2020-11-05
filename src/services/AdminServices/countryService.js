@@ -29,4 +29,17 @@ export default class Admin {
       throw err;
     }
   }
+
+  /**
+   * @param {string} nameOfCountry - Native country of a  food
+   * @returns {object} - An instance of the Countries' model class
+   */
+  static async countryName(nameOfCountry) {
+    const renameCountry = nameOfCountry.split(" ");
+    let newCountryName = [];
+    for (let x = 0; x < renameCountry.length; x++) {
+      newCountryName.push(renameCountry[x].charAt(0).toUpperCase() + renameCountry[x].slice(1));
+    }
+    return newCountryName.join(" ");
+  }
 }
