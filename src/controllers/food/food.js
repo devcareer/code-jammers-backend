@@ -61,7 +61,7 @@ export default class Food {
    */
   static async getFoodsByCountry(req, res) {
     try {
-      const { country } = req.body;
+      const { country } = req.params;
       const nameOfCountry = await Admin.countryName(country);
       const { error } = validateCountry({ nameOfCountry });
       if (error) {
@@ -156,6 +156,7 @@ export default class Food {
       const foodToDelete = await FoodServices.deleteFood(getFood);
       return res.status(200).json({ status: 200, message: "Food deleted successfully" });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
