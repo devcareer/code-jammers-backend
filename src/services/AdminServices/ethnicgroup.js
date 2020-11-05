@@ -23,7 +23,7 @@ export default class EthnicGroups {
    * @param {string} ethnicGroup - EthnicGroup object
    * @returns {object} An updated instance of the EthnicGroup model class
    */
-  static async updateById(id, ethnicGroup) {
+  static async updateEthnicGroupById(id, ethnicGroup) {
     try {
       return await db.EthnicGroups.update(ethnicGroup, {
         where: { id },
@@ -50,7 +50,7 @@ export default class EthnicGroups {
   /**
    * @returns {object} An instance of the EthnicGroups model class
    */
-  static async getAll() {
+  static async getAllEthnicGroups() {
     try {
       return await db.EthnicGroups.findAll();
     } catch (error) {
@@ -59,10 +59,10 @@ export default class EthnicGroups {
   }
 
   /**
-   * @param {string} id - TouristCenter id
-   * @returns {object} An instance of the TouristCenter model class
+   * @param {string} id - EthnicGroup id
+   * @returns {object} An instance of the EthnicGroups model class
    */
-  static async findById(id) {
+  static async findEthnicGroupById(id) {
     try {
       return await db.EthnicGroups.findOne({
         where: {
@@ -78,7 +78,7 @@ export default class EthnicGroups {
    * @param {string} id - EthnicGroups object
    * @returns {object} An instance of the EthnicGroups model class
    */
-  static async deleteById(id) {
+  static async deleteEthnicGroupById(id) {
     try {
       await db.EthnicGroups.destroy({
         where: {

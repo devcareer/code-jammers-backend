@@ -1,5 +1,5 @@
 import EthnicGroups from "../services/AdminServices/ethnicgroup";
-import { validation, validateId, updateValidation } from "../validation/ethnicgroup";
+import { validation, validateId } from "../validation/ethnicgroup";
 import Admin from "../services/AdminServices/countryService";
 
 /**
@@ -21,12 +21,8 @@ export default class EthnicGroup {
       const {
         name, festivals, dressing, language, gallery, culturalPractices
       } = req.body;
-      let ethnicGroupName;
-      if (name) {
-        ethnicGroupName = String(name)[0].toUpperCase() + String(name).slice(1).toLowerCase();
-      }
       const newEthnicGroup = {
-        countryId, name: ethnicGroupName, festivals, dressing, language, gallery, culturalPractices
+        countryId, name, festivals, dressing, language, gallery, culturalPractices
       };
       const { error } = validation(newEthnicGroup);
       if (error) return res.status(400).json({ status: 400, error: error.message });
@@ -48,9 +44,9 @@ export default class EthnicGroup {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async getAll(req, res) {
+  static async getAllEthnicGroups(req, res) {
     try {
-      const ethnicgroups = await EthnicGroups.getAll();
+      const ethnicgroups = await EthnicGroups.getAllEthnicGroups();
       if (ethnicgroups.length === 0) return res.status(404).json({ status: 404, error: "Tell us about your ethnic group!" });
       return res.status(200).json({ status: 200, data: ethnicgroups });
     } catch (error) {
@@ -65,12 +61,12 @@ export default class EthnicGroup {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async getById(req, res) {
+  static async getEthnicGroupById(req, res) {
     try {
       const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const ethnicgroup = await EthnicGroups.findById(id);
+      const ethnicgroup = await EthnicGroups.findEthnicGroupById(id);
       if (!ethnicgroup) return res.status(404).json({ status: 404, error: "Ethnic Group not found" });
       return res.status(200).json({ status: 200, data: ethnicgroup });
     } catch (error) {
@@ -85,7 +81,7 @@ export default class EthnicGroup {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async updateById(req, res) {
+  static async updateEthnicGroupById(req, res) {
     try {
       const { id } = req.params;
       const {
@@ -99,7 +95,7 @@ export default class EthnicGroup {
       } = req.body;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const ethnicgroup = await EthnicGroups.findById(id);
+      const ethnicgroup = await EthnicGroups.findEthnicGroupById(id);
       if (!ethnicgroup) return res.status(404).json({ status: 404, error: "Ethnic Group not found" });
       if (countryId) {
         const countryExists = await Admin.checkCountryById(countryId);
@@ -110,7 +106,7 @@ export default class EthnicGroup {
         newname = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         req.body.name = newname;
       }
-      const updatedEthnicGroup = await EthnicGroups.updateById(id, req.body);
+      const updatedEthnicGroup = await EthnicGroups.updateEthnicGroupById(id, req.body);
       return res.status(200).json({ status: 200, message: "Successfully updated.", updated: updatedEthnicGroup[1], });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
@@ -124,14 +120,14 @@ export default class EthnicGroup {
    * @param {object} res - The user response object
    * @returns {object} Success message
    */
-  static async deleteById(req, res) {
+  static async deleteEthnicGroupById(req, res) {
     try {
       const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const ethnicgroup = await EthnicGroups.findById(id);
+      const ethnicgroup = await EthnicGroups.findEthnicGroupById(id);
       if (!ethnicgroup) return res.status(404).json({ status: 404, error: "Ethnic Group not found" });
-      await EthnicGroups.deleteById(id);
+      await EthnicGroups.deleteEthnicGroupById(id);
       return res.status(200).json({ status: 200, message: "Successfully deleted!" });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
