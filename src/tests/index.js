@@ -22,8 +22,5 @@ import "./controllers/newsletter/newsletter.test";
 import "./intergration/CountriesRoutes.spec";
 import "./unit/controllers/CountriesController.spec";
 import "./controllers/states/state.test";
-<<<<<<< HEAD
 import "./controllers/resetPasswordTest/resetPasswordWithSinonTest";
-=======
->>>>>>> 6883ad0... feat(add-comment-route): add comment route
 import "./intergration/CommentsRoutes.spec";

@@ -12,6 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      relatedId:{
+        allowNull: false,
+        type: Sequelize.UUID,
+      },
       comment: {
         allowNull: false,
         type: Sequelize.STRING,

@@ -10,6 +10,14 @@ const validateComment = comment => {
         "string.base": "userID must be a string.",
         "string.guid": "userID must be a UUID"
       }),
+    relatedId: Joi.string().required()
+      .empty().guid({ version: "uuidv4" })
+      .messages({
+        "any.required": "related id is required.",
+        "string.empty": "related id cannot be an empty field.",
+        "string.base": "related id must be a string.",
+        "string.guid": "related id must be a UUID"
+      }),
     comment: Joi.string().required().min(3).max(500)
       .empty()
       .messages({
