@@ -18,7 +18,8 @@ module.exports = {
       },
       gallery: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        defaultValue: []
       },
       createdAt: {
         allowNull: false,

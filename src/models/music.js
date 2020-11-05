@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     gallery: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: [],
       allowNull: false,
     },
   });

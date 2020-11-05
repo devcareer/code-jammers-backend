@@ -78,14 +78,19 @@ export default class db {
   }
 
   /**
-   * @param {string} id - Music id
-   * @param {string} Music - Music object
+   * @param {string} oldMusic - former Music object
+   * @param {string} newMusic - new Music object
    * @returns {object} An updated instance of the Music model class
    */
-  static async editMusic(id, Music) {
+  static async editMusic(oldMusic, newMusic) {
     try {
-      return await database.Music.update(Music, {
-        where: { id },
+      if (newMusic.gallery) {
+        oldMusic.gallery.push(newMusic.gallery);
+        // eslint-disable-next-line no-param-reassign
+        newMusic.gallery = oldMusic.gallery;
+      }
+      return await database.Music.update(newMusic, {
+        where: { id: oldMusic.id },
         returning: true,
         plain: true
       });

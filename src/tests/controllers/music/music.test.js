@@ -49,6 +49,8 @@ describe("Add Music", () => {
       .set("Accept", "application/json")
       .send(music)
       .end((err, res) => {
+        console.log(err);
+        console.log(res.body);
         expect(res).to.have.status(201);
         done();
       });
@@ -149,7 +151,7 @@ describe("Update Music", () => {
       .patch("/api/v1/admin/music/8d58")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send({ category: "Afrobeat" })
+      .send({ category: "Afrobeat", gallery: "facebook.com" })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.error).to.equal("ID must be a UUID");

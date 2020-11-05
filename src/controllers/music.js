@@ -28,11 +28,12 @@ export default class musicController {
       const centerCategory = await db.findMusicByCategory(newCategory);
       if (centerCategory) return res.status(409).json({ status: 409, message: "Music already exists." });
       const newMusic = {
-        countryId, gallery, category: newCategory
+        countryId, gallery: [gallery], category: newCategory
       };
       const createdMusic = await db.addMusic(newMusic);
       return res.status(201).json({ status: 201, message: "Music has been added.", data: createdMusic, });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
@@ -93,7 +94,7 @@ export default class musicController {
         newCategory = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
         req.body.category = newCategory;
       }
-      const newMusic = await db.editMusic(id, req.body);
+      const newMusic = await db.editMusic(oldMusic, req.body);
       return res.status(200).json({ status: 200, message: "Successfully updated music.", data: newMusic[1], });
     } catch (e) {
       return res.status(500).json({ status: 500, error: "Server error." });
