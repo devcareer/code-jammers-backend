@@ -56,6 +56,7 @@ export default class AdminController {
         attributes: countriesAttributes,
         include: [
           { model: db.TouristCenters, as: "touristCenters" },
+          { model: db.States, as: "states" },
           {
             model: db.Foods,
             as: "countryFood"
@@ -89,6 +90,7 @@ export default class AdminController {
         attributes: countriesAttributes,
         include: [
           { model: db.TouristCenters, as: "touristCenters" },
+          { model: db.States, as: "states" },
           {
             model: db.Foods,
             as: "countryFood"

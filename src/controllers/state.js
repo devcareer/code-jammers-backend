@@ -34,7 +34,7 @@ export default class AdminStateController {
       const createdState = await Admin.addState(newState);
       return res.status(201).json({ status: 201, message: "A state has been added.", data: createdState, });
     } catch (error) {
-      res.status(500).json({ status: 500, error: "Server error." });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -52,7 +52,7 @@ export default class AdminStateController {
         data: states,
       });
     } catch (error) {
-      res.status(500).send({
+      return res.status(500).send({
         status: 500,
         error,
       });

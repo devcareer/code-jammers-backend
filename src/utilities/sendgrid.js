@@ -121,7 +121,9 @@ export default class {
     msg.to = email;
     msg.html = `<strong>Please click the following link to reset your password: </strong> <a href="${link}" style ="text-decoration: none; padding: 5px 7px; color: black; background-color: rgb(103, 238, 114); border-radius: 3px; font-weight: bold;">RESET PASSWORD</a>`;
     try {
-      sgMail.send(msg);
-    } catch (err) { console.error(err.message); }
+      await sgMail.send(msg);
+    } catch (err) {
+      throw err.message;
+    }
   }
 }
