@@ -19,18 +19,8 @@ const food3 = {
 
 };
 
-const country = {
-  country: "Nigeria"
-};
-
-const country2 = {
-  country: "Central African Republic"
-};
-
 export {
   food,
   food2,
   food3,
-  country,
-  country2
 };
