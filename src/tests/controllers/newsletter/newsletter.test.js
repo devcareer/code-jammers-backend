@@ -14,7 +14,6 @@ import sendGrid from "../../../utilities/sendgrid";
 
 sendGrid.sandboxMode();
 
-// assertion style
 chai.should();
 
 chai.use(chaiHttp);

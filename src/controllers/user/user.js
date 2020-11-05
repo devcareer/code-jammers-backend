@@ -38,6 +38,7 @@ export default class UserController {
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = { email: Email, username: Username, password: hashedPassword };
       const createdUser = await User.createUser(newUser);
+      const data = { id: createdUser.id };
       const token = await generateToken({ createdUser });
       await sendGrid.sendVerificationEmail(Email, username, "users/signup");
       util.setSuccess(201, "User created! An email has been sent to you to verify your account", token);

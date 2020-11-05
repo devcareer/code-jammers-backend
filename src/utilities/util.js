@@ -1,6 +1,6 @@
 /* eslint-disable valid-jsdoc */
 /**
- * @class Util
+ *
  */
 export default class Util {
   /**

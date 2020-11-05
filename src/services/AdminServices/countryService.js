@@ -29,4 +29,16 @@ export default class Admin {
       throw err;
     }
   }
+
+  /**
+   * @param {uuid} countryId - The country name
+   * @returns {object} An instance of the Countries model class
+   */
+  static async checkCountryById(countryId) {
+    try {
+      return await database.Countries.findOne({ where: { id: countryId } });
+    } catch (err) {
+      throw err;
+    }
+  }
 }

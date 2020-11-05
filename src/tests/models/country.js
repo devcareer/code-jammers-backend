@@ -30,14 +30,14 @@ describe("src/models/countries", () => {
   });
 
   context("associations", () => {
-    const Cultures = "culture data";
+    const EthnicGroups = "EthnicGroup data";
 
     before(() => {
-      Country.associate({ Cultures });
+      Country.associate({ EthnicGroups });
     });
 
-    it("defined a hasMany association with Culture", () => {
-      expect(Country.hasMany).to.have.been.calledWith(Cultures);
+    it("defined a hasMany association with EthnicGroup", () => {
+      expect(Country.hasMany).to.have.been.calledWith(EthnicGroups);
     });
   });
 });
