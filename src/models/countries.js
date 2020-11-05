@@ -30,15 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-<<<<<<< HEAD
-  Country.associate = (models) => {
+  Country.associate = models => {
     Country.hasMany(models.EthnicGroups, {
       as: "ethnicGroups",
-=======
-  Country.associate = models => {
-    Country.hasMany(models.Cultures, {
-      as: "cultureCountry",
->>>>>>> 498d4cd... Rebase develop
       foreignKey: "countryId",
       onDelete: "cascade",
       hooks: true,
