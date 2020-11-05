@@ -84,6 +84,11 @@ export default class UserController {
           message: "Please Verify your account to continue. click on the link provided in your mail"
         });
       }
+      if (!user.active) {
+        return res.status(400).send({
+          message: "This user has been de-activated, Please contact admin"
+        });
+      }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);

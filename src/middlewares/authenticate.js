@@ -71,4 +71,40 @@ export default class Authentication {
       throw error;
     }
   }
+
+  /**
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
+   * @returns {Function} errorResponse | next
+   */
+  static async verifyUser(req, res, next) {
+    try {
+      const { id } = req.decoded.user;
+      const user = await Authentication.findUserById(id);
+      if (user) {
+        return next();
+      }
+      return res.status(403).json({ status: 403, error: "User is deactivated." });
+    } catch (error) {
+      return res.status(500).json({ status: 500, error: "Server Error." });
+    }
+  }
+
+  /**
+   * @param {string} id - The user ID
+   * @returns {object} - An instance of the Users model class
+   */
+  static async findUserById(id) {
+    try {
+      return await db.Users.findOne({
+        where: {
+          id,
+          active: true
+        }
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 }
