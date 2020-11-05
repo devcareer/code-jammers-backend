@@ -83,7 +83,11 @@ export default class AdminController {
       const country = await db.Countries.findOne({
         where: { id },
         attributes: countriesAttributes,
+<<<<<<< HEAD
         include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Music, as: "music" }, { model: db.Foods, as: "Food" }, { model: db.Historicalfacts, as: "historicalFacts" }]
+=======
+        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Music, as: "music" }, { model: db.Foods, as: "Food" }, { model: db.Comments, as: "comments" }]
+>>>>>>> 9ca1191... feat(comment-api's): comment API's
       });
 
       if (!country) {

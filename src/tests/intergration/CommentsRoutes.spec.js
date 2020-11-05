@@ -56,7 +56,7 @@ describe("Add comment", () => {
       .post("/api/v1/comment")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
-      .send({ comment: "" })
+      .send({ comment: "", relatedId: "6003fb36-5112-463e-a1f9-c8944e72412f" })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.error).to.equal("comment cannot be an empty field.");
@@ -70,7 +70,7 @@ describe("Add comment", () => {
       .post("/api/v1/comment")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
-      .send({ comment: "12" })
+      .send({ comment: "12", relatedId: "6003fb36-5112-463e-a1f9-c8944e72412f" })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.error).to.equal("comment length must be at least 3 characters long");

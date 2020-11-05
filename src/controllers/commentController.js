@@ -7,16 +7,17 @@ const util = new Util();
 
 const commentController = {
   /**
-   * allows a user to make a comment
-   * @param {object} req - request object
-   * @param {object} res - response object
-   * @returns {object} success message | error
-   */
+         * allows a user to make a comment
+         * @param {object} req - request object
+         * @param {object} res - response object
+         * @returns {object} success message | error
+         */
   comment: async (req, res) => {
     const { id } = req.decoded.user;
-    const { comment } = req.body;
+    const { comment, relatedId } = req.body;
 
-    const newComment = { comment, userId: id };
+    const newComment = { comment, userId: id, relatedId };
+
     try {
       const { error } = commentValidator(newComment);
       if (error) {
@@ -42,13 +43,13 @@ const commentController = {
         returning: true
       });
 
-      res.status(200).send({
+      return res.status(200).send({
         status: 200,
         message: "Successfully updated comment",
         data: result[1][0].get()
       });
     } catch (error) {
-      res.status(404).send({ status: 404, error: "Resource not found." });
+      return res.status(404).send({ status: 404, error: "Resource not found." });
     }
   },
   getComment: async (req, res) => {
@@ -61,13 +62,13 @@ const commentController = {
         return res.status(404).send({ status: 404, error: "Resource not found.", });
       }
 
-      res.status(200).send({
+      return res.status(200).send({
         status: 200,
         message: "Successfully retrived comment",
         data: comment
       });
     } catch (error) {
-      res.status(404).send({ status: 404, error: "Resource not found." });
+      return res.status(404).send({ status: 404, error: "Resource not found." });
     }
   },
   deleteComment: async (req, res) => {
@@ -84,12 +85,12 @@ const commentController = {
 
       await comment.destroy({ cascade: true });
 
-      res.status(200).send({
+      return res.status(200).send({
         status: 200,
         message: "Successfully deleted comment",
       });
     } catch (error) {
-      res.status(404).send({ status: 404, error: "Resource not found." });
+      return res.status(404).send({ status: 404, error: "Resource not found." });
     }
   }
 };
