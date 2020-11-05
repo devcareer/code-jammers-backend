@@ -70,10 +70,7 @@ export default class UserController {
   static async loginUser(req, res) {
     try {
       const { error } = loginValidation(req.body);
-      if (error) {
-        util.setError(400, "Validation Error", error.message);
-        return util.send(res);
-      }
+      if (error) { util.setError(400, "Validation Error", error.message); return util.send(res); }
       const { email, password } = req.body;
       const Email = email.toLowerCase();
       const user = await User.emailExist(Email);
@@ -81,20 +78,16 @@ export default class UserController {
       const validpass = await bcrypt.compare(password, user.password);
       if (!validpass) return res.status(404).json({ status: 400, error: "Password is not correct!." });
       if (!user.verified) {
-        return res.status(400).send({
-          message: "Please Verify your account to continue. click on the link provided in your mail"
-        });
+        return res.status(400).send({ message: "Please Verify your account to continue. click on the link provided in your mail" });
       }
       if (!user.active) {
-        return res.status(400).send({
-          message: "This user has been de-activated, Please contact admin"
-        });
+        return res.status(400).json({ status: 403, message: "Sorry User has been De-activated, Please contact an admin" });
       }
       const token = await generateToken({ user });
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
-      return res.status(500).json({ status: 500, error: "Server error." });
+      throw res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 

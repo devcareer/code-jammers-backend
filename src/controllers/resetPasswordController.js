@@ -29,7 +29,7 @@ export default class {
         return res.status(403).json({ status: 403, error: "The acount is not verified. Please check your email inbox for verification email.", });
       }
       if (!user.active) {
-        return res.status(403).json({ status: 403, error: "This User has been De-activated. Please contact the Admin.", });
+        return res.status(403).json({ status: 403, error: "Sorry User has been De-activated. Please contact an Admin.", });
       }
       const signed = signToken(user.toJSON(), user.password);
       await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);
