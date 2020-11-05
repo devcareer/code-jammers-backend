@@ -31,6 +31,7 @@ export default class Admin {
   }
 
   /**
+<<<<<<< HEAD
    * @param {uuid} countryId - The country name
    * @returns {object} An instance of the Countries model class
    */
@@ -43,6 +44,8 @@ export default class Admin {
   }
 
   /**
+=======
+>>>>>>> 080a1f97c735a598eeb40fc56df5d619de03ce4d
    * @param {string} nameOfCountry - Native country of a  food
    * @returns {object} - An instance of the Countries' model class
    */
