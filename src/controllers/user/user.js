@@ -87,7 +87,7 @@ export default class UserController {
       util.setSuccess(200, "User Logged in!", token);
       return util.send(res);
     } catch (error) {
-      throw res.status(500).json({ status: 500, error: "Server error." });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
