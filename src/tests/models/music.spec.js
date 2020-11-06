@@ -15,11 +15,8 @@ describe("src/models/music", () => {
   checkModelName(Music)("Music");
 
   context("properties", () => {
-    ["countryId", "category", "information", "gallery"].forEach(
-      checkPropertyExists(music)
-    );
+    ["countryId", "category", "information", "gallery"].forEach(checkPropertyExists(music));
   });
-
   context("associations", () => {
     const Countries = "Nigeria";
 
