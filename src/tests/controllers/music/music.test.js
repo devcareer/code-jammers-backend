@@ -2,9 +2,7 @@ import chai from "chai";
 import chaiHttp from "chai-http";
 import db from "../../../models/index";
 import { user4, user5 } from "../users/user-sign-in-test-data";
-import {
-  touristCenter, touristCenter2, touristCenter3, touristCenter4, touristCenter5
-} from "./touristCenter-data";
+import { music, music2, music3, music4, music5 } from "./music-data";
 import server from "../../../app";
 import sendGrid from "../../../utilities/sendgrid";
 
@@ -14,7 +12,7 @@ sendGrid.sandboxMode();
 const { expect } = chai;
 chai.use(chaiHttp);
 
-describe("Add Tourist Centers", () => {
+describe("Add Music", () => {
   let adminToken;
   let userToken;
   before(done => {
@@ -41,71 +39,71 @@ describe("Add Tourist Centers", () => {
         done();
       });
   });
-  it("should allow user with admin role add a Tourist Center", done => {
+  it("should allow user with admin role add Music", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/music/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send(touristCenter)
+      .send(music)
       .end((err, res) => {
         expect(res).to.have.status(201);
         done();
       });
   });
-  it("should not allow admin add the same Tourist Center name twice", done => {
+  it("should not allow admin add the same Music category twice", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/music/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send(touristCenter)
+      .send(music)
       .end((err, res) => {
         expect(res).to.have.status(409);
         done();
       });
   });
-  it("should not allow admin add a Tourist Center with incomplete details", done => {
+  it("should not allow admin add Music with incomplete details", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/music/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send(touristCenter2)
+      .send(music2)
       .end((err, res) => {
         expect(res).to.have.status(400);
         done();
       });
   });
-  it("should not allow user without token add a Tourist Center", done => {
+  it("should not allow user without token add Music", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
-      .send(touristCenter3)
+      .post("/api/v1/admin/music/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .send(music3)
       .end((err, res) => {
         expect(res).to.have.status(401);
         done();
       });
   });
-  it("should not allow user without admin role add a Tourist Center", done => {
+  it("should not allow user without admin role add Music", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/music/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
-      .send(touristCenter3)
+      .send(music3)
       .end((err, res) => {
         expect(res).to.have.status(403);
         done();
       });
   });
-  it("should allow user with admin role add a Tourist Center", done => {
+  it("should not allow admin add Music to a country not in db", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/tourist-center/4e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/music/9e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send(touristCenter)
+      .send(music3)
       .end((err, res) => {
         expect(res).to.have.status(404);
         done();
@@ -113,7 +111,7 @@ describe("Add Tourist Centers", () => {
   });
 });
 
-describe("Update Tourist Center", () => {
+describe("Update Music", () => {
   let adminToken;
   before(done => {
     chai
@@ -127,36 +125,36 @@ describe("Update Tourist Center", () => {
         done();
       });
   });
-  it("should allow Admin update a Tourist Center", done => {
+  it("should allow Admin update Music", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/12adedc3-d529-4f67-9ee6-5b763d5010f4")
+      .patch("/api/v1/admin/music/2a7fe4a4-f6d3-4e99-a7ef-8098786073c2")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send({ name: "Aso rock" })
+      .send({ category: "Afrobeat" })
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.equal("Successfully updated Tourist Center.");
+        expect(res.body.message).to.equal("Successfully updated music.");
         done();
       });
   });
-  it("should not allow admin update a Tourist Center with invalid ID data type", done => {
+  it("should not allow admin update Music with invalid ID data type", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/8d58")
+      .patch("/api/v1/admin/music/8d58")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send({ location: "Abuja" })
+      .send({ category: "Afrobeat", gallery: "facebook.com" })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.error).to.equal("ID must be a UUID");
         done();
       });
   });
-  it("should not allow admin update a Tourist Center with invalid countryId data type", done => {
+  it("should not allow admin update Music with invalid countryId data type", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/12adedc3-d529-4f67-9ee6-5b763d5010f4")
+      .patch("/api/v1/admin/music/2a7fe4a4-f6d3-4e99-a7ef-8098786073c2")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ countryId: "2e11e4a" })
@@ -166,26 +164,26 @@ describe("Update Tourist Center", () => {
         done();
       });
   });
-  it("returns 404 when updating tourist center which is not in db", done => {
+  it("returns 404 when updating Music which is not in db", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e578")
+      .patch("/api/v1/admin/music/8d585465-cd80-4030-b665-bdc3bbd3e578")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send({ location: "Rivers" })
+      .send({ category: "Afrobeat" })
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Tourist Center not found");
+        expect(res.body.error).to.equal("Music not found");
         done();
       });
   });
-  it("returns 400 when updating a tourist center's countryId which is not in db", done => {
+  it("returns 404 when updating Music countryId which is not in db", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/12adedc3-d529-4f67-9ee6-5b763d5010f4")
+      .patch("/api/v1/admin/music/2a7fe4a4-f6d3-4e99-a7ef-8098786073c2")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
-      .send({ countryId: "8d585465-cd80-4030-b665-bdc3bbd3e519" })
+      .send({ countryId: "ea26d3c7-4635-436f-ab2e-a463792301c9" })
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body.error).to.equal("Country does not exist");
@@ -194,16 +192,16 @@ describe("Update Tourist Center", () => {
   });
 });
 
-describe("Delete Tourist Center", () => {
+describe("Delete Music", () => {
   beforeEach(async () => {
-    await db.TouristCenters.destroy({
+    await db.Music.destroy({
       where: {
       },
       trancate: {
         cascade: true,
       },
     });
-    await db.TouristCenters.create(touristCenter4);
+    await db.Music.create(music4);
   });
   let adminToken;
   before(done => {
@@ -218,21 +216,22 @@ describe("Delete Tourist Center", () => {
         done();
       });
   });
-  it("should allow Admin Delete a Tourist Center", done => {
+  it("should allow Admin Delete Music", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .delete("/api/v1/admin/music/ea26d3c7-4635-436f-ab2e-a463792301c9")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.equal("Successfully deleted Tourist Center.");
+        expect(res.body.message).to.equal("Successfully deleted music.");
         done();
       });
   });
-  it("should not allow admin delete a Tourist Center with invalid ID data type", done => {
+  // validation tests
+  it("should not allow admin delete Music with invalid ID data type", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/tourist-center/8d58")
+      .delete("/api/v1/admin/music/8d58")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -240,76 +239,83 @@ describe("Delete Tourist Center", () => {
         done();
       });
   });
-  it("returns 404 when deleting tourist center which is not in db", done => {
+  it("returns 404 when deleting Music which is not in db", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e578")
+      .delete("/api/v1/admin/music/8d585465-cd80-4030-b665-bdc3bbd3e578")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Tourist Center not found");
+        expect(res.body.error).to.equal("Music not found");
         done();
       });
   });
 });
 
-describe("GET tourist center api route", () => {
+describe("GET Music api route", () => {
   beforeEach(async () => {
-    await db.TouristCenters.destroy({
+    await db.Music.destroy({
       where: {
       },
       trancate: {
         cascade: true,
       },
     });
-    await db.TouristCenters.create(touristCenter4);
-    await db.TouristCenters.create(touristCenter5);
+    await db.Music.create(music4);
+    await db.Music.create(music5);
   });
-  it("returns all tourist centers ", done => {
+  it("returns all Musics ", done => {
     chai
       .request(server)
-      .get("/api/v1/tourist-centers")
+      .get("/api/v1/music")
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
-        expect(body.message).to.equal("Successfully retrived all Tourist Centers");
-
-        data.forEach(touristCenters => {
-          expect(touristCenters).to.have.property("id");
-          expect(touristCenters).to.have.property("countryId");
-          expect(touristCenters).to.have.property("gallery");
-          expect(touristCenters).to.have.property("name");
-          expect(touristCenters).to.have.property("location");
-          expect(touristCenters).to.have.property("about");
+        expect(body.message).to.equal("Successfully retrived all music");
+        data.forEach(items => {
+          expect(items).to.have.property("id");
+          expect(items).to.have.property("countryId");
+          expect(items).to.have.property("gallery");
+          expect(items).to.have.property("category");
+          expect(items).to.have.property("information");
         });
-
         expect(data).to.have.length(2);
-
         expect(data).to.be.an("array");
         done();
       });
   });
 
-  it("returns tourist center with specific id", done => {
+  it("returns Music with specific id", done => {
     chai
       .request(server)
-      .get("/api/v1/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e400")
+      .get("/api/v1/music/1e09a076-52cb-4597-94f4-8f106a3db4d3")
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
-        expect(body.message).to.equal("Successfully retrived Tourist Center.");
+        expect(body.message).to.equal("Successfully retrived music.");
         expect(data).to.have.property("id");
         expect(data).to.have.property("countryId");
         expect(data).to.have.property("gallery");
-        expect(data).to.have.property("name");
-        expect(data).to.have.property("location");
-        expect(data).to.have.property("about");
-
+        expect(data).to.have.property("category");
+        expect(data).to.have.property("information");
         expect(data).to.be.an("object");
+        done();
+      });
+  });
+  it("returns 404 when trying to get Music with wrong id", done => {
+    chai
+      .request(server)
+      .get("/api/v1/music/9e09a076-52cb-4597-94f4-8f106a3db4d3")
+      .end((err, res) => {
+        const { status, body } = res;
+        const { data } = body;
+        expect(status).to.equal(404);
+        expect(body.status).to.equal(404);
+        expect(body.error).to.equal("Music not found");
         done();
       });
   });

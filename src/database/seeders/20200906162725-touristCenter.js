@@ -1,6 +1,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert("TouristCenters", [{
+          id: "12adedc3-d529-4f67-9ee6-5b763d5010f4",
           countryId: "2e11e4a9-441b-4426-9521-39adc64ccfad",
           location: "Livingstone",
           gallery:

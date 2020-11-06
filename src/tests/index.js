@@ -14,6 +14,7 @@ import "./controllers/users/user-sign-in-test";
 import "./fbOAuth-test.spec";
 import "./controllers/userProfileTest/profile-test";
 import "./controllers/admin/addCountry.test";
+import "./controllers/music/music.test";
 import "./controllers/touristCenter/touristCenter.test";
 import "./controllers/newsletter/newsletter.test";
 import "./intergration/CountriesRoutes.spec";
