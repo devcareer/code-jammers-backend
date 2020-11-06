@@ -45,7 +45,11 @@ export default class Admin {
 
   /**
 =======
+<<<<<<< HEAD
 >>>>>>> 498d4cd... Rebase develop
+=======
+>>>>>>> 080a1f97c735a598eeb40fc56df5d619de03ce4d
+>>>>>>> bf751a8d9e16339a1ed04828f3a78a2da0a996bc
    * @param {string} nameOfCountry - Native country of a  food
    * @returns {object} - An instance of the Countries' model class
    */
