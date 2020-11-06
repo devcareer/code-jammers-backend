@@ -1,0 +1,81 @@
+{
+  "name": "code-jammers-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "dependencies": {
+    "@sendgrid/mail": "^7.2.6",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "async": "^3.2.0",
+    "bcrypt-nodejs": "0.0.3",
+    "cross-env": "^7.0.2",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "joi": "^17.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.4.14",
+    "path": "^0.12.7",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "proxyquire": "^2.1.3",
+    "sequelize": "^5.21.13",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.5",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
+    "@babel/runtime": "^7.11.2",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.12.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsdoc": "^30.7.5",
+    "mocha": "^8.1.3",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
+    "sequelize-test-helpers": "^1.2.3",
+    "sinon": "^9.0.3",
+    "sinon-chai": "^3.5.0"
+  },
+  "scripts": {
+    "clean": "npm rm -rf build && npm run build-babel",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js",
+    "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./src/app.js",
+    "test": "cross-env NODE_ENV=test && npm run migration && npm run seeder && nyc --require --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 10000 --recursive --exit || true ",
+    "coverage": "nyc npm run test && nyc report --reporter=text-lcov --reporter=lcov | node ./node_modules/coveralls/bin/coveralls.js --verbose",
+    "lint": "eslint src/  --fix",
+    "migration": "npm run migrate:undo && npm run migrate",
+    "migrate": "node_modules/.bin/sequelize db:migrate",
+    "migrate:undo": "node_modules/.bin/sequelize db:migrate:undo:all",
+    "seeder": "npm run seed:undo && npm run seed",
+    "seed": "node_modules/.bin/sequelize db:seed:all",
+    "seed:undo": "node_modules/.bin/sequelize db:seed:undo:all"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devcareer/code-jammers-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devcareer/code-jammers-backend/issues"
+  },
+  "homepage": "https://github.com/devcareer/code-jammers-backend#readme"
+}

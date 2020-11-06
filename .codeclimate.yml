@@ -1,0 +1,14 @@
+version: "2"
+plugins:
+  eslint:
+    enabled: true
+    channel: "eslint-5"
+    config:
+      config: ".eslintrc.json"
+exclude_patterns:
+  - "src/database/"
+  - "coverage"
+  - "src/models"
+  - "src/tests"
+  - "src/utilities"
+  - "src/validation"
