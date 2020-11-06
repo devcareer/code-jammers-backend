@@ -29,7 +29,7 @@ app.use("/api/v1", musicRoutes);
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Know Africa");
+  res.send("Welcome to Know Africa. Our privacy policy can be found here: " + "https://devcareer.github.io/code-jammers-backend/docs/");
 });
 
 app.listen(port, () => {
