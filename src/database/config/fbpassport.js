@@ -24,12 +24,8 @@ const fbStrategy = new FacebookStrategy({
       return done(null, userExist);
     }
     const emailExist = await database.Users.findOne({ where: { email } });
-    if (emailExist) {
-      return done(
-        null, "Email already exist, please sign in with your email and password"
-      );
-      
-    }
+    if (emailExist) return res.status(404).json({ status: 404, error: "Email already used by another user." });
+
     if (!userExist) {
       const newUser = {
         email,

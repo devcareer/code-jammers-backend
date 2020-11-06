@@ -11,4 +11,11 @@ describe("Signin a user with facebook oauth", () => {
     chai.request(server).get("/auth/facebook/callback");
     done();
   });
+  it("it should not sign up a user with an already existing email", done => {
+    chai.request(server).get("/auth/facebook/callback")
+      .end((err, res) => {
+        res.should.have.status(404);
+        done();
+      });
+  });
 });
