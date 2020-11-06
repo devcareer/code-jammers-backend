@@ -55,7 +55,7 @@ export default class AdminController {
     try {
       const countries = await db.Countries.findAll({
         attributes: countriesAttributes,
-        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Foods, as: "countryFood" }, { model: db.Music, as: "music" }]
+        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Music, as: "music" }, { model: db.Foods, as: "countryFood" }]
       });
       return res.status(200).send({
         status: 200,

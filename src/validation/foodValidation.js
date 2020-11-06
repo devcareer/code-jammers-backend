@@ -16,6 +16,8 @@ const foodValidation = food => {
       .messages({
         "string.base": "Please provide a valid link."
       })
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   });
   return schema.validate(food);
 };
@@ -84,6 +86,8 @@ const validateCountry = country => {
         "string.empty": "Country cannot be an empty field.",
         "string.base": "Country name must contain only alphabetical characters."
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   });
   return schema.validate(country);
 };

@@ -28,6 +28,8 @@ const registerValidation = user => {
         "string.empty": "Sorry, password cannot be an empty field",
         "string.min": "password should have a minimum length of 5"
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(user);
 };
@@ -48,6 +50,8 @@ const loginValidation = user => {
         "string.empty": "Sorry, password cannot be an empty field",
         "string.min": "Password should have a minimum length of 5"
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   });
   return schema.validate(user);
 };
@@ -71,6 +75,8 @@ const profileValidate = profile => {
         "string.base": "Please provide a valid link",
         "string.empty": "Sorry, profilePicture cannot be an empty field"
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(profile);
 };
@@ -91,6 +97,8 @@ const subscriberValidation = user => {
         "string.empty": "Sorry, Email cannot be an empty field",
         "string.email": "Please enter a valid email",
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   });
   return schema.validate(user);
 };

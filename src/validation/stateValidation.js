@@ -32,6 +32,8 @@ const validation = state => {
         "string.empty": "Capital cannot be an empty field.",
         "string.base": "Capital must contain only alphabetical characters."
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(state);
 };
@@ -50,6 +52,8 @@ const validateId = ids => {
       .messages({
         "string.guid": "CountryId must be a UUID"
       })
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(ids);
 };

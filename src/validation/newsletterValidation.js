@@ -14,6 +14,8 @@ const newsletterValidation = user => {
         "any.required": "Please add a message to your newsletter",
         "string.empty": "To send a newsletter, you have to add a message",
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   });
   return schema.validate(user);
 };

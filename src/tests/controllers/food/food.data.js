@@ -19,30 +19,8 @@ const food3 = {
 
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-const country = {
-  country: "Nigeria"
-};
-
-const country2 = {
-  country: "Central African Republic"
-};
-
->>>>>>> 498d4cd... Rebase develop
-=======
->>>>>>> eb3b533... refactor code
 export {
   food,
   food2,
   food3,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  country,
-  country2
->>>>>>> 498d4cd... Rebase develop
-=======
->>>>>>> eb3b533... refactor code
 };
