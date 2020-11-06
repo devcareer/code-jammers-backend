@@ -65,8 +65,8 @@ export default class {
     </div>`;
     try {
       await sgMail.send(msg);
-    } catch (error) {
-      return error;
+    } catch (err) {
+      return err;
     }
   }
 
