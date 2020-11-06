@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     EthnicGroup.belongsTo(models.Countries, {
       as: "countryEthnicGroup",
       foreignKey: "countryId",
-      onDelete: 'cascade',
+      onDelete: "cascade",
     });
   };
   return EthnicGroup;
