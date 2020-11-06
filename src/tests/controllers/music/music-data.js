@@ -33,6 +33,5 @@ const music5 = {
   updatedAt: new Date(),
 };
 
-export {
-  music, music2, music3, music4, music5
-};
+// eslint-disable-next-line object-curly-newline
+export { music, music2, music3, music4, music5 };

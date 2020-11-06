@@ -2,9 +2,7 @@ import chai from "chai";
 import chaiHttp from "chai-http";
 import db from "../../../models/index";
 import { user4, user5 } from "../users/user-sign-in-test-data";
-import {
-  music, music2, music3, music4, music5
-} from "./music-data";
+import { music, music2, music3, music4, music5 } from "./music-data";
 import server from "../../../app";
 import sendGrid from "../../../utilities/sendgrid";
 
