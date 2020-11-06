@@ -19,22 +19,6 @@ export default class FoodServices {
   }
 
   /**
-   * @param {string} getCountry - Native Country of foods
-   * @returns {object} - An instance of the Foods model class
-   */
-  static async getFoodsByCountry(getCountry) {
-    try {
-      return await database.Foods.findAll({
-        where: {
-          countryId: getCountry.id
-        }
-      });
-    } catch (error) {
-      return error;
-    }
-  }
-
-  /**
    * @param {string} id - Id of foods
    * @returns {object} - An instance of the Foods model class
    */

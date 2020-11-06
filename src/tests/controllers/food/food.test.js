@@ -42,7 +42,7 @@ describe("Create Food, Get Food By Country, Get Single Food By Id, Get All Foods
   it("Should not allow a User without Admin role create a Food", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/food")
+      .post("/api/v1/admin/food/6003fb36-5112-463e-a1f9-c8944e72412f")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
       .send(food)
@@ -54,7 +54,7 @@ describe("Create Food, Get Food By Country, Get Single Food By Id, Get All Foods
   it("Should not allow a User without token create a Food", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/food")
+      .post("/api/v1/admin/food/6003fb36-5112-463e-a1f9-c8944e72412f")
       .set("Accept", "application/json")
       .send(food)
       .end((err, res) => {
@@ -65,7 +65,7 @@ describe("Create Food, Get Food By Country, Get Single Food By Id, Get All Foods
   it("Should not create a Food where country does not exist", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/food")
+      .post("/api/v1/admin/food/6003fb36-5112-463e-bef9-c8944e72412f")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(food2)
@@ -78,7 +78,7 @@ describe("Create Food, Get Food By Country, Get Single Food By Id, Get All Foods
   it("Should allow User with Admin role create a Food", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/food")
+      .post("/api/v1/admin/food/6003fb36-5112-463e-a1f9-c8944e72412f")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(food)
@@ -86,27 +86,6 @@ describe("Create Food, Get Food By Country, Get Single Food By Id, Get All Foods
         res.should.have.status(201);
         res.body.should.be.a("object");
         res.body.should.have.property("message").eql("Food created!");
-        done();
-      });
-  });
-  it("Should get all foods of a country", done => {
-    chai
-      .request(server)
-      .get("/api/v1/food/country-foods/nigeria")
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.be.a("object");
-        res.body.should.have.property("message").eql("Country's Foods retrieved");
-        done();
-      });
-  });
-  it("Should not get all foods of a country that does not exixt", done => {
-    chai
-      .request(server)
-      .get("/api/v1/food/country-foods/Central African Republic")
-      .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.property("error").eql("Country does not exist");
         done();
       });
   });

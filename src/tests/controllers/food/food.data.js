@@ -1,12 +1,10 @@
 const food = {
-  country: "Nigeria",
   foodName: "Smoked Indomie",
   methodOfPreparation: "Avoid packaged or processed foods, which are likely to contain added salt, sugar and fats. Recognize that consuming these foods increases your intake of salt, sugar, and fats considerably (often without knowing specifically what or how much). As we eat more and more processed foods, we eat less of the phytochemicals and nutrients our bodies need. ",
   gallery: "htpp://facebook.com"
 };
 
 const food2 = {
-  country: "Central African Republic",
   foodName: "smoked indomie",
   methodOfPreparation: "Avoid packaged or processed foods, which are likely to contain added salt, sugar and fats. Recognize that consuming these foods increases your intake of salt, sugar, and fats considerably (often without knowing specifically what or how much). As we eat more and more processed foods, we eat less of the phytochemicals and nutrients our bodies need. ",
   gallery: "htpp://facebook.com"

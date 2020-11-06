@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Country.hasMany(models.Foods, {
-      as: "countryFood",
+      as: "Food",
       foreignKey: "countryId",
       onDelete: "cascade",
       hooks: true,
