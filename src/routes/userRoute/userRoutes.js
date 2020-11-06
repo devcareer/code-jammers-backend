@@ -12,9 +12,11 @@ router.patch("/user-profile/", verifyToken, userController.updateUserProfile);
 router.get("/users/signup/verify/:email", userController.verifyUser);
 router.post("/users/signin", userController.loginUser);
 router.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }));
-router.get("/auth/facebook/redirect", passport.authenticate("facebook", { successRedirect: "/", failureRedirect: "/fail" }),
-  (req, res) => {
-    res.redirect("/");
-  });
+router.get("/auth/facebook/callback",
+
+  passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+  }));
 
 export default router;
