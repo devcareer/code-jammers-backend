@@ -1,7 +1,7 @@
-import countriesController from "./country";
 import "./user/user";
-import "./touristCenter";
 import resetPasswordController from "./resetPasswordController";
+import countriesController from "./country/country";
+import "./touristCenter/touristCenter";
 
 export default {
   resetPasswordController,
