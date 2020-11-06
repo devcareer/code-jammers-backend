@@ -16,13 +16,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      information: {
+        allowNull: false,
+        type: Sequelize.STRING(5000),
+      },
       gallery: {
         allowNull: false,
-        type: Sequelize.STRING,
-      },
-      event: {
-        allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        defaultValue: []
       },
       createdAt: {
         allowNull: false,

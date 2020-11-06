@@ -12,12 +12,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gallery: {
-      type: DataTypes.STRING,
+    information: {
+      type: DataTypes.STRING(5000),
       allowNull: false,
     },
-    event: {
-      type: DataTypes.STRING,
+    gallery: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: [],
       allowNull: false,
     },
   });
