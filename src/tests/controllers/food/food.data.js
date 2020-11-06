@@ -19,8 +19,24 @@ const food3 = {
 
 };
 
+<<<<<<< HEAD
+=======
+const country = {
+  country: "Nigeria"
+};
+
+const country2 = {
+  country: "Central African Republic"
+};
+
+>>>>>>> 498d4cd... Rebase develop
 export {
   food,
   food2,
   food3,
+<<<<<<< HEAD
+=======
+  country,
+  country2
+>>>>>>> 498d4cd... Rebase develop
 };

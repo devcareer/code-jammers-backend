@@ -6,6 +6,11 @@ import {
   food,
   food2,
   food3,
+<<<<<<< HEAD
+=======
+  country,
+  country2
+>>>>>>> 498d4cd... Rebase develop
 } from "./food.data";
 
 chai.should();
@@ -92,8 +97,15 @@ describe("Create Food, Get Food By Country, Get Single Food By Id, Get All Foods
   it("Should get all foods of a country", done => {
     chai
       .request(server)
+<<<<<<< HEAD
       .get("/api/v1/food/country-foods/nigeria")
       .end((err, res) => {
+=======
+      .get("/api/v1/food/country-foods")
+      .send(country)
+      .end((err, res) => {
+        console.log(err);
+>>>>>>> 498d4cd... Rebase develop
         res.should.have.status(200);
         res.body.should.be.a("object");
         res.body.should.have.property("message").eql("Country's Foods retrieved");
@@ -103,8 +115,15 @@ describe("Create Food, Get Food By Country, Get Single Food By Id, Get All Foods
   it("Should not get all foods of a country that does not exixt", done => {
     chai
       .request(server)
+<<<<<<< HEAD
       .get("/api/v1/food/country-foods/Central African Republic")
       .end((err, res) => {
+=======
+      .get("/api/v1/food/country-foods")
+      .send(country2)
+      .end((err, res) => {
+        console.log(err);
+>>>>>>> 498d4cd... Rebase develop
         res.should.have.status(404);
         res.body.should.have.property("error").eql("Country does not exist");
         done();

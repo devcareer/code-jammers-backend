@@ -31,6 +31,7 @@ export default class Admin {
   }
 
   /**
+<<<<<<< HEAD
    * @param {uuid} countryId - The country name
    * @returns {object} An instance of the Countries model class
    */
@@ -43,6 +44,8 @@ export default class Admin {
   }
 
   /**
+=======
+>>>>>>> 498d4cd... Rebase develop
    * @param {string} nameOfCountry - Native country of a  food
    * @returns {object} - An instance of the Countries' model class
    */

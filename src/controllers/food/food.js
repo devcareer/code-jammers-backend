@@ -156,7 +156,6 @@ export default class Food {
       const foodToDelete = await FoodServices.deleteFood(getFood);
       return res.status(200).json({ status: 200, message: "Food deleted successfully" });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
