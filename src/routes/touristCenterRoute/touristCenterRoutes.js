@@ -1,6 +1,6 @@
 import Router from "express";
-import touristCenterController from "../controllers/touristCenter";
-import Authentication from "../middlewares/authenticate";
+import touristCenterController from "../../controllers/touristCenter/touristCenter";
+import Authentication from "../../middlewares/authenticate";
 
 // eslint-disable-next-line max-len
 const {

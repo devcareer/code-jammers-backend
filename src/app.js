@@ -4,11 +4,12 @@ import cors from "cors";
 import stateRoutes from "./routes/stateRoutes";
 import resetPasswordRoutes from "./routes/resetPasswordRoutes";
 import userRoutes from "./routes/userRoute/userRoutes";
-import touristCenterRoutes from "./routes/touristCenterRoutes";
+import touristCenterRoutes from "./routes/touristCenterRoute/touristCenterRoutes";
 import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
-import countryRoutes from "./routes/countryRoutes";
 import ethnicRoutes from "./routes/ethnicgroup";
 import musicRoutes from "./routes/musicRoutes";
+import countryRoutes from "./routes/countryRoute/countryRoutes";
+import foodRoutes from "./routes/foodRoute/foodRoutes";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,9 @@ app.use("/api/v1", touristCenterRoutes);
 app.use("/api/v1/", newsletterRoutes);
 app.use("/api/v1/", resetPasswordRoutes);
 app.use("/api/v1", musicRoutes);
+app.use("/api/v1/", foodRoutes);
+
+app.use(express.json());
 
 app.use(express.json());
 
