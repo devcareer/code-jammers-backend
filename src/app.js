@@ -4,7 +4,6 @@ import passport from "passport";
 import cookieSession from "cookie-session";
 import cors from "cors";
 import dotenv from "dotenv";
-import adminRoutes from "./routes/adminRoutes";
 import { googleStrategy } from "./database/config/google-passport";
 import stateRoutes from "./routes/stateRoutes";
 import resetPasswordRoutes from "./routes/resetPasswordRoutes";
@@ -25,11 +24,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: process.env.COOKIE_KEY
-
-}));
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: process.env.COOKIE_KEY,
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,13 +58,19 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-app.get("/auth/google/callback", passport.authenticate("google", {
-  scope: ["profile", "email"],
-  successRedirect: "/",
-}));
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    successRedirect: "/",
+  })
+);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Know Africa. Our privacy policy can be found here: " + "https://devcareer.github.io/code-jammers-backend/docs/");
+  res.send(
+    "Welcome to Know Africa. Our privacy policy can be found here: " +
+      "https://devcareer.github.io/code-jammers-backend/docs/"
+  );
 });
 
 app.listen(port, () => {
