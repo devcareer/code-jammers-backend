@@ -7,36 +7,39 @@ const { Users } = model;
 
 dotenv.config();
 
-const googleStrategy = new Strategy({
+const googleStrategy = new Strategy(
+  {
     clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL,
+    callbackURL: process.env.GOOGLE_CALLBACK_HEROKU_URL,
   },
-  
+
   async (accessToken, refreshToken, profile, done) => {
-    try {     
+    try {
       const userExist = await Users.findOne({
-        googleId: profile.id
+        googleId: profile.id,
       });
-  
+
       if (userExist) {
-        return done(null,userExist);
+        return done(null, userExist);
       }
- 
-     await User.createUser({
-      username: profile.name.givenName,
-      lastName:  profile.name.familyName,
-      profilePicture: profile.photos[0].value,
-      password: "",
-      email: profile.emails[0].value,
-      googleId: profile.id,
-      provider: "google",
-      role: 'User'
-    });
+
+      await User.createUser({
+        username: profile.name.givenName,
+        lastName: profile.name.familyName,
+        profilePicture: profile.photos[0].value,
+        password: "",
+        email: profile.emails[0].value,
+        googleId: profile.id,
+        provider: "google",
+        role: "User",
+      });
       return done(null, newUser);
     } catch (err) {
       return done(err, false);
     }
-  });
-  
-  export { googleStrategy };
+  }
+);
+
+export { googleStrategy };

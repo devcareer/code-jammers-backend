@@ -1,4 +1,4 @@
-{ 
+{
   "root": true,
   "extends": "airbnb-base",
   "env": {
@@ -16,26 +16,27 @@
     "linebreak-style": 0,
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
-    "no-unused-vars":"off",
-    "no-undef":"off",
-    "comma-dangle":"off",
-    "consistent-return":"off",
-    "no-tabs":"off",
-    "global-require":"off",
-    "import/no-unresolved":"off",
-    "import/prefer-default-export":"off",
-    "import/no-dynamic-require":"off",
+    "no-unused-vars": "off",
+    "no-undef": "off",
+    "comma-dangle": "off",
+    "consistent-return": "off",
+    "no-tabs": "off",
+    "global-require": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "import/no-dynamic-require": "off",
     "no-console": "off",
-    "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "arrow-parens": [2, "as-needed"],
-    "no-useless-catch":"off",
+    "no-useless-catch": "off",
     "no-use-before-define": ["error", { "functions": false, "classes": false }],
-    "require-jsdoc": ["error", {"require": {
-      "FunctionDeclaration": true,
-      "MethodDefinition": true,
-      "ClassDeclaration": true,
-      "FunctionExpression": true
-    }}],
+    "require-jsdoc": 0,
+    // "require-jsdoc": ["error", {"require": {
+    //   "FunctionDeclaration": true,
+    //   "MethodDefinition": true,
+    //   "ClassDeclaration": true,
+    //   "FunctionExpression": true
+    // }}],
     "valid-jsdoc": "error"
   }
 }
