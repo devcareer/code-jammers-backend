@@ -68,7 +68,7 @@ const validation = country => {
       .empty()
       .messages({
         "any.required": "An image is required.",
-        "string.empty": "username cannot be an empty field.",
+        "string.empty": "gallery cannot be an empty field.",
         "string.base": "Please provide a valid link."
 
       }),
@@ -106,6 +106,8 @@ const validation = country => {
         "string.empty": "Currency cannot be an empty field.",
         "string.base": "Currency must contain only alphabetical characters."
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(country);
 };

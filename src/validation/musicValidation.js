@@ -31,6 +31,8 @@ const validation = music => {
         "string.empty": "gallery cannot be an empty field.",
         "string.base": "Please provide a valid link."
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(music);
 };
@@ -49,6 +51,8 @@ const validateId = ids => {
       .messages({
         "string.guid": "CountryId must be a UUID"
       })
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(ids);
 };

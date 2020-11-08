@@ -38,6 +38,8 @@ const validation = touristCenter => {
         "string.empty": "about cannot be an empty field.",
         "string.base": "about must contain only alphabetical characters."
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(touristCenter);
 };
@@ -56,6 +58,8 @@ const validateId = ids => {
       .messages({
         "string.guid": "CountryId must be a UUID"
       })
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(ids);
 };
