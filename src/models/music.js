@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Music = sequelize.define("Musics", {
+  const Music = sequelize.define("Music", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -12,12 +12,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gallery: {
-      type: DataTypes.STRING,
+    information: {
+      type: DataTypes.STRING(5000),
       allowNull: false,
     },
-    event: {
-      type: DataTypes.STRING,
+    gallery: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: [],
       allowNull: false,
     },
   });

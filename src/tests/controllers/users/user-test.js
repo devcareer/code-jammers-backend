@@ -10,9 +10,7 @@ import sendGrid from "../../../utilities/sendgrid";
 
 sendGrid.sandboxMode();
 chai.should();
-
 chai.use(chaiHttp);
-
 describe("Should test all users", async () => {
   describe("/api/v1/users/signup should create a user", () => {
     it("it should create a user with complete details successfully", done => {

@@ -5,7 +5,7 @@ export default {
       .then(() =>
         queryInterface.createTable("States", {
           countryId: {
-            type: Sequelize.STRING,
+            type: Sequelize.UUID,
             allowNull: false,
           },
           id: {

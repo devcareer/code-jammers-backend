@@ -1,14 +1,22 @@
 module.exports = (sequelize, DataTypes) => {
   const Newsletter = sequelize.define("Newsletters", {
-    email: {
+    title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     message: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
   });
-
+  Newsletter.associate = models => {
+    Newsletter.belongsToMany(models.Subscribers, {
+      through: "Newsletter_Subscriber",
+      as: "subscriber",
+      foreignKey: "newsletterId",
+      onDelete: "CASCADE",
+      hooks: true
+    });
+  };
   return Newsletter;
 };

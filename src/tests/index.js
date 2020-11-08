@@ -6,12 +6,24 @@ import "./models/music.spec";
 import "./models/comment.spec";
 import "./models/newsletter.spec";
 import "./models/historicalfact.test";
-import "./models/securityinformation.test";
 import "./models/State.spec";
 import "./models/TouristCenter.spec";
 import "./models/country.spec";
-import "./models/culture.spec";
+import "./models/ethnicgroup.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
+<<<<<<< HEAD
 import "./google-oauth/google-test.spec";
+=======
+import "./controllers/userProfileTest/profile-test";
+>>>>>>> 464aaf129286f7f0aa7071d748e3d7fde8a2fd2e
 import "./controllers/admin/addCountry.test";
+import "./controllers/music/music.test";
+import "./controllers/touristCenter/touristCenter.test";
+import "./controllers/ethnicGroup/ethnicGroup.test";
+import "./controllers/food/food.test";
+import "./controllers/newsletter/newsletter.test";
+import "./intergration/CountriesRoutes.spec";
+import "./unit/controllers/CountriesController.spec";
+import "./controllers/states/state.test";
+import "./controllers/resetPasswordTest/resetPasswordWithSinonTest";

@@ -1,6 +1,6 @@
 /* eslint-disable valid-jsdoc */
 /**
- * @class Util
+ *
  */
 export default class Util {
   /**
@@ -43,14 +43,15 @@ export default class Util {
 
   /**
    * @param {object} res - The res body object
+   * @returns {object} Success or Error message
    */
   send(res) {
     const result = {
       status: this.statusCode,
       message: this.message,
+      data: this.data,
       token: this.token,
     };
-
     if (this.type === "success") {
       return res.status(this.statusCode).json(result);
     }

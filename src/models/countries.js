@@ -31,17 +31,36 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Country.associate = models => {
-    Country.hasMany(models.Cultures, {
+    Country.hasMany(models.EthnicGroups, {
+      as: "ethnicGroups",
       foreignKey: "countryId",
+      onDelete: "cascade",
+      hooks: true,
+    });
+
+    Country.hasMany(models.Foods, {
+      as: "Food",
+      foreignKey: "countryId",
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.States, {
       as: "states",
       foreignKey: "countryId",
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.TouristCenters, {
       as: "touristCenters",
+      foreignKey: "countryId",
+      onDelete: "cascade",
+      hooks: true,
+    });
+
+    Country.hasMany(models.Music, {
+      as: "music",
       foreignKey: "countryId",
     });
   };

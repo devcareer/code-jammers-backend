@@ -28,10 +28,11 @@ const registerValidation = user => {
         "string.empty": "Sorry, password cannot be an empty field",
         "string.min": "password should have a minimum length of 5"
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(user);
 };
-
 const loginValidation = user => {
   const schema = Joi.object({
     email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co", "io"] } }).min(5)
@@ -49,8 +50,62 @@ const loginValidation = user => {
         "string.empty": "Sorry, password cannot be an empty field",
         "string.min": "Password should have a minimum length of 5"
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   });
   return schema.validate(user);
 };
 
-export { registerValidation, loginValidation };
+const profileValidate = profile => {
+  const schema = Joi.object({
+    firstName: Joi.string().max(40).empty()
+      .messages({
+        "string.base": "firstName must be a string",
+        "string.max": "firstName cannot be above 40 characters",
+        "string.empty": "Sorry, firstName cannot be an empty field"
+      }),
+    lastName: Joi.string().max(40).empty()
+      .messages({
+        "string.base": "lastName must be a string",
+        "string.max": "lastName cannot be above 40 characters",
+        "string.empty": "Sorry, lastName cannot be an empty field",
+      }),
+    profilePicture: Joi.string().empty()
+      .messages({
+        "string.base": "Please provide a valid link",
+        "string.empty": "Sorry, profilePicture cannot be an empty field"
+      }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
+  }).options({ abortEarly: false });
+  return schema.validate(profile);
+};
+
+const subscriberValidation = user => {
+  const schema = Joi.object({
+    firstName: Joi.string().required().min(3).max(255)
+      .empty()
+      .messages({
+        "any.required": "Sorry, first name is required",
+        "string.empty": "Sorry, You have to enter your first name",
+      }),
+    email: Joi.string().required().email({ minDomainSegments: 2, tlds: { allow: ["com", "net", "uk", "co"] } }).min(5)
+      .max(100)
+      .empty()
+      .messages({
+        "any.required": "Sorry, email is required",
+        "string.empty": "Sorry, Email cannot be an empty field",
+        "string.email": "Please enter a valid email",
+      }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
+  });
+  return schema.validate(user);
+};
+
+export {
+  registerValidation,
+  loginValidation,
+  subscriberValidation,
+  profileValidate
+};
