@@ -33,7 +33,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/api/v1/", adminRoutes);
 app.use("/api/v1", countryRoutes);
 app.use("/api/v1", ethnicRoutes);
 app.use("/api/v1/", userRoutes);

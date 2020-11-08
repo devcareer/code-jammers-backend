@@ -12,11 +12,8 @@ import "./models/country.spec";
 import "./models/ethnicgroup.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
-<<<<<<< HEAD
 import "./google-oauth/google-test.spec";
-=======
 import "./controllers/userProfileTest/profile-test";
->>>>>>> 464aaf129286f7f0aa7071d748e3d7fde8a2fd2e
 import "./controllers/admin/addCountry.test";
 import "./controllers/music/music.test";
 import "./controllers/touristCenter/touristCenter.test";
