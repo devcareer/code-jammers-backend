@@ -37,12 +37,6 @@
     "require-jsdoc": 0,
     "no-useless-concat": 0,
     "operator-linebreak": 0,
-    // "require-jsdoc": ["error", {"require": {
-    //   "FunctionDeclaration": true,
-    //   "MethodDefinition": true,
-    //   "ClassDeclaration": true,
-    //   "FunctionExpression": true
-    // }}],
     "valid-jsdoc": "error"
   }
 }
