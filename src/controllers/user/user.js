@@ -98,8 +98,11 @@ export default class UserController {
    */
   static async updateUserProfile(req, res) {
     try {
-      const { id } = req.decoded.user;
+      const { id, active } = req.decoded.user;
       const { error } = profileValidate(req.body);
+      if (!active) {
+        return res.status(400).json({ status: 403, message: "Sorry User has been De-activated, Please contact an admin" });
+      }
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const updatedProfile = await User.updateUserProfile(id, req.body);
       return res.status(200).json({ status: 200, message: "User profile updated", data: updatedProfile[1] });

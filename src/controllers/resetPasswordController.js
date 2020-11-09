@@ -53,6 +53,9 @@ export default class {
       .then(user => {
         if (!user) {
           return res.send({ status: 404, error: "user does not exist" });
+        }
+        if (!user.active) {
+          return res.status(400).json({ status: 403, message: "Sorry User has been De-activated, Please contact an admin" });
         } try {
           jwt.verify(token, user.password);
         } catch (error) {
