@@ -27,6 +27,12 @@ module.exports = (sequelize, DataTypes) => {
       as: "countryHistoricalFacts",
       foreignKey: "countryId",
     });
+    Historicalfact.hasMany(models.Comments, {
+      as: "comments",
+      foreignKey: "relatedId",
+      onDelete: 'cascade',
+      hooks: true, 
+    });
   };
 
   return Historicalfact;

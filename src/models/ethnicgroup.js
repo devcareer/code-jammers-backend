@@ -40,6 +40,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "countryId",
       onDelete: "cascade",
     });
+    EthnicGroup.hasMany(models.Comments, {
+      as: "comments",
+      foreignKey: "relatedId",
+      onDelete: 'cascade',
+      hooks: true, 
+    });
   };
   return EthnicGroup;
 };
