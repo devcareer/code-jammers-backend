@@ -25,7 +25,7 @@ const googleStrategy = new Strategy(
         return done(null, userExist);
       }
 
-      await User.createUser({
+      const newUser = await User.createUser({
         username: profile.name.givenName,
         lastName: profile.name.familyName,
         profilePicture: profile.photos[0].value,
