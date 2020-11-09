@@ -47,13 +47,9 @@ export default class {
   static async reset(req, res) {
     const { id, token } = req.params;
     const { newPassword } = req.body;
-    db.Users.findOne({
-      where: { id },
-    })
+    db.Users.findOne({ where: { id }, })
       .then(user => {
-        if (!user) {
-          return res.send({ status: 404, error: "user does not exist" });
-        }
+        if (!user) { return res.send({ status: 404, error: "user does not exist" }); }
         if (!user.active) {
           return res.status(400).json({ status: 403, message: "Sorry User has been De-activated, Please contact an admin" });
         } try {

@@ -23,6 +23,11 @@ const user6 = {
   password: "12345"
 };
 
+const user7 = {
+  email: "fiyin@gmail.com",
+  password: "12345",
+};
+
 export {
-  user, user2, user3, user4, user5, user6
+  user, user2, user3, user4, user5, user6, user7
 };

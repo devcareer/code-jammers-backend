@@ -4,7 +4,8 @@ import server from "../../../app";
 import {
   user,
   user2,
-  user3
+  user3,
+  user7
 } from "./user-sign-in-test-data";
 
 chai.should();
@@ -32,6 +33,17 @@ describe("Should test all users", async () => {
         .send(user2)
         .end((err, res) => {
           res.should.have.status(400);
+          done();
+        });
+    });
+    it("it should not sign in a user that is de-activated", done => {
+      chai
+        .request(server)
+        .post("/api/v1/users/signin")
+        .set("Accept", "application/json")
+        .send(user7)
+        .end((err, res) => {
+          res.should.have.status(403);
           done();
         });
     });
