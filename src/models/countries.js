@@ -29,7 +29,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-
+  model.getSearchOptions = () => {
+    return {
+      type: "countries",
+      keys: ["nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", ]
+    } 
+};
   Country.associate = (models) => {
     Country.hasMany(models.Cultures, {
       as: "cultureCountry",
