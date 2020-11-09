@@ -34,6 +34,7 @@ const googleStrategy = new Strategy(
         googleId: profile.id,
         provider: "google",
         role: "User",
+        verified: true,
       });
       return done(null, newUser);
     } catch (err) {
