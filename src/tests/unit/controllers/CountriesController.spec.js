@@ -1,7 +1,7 @@
 import sinon from "sinon";
 import chai from "chai";
 import sinonChai from "sinon-chai";
-import countriesController from "../../../controllers/country";
+import countriesController from "../../../controllers/country/country";
 import countriesMockData from "../../__mock__/countriesMockData";
 import countryMockData from "../../__mock__/countryMockData";
 import db from "../../../models";
@@ -22,7 +22,7 @@ describe("countries controllers", () => {
     await countriesController.listCountries(req, res);
     expect(db.Countries.findAll).to.have.been.calledOnce.and.calledWith({
       attributes: ["id", "nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", "currency"],
-      include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }]
+      include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Music, as: "music" }, { model: db.Foods, as: "Food" }]
     });
   });
 });

@@ -10,6 +10,8 @@ const validateId = ids => {
         "string.base": "ID must be a string.",
         "string.guid": "ID must be a UUID"
       }),
+  }).messages({
+    "object.unknown": "You have used an invalid key."
   }).options({ abortEarly: false });
   return schema.validate(ids);
 };
