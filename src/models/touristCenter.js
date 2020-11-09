@@ -22,12 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  TouristCenter.associate = (models) => {
+  TouristCenter.associate = models => {
     TouristCenter.belongsTo(models.Countries, {
       as: "countryTouristCenter",
       foreignKey: "countryId",
     });
   };
-  
+
   return TouristCenter;
 };

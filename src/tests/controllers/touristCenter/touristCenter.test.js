@@ -114,19 +114,7 @@ describe("Add Tourist Centers", () => {
 });
 
 describe("Update Tourist Center", () => {
-  beforeEach(async () => {
-    // remove any rows from database before testing
-    await db.TouristCenters.destroy({
-      where: {
-      },
-      trancate: {
-        cascade: true,
-      },
-    });
-    await db.TouristCenters.create(touristCenter4);
-  });
   let adminToken;
-  let userToken;
   before(done => {
     chai
       .request(server)
@@ -142,7 +130,7 @@ describe("Update Tourist Center", () => {
   it("should allow Admin update a Tourist Center", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .patch("/api/v1/admin/tourist-center/12adedc3-d529-4f67-9ee6-5b763d5010f4")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ name: "Aso rock" })
@@ -152,7 +140,6 @@ describe("Update Tourist Center", () => {
         done();
       });
   });
-  // validation tests
   it("should not allow admin update a Tourist Center with invalid ID data type", done => {
     chai
       .request(server)
@@ -169,7 +156,7 @@ describe("Update Tourist Center", () => {
   it("should not allow admin update a Tourist Center with invalid countryId data type", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .patch("/api/v1/admin/tourist-center/12adedc3-d529-4f67-9ee6-5b763d5010f4")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ countryId: "2e11e4a" })
@@ -195,7 +182,7 @@ describe("Update Tourist Center", () => {
   it("returns 400 when updating a tourist center's countryId which is not in db", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/tourist-center/8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .patch("/api/v1/admin/tourist-center/12adedc3-d529-4f67-9ee6-5b763d5010f4")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ countryId: "8d585465-cd80-4030-b665-bdc3bbd3e519" })
@@ -209,7 +196,6 @@ describe("Update Tourist Center", () => {
 
 describe("Delete Tourist Center", () => {
   beforeEach(async () => {
-    // remove any rows from database before testing
     await db.TouristCenters.destroy({
       where: {
       },
@@ -243,7 +229,6 @@ describe("Delete Tourist Center", () => {
         done();
       });
   });
-  // validation tests
   it("should not allow admin delete a Tourist Center with invalid ID data type", done => {
     chai
       .request(server)
@@ -287,12 +272,10 @@ describe("GET tourist center api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-        // status should be 200
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived all Tourist Centers");
 
-        // check that all entries have all required properties
         data.forEach(touristCenters => {
           expect(touristCenters).to.have.property("id");
           expect(touristCenters).to.have.property("countryId");
@@ -302,10 +285,8 @@ describe("GET tourist center api route", () => {
           expect(touristCenters).to.have.property("about");
         });
 
-        // check if all countries are recieved
         expect(data).to.have.length(2);
 
-        // check that body is of the correct data type
         expect(data).to.be.an("array");
         done();
       });
@@ -318,7 +299,6 @@ describe("GET tourist center api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-        // status should be 200
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived Tourist Center.");
@@ -329,7 +309,6 @@ describe("GET tourist center api route", () => {
         expect(data).to.have.property("location");
         expect(data).to.have.property("about");
 
-        // check that body is of the correct data type
         expect(data).to.be.an("object");
         done();
       });

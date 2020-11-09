@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Culture = sequelize.define("Cultures", {
+  const EthnicGroup = sequelize.define("EthnicGroups", {
     countryId: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         key: "id",
       },
     },
-    type: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     dressing: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     language: {
@@ -28,18 +28,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    tribe: {
-      type: DataTypes.STRING,
+    culturalPractices: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   });
 
-  Culture.associate = models => {
-    Culture.belongsTo(models.Countries, {
-      as: "countryCulture",
+  EthnicGroup.associate = models => {
+    EthnicGroup.belongsTo(models.Countries, {
+      as: "countryEthnicGroup",
       foreignKey: "countryId",
-      onDelete: 'cascade',
+      onDelete: "cascade",
     });
   };
-  return Culture;
+  return EthnicGroup;
 };

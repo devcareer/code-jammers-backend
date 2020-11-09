@@ -23,10 +23,10 @@ export default class AdminStateController {
       });
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const stateId = await Admin.checkCountryId(countryId);
-      if (!stateId) return res.status(404).json({ status: 404, message: "Country does not exist in the database" });
+      if (!stateId) return res.status(404).json({ status: 404, error: "Country does not exist in the database" });
       const stateName = name[0].toUpperCase() + name.slice(1).toLowerCase();
       const state = await Admin.checkState(stateName);
-      if (state) return res.status(409).json({ status: 409, message: "This state already exists in the database" });
+      if (state) return res.status(409).json({ status: 409, error: "This state already exists in the database" });
       const newState = {
         name: stateName, gallery, capital, countryId
       };
@@ -34,7 +34,7 @@ export default class AdminStateController {
       const createdState = await Admin.addState(newState);
       return res.status(201).json({ status: 201, message: "A state has been added.", data: createdState, });
     } catch (error) {
-      res.status(500).json({ status: 500, error: "Server error." });
+      return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
 
@@ -52,7 +52,7 @@ export default class AdminStateController {
         data: states,
       });
     } catch (error) {
-      res.status(500).send({
+      return res.status(500).send({
         status: 500,
         error,
       });

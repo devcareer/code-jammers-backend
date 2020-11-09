@@ -29,32 +29,34 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
-  model.getSearchOptions = () => {
-    return {
-      type: "countries",
-      keys: ["nameOfCountry", "gallery", "capital", "population", "officialLanguage", "region", ]
-    } 
-};
-  Country.associate = (models) => {
-    Country.hasMany(models.Cultures, {
-      as: "cultureCountry",
+
+  Country.associate = models => {
+    Country.hasMany(models.EthnicGroups, {
+      as: "ethnicGroups",
       foreignKey: "countryId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
+    });
+
+    Country.hasMany(models.Foods, {
+      as: "Food",
+      foreignKey: "countryId",
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.States, {
       as: "states",
       foreignKey: "countryId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.TouristCenters, {
       as: "touristCenters",
       foreignKey: "countryId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
     });
 
     Country.hasMany(models.Music, {

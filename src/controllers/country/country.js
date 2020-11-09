@@ -1,6 +1,6 @@
-import Admin from "../services/AdminServices/countryService";
-import { validation } from "../validation/countryValidation";
-import db from "../models";
+import Admin from "../../services/AdminServices/countryService";
+import { validation } from "../../validation/countryValidation";
+import db from "../../models";
 
 const countriesAttributes = [
   "id",
@@ -29,11 +29,7 @@ export default class AdminController {
       const {
         nameOfCountry, gallery, capital, population, officialLanguage, region, currency,
       } = req.body;
-      let countryName;
-      if (nameOfCountry) {
-        const stringCountry = String(nameOfCountry);
-        countryName = stringCountry[0].toUpperCase() + stringCountry.slice(1).toLowerCase();
-      }
+      const countryName = await Admin.countryName(nameOfCountry);
       const newCountry = {
         nameOfCountry: countryName, gallery, capital, population, officialLanguage, region, currency
       };
@@ -50,6 +46,7 @@ export default class AdminController {
 
   /**
    * gets a list of all countries
+   *
    * @param {object} req - request object
    * @param {object} res - response object
    * @returns {object} list of countries
@@ -58,9 +55,9 @@ export default class AdminController {
     try {
       const countries = await db.Countries.findAll({
         attributes: countriesAttributes,
-        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }]
+        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Music, as: "music" }, { model: db.Foods, as: "Food" }]
       });
-      res.status(200).send({
+      return res.status(200).send({
         status: 200,
         message: "Successfully retrived all countries",
         data: countries,
@@ -75,6 +72,7 @@ export default class AdminController {
 
   /**
    * gets a country with a specific id
+   *
    * @param {object} req - request object
    * @param {object} res - response object
    * @returns {object} country with specific id
@@ -85,7 +83,7 @@ export default class AdminController {
       const country = await db.Countries.findOne({
         where: { id },
         attributes: countriesAttributes,
-        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }]
+        include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Music, as: "music" }, { model: db.Foods, as: "Food" }]
       });
 
       if (!country) {
@@ -99,16 +97,19 @@ export default class AdminController {
   }
 
   /**
-    * deletes a country with the specified id
-    * @param {object} req - request object
-    * @param {object} res - response object
-    * @returns {object} - result
-    */
+   * deletes a country with the specified id
+   *
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {object} - result
+   */
   static async deleteCountry(req, res) {
     const { id } = req.params;
     try {
       const country = await db.Countries.findOne({
-        where: { id },
+        where: {
+          id,
+        },
         attributes: countriesAttributes,
       });
 
@@ -124,11 +125,12 @@ export default class AdminController {
   }
 
   /**
-    * updates a country with a specified id
-    * @param {object} req - request object
-    * @param {object} res - response object
-    * @returns {object} - result
-    */
+   * updates a country with a specified id
+   *
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {object} - result
+   */
   static async updateCountry(req, res) {
     const { id } = req.params;
     try {

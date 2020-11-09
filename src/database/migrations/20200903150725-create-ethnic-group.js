@@ -2,7 +2,7 @@ export default {
   up(queryInterface, Sequelize) {
     return queryInterface.sequelize
       .query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
-      .then(() => queryInterface.createTable("Cultures", {
+      .then(() => queryInterface.createTable("EthnicGroups", {
         id: {
           allowNull: false,
           primaryKey: true,
@@ -16,7 +16,7 @@ export default {
             key: "id",
           },
         },
-        type: {
+        name: {
           allowNull: false,
           type: Sequelize.STRING,
         },
@@ -26,7 +26,7 @@ export default {
         },
         dressing: {
           allowNull: false,
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
         },
         language: {
           allowNull: false,
@@ -36,9 +36,9 @@ export default {
           allowNull: false,
           type: Sequelize.STRING,
         },
-        tribe: {
+        culturalPractices: {
           allowNull: false,
-          type: Sequelize.STRING,
+          type: Sequelize.TEXT,
         },
         createdAt: {
           allowNull: false,
@@ -50,5 +50,5 @@ export default {
         },
       }));
   },
-  down: queryInterface => queryInterface.dropTable("Cultures"),
+  down: queryInterface => queryInterface.dropTable("EthnicGroups"),
 };

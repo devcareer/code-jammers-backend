@@ -103,7 +103,6 @@ describe("Add States", () => {
 
 describe("Update state", () => {
   beforeEach(async () => {
-    // remove any rows from database before testing
     await db.States.destroy({
       where: {
       },
@@ -182,7 +181,6 @@ describe("Delete State ", () => {
         done();
       });
   });
-  // validation tests
   it("should not allow admin delete a state with invalid ID data type", done => {
     chai
       .request(server)
@@ -226,12 +224,10 @@ describe("GET state api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-        // status should be 200
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived all States");
 
-        // check that all entries have all required properties
         data.forEach(states => {
           expect(states).to.have.property("countryId");
           expect(states).to.have.property("gallery");
@@ -239,10 +235,8 @@ describe("GET state api route", () => {
           expect(states).to.have.property("capital");
         });
 
-        // check if all states are recieved
         expect(data).to.have.length(2);
 
-        // check that body is of the correct data type
         expect(data).to.be.an("array");
         done();
       });
@@ -255,7 +249,6 @@ describe("GET state api route", () => {
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
-        // status should be 200
         expect(status).to.equal(200);
         expect(body.status).to.equal(200);
         expect(body.message).to.equal("Successfully retrived state");
@@ -265,7 +258,6 @@ describe("GET state api route", () => {
         expect(data).to.have.property("name");
         expect(data).to.have.property("capital");
 
-        // check that body is of the correct data type
         expect(data).to.be.an("object");
         done();
       });
