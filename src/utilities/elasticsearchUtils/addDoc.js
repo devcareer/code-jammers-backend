@@ -1,7 +1,4 @@
-/* eslint-disable require-jsdoc */
-import db from "../../models/index";
-
-const client = require("./elasticsearchConnection");
+const db = require("../../models/index");
 
 const countriesAttributes = [
   "id",
@@ -13,13 +10,11 @@ const countriesAttributes = [
   "region",
   "currency",
 ];
-
-export default class Check {
-  static checkSome() {
-    const countries = db.Countries.findAll({
-      include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }]
-    });
-
-    console.log(countries);
-  }
-}
+db.Countries.findAll({
+  attributes: countriesAttributes,
+  include: [{ model: db.TouristCenters, as: "touristCenters" }, { model: db.States, as: "states" }, { model: db.EthnicGroups, as: "ethnicGroups" }, { model: db.Music, as: "music" }, { model: db.Foods, as: "Food" }]
+})
+  .then(country => {
+    const countryDetails = country.map(count => count.dataValues);
+    console.log(countryDetails);
+  });
