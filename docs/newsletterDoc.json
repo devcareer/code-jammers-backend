@@ -20,30 +20,10 @@
         "description": "This allows a user to unsubscribe.",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "string",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"message\": \"You've unsubscribed from this newsletter\",\n  \"data\": \"jayov14420@jqjlb.com\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "User successfully unsubscribed."
+          },
+          "404": {
+            "description": "Subscriber not found."
           }
         },
         "servers": [
@@ -89,53 +69,10 @@
         },
         "responses": {
           "201": {
-            "description": "Created",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 201,\n  \"message\": \"Newsletter created!\",\n  \"data\": {\n      \"id\": \"0fcb234d-f622-49b7-a73c-9ec251d2d97a\",\n      \"title\": \"What is Lorem Ipsum?\",\n      \"message\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n      \"updatedAt\": \"2020-11-08T17:09:37.928Z\",\n      \"createdAt\": \"2020-11-08T17:09:37.928Z\"\n  }\n}"
-                  }
-                }
-              }
-            }
+            "description": "Newsletter successfully created."
           },
-          "410": {
-            "description": "Gone",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "statue": {
-                      "type": "number"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 410,\n  \"error\": \"Please sign in again.\"\n}"
-                  }
-                }
-              }
-            }
+          "400": {
+            "description": "Validation error."
           }
         },
         "security": [
@@ -164,30 +101,7 @@
         "description": "Verifies that the user has been subscribed.",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"message\": \"Yay!!! You just subscribed successfully\",\n  \"data\": {\n      \"email\": \"jayov14420@jqjlb.com\",\n      \"verified\": true\n  }\n}"
-                  }
-                }
-              }
-            }
+            "description": "Subscriber's email successfully verified."
           }
         },
         "servers": [
@@ -233,50 +147,10 @@
         },
         "responses": {
           "201": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 201,\n  \"message\": \"Please verify that you own this email\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "User successfully subscribed."
           },
           "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 409,\n  \"error\": \"Sorry, You're already subscribed to this newsletter.\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "User is already subscribed to this newsletter."
           }
         },
         "servers": [
@@ -300,30 +174,10 @@
         "description": "This returns an array of all subscribers.",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"message\": \"Subscribers Retrieved\",\n  \"data\": [\n      {\n          \"id\": \"6cbaa746-6e42-453e-91f4-c0de15fb4b9a\",\n          \"email\": \"donald@gmail.com\",\n          \"firstName\": \"Donald\",\n          \"verified\": true,\n          \"newsletter\": [\n              \"Welcome to Know Africa\",\n              \" Africa Not a country\",\n              \" Africa is beautiful\",\n              \"What is Lorem Ipsum?\"\n          ],\n          \"createdAt\": \"2020-11-06T22:32:32.224Z\",\n          \"updatedAt\": \"2020-11-07T16:00:51.803Z\"\n      },\n      {\n          \"id\": \"d3efec7e-480f-4cb3-b6d2-bed800b8989b\",\n          \"email\": \"garry@gmail.com\",\n          \"firstName\": \"Garry\",\n          \"verified\": true,\n          \"newsletter\": [\n              \"Welcome message\",\n              \" Africa is beautiful\",\n              \"What is Lorem Ipsum?\"\n          ],\n          \"createdAt\": \"2020-11-06T22:32:32.224Z\",\n          \"updatedAt\": \"2020-11-07T16:00:51.813Z\"\n      }\n  ]\n}"
-                  }
-                }
-              }
-            }
+            "description": "Subscribers successfully retrieved."
+          },
+          "404": {
+            "description": "No subscribers found."
           }
         },
         "servers": [

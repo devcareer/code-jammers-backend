@@ -13,6 +13,10 @@
   "paths": {
     "/api/v1/user-profile": {
       "patch": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Update user profile",
         "description": "This allows a signed in user to update their profile.",
         "requestBody": {
           "content": {
@@ -35,45 +39,18 @@
         },
         "responses": {
           "200": {
-            "description": "Auto generated using Swagger Inspector",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"message\": \"User profile updated\",\n  \"data\": {\n      \"id\": \"3791b91a-b629-4904-9337-d6b1123611ba\",\n      \"userId\": \"6e090ed8-99c8-4049-b0ac-83253af15697\",\n      \"firstName\": \"Ada\",\n      \"lastName\": \"Ebunoluwa\",\n      \"profilePicture\": null,\n      \"createdAt\": \"2020-11-08T02:19:41.975Z\",\n      \"updatedAt\": \"2020-11-08T03:26:14.762Z\"\n  }\n}"
-                  }
-                }
-              }
-            }
+            "description": "Successfully updated user's profile."
           }
         },
-        "servers": [
-          {
-            "url": "https://know-africa.herokuapp.com"
-          }
-        ],
-        "summary": "Update user profile",
         "security": [
           {
             "BearerAuth": []
           }
         ],
-        "tags": [
-          "user"
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
         ]
       },
       "servers": [
@@ -84,6 +61,10 @@
     },
     "/api/v1/users/reset/6e090ed8-99c8-4049-b0ac-83253af15697/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZlMDkwZWQ4LTk5YzgtNDA0OS1iMGFjLTgzMjUzYWYxNTY5NyIsImVtYWlsIjoiamF5b3YxNDQyMEBqcWpsYi5jb20iLCJ1c2VybmFtZSI6Im5ld3VzZXIxIiwicGFzc3dvcmQiOiIkMmIkMTAkYmJMWlZmZlg0ZDVhRDgza0RZYk1VZUxVaWFNLjc0bDVmZm1LclRwUWpMb2pmZmFIMFJGS0MiLCJ2ZXJpZmllZCI6dHJ1ZSwicm9sZSI6IlVzZXIiLCJjcmVhdGVkQXQiOiIyMDIwLTExLTA4VDAyOjE5OjQxLjk0NVoiLCJ1cGRhdGVkQXQiOiIyMDIwLTExLTA4VDAyOjIwOjQ5LjM3N1oiLCJpYXQiOjE2MDQ4MDI1NDAsImV4cCI6MTYwNDgwNjE0MH0.-P5o5W6Dft1urpVuCIkb4Dl-dhisdI_iI2mYNGmy6UM": {
       "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Reset user password",
         "description": "This allows a registered user reset their password.",
         "requestBody": {
           "content": {
@@ -106,37 +87,19 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "success": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"success\": \"password has been reset\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "Password reset successful."
+          },
+          "404": {
+            "description": "Email address not associated with any account."
+          },
+          "410": {
+            "description": "Reset link expired."
           }
         },
         "servers": [
           {
             "url": "https://know-africa.herokuapp.com"
           }
-        ],
-        "summary": "Reset user password",
-        "tags": [
-          "user"
         ]
       },
       "servers": [
@@ -147,6 +110,10 @@
     },
     "/api/v1/users/recover": {
       "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Recover password",
         "description": "This allows a registered user recover their password.",
         "requestBody": {
           "content": {
@@ -172,65 +139,24 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"message\": \"A reset email has been sent\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "Reset email has been sent."
+          },
+          "403": {
+            "description": "User account is not verified."
           },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "1": {
-                    "value": "{\n  \"status\": 404,\n  \"error\": \"The email address gh20@jqjlb.com is not associated with any account.\"\n}      "
-                  }
-                }
-              }
-            }
+            "description": "Email address not associated with any account."
           }
         },
-        "servers": [
-          {
-            "url": "https://know-africa.herokuapp.com"
-          }
-        ],
-        "summary": "Recover password",
         "security": [
           {
             "BearerAuth": []
           }
         ],
-        "tags": [
-          "user"
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
         ]
       },
       "servers": [
@@ -241,43 +167,20 @@
     },
     "/api/v1/users/signup/verify/jayov14420@jqjlb.com": {
       "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Verify User.",
         "description": "This verifies a registered user.",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "data": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"message\": \"User Verified successfully!\",\n  \"data\": {\n      \"email\": \"jayov14420@jqjlb.com\",\n      \"username\": \"newuser1\",\n      \"verified\": true\n  }\n}"
-                  }
-                }
-              }
-            }
+            "description": "User email successfully verified."
           }
         },
         "servers": [
           {
             "url": "https://know-africa.herokuapp.com"
           }
-        ],
-        "summary": "Verify User.",
-        "tags": [
-          "user"
         ]
       },
       "servers": [
@@ -288,6 +191,10 @@
     },
     "/api/v1/users/signin": {
       "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "User sign in",
         "description": "This allows a registered user to sign in.",
         "requestBody": {
           "content": {
@@ -319,86 +226,19 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "token": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 200,\n  \"message\": \"User Logged in!\",\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNmUwOTBlZDgtOTljOC00MDQ5LWIwYWMtODMyNTNhZjE1Njk3IiwiZW1haWwiOiJqYXlvdjE0NDIwQGpxamxiLmNvbSIsInVzZXJuYW1lIjoibmV3dXNlcjEiLCJwYXNzd29yZCI6IiQyYiQxMCRiYkxaVmZmWDRkNWFEODNrRFliTVVlTFVpYU0uNzRsNWZmbUtyVHBRakxvamZmYUgwUkZLQyIsInZlcmlmaWVkIjp0cnVlLCJyb2xlIjoiVXNlciIsImNyZWF0ZWRBdCI6IjIwMjAtMTEtMDhUMDI6MTk6NDEuOTQ1WiIsInVwZGF0ZWRBdCI6IjIwMjAtMTEtMDhUMDI6MjA6NDkuMzc3WiJ9LCJpYXQiOjE2MDQ4MDIyMzIsImV4cCI6MTYwNDg4ODYzMn0.BNguDD9zo1qur-kcj_CEW8hlr6bq0W2PyJrkHkv1PSs\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "User successfully logged in."
           },
           "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "1": {
-                    "value": "{\n  \"status\": 400,\n  \"error\": \"Password is required.\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "Email/Password is required."
           },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "2": {
-                    "value": "{\n  \"status\": 404,\n  \"error\": \"Email does not exist.\"\n}            "
-                  }
-                }
-              }
-            }
+            "description": "Email/Password not found."
           }
         },
         "servers": [
           {
             "url": "https://know-africa.herokuapp.com"
           }
-        ],
-        "summary": "User sign in",
-        "tags": [
-          "user"
         ]
       },
       "servers": [
@@ -409,6 +249,10 @@
     },
     "/api/v1/users/signup": {
       "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Register user",
         "description": "This allows a user sign up on Know Africa.",
         "requestBody": {
           "content": {
@@ -440,63 +284,16 @@
         },
         "responses": {
           "201": {
-            "description": "Created",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "message": {
-                      "type": "string"
-                    },
-                    "token": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "0": {
-                    "value": "{\n  \"status\": 201,\n  \"message\": \"User created! An email has been sent to you to verify your account\",\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkVXNlciI6eyJ2ZXJpZmllZCI6ZmFsc2UsInJvbGUiOiJVc2VyIiwiaWQiOiI2ZTA5MGVkOC05OWM4LTQwNDktYjBhYy04MzI1M2FmMTU2OTciLCJlbWFpbCI6ImpheW92MTQ0MjBAanFqbGIuY29tIiwidXNlcm5hbWUiOiJuZXd1c2VyMSIsInBhc3N3b3JkIjoiJDJiJDEwJGJiTFpWZmZYNGQ1YUQ4M2tEWWJNVWVMVWlhTS43NGw1ZmZtS3JUcFFqTG9qZmZhSDBSRktDIiwidXBkYXRlZEF0IjoiMjAyMC0xMS0wOFQwMjoxOTo0MS45NDVaIiwiY3JlYXRlZEF0IjoiMjAyMC0xMS0wOFQwMjoxOTo0MS45NDVaIn0sImlhdCI6MTYwNDgwMTk4MSwiZXhwIjoxNjA0ODg4MzgxfQ.e_wd-xXDTueFVR9TcxBODvJAsVUMcYrXXyFuqkXbhf4\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "User successfully created."
           },
           "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json; charset=utf-8": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "number"
-                    },
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "examples": {
-                  "1": {
-                    "value": "{\n  \"status\": 409,\n  \"error\": \"Email already used by another user.\"\n}"
-                  }
-                }
-              }
-            }
+            "description": "Username/Email already used by another user."
           }
         },
         "servers": [
           {
             "url": "https://know-africa.herokuapp.com"
           }
-        ],
-        "summary": "Register user",
-        "tags": [
-          "user"
         ]
       },
       "servers": [
@@ -507,28 +304,20 @@
     },
     "/": {
       "get": {
+        "tags": [
+          "homepage"
+        ],
+        "summary": "Homepage",
         "description": "Know Africa's Homepage",
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/html; charset=utf-8": {
-                "schema": {
-                  "type": "string"
-                },
-                "examples": {}
-              }
-            }
+            "description": "Success."
           }
         },
         "servers": [
           {
             "url": "https://know-africa.herokuapp.com"
           }
-        ],
-        "summary": "Homepage",
-        "tags": [
-          "homepage"
         ]
       },
       "servers": [
