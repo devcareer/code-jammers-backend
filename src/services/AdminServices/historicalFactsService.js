@@ -7,12 +7,12 @@ import database from "../../models";
  */
 export default class HF_Services {
   /**
-   * @param {string} newHistoricalFacts - The HistoricalFacts details
+   * @param {string} newHistoricalFact - The HistoricalFacts details
    * @returns {object} An instance of the HistoricalFacts model class
    */
   static async addHistoricalFact(newHistoricalFact) {
     try {
-      return await database.HistoricalFacts.create(newHistoricalFact);
+      return await database.Historicalfacts.create(newHistoricalFact);
     } catch (err) {
       throw err;
     }
@@ -24,7 +24,7 @@ export default class HF_Services {
    */
   static async findHistoricalFactByLocation(location) {
     try {
-      return await database.HistoricalFacts.findOne({
+      return await database.Historicalfacts.findOne({
         where: {
           location,
         }
@@ -55,7 +55,7 @@ export default class HF_Services {
    */
   static async listHistoricalFacts() {
     try {
-      return await database.HistoricalFacts.findAll();
+      return await database.Historicalfacts.findAll();
     } catch (err) {
       throw err;
     }
@@ -67,7 +67,7 @@ export default class HF_Services {
    */
   static async findHistoricalFactById(id) {
     try {
-      return await database.HistoricalFacts.findOne({
+      return await database.Historicalfacts.findOne({
         where: {
           id,
         }
@@ -78,19 +78,14 @@ export default class HF_Services {
   }
 
   /**
-   * @param {string} oldHistoricalFacts - former HistoricalFacts object
-   * @param {string} newHistoricalFacts - new HistoricalFacts object
+   * @param {string} id -  HistoricalFacts id
+   * @param {string} newHistoricalFact - HistoricalFacts object
    * @returns {object} An updated instance of the HistoricalFacts model class
    */
-  static async editHistoricalFact(oldHistoricalFact, newHistoricalFact) {
+  static async editHistoricalFact(id, newHistoricalFact) {
     try {
-      if (newHistoricalFact.gallery) {
-        oldHistoricalFact.gallery.push(newHistoricalFact.gallery);
-        // eslint-disable-next-line no-param-reassign
-        newHistoricalFact.gallery = oldHistoricalFact.gallery;
-      }
-      return await database.HistoricalFacts.update(newHistoricalFacts, {
-        where: { id: oldHistoricalFacts.id },
+      return await database.Historicalfacts.update(newHistoricalFact, {
+        where: { id },
         returning: true,
         plain: true
       });
@@ -105,7 +100,7 @@ export default class HF_Services {
    */
   static async delHistoricalFact(id) {
     try {
-      await database.HistoricalFacts.destroy({
+      await database.Historicalfacts.destroy({
         where: {
           id,
         }
