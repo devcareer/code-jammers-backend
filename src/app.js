@@ -1,6 +1,8 @@
+/* eslint-disable no-useless-concat */
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
+import docsRoutes from "./routes/docsRoutes/docsRoute";
 import stateRoutes from "./routes/stateRoutes";
 import resetPasswordRoutes from "./routes/resetPasswordRoutes";
 import userRoutes from "./routes/userRoute/userRoutes";
@@ -11,6 +13,8 @@ import musicRoutes from "./routes/musicRoutes";
 import countryRoutes from "./routes/countryRoute/countryRoutes";
 import foodRoutes from "./routes/foodRoute/foodRoutes";
 
+const swaggerUi = require("swagger-ui-express");
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -18,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+app.use("/api/v1/docs", swaggerUi.serve, docsRoutes);
 app.use("/api/v1", countryRoutes);
 app.use("/api/v1", ethnicRoutes);
 app.use("/api/v1/", userRoutes);
