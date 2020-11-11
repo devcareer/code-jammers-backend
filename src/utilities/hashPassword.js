@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt-nodejs";
+import bcrypt from "bcrypt";
 
 export default password => {
   const salt = bcrypt.genSaltSync(10);
