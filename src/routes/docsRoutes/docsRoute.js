@@ -1,15 +1,10 @@
 import { Router } from "express";
-
-import userDocs from "../../../docs/userDoc.json";
-import newsletterDocs from "../../../docs/newsletterDoc.json";
-import countryStateDoc from "../../../docs/country-stateDoc.json";
+import docs from "../../../docs/docs.json";
 
 const swaggerUi = require("swagger-ui-express");
 
 const router = Router();
 
-router.get("/user", swaggerUi.setup(userDocs));
-router.get("/newsletter", swaggerUi.setup(newsletterDocs));
-router.get("/country-state", swaggerUi.setup(countryStateDoc));
+router.get("/", swaggerUi.setup(docs));
 
 export default router;
