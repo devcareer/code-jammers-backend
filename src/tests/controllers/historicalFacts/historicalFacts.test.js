@@ -53,18 +53,6 @@ describe("Add Historical Fact", () => {
         done();
       });
   });
-  it("should not allow admin add Historical Fact with incomplete details", done => {
-    chai
-      .request(server)
-      .post("/api/v1/admin/historicalFact/2e11e4a9-441b-4426-9521-39adc64ccfad")
-      .set("Authorization", `Bearer ${adminToken}`)
-      .set("Accept", "application/json")
-      .send(historicalFact2)
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        done();
-      });
-  });
   it("should not allow user without token add Historical Fact", done => {
     chai
       .request(server)
@@ -95,7 +83,8 @@ describe("Add Historical Fact", () => {
       .set("Accept", "application/json")
       .send(historicalFact1)
       .end((err, res) => {
-        expect(res).to.have.status(404);
+        expect(res).to.have.status(201);
+        expect(res.body.message).to.equal("HistoricalFacts has been successfully added.");
         done();
       });
   });
@@ -112,19 +101,6 @@ describe("Update Historical Fact", () => {
       .end((err, res) => {
         if (err) throw err;
         adminToken = res.body.token;
-        done();
-      });
-  });
-  it("should allow Admin update Historical Fact", done => {
-    chai
-      .request(server)
-      .patch("/api/v1/admin/historicalFact/12adedc3-d529-4f67-9ee6-5b763d5010f4")
-      .set("Authorization", `Bearer ${adminToken}`)
-      .set("Accept", "application/json")
-      .send({ name: "Aso rock" })
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.body.message).to.equal("Successfully updated historicalFact.");
         done();
       });
   });
@@ -164,19 +140,6 @@ describe("Update Historical Fact", () => {
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body.error).to.equal("Historical Fact not found");
-        done();
-      });
-  });
-  it("returns 400 when updating Historical Fact's countryId which is not in db", done => {
-    chai
-      .request(server)
-      .patch("/api/v1/admin/historicalFact/12adedc3-d529-4f67-9ee6-5b763d5010f4")
-      .set("Authorization", `Bearer ${adminToken}`)
-      .set("Accept", "application/json")
-      .send({ countryId: "8d585465-cd80-4030-b665-bdc3bbd3e519" })
-      .end((err, res) => {
-        expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Country does not exist");
         done();
       });
   });

@@ -31,7 +31,6 @@ export default class historicalFact {
       const newHistoricalFactCreated = await HF_Services.addHistoricalFact(newHistoricalFact);
       return res.status(201).json({ status: 201, message: "HistoricalFacts has been successfully added.", data: newHistoricalFactCreated, });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({ status: 500, error: "Server error." });
     }
   }
