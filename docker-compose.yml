@@ -17,8 +17,8 @@ services:
         depends_on: 
             - db
         environment: 
-            DEV_DATABASE_URL: postgres://postgres:Devcareers@db:5432/know_africa_docker_db
-            NODE_ENV: development
+            DATABASE_URL: postgres://postgres:Devcareers@db:5432/know_africa_docker_db
+            NODE_ENV: production
             PORT: 3000
         ports: 
             - "80:3000"
