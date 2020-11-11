@@ -18,11 +18,14 @@ const googleStrategy = new Strategy(
   async (accessToken, refreshToken, profile, done) => {
     try {
       const userExist = await Users.findOne({
-        googleId: profile.id,
+        where: {
+          googleId: profile.id,
+        }
       });
 
       if (userExist) {
-        return done(null, userExist);
+        const message = "user exist already"
+        return done(null, message);
       }
 
       const newUser = await User.createUser({

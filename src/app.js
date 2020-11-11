@@ -24,12 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: process.env.COOKIE_KEY,
-  })
-);
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: process.env.COOKIE_KEY,
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -47,7 +45,6 @@ app.use(express.json());
 
 app.use(express.json());
 
-// Google authentication
 passport.use(googleStrategy);
 
 passport.serializeUser((user, done) => {
@@ -61,15 +58,18 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     scope: ["profile", "email"],
-    successRedirect: "/",
-  })
+  }),
+  (req, res) => {
+    if (req.user !== "user exist already") {
+      res.redirect("/");
+    } else {
+      res.status(404).send(req.user);
+    }
+  }
 );
 
 app.get("/", (req, res) => {
-  res.send(
-    "Welcome to Know Africa. Our privacy policy can be found here: " +
-      "https://devcareer.github.io/code-jammers-backend/docs/"
-  );
+  res.send("Welcome to Know Africa. Our privacy policy can be found here: " + "https://devcareer.github.io/code-jammers-backend/docs/");
 });
 
 app.listen(port, () => {

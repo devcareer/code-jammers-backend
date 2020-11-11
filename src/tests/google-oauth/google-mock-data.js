@@ -14,6 +14,4 @@ const user = {
   role: "User"
 };
 
-export {
-  newUser, user
-};
+export { newUser, user };
