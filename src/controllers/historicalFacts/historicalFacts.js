@@ -59,9 +59,9 @@ export default class historicalFact {
       const { id } = req.params;
       const { error } = validateId({ id });
       if (error) return res.status(400).json({ status: 400, error: error.message });
-      const historicalFact = await HF_Services.findHistoricalFactById(id);
-      if (!historicalFact) return res.status(404).json({ status: 404, error: "Historical Fact not found" });
-      return res.status(200).json({ status: 200, message: "Successfully retrieved Historical Fact.", data: historicalFact, });
+      const historicalFactId = await HF_Services.findHistoricalFactById(id);
+      if (!historicalFactId) return res.status(404).json({ status: 404, error: "Historical Fact not found" });
+      return res.status(200).json({ status: 200, message: "Successfully retrieved Historical Fact.", data: historicalFactId, });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
