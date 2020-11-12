@@ -4,6 +4,7 @@ import cors from "cors";
 import stateRoutes from "./routes/stateRoutes";
 import resetPasswordRoutes from "./routes/resetPasswordRoutes";
 import userRoutes from "./routes/userRoute/userRoutes";
+import activateRoutes from "./routes/adminRoutes/activateUserRoutes";
 import touristCenterRoutes from "./routes/touristCenterRoute/touristCenterRoutes";
 import newsletterRoutes from "./routes/newsletterRoute/newsletterRoutes";
 import ethnicRoutes from "./routes/ethnicgroup";
@@ -21,6 +22,7 @@ app.use(cors());
 app.use("/api/v1", countryRoutes);
 app.use("/api/v1", ethnicRoutes);
 app.use("/api/v1/", userRoutes);
+app.use("/api/v1/", activateRoutes);
 app.use("/api/v1/", stateRoutes);
 app.use("/api/v1", touristCenterRoutes);
 app.use("/api/v1/", newsletterRoutes);
@@ -31,7 +33,7 @@ app.use("/api/v1/", foodRoutes);
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Know Africa. Our privacy policy can be found here: " + "https://devcareer.github.io/code-jammers-backend/docs/");
+  res.send("Welcome to Know Africa. Our privacy policy can be found here: https://devcareer.github.io/code-jammers-backend/docs/");
 });
 
 app.listen(port, () => {
