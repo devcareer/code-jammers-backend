@@ -20,15 +20,15 @@ const googleStrategy = new Strategy(
       const userExist = await Users.findOne({
         where: {
           googleId: profile.id,
-        }
+        },
       });
 
       if (userExist) {
-        const message = "user exist already"
+        const message = "user exist already";
         return done(null, message);
       }
 
-      const newUser = await User.createUser({
+      const newUserDetail = await User.createUser({
         username: profile.name.givenName,
         lastName: profile.name.familyName,
         profilePicture: profile.photos[0].value,
@@ -39,7 +39,7 @@ const googleStrategy = new Strategy(
         role: "User",
         verified: true,
       });
-      return done(null, newUser);
+      return done(null, newUserDetail);
     } catch (err) {
       return done(err, false);
     }
