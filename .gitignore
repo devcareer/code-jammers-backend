@@ -15,5 +15,9 @@ package-lock.json
 
 build/
 
+.DS_store
 
 sendgrid.env
+
+#docker compose
+pgdata

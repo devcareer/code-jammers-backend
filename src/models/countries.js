@@ -59,11 +59,27 @@ module.exports = (sequelize, DataTypes) => {
       hooks: true,
     });
 
+    Country.hasMany(models.Historicalfacts, {
+      as: "historicalFacts",
+      foreignKey: "countryId",
+      onDelete: "cascade",
+      hooks: true,
+    });
+
     Country.hasMany(models.Music, {
       as: "music",
       foreignKey: "countryId",
     });
+
+    Country.hasMany(models.Comments, {
+      as: "comments",
+      foreignKey: "relatedId",
+      onDelete: 'cascade',
+      hooks: true, 
+    });
   };
+
+
 
   return Country;
 };
