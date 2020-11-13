@@ -3,8 +3,6 @@ import commentValidator from "../validation/commentValidation";
 import Util from "../utilities/util";
 import db from "../models";
 
-const util = new Util();
-
 const commentController = {
   /**
          * allows a user to make a comment
@@ -15,9 +13,7 @@ const commentController = {
   comment: async (req, res) => {
     const { id } = req.decoded.user;
     const { comment, relatedId } = req.body;
-
     const newComment = { comment, userId: id, relatedId };
-
     try {
       const { error } = commentValidator(newComment);
       if (error) {
@@ -32,17 +28,14 @@ const commentController = {
   updateComment: async (req, res) => {
     const { id } = req.params;
     const isOwner = await commentServices.isOwnerOfComment(id, req.decoded.user.id, res);
-
     if (!isOwner) {
       return res.status(401).send({ status: 401, error: "You are not authorized to perform this action", });
     }
-
     try {
       const result = await db.Comments.update(req.body, {
         where: { id },
         returning: true
       });
-
       return res.status(200).send({
         status: 200,
         message: "Successfully updated comment",
@@ -54,14 +47,11 @@ const commentController = {
   },
   getComment: async (req, res) => {
     const { id } = req.params;
-
     try {
       const comment = await commentServices.getComment(id);
-
       if (!comment) {
         return res.status(404).send({ status: 404, error: "Resource not found.", });
       }
-
       return res.status(200).send({
         status: 200,
         message: "Successfully retrived comment",
@@ -73,18 +63,13 @@ const commentController = {
   },
   deleteComment: async (req, res) => {
     const { id } = req.params;
-
     const isOwner = await commentServices.isOwnerOfComment(id, req.decoded.user.id, res);
-
     if (!isOwner) {
       return res.status(401).send({ status: 401, error: "You are not authorized to perform this action.", });
     }
-
     try {
       const comment = await commentServices.getComment(id);
-
       await comment.destroy({ cascade: true });
-
       return res.status(200).send({
         status: 200,
         message: "Successfully deleted comment",
@@ -95,10 +80,8 @@ const commentController = {
   },
   getUsersComments: async (req, res) => {
     const { id } = req.decoded.user;
-
     try {
       const comments = await commentServices.getAllComments(id);
-
       return res.status(200).send({
         status: 200,
         message: "Successfully retrived comments",

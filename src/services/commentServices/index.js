@@ -32,7 +32,6 @@ const commentServices = {
   isOwnerOfComment: async (commentId, userId, res) => {
     try {
       const comment = await db.Comments.findOne({ where: { id: commentId } });
-
       if (comment.userId === userId) {
         return true;
       }

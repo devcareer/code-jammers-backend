@@ -185,7 +185,8 @@ describe("Add comment", () => {
 
   it("should not allow a user that is not owner of comment  to delete a comment", done => {
     chai.request(server)
-      .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02").set("Authorization", `Bearer ${userToken}`)
+      .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02")
+      .set("Authorization", `Bearer ${userToken}`)
       .end((err, res) => {
         expect(res).to.have.status(401);
         expect(res.body.error).to.equal("You are not authorized to perform this action.");
@@ -194,7 +195,8 @@ describe("Add comment", () => {
   });
   it("should allow a user that is owner of comment  to delete a comment", done => {
     chai.request(server)
-      .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02").set("Authorization", `Bearer ${ownerToken}`)
+      .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02")
+      .set("Authorization", `Bearer ${ownerToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body.message).to.equal("Successfully deleted comment");
