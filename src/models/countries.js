@@ -70,7 +70,16 @@ module.exports = (sequelize, DataTypes) => {
       as: "music",
       foreignKey: "countryId",
     });
+
+    Country.hasMany(models.Comments, {
+      as: "comments",
+      foreignKey: "relatedId",
+      onDelete: 'cascade',
+      hooks: true, 
+    });
   };
+
+
 
   return Country;
 };
