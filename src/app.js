@@ -64,10 +64,10 @@ app.get(
     scope: ["profile", "email"],
   }),
   (req, res) => {
-    if (req.user !== "user exist already") {
+    if (!req.user.status) {
       res.redirect("/");
     } else {
-      res.status(404).send(req.user);
+      res.status(409).send(req.user);
     }
   }
 );
