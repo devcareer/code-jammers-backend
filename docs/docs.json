@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.1",
     "info": {
-      "title": "Country-State CRUD API",
-      "description": "## State API:\nThis API allows only an admin user to add, update and delete a state. It also allows all users retrieve all or a specific state. A new state is added using it's country's ID. \n\n## Country API:\nThis API allows only an admin user to add, update and delete a country. It also allows all users retrieve all or a specific country.                                                                                                 ",
+      "title": "Know Africa API",
+      "description": "",
       "version": "1.0"
     },
     "servers": [
@@ -585,7 +585,7 @@
             }
           ]
         },
-      "/api/v1/admin/country": {
+        "/api/v1/admin/country": {
             "post": {
               "tags": [
                 "country"
@@ -676,7 +676,7 @@
               }
             ]
       },
-      "/api/v1/country/{id}": {
+        "/api/v1/country/{id}": {
         "get": {
           "tags": [
             "country"
@@ -1155,7 +1155,7 @@
                 }
               },
               "links": {
-                "GetEthnicGroupById": {
+                "GetTouristCenterById": {
                   "operationId": "touristCenterById",
                   "parameters": {
                     "id": "$response.body#/id"
@@ -1415,7 +1415,7 @@
                 }
               },
               "links": {
-                "GetEthnicGroupById": {
+                "GetMusicById": {
                   "operationId": "musicId",
                   "parameters": {
                     "id": "$response.body#/id"
@@ -1513,7 +1513,7 @@
           }
         ]
       },
-      "/api/v1/admin/music/30957d99-2aa1-4b75-b3e1-234c0971cb98": {
+      "/api/v1/admin/music/{id}": {
         "patch": {
           "tags": [
             "music"
@@ -1617,7 +1617,7 @@
           }
         ]
       },
-      "/api/v1/admin/ethnic-group/6003fb36-5112-463e-a1f9-c8944e72412f": {
+      "/api/v1/admin/ethnic-group/{countryId}": {
         "post": {
           "tags": [
             "ethnic-group"
@@ -1653,7 +1653,7 @@
                 },
                 "examples": {
                   "0": {
-                    "value": "{\r\n   \"name\": \"Igbo\",\r\n   \"festivals\": \"New Yam Festival\",\r\n   \"dressing\": \"In the old days, some Igbo women celebrated their feast in ekwerike clothing. In other words, they tied thick fabric around their waist. Others preferred painting their bodies with ufle, nzu, edo, uri and other colored ornaments (instead of wearing clothing) and decorating their waist with bead accessories.\",\r\n   \"language\": \"Igbo\",\r\n   \"gallery\": \"https://unsplash.com/photos/eS_aZA5S42Y\"\r\n}"
+                    "value": "{\r\n   \"name\": \"Igbo\",\r\n   \"festivals\": \"New Yam Festival\",\r\n   \"dressing\": \"In the old days, some Igbo women celebrated their feast in ekwerike clothing. In other words, they tied thick fabric around their waist. Others preferred painting their bodies with ufle, nzu, edo, uri and other colored ornaments (instead of wearing clothing) and decorating their waist with bead accessories.\",\r\n   \"language\": \"Igbo\",\r\n   \"gallery\": \"https://unsplash.com/photos/eS_aZA5S42Y\"\r\n   \"culturalPractices\": \"The Igbo people have a traditional religious belief that there is one creator, called ‘Chineke’ or ‘Chukwu’. The creator can be approached through many other deities and spirits in the form of natural objects, most commonly through the god of thunder called ‘Amadioha’.\"\r\n}"
                   }
                 }
               }
@@ -1669,7 +1669,7 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "description": "ID of the created user."
+                        "description": "ID of the created ethnic group."
                       }
                     }
                   }
@@ -1724,7 +1724,7 @@
               "explode": false,
               "schema": {
                 "type": "integer",
-                "format": "int64"
+                "format": "uuid"
               }
             }
           ],
@@ -1847,6 +1847,746 @@
             },
             "404": {
               "description": "Ethnic group not found."
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/admin/food/{countryId}": {
+        "post": {
+          "tags": [
+            "food"
+          ],
+          "summary": "Create Food.",
+          "description": "This allows an Admin user add a food.",
+          "operationId": "addFoodGroup",
+          "parameters": [
+            {
+              "name": "authorization",
+              "in": "header",
+              "required": false,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "foodName": {
+                      "type": "string"
+                    },
+                    "methodOfPreparation": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\r\n   \"foodName\": \"Nshima\",\r\n   \"methodOfPreparation\": \"Nshima is the staple carbohydrate of Zambia. It is made from corn that is processed into a fine white powder called ‘mealie meal’. It is cooked by mixing the corn meal with water which is brought to the boil as porridge (similar to grits). More cornmeal is added until it develops a thicker texture. The cornmeal can be substituted for cassava, sorghum and millet. Nshima is served with a protein (usually meat or fish) and one or two vegetables. Nshima can be enjoyed at any of the many traditional restaurants in Zambia as well as at boutique hotels.\",\r\n   \"gallery\": \"https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60\"\r\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Food successfully added.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "ID of the created food."
+                      }
+                    }
+                  }
+                }
+              },
+              "links": {
+                "GetEthnicGroupById": {
+                  "operationId": "foodId",
+                  "parameters": {
+                    "id": "$response.body#/id"
+                  },
+                  "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/v1/food/{id}`, `PATCH /api/v1/admin/food/{id}` and `DELETE /api/v1/admin/food/{id}`.\n"
+                }
+              }
+            },
+            "401": {
+              "description": "User not logged in."
+            },
+            "403": {
+              "description": "User not authorized."
+            }
+          },
+          "security": [{
+            "jwt": []
+          }],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/food/{id}": {
+        "get": {
+          "tags": [
+            "food"
+          ],
+          "summary": "Get Food.",
+          "description": "This allows all users to retrieve food.",
+          "operationId": "getFoodId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Food successfully retrieved."
+            },
+            "404": {
+              "description": "Food not found."
+            }
+          },
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/food": {
+        "get": {
+          "tags": [
+            "food"
+          ],
+          "summary": "Get all food.",
+          "description": "This allows all users to retrieve all food.",
+          "responses": {
+            "200": {
+              "description": "Food successfully retrieved."
+            }
+          }
+        }
+      },
+      "/api/v1/admin/food/{id}": {
+        "patch": {
+          "tags": [
+            "food"
+          ],
+          "summary": "Update food's details",
+          "description": "This allows an admin user to update food.",
+          "operationId": "patchFoodId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "foodName": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\r\n            \"foodName\": \"Egusi stew\"\r\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Food successfully updated."
+            },
+            "404": {
+              "description": "Food not found."
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "food"
+          ],
+          "summary": "Delete a food.",
+          "description": "This allows an admin user to delete a food.",
+          "operationId": "deleteFoodId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Food successfully deleted."
+            },
+            "404": {
+              "description": "Food not found."
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/admin/historical-fact/{countryId}": {
+        "post": {
+          "tags": [
+            "historical-fact"
+          ],
+          "summary": "Create historical fact.",
+          "description": "This allows an Admin user add an historical fact.",
+          "operationId": "addFoodGroup",
+          "parameters": [
+            {
+              "name": "authorization",
+              "in": "header",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "countryId",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string"
+                    },
+                    "about": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\r\n   \"location\": \"Lekki\",\r\n   \"about\": \"Write anything about Lekki here\",\r\n   \"gallery\": \"put gallery url here\"\r\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Historical fact successfully added.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "ID of the created historical fact."
+                      }
+                    }
+                  }
+                }
+              },
+              "links": {
+                "GetEthnicGroupById": {
+                  "operationId": "historicalFactId",
+                  "parameters": {
+                    "id": "$response.body#/id"
+                  },
+                  "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/v1/historical-fact/{id}`, `PATCH /api/v1/admin/historical-fact/{id}` and `DELETE /api/v1/admin/historical-fact/{id}`.\n"
+                }
+              }
+            },
+            "401": {
+              "description": "User not logged in."
+            },
+            "403": {
+              "description": "User not authorized."
+            }
+          },
+          "security": [{
+            "jwt": []
+          }],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/historical-fact/{id}": {
+        "get": {
+          "tags": [
+            "historical-fact"
+          ],
+          "summary": "Get historical fact.",
+          "description": "This allows all users to retrieve an historical fact.",
+          "operationId": "getHistoricalFactId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Historical fact successfully retrieved."
+            },
+            "404": {
+              "description": "Historical fact not found."
+            }
+          },
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/historical-fact": {
+        "get": {
+          "tags": [
+            "historical-fact"
+          ],
+          "summary": "Get all historical facts.",
+          "description": "This allows all users to retrieve all historical facts.",
+          "responses": {
+            "200": {
+              "description": "Historical facts successfully retrieved."
+            }
+          }
+        }
+      },
+      "/api/v1/admin/historical-fact/{id}": {
+        "patch": {
+          "tags": [
+            "historical-fact"
+          ],
+          "summary": "Update historical fact's details",
+          "description": "This allows an admin user to update historical fact.",
+          "operationId": "patchHistoricalFactId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "location": {
+                      "type": "string"
+                    },
+                    "about": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\r\n   \"location\": \"new location\",\r\n   \"about\": \"updated information\",\r\n   \"gallery\": \"put updated gallery url here if any\"\r\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Historical fact successfully updated."
+            },
+            "404": {
+              "description": "Historical fact not found."
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "historical-fact"
+          ],
+          "summary": "Delete an historical fact.",
+          "description": "This allows an admin user to delete an historical fact.",
+          "operationId": "deleteHistoricalFactId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Historical fact successfully deleted."
+            },
+            "404": {
+              "description": "Historical fact not found."
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/admin/comment": {
+        "post": {
+          "tags": [
+            "comment"
+          ],
+          "summary": "Add a comment.",
+          "description": "This allows a user add a comment.",
+          "operationId": "addFoodGroup",
+          "parameters": [
+            {
+              "name": "authorization",
+              "in": "header",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "comment": {
+                      "type": "string"
+                    },
+                    "relatedId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\r\n   \"comment\": \"I am a test comment\",\r\n   \"relatedId\": \"6003fb36-5112-463e-a1f9-c8944e72412f\"\r\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Comment successfully added.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "ID of the created comment."
+                      }
+                    }
+                  }
+                }
+              },
+              "links": {
+                "GetCommentById": {
+                  "operationId": "commentId",
+                  "parameters": {
+                    "id": "$response.body#/id"
+                  },
+                  "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/v1/comment/{id}`, `PATCH /api/v1/admin/comment/{id}` and `DELETE /api/v1/admin/comment/{id}`.\n"
+                }
+              }
+            },
+            "401": {
+              "description": "User not logged in."
+            },
+            "403": {
+              "description": "User not authorized."
+            }
+          },
+          "security": [{
+            "jwt": []
+          }],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/comment/{id}": {
+        "get": {
+          "tags": [
+            "comment"
+          ],
+          "summary": "Get comment.",
+          "description": "This allows an authorized user to retrieve a comment.",
+          "operationId": "getCommentId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Comment successfully retrieved."
+            },
+            "404": {
+              "description": "Comment not found."
+            }
+          },
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "/api/v1/admin/comment/{id}": {
+        "patch": {
+          "tags": [
+            "comment"
+          ],
+          "summary": "Update comment",
+          "description": "This allows an authorized user to update comment.",
+          "operationId": "patchCommentId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "comment": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "0": {
+                    "value": "{\r\n   \"comment\": \"anything you would like\",\"\r\n}"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Comment successfully updated."
+            },
+            "404": {
+              "description": "Comment not found."
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "comment"
+          ],
+          "summary": "Delete a comment.",
+          "description": "This allows an authorized user to delete a comment.",
+          "operationId": "deleteCommentId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Comment successfully deleted."
+            },
+            "404": {
+              "description": "Comment not found."
             }
           },
           "security": [
