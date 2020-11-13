@@ -242,6 +242,32 @@ describe("GET Historical Fact api route", () => {
       });
   });
 
+  it("returns Historical Facts with specific location", done => {
+    chai
+      .request(server)
+      .get("/api/v1/historicalFact/byLocation/Nigeria")
+      .end((err, res) => {
+        const { status, body } = res;
+        const { data } = body;
+        expect(status).to.equal(200);
+        expect(body.status).to.equal(200);
+        expect(body.message).to.equal("Successfully retrieved all Historical Facts.");
+        data.forEach(historicalFactLocation => {
+          expect(historicalFactLocation).to.have.property("id");
+          expect(historicalFactLocation).to.have.property("countryId");
+          expect(historicalFactLocation).to.have.property("gallery");
+          expect(historicalFactLocation).to.have.property("location");
+          expect(historicalFactLocation).to.have.property("about");
+        });
+        expect(data).to.have.length(1);
+
+        expect(data).to.be.an("array");
+
+        // expect(data).to.be.an("object");
+        done();
+      });
+  });
+
   it("returns Historical Fact with specific id", done => {
     chai
       .request(server)

@@ -57,4 +57,19 @@ const validateId = ids => {
   return schema.validate(ids);
 };
 
-export { validation, validateId };
+const validateLocation = location => {
+  const schema = Joi.object({
+    location: Joi.string().required()
+      .empty()
+      .messages({
+        "any.required": "Location not provided. Please provide a Location.",
+        "string.empty": "Location cannot be an empty field.",
+        "string.base": "Location must be a string.",
+      })
+  }).messages({
+    "object.unknown": "You have used an invalid key."
+  }).options({ abortEarly: false });
+  return schema.validate(location);
+};
+
+export { validation, validateId, validateLocation };

@@ -1,5 +1,5 @@
 import HF_Services from "../../services/AdminServices/historicalFactsService";
-import { validation, validateId } from "../../validation/historicalFactsValidation";
+import { validation, validateId, validateLocation } from "../../validation/historicalFactsValidation";
 // import { validation, validateId } from "../../validation/historicalFactsValidation";
 
 /**
@@ -62,6 +62,24 @@ export default class historicalFact {
       const historicalFactId = await HF_Services.findHistoricalFactById(id);
       if (!historicalFactId) return res.status(404).json({ status: 404, error: "Historical Fact not found" });
       return res.status(200).json({ status: 200, message: "Successfully retrieved Historical Fact.", data: historicalFactId, });
+    } catch (error) {
+      return res.status(500).json({ status: 500, error: "Server error." });
+    }
+  }
+
+  /**
+   * @param {object} req - The user request object
+   * @param {object} res - The user response object
+   * @returns {object} Success message
+   */
+  static async getHistoricalFactByLocation(req, res) {
+    try {
+      const { location } = req.params;
+      const { error } = validateLocation({ location });
+      if (error) return res.status(400).json({ status: 400, error: error.message });
+      const historicalFactLocation = await HF_Services.findHistoricalFactByLocation(location);
+      if (historicalFactLocation.length < 1) return res.status(404).json({ status: 404, error: "Location not found" });
+      return res.status(200).json({ status: 200, message: "Successfully retrieved all Historical Facts.", data: historicalFactLocation, });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }

@@ -24,7 +24,7 @@ export default class HF_Services {
    */
   static async findHistoricalFactByLocation(location) {
     try {
-      return await database.Historicalfacts.findOne({
+      return await database.Historicalfacts.findAll({
         where: {
           location,
         }
