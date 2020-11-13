@@ -27,7 +27,8 @@ export default class HF_Services {
       return await database.Historicalfacts.findAll({
         where: {
           location,
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;
@@ -43,7 +44,7 @@ export default class HF_Services {
       return await database.Countries.findOne({
         where: {
           id,
-        }
+        },
       });
     } catch (err) {
       throw err;
@@ -55,7 +56,9 @@ export default class HF_Services {
    */
   static async listHistoricalFacts() {
     try {
-      return await database.Historicalfacts.findAll();
+      return await database.Historicalfacts.findAll({
+        include: [{ model: database.Comments, as: "comments" }]
+      });
     } catch (err) {
       throw err;
     }
@@ -70,7 +73,8 @@ export default class HF_Services {
       return await database.Historicalfacts.findOne({
         where: {
           id,
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;
