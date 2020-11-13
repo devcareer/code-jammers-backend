@@ -4,7 +4,6 @@ import Authentication from "../../middlewares/authenticate";
 
 const {
   createFood,
-  //   getFoodsByCountry,
   getAllFoods,
   getOneFoodById,
   updateFood,

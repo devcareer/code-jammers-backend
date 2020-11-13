@@ -12,6 +12,8 @@ import ethnicRoutes from "./routes/ethnicgroup";
 import musicRoutes from "./routes/musicRoutes";
 import countryRoutes from "./routes/countryRoute/countryRoutes";
 import foodRoutes from "./routes/foodRoute/foodRoutes";
+import historicalFactsRoutes from "./routes/historicalFactsRoute/historicalFactsRoute";
+import commentRoutes from "./routes/commentRoutes";
 
 const swaggerUi = require("swagger-ui-express");
 
@@ -32,8 +34,10 @@ app.use("/api/v1/", newsletterRoutes);
 app.use("/api/v1/", resetPasswordRoutes);
 app.use("/api/v1", musicRoutes);
 app.use("/api/v1/", foodRoutes);
+app.use("/api/v1/", historicalFactsRoutes);
 
 app.use(express.json());
+app.use("/api/v1/", commentRoutes);
 
 app.use(express.json());
 

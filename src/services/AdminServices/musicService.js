@@ -27,7 +27,8 @@ export default class db {
       return await database.Music.findOne({
         where: {
           category,
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;
