@@ -44,7 +44,7 @@ describe("Add Historical Fact", () => {
   it("should allow user with admin role add Historical Facts", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/historicalFact/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/historical-fact/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(historicalFact1)
@@ -56,7 +56,7 @@ describe("Add Historical Fact", () => {
   it("should not allow user without token add Historical Fact", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/historicalFact/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/historical-fact/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .send(historicalFact3)
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -66,7 +66,7 @@ describe("Add Historical Fact", () => {
   it("should not allow user without admin role add Historical Fact", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/historicalFact/2e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/historical-fact/2e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${userToken}`)
       .set("Accept", "application/json")
       .send(historicalFact3)
@@ -78,7 +78,7 @@ describe("Add Historical Fact", () => {
   it("should allow user with admin role add Historical Fact", done => {
     chai
       .request(server)
-      .post("/api/v1/admin/historicalFact/4e11e4a9-441b-4426-9521-39adc64ccfad")
+      .post("/api/v1/admin/historical-fact/4e11e4a9-441b-4426-9521-39adc64ccfad")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send(historicalFact1)
@@ -107,7 +107,7 @@ describe("Update Historical Fact", () => {
   it("should not allow admin update Historical Fact with invalid ID data type", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/historicalFact/5rfsgwt")
+      .patch("/api/v1/admin/historical-fact/5rfsgwt")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ location: "Abuja" })
@@ -120,7 +120,7 @@ describe("Update Historical Fact", () => {
   it("should not allow admin update Historical Fact with invalid countryId data type", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/historicalFact/12adedc3-d529-4f67-9ee6-5b763d5010f4")
+      .patch("/api/v1/admin/historical-fact/12adedc3-d529-4f67-9ee6-5b763d5010f4")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ countryId: "5ge117ukfd" })
@@ -133,7 +133,7 @@ describe("Update Historical Fact", () => {
   it("returns 404 when updating Historical Fact which is not in db", done => {
     chai
       .request(server)
-      .patch("/api/v1/admin/historicalFact/8d585465-cd80-4030-b665-bdc3bbd3e578")
+      .patch("/api/v1/admin/historical-fact/8d585465-cd80-4030-b665-bdc3bbd3e578")
       .set("Authorization", `Bearer ${adminToken}`)
       .set("Accept", "application/json")
       .send({ location: "Rivers" })
@@ -172,7 +172,7 @@ describe("Delete Historical Fact", () => {
   it("should allow Admin Delete Historical Fact", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/historicalFact/8d585465-cd80-4030-b665-bdc3bbd3e575")
+      .delete("/api/v1/admin/historical-fact/8d585465-cd80-4030-b665-bdc3bbd3e575")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -183,7 +183,7 @@ describe("Delete Historical Fact", () => {
   it("should not allow admin delete Historical Fact with invalid ID data type", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/historicalFact/6hger43")
+      .delete("/api/v1/admin/historical-fact/6hger43")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -194,7 +194,7 @@ describe("Delete Historical Fact", () => {
   it("returns 404 when deleting Historical Fact which is not in db", done => {
     chai
       .request(server)
-      .delete("/api/v1/admin/historicalFact/8d585465-cd80-4030-b665-bdc3bbd3e578")
+      .delete("/api/v1/admin/historical-fact/8d585465-cd80-4030-b665-bdc3bbd3e578")
       .set("Authorization", `Bearer ${adminToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -219,7 +219,7 @@ describe("GET Historical Fact api route", () => {
   it("returns all Historical Facts ", done => {
     chai
       .request(server)
-      .get("/api/v1/historicalFact")
+      .get("/api/v1/historical-fact")
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
@@ -245,7 +245,7 @@ describe("GET Historical Fact api route", () => {
   it("returns Historical Facts with specific location", done => {
     chai
       .request(server)
-      .get("/api/v1/historicalFact/byLocation/Nigeria")
+      .get("/api/v1/historical-fact/location/Nigeria")
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;
@@ -271,7 +271,7 @@ describe("GET Historical Fact api route", () => {
   it("returns Historical Fact with specific id", done => {
     chai
       .request(server)
-      .get("/api/v1/historicalFact/8d585465-cd80-4030-b665-bdc3bbd3e400")
+      .get("/api/v1/historical-fact/8d585465-cd80-4030-b665-bdc3bbd3e400")
       .end((err, res) => {
         const { status, body } = res;
         const { data } = body;

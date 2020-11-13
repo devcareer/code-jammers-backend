@@ -15,11 +15,11 @@ const { verifyAdmin, verifyToken } = Authentication;
 
 const router = Router();
 
-router.get("/historicalFact", getAllHistoricalFacts);
-router.get("/historicalFact/:id", getHistoricalFact);
-router.get("/historicalFact/byLocation/:location", getHistoricalFactByLocation);
-router.post("/admin/historicalFact/:countryId", verifyToken, verifyAdmin, addHistoricalFact);
-router.patch("/admin/historicalFact/:id", verifyToken, verifyAdmin, updateHistoricalFact);
-router.delete("/admin/historicalFact/:id", verifyToken, verifyAdmin, deleteHistoricalFact);
+router.get("/historical-fact", getAllHistoricalFacts);
+router.get("/historical-fact/:id", getHistoricalFact);
+router.get("/historical-fact/location/:location", getHistoricalFactByLocation);
+router.post("/admin/historical-fact/:countryId", verifyToken, verifyAdmin, addHistoricalFact);
+router.patch("/admin/historical-fact/:id", verifyToken, verifyAdmin, updateHistoricalFact);
+router.delete("/admin/historical-fact/:id", verifyToken, verifyAdmin, deleteHistoricalFact);
 
 export default router;
