@@ -226,11 +226,6 @@
                 "description": "Email address not associated with any account."
               }
             },
-            "security": [
-              {
-                "jwt": []
-              }
-            ],
             "servers": [
               {
                 "url": "https://know-africa.herokuapp.com"
@@ -243,7 +238,7 @@
             }
           ]
         },
-        "/api/v1/users/reset/{token}": {
+        "/api/v1/users/reset/{id}/{token}": {
           "post": {
             "tags": [
               "user"
@@ -261,6 +256,17 @@
                 "schema": {
                   "type": "string",
                   "format": "jwt"
+                }
+              },
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "style": "simple",
+                "explode": false,
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
                 }
               }
             ],
@@ -313,6 +319,7 @@
             ],
             "summary": "Update user profile",
             "description": "This allows a signed in user to update their profile.",
+            "operationId": "passwordRecovery",
             "requestBody": {
               "content": {
                 "application/json": {
@@ -439,29 +446,7 @@
             },
             "responses": {
               "201": {
-                "description": "User successfully subscribed.",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "email": {
-                          "type": "string",
-                          "description": "email of the subscriber."
-                        }
-                      }
-                    }
-                  }
-                },
-                "links": {
-                  "GetSubscriberEmail": {
-                    "operationId": "subscriberEmail",
-                    "parameters": {
-                      "email": "$response.body#/email"
-                    },
-                    "description": "The `email` value returned in the response can be used as the `email` parameter in `GET /api/v1/newsletter/unsubscribe/{email}`, and `GET /api/v1/subscriber/verify/{email}`.\n"
-                  }
-                }
+                "description": "User successfully subscribed."
               },
               "409": {
                 "description": "User is already subscribed to this newsletter."
@@ -651,7 +636,7 @@
                       "parameters": {
                         "id": "$response.body#/id"
                       },
-                      "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/v1/country/{id}`, `PATCH /api/v1/country/{id}` and `DELETE /api/v1/country/{id}`.\n"
+                      "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/v1/country/{id}`, `PATCH /api/v1/admin/country/{id}` and `DELETE /api/v1/admin/country/{id}`.\n"
                     }
                   }
                 },
@@ -692,8 +677,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
