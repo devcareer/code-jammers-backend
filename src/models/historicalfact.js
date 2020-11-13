@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Historicalfact.associate = models => {
     Historicalfact.belongsTo(models.Countries, {
-      as: "countryHistoricalFacts",
+      as: "historicalFacts",
       foreignKey: "countryId",
     });
     Historicalfact.hasMany(models.Comments, {

@@ -4,10 +4,10 @@ import Authentication from "../../middlewares/authenticate";
 
 const router = Router();
 const { ActivateUser, DeActivateUser } = AdminController;
-const { verifyToken } = Authentication;
+const { verifyToken, verifyAdmin } = Authentication;
 
-router.patch("/activate-user/:id", verifyToken, ActivateUser);
+router.patch("/admin/activate-user/:id", verifyToken, verifyAdmin, ActivateUser);
 
-router.patch("/deactivate-user/:id", verifyToken, DeActivateUser);
+router.patch("/admin/deactivate-user/:id", verifyToken, verifyAdmin, DeActivateUser);
 
 export default router;

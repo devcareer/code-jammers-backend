@@ -52,7 +52,7 @@ export default class EthnicGroups {
    */
   static async getAllEthnicGroups() {
     try {
-      return await db.EthnicGroups.findAll();
+      return await db.EthnicGroups.findAll({ include: [{ model: db.Comments, as: "comments" }] });
     } catch (error) {
       throw error;
     }
