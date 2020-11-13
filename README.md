@@ -3,40 +3,12 @@
 
 # Know Africa
 
-An information and fact-based web application about Africa.
-- Africa isn't a country. Africa is a continent with 54 independent countries.
+An information and fact-based web application about Africa. Africa isn't a country. Africa is a continent with 54 independent countries.
 
-### Features
-
-- a user can sign up
-- a user can sign in
-- a user can reset his/her password
-- a user can update his/her profile
-- a user can subscribe to the newsletter
-- a user can unsubscribe from the newsletter
-
-- a basic user/admin/super admin can get and get all countries and all its associations.
-- a basic user/admin/super admin can get and get all states
-- a basic user/admin/super admin can get and get all tourist centers
-
-- an admin can add, delete, update countries
-- an admin can add, delete, update states
-- an admin can add, delete, update tourist centers
-- an admin/super admin can send out newsletters.
 
 ### The technologies used in creating this project are:
 
-- JavaScript
-- Node.js
-- ExpressJs
-- Sequelize ORM
-- PostgreSQL
-- Git
-- Github Actions
-- Code Climate
-- Coveralls
-- Pivotal Tracker
-- Docker
+JavaScript, Node.js, ExpressJs, Sequelize ORM, PostgreSQL, Git, Github Actions, Code Climate, Coveralls, Pivotal Tracker, Docker, Swagger
 
 ### :rocket: How to get started
 
