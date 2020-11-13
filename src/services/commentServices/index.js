@@ -15,6 +15,20 @@ const commentServices = {
       throw error;
     }
   },
+  getAllComments: async id => {
+    try {
+      return await db.Comments.findAll({
+        where: {
+          userId: id
+        },
+        order: [
+          ["createdAt", "DESC"],
+        ],
+      });
+    } catch (error) {
+      throw error;
+    }
+  },
   isOwnerOfComment: async (commentId, userId, res) => {
     try {
       const comment = await db.Comments.findOne({ where: { id: commentId } });

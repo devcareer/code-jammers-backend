@@ -92,7 +92,22 @@ const commentController = {
     } catch (error) {
       return res.status(404).send({ status: 404, error: "Resource not found." });
     }
-  }
+  },
+  getUsersComments: async (req, res) => {
+    const { id } = req.decoded.user;
+
+    try {
+      const comments = await commentServices.getAllComments(id);
+
+      return res.status(200).send({
+        status: 200,
+        message: "Successfully retrived comments",
+        data: comments
+      });
+    } catch (error) {
+      return res.status(500).send({ status: 500, error: "Server Error" });
+    }
+  },
 };
 
 export default commentController;
