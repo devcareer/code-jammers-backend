@@ -24,7 +24,7 @@ const googleStrategy = new Strategy(
       });
 
       if (userExist) {
-        const msgObj = { status: 409, error: "user already exist" };
+        const msgObj = { status: 409, error: "User already exist" };
         return done(null, msgObj);
       }
 
