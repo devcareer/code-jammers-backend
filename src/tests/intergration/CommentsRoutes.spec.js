@@ -10,8 +10,8 @@ const { expect } = chai;
 chai.use(chaiHttp);
 
 describe("Add comment", () => {
-  let userToken; let
-    ownerToken;
+  let userToken;
+  let ownerToken;
   before(done => {
     chai
       .request(server)
@@ -23,7 +23,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   before(done => {
     chai
       .request(server)
@@ -35,7 +34,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should allow logged in user to add a comment", done => {
     chai
       .request(server)
@@ -47,7 +45,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow user to add an empty comment", done => {
     chai
       .request(server)
@@ -60,7 +57,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow user to add a comment that is less than 3 characters", done => {
     chai
       .request(server)
@@ -73,7 +69,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow user that is not logged in to add a comment", done => {
     chai
       .request(server)
@@ -86,7 +81,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow a user that is not logged in to get a comment", done => {
     chai.request(server)
       .get("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02")
@@ -97,7 +91,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should  allow a user that is logged in to get a comment", done => {
     chai.request(server)
       .get("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02")
@@ -109,7 +102,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should  return 404 error when user tries to get comment that is not in the database", done => {
     chai.request(server)
       .get("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d01")
@@ -120,7 +112,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow a user that is not logged in to edit a comment", done => {
     chai.request(server)
       .patch("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02")
@@ -130,7 +121,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow a user to update a comment that is not in the database", done => {
     chai.request(server)
       .patch("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8").set("Authorization", `Bearer ${ownerToken}`)
@@ -140,7 +130,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow a user that is not owner of comment  to edit a comment", done => {
     chai.request(server)
       .patch("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02").set("Authorization", `Bearer ${userToken}`)
@@ -150,7 +139,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should allow a user that is owner of comment to edit a comment", done => {
     chai.request(server)
       .patch("/api/v1/comment/c375c640-81ff-405a-89a8-460ea2f71756").set("Authorization", `Bearer ${ownerToken}`)
@@ -162,7 +150,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow a user to delete a comment that is not in the database", done => {
     chai.request(server)
       .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8").set("Authorization", `Bearer ${ownerToken}`)
@@ -172,7 +159,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow a user that is not logged in to delete a comment", done => {
     chai.request(server)
       .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02")
@@ -182,7 +168,6 @@ describe("Add comment", () => {
         done();
       });
   });
-
   it("should not allow a user that is not owner of comment  to delete a comment", done => {
     chai.request(server)
       .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8ade4d02")
