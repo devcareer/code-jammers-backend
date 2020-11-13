@@ -60,7 +60,7 @@ app.get(
     scope: ["profile", "email"],
   }),
   (req, res) => {
-    if (req.user !== "user exist already") {
+    if (req.user !== "{ status: 409, message: 'user already exist' }") {
       res.redirect("/");
     } else {
       res.status(404).send(req.user);

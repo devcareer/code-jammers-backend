@@ -24,8 +24,8 @@ const googleStrategy = new Strategy(
       });
 
       if (userExist) {
-        const message = "user exist already";
-        return done(null, message);
+        const msgObj = "{ status: 409, message: 'user already exist' }";
+        return done(null, msgObj);
       }
 
       const newUserDetail = await User.createUser({
