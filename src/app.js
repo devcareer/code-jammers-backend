@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import passport from "passport";
 import cookieSession from "cookie-session";
 import cors from "cors";
@@ -22,7 +21,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
@@ -43,11 +42,7 @@ app.use("/api/v1/", resetPasswordRoutes);
 app.use("/api/v1", musicRoutes);
 app.use("/api/v1/", foodRoutes);
 app.use("/api/v1/", historicalFactsRoutes);
-
-app.use(express.json());
 app.use("/api/v1/", commentRoutes);
-
-app.use(express.json());
 
 passport.use(googleStrategy);
 
