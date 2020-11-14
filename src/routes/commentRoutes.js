@@ -2,7 +2,7 @@ import Router from "express";
 import controllers from "../controllers";
 import Authentication from "../middlewares/authenticate";
 
-const { verifyToken } = Authentication;
+const { verifyToken, verifyUserById } = Authentication;
 
 const { commentController } = controllers;
 
@@ -11,10 +11,10 @@ const {
 } = commentController;
 const router = Router();
 
-router.post("/comment", verifyToken, comment);
-router.get("/comment/:id", verifyToken, getComment);
-router.get("/comments", verifyToken, getUsersComments);
-router.patch("/comment/:id", verifyToken, updateComment);
-router.delete("/comment/:id", verifyToken, deleteComment);
+router.post("/comment", verifyToken, verifyUserById, comment);
+router.get("/comment/:id", verifyToken, verifyUserById, getComment);
+router.get("/comments", verifyToken, verifyUserById, getUsersComments);
+router.patch("/comment/:id", verifyToken, verifyUserById, updateComment);
+router.delete("/comment/:id", verifyToken, verifyUserById, deleteComment);
 
 export default router;
