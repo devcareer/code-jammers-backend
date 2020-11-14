@@ -27,7 +27,8 @@ export default class db {
       return await database.TouristCenters.findOne({
         where: {
           name,
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;

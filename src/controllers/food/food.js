@@ -73,7 +73,7 @@ export default class Food {
    */
   static async getAllFoods(req, res) {
     try {
-      const getFoods = await database.Foods.findAll();
+      const getFoods = await database.Foods.findAll({ include: [{ model: database.Comments, as: "comments" }] });
       return res.status(200).json({ status: 200, message: "All foods retrieved successfully", data: getFoods });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });

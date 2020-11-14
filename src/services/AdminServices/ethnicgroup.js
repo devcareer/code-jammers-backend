@@ -67,7 +67,8 @@ export default class EthnicGroups {
       return await db.EthnicGroups.findOne({
         where: {
           id,
-        }
+        },
+        include: [{ model: db.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;

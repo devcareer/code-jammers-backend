@@ -11,10 +11,10 @@ const {
 } = commentController;
 const router = Router();
 
-router.post("/comment", verifyToken, verifyUserById, comment);
-router.get("/comment/:id", verifyToken, verifyUserById, getComment);
-router.get("/comments", verifyToken, verifyUserById, getUsersComments);
-router.patch("/comment/:id", verifyToken, verifyUserById, updateComment);
-router.delete("/comment/:id", verifyToken, verifyUserById, deleteComment);
+router.post("/comment/:relatedId", verifyToken, comment);
+router.get("/comment/:id", verifyToken, getComment);
+router.get("/comments", verifyToken, getUsersComments);
+router.patch("/comment/:id", verifyToken, updateComment);
+router.delete("/comment/:id", verifyToken, deleteComment);
 
 export default router;
