@@ -5,6 +5,7 @@
 
 An information and fact-based web application about Africa. Africa isn't a country. Africa is a continent with 54 independent countries.
 
+For the features, go here: https://github.com/devcareer/code-jammers-backend/wiki/Backend-sample-test-APIs
 
 ### The technologies used in creating this project are:
 
@@ -22,19 +23,15 @@ JavaScript, Node.js, ExpressJs, Sequelize ORM, PostgreSQL, Git, Github Actions, 
 
 - Fiyin Akinsiku
 - Ufuoma Ogodo
+- Godspower Uche
+- Bernard Namangala
+- Donald Agbakoba
 - Bislon Zulu
-- 
+- Augusta Ehihebolo
+- Francis Xavier Abonyi
+- Oyindamola Abiola
 
-### Mentors
-
-- Funmilayo (codeliezel) Olaiya - <a href="https://github.com/codeliezel">view github profile</a>
-- Ayomikun Emmanuel - <a href="https://github.com/endowmissy">view github profile</a>
-
-### Organizers
-
-- Chidi Okoye - <a href="https://github.com/okoyecb">view github profile</a>
-
-### Author
+### Author & Mentor
 
 - Funmilayo Olaiya.
 
