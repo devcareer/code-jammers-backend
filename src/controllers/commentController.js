@@ -4,11 +4,11 @@ import db from "../models";
 
 export default class commentController {
   /**
-         * allows a user to make a comment
-         * @param {object} req - request object
-         * @param {object} res - response object
-         * @returns {object} success message | error
-         */
+   * allows a user to make a comment
+   * @param {object} req - request object
+   * @param {object} res - response object
+   * @returns {object} success message | error
+   */
   static async comment(req, res) {
     try {
       const { id } = req.decoded.user;
