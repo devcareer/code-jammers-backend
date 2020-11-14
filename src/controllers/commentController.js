@@ -1,6 +1,5 @@
 import commentServices from "../services/commentServices";
 import commentValidator from "../validation/commentValidation";
-import Util from "../utilities/util";
 import db from "../models";
 
 export default class commentController {
