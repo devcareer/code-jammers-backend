@@ -3,6 +3,43 @@
 
 # Know Africa
 
-Information and facts 
-- Africa isn't a country. Africa is a continent with 54 independent countries
+An information and fact-based web application about Africa. Africa isn't a country. Africa is a continent with 54 independent countries.
+
+For the features, go here: https://github.com/devcareer/code-jammers-backend/wiki/Backend-sample-test-APIs
+
+### The technologies used in creating this project are:
+
+JavaScript, Node.js, ExpressJs, Sequelize ORM, PostgreSQL, Git, Github Actions, Code Climate, Coveralls, Pivotal Tracker, Docker, Swagger
+
+### :rocket: How to get started
+
+- Make sure to have Git and Node.js installed on your computer
+- You can use this link to clone the project: `https://github.com/devcareer/code-jammers-backend.git`
+- cd into the project and run `npm install`
+- create a `.env` file and the contents in the sample file to it.
+- Run `npm run start-dev` to start the server and `npm test` to run the test suites
+
+### Software Engineers / Mentees
+
+- Fiyin Akinsiku
+- Ufuoma Ogodo
+- Godspower Uche
+- Bernard Namangala
+- Donald Agbakoba
+- Bislon Zulu
+- Augusta Ehihebolo
+- Francis Xavier Abonyi
+- Oyindamola Abiola
+
+### Author & Mentor
+
+- Funmilayo Olaiya.
+
+### Acknowledgements
+
+- DevCareer
+
+### License:
+
+This project is available under the MIT license.
 

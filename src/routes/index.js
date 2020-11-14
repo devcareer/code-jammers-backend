@@ -11,9 +11,11 @@ import countryRoutes from "./countryRoute/countryRoutes";
 import foodRoutes from "./foodRoute/foodRoutes";
 import historicalFactsRoutes from "./historicalFactsRoute/historicalFactsRoute";
 import commentRoutes from "./commentRoutes";
+import adminRoutes from "./adminRoutes/activateUserRoutes";
 
 const router = new Router();
 
+router.use("/", adminRoutes);
 router.use("/", countryRoutes);
 router.use("/", ethnicRoutes);
 router.use("/", userRoutes);

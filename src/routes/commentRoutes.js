@@ -2,7 +2,7 @@ import Router from "express";
 import controllers from "../controllers";
 import Authentication from "../middlewares/authenticate";
 
-const { verifyToken } = Authentication;
+const { verifyToken, verifyUserById } = Authentication;
 
 const { commentController } = controllers;
 

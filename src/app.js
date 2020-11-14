@@ -46,7 +46,7 @@ app.get(
 );
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Know Africa. Our privacy policy can be found here: " + "https://devcareer.github.io/code-jammers-backend/docs/");
+  res.send("Welcome to Know Africa. Our privacy policy can be found here: https://devcareer.github.io/code-jammers-backend/docs/");
 });
 
 app.listen(port, () => {
