@@ -22,8 +22,8 @@ export default class commentController {
       if (error) {
         return res.status(400).json({ status: 400, error: error.message });
       }
-      await commentServices.addComment(newComment);
-      return res.status(201).json({ status: 201, message: "Comment has been added", data: newComment });
+      const createdComment = await commentServices.addComment(newComment);
+      return res.status(201).json({ status: 201, message: "Comment has been added", data: createdComment });
     } catch (error) {
       return res.status(500).json({ status: 500, error: "Server error." });
     }
