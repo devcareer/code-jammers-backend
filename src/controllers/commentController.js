@@ -3,8 +3,6 @@ import commentValidator from "../validation/commentValidation";
 import Util from "../utilities/util";
 import db from "../models";
 
-const util = new Util();
-
 export default class commentController {
   /**
          * allows a user to make a comment
