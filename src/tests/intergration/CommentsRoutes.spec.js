@@ -39,7 +39,7 @@ describe("Add comment", () => {
   it("should allow logged in user to add a comment", done => {
     chai
       .request(server)
-      .post("/api/v1/comment")
+      .post("/api/v1/comment/6003fb36-5112-463e-a1f9-c8944e72412f")
       .set("Authorization", `Bearer ${userToken}`)
       .send(commentMockData)
       .end((err, res) => {
@@ -51,9 +51,9 @@ describe("Add comment", () => {
   it("should not allow user to add an empty comment", done => {
     chai
       .request(server)
-      .post("/api/v1/comment")
+      .post("/api/v1/comment/6003fb36-5112-463e-a1f9-c8944e72412f")
       .set("Authorization", `Bearer ${userToken}`)
-      .send({ comment: "", relatedId: "6003fb36-5112-463e-a1f9-c8944e72412f" })
+      .send({ comment: "" })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.error).to.equal("comment cannot be an empty field.");
@@ -64,9 +64,9 @@ describe("Add comment", () => {
   it("should not allow user to add a comment that is less than 3 characters", done => {
     chai
       .request(server)
-      .post("/api/v1/comment")
+      .post("/api/v1/comment/6003fb36-5112-463e-a1f9-c8944e72412f")
       .set("Authorization", `Bearer ${userToken}`)
-      .send({ comment: "12", relatedId: "6003fb36-5112-463e-a1f9-c8944e72412f" })
+      .send({ comment: "12" })
       .end((err, res) => {
         expect(res).to.have.status(400);
         expect(res.body.error).to.equal("comment length must be at least 3 characters long");
@@ -77,7 +77,7 @@ describe("Add comment", () => {
   it("should not allow user that is not logged in to add a comment", done => {
     chai
       .request(server)
-      .post("/api/v1/comment")
+      .post("/api/v1/comment/6003fb36-5112-463e-a1f9-c8944e72412f")
       .set("Accept", "application/json")
       .send(commentMockData)
       .end((err, res) => {
@@ -133,10 +133,10 @@ describe("Add comment", () => {
 
   it("should not allow a user to update a comment that is not in the database", done => {
     chai.request(server)
-      .patch("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8").set("Authorization", `Bearer ${ownerToken}`)
+      .patch("/api/v1/comment/6003fb36-5112-463e-a1f9-c8944e72412f").set("Authorization", `Bearer ${ownerToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Resourse not found.");
+        expect(res.body.error).to.equal("Resource not found.");
         done();
       });
   });
@@ -165,10 +165,10 @@ describe("Add comment", () => {
 
   it("should not allow a user to delete a comment that is not in the database", done => {
     chai.request(server)
-      .delete("/api/v1/comment/9ccff1f3-135f-41d9-adf2-b92c8").set("Authorization", `Bearer ${ownerToken}`)
+      .delete("/api/v1/comment/6003fb36-5112-463e-a1f9-c8944e72412f").set("Authorization", `Bearer ${ownerToken}`)
       .end((err, res) => {
         expect(res).to.have.status(404);
-        expect(res.body.error).to.equal("Resourse not found.");
+        expect(res.body.error).to.equal("Resource not found.");
         done();
       });
   });

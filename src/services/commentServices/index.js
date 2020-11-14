@@ -29,18 +29,6 @@ const commentServices = {
       throw error;
     }
   },
-  isOwnerOfComment: async (commentId, userId, res) => {
-    try {
-      const comment = await db.Comments.findOne({ where: { id: commentId } });
-
-      if (comment.userId === userId) {
-        return true;
-      }
-      return false;
-    } catch (error) {
-      res.status(404).send({ status: 404, error: "Resourse not found." });
-    }
-  }
 };
 
 export default commentServices;

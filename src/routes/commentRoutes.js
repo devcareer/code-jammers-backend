@@ -11,7 +11,7 @@ const {
 } = commentController;
 const router = Router();
 
-router.post("/comment", verifyToken, comment);
+router.post("/comment/:relatedId", verifyToken, comment);
 router.get("/comment/:id", verifyToken, getComment);
 router.get("/comments", verifyToken, getUsersComments);
 router.patch("/comment/:id", verifyToken, updateComment);
