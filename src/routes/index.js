@@ -1,6 +1,4 @@
 import { Router } from "express";
-
-const swaggerUi = require("swagger-ui-express");
 import stateRoutes from "./stateRoutes";
 import resetPasswordRoutes from "./resetPasswordRoutes";
 import userRoutes from "./userRoute/userRoutes";
@@ -14,6 +12,9 @@ import historicalFactsRoutes from "./historicalFactsRoute/historicalFactsRoute";
 import commentRoutes from "./commentRoutes";
 import adminRoutes from "./adminRoutes/activateUserRoutes";
 import docRoutes from "./docsRoutes/docsRoute";
+
+const swaggerUi = require("swagger-ui-express");
+
 const router = new Router();
 
 router.use("/", adminRoutes);
