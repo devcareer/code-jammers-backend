@@ -26,7 +26,7 @@ export default class {
         return res.status(404).json({ status: 404, error: `The email address ${req.body.email} is not associated with any account.`, });
       }
       if (!user.verified) {
-        return res.status(403).json({ status: 403, error: "The acount is not verified. Please check your email inbox for verification email.", });
+        return res.status(403).json({ status: 403, error: "The account is not verified. Please check your email inbox for verification email.", });
       }
       const signed = signToken(user.toJSON(), user.password);
       await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);

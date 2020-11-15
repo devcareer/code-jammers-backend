@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 import express from "express";
 import passport from "passport";
 import cookieSession from "cookie-session";
@@ -7,6 +8,8 @@ import { googleStrategy } from "./database/config/google-passport";
 import router from "./routes/index";
 
 dotenv.config();
+
+const swaggerUi = require("swagger-ui-express");
 
 const app = express();
 const port = process.env.PORT || 3000;
