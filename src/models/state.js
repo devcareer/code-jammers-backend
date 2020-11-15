@@ -23,6 +23,13 @@ module.exports = (sequelize, DataTypes) => {
       as: "countryState",
       foreignKey: "countryId",
     });
+
+    State.hasMany(models.Comments, {
+      as: "comments",
+      foreignKey: "relatedId",
+      onDelete: 'cascade',
+      hooks: true, 
+    });
   };
 
   return State;

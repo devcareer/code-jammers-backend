@@ -25,7 +25,7 @@ export default class FoodServices {
   static async getOneFoodById(id) {
     try {
       return await database.Foods.findOne({
-        where: { id }
+        where: { id }, include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (error) {
       return error;
