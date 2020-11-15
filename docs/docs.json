@@ -364,7 +364,7 @@
         "/api/v1/admin/activate-user/{id}": {
         "get": {
           "tags": [
-            "admin"
+            "user"
           ],
           "summary": "Activate a user.",
           "description": "This allows an admin user to activate a user's account.",
@@ -407,7 +407,7 @@
         "/api/v1/admin/deactivate-user/{id}": {
       "get": {
         "tags": [
-          "admin"
+          "user"
         ],
         "summary": "Deactivate a user.",
         "description": "This allows an admin user to deactivate a user's account.",
