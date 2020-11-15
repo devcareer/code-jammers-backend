@@ -2,7 +2,7 @@
     "openapi": "3.0.1",
     "info": {
       "title": "Know Africa API",
-      "description": "",
+      "description": "This documentation contains all the APIs associated with the Know Africa API. Routes with the authorize icon need to be activated with either a user or admin token.",
       "version": "1.0"
     },
     "servers": [
@@ -360,6 +360,92 @@
               "url": "https://know-africa.herokuapp.com"
             }
           ]
+        },
+        "/api/v1/admin/activate-user/{id}": {
+        "get": {
+          "tags": [
+            "admin"
+          ],
+          "summary": "Activate a user.",
+          "description": "This allows an admin user to activate a user's account.",
+          "operationId": "userId",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "string",
+                "format": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User activated successfully!"
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        },
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+        },
+        "/api/v1/admin/deactivate-user/{id}": {
+      "get": {
+        "tags": [
+          "admin"
+        ],
+        "summary": "Deactivate a user.",
+        "description": "This allows an admin user to deactivate a user's account.",
+        "operationId": "userId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User activated successfully!"
+          }
+        },
+        "security": [
+          {
+            "jwt": []
+          }
+        ],
+        "servers": [
+          {
+            "url": "https://know-africa.herokuapp.com"
+          }
+        ]
+      },
+      "servers": [
+        {
+          "url": "https://know-africa.herokuapp.com"
+        }
+      ]
         },
         "/api/v1/newsletter/admin/create_newsletter": {
           "post": {
@@ -1254,8 +1340,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -1307,8 +1393,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -1514,8 +1600,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -1572,8 +1658,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -1612,13 +1698,14 @@
           "operationId": "addEthnicGroup",
           "parameters": [
             {
-              "name": "authorization",
-              "in": "header",
+              "name": "countryId",
+              "in": "path",
               "required": false,
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "string"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -1628,10 +1715,19 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "title": {
+                    "name": {
                       "type": "string"
                     },
-                    "message": {
+                    "festivals": {
+                      "type": "string"
+                    },
+                    "dressing": {
+                      "type": "string"
+                    },
+                    "gallery": {
+                      "type": "string"
+                    },
+                    "culturalPractices": {
                       "type": "string"
                     }
                   }
@@ -1763,8 +1859,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -1856,13 +1952,14 @@
           "operationId": "addFoodGroup",
           "parameters": [
             {
-              "name": "authorization",
-              "in": "header",
+              "name": "countryId",
+              "in": "path",
               "required": false,
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "string"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -2010,8 +2107,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -2100,18 +2197,8 @@
           ],
           "summary": "Create historical fact.",
           "description": "This allows an Admin user add an historical fact.",
-          "operationId": "addFoodGroup",
+          "operationId": "addHistoricalFactGroup",
           "parameters": [
-            {
-              "name": "authorization",
-              "in": "header",
-              "required": true,
-              "style": "simple",
-              "explode": false,
-              "schema": {
-                "type": "string"
-              }
-            },
             {
               "name": "countryId",
               "in": "path",
@@ -2119,7 +2206,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "string"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -2212,8 +2300,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -2267,8 +2355,8 @@
               "style": "simple",
               "explode": false,
               "schema": {
-                "type": "integer",
-                "format": "uuid"
+                "type": "string",
+                "format": "string"
               }
             }
           ],
@@ -2356,18 +2444,18 @@
           }
         ]
       },
-      "/api/v1/admin/comment": {
+      "/api/v1/comment/{relatedId}": {
         "post": {
           "tags": [
             "comment"
           ],
           "summary": "Add a comment.",
           "description": "This allows a user add a comment.",
-          "operationId": "addFoodGroup",
+          "operationId": "addRelatedId",
           "parameters": [
             {
-              "name": "authorization",
-              "in": "header",
+              "name": "relatedId",
+              "in": "path",
               "required": true,
               "style": "simple",
               "explode": false,
@@ -2420,7 +2508,7 @@
                   "parameters": {
                     "id": "$response.body#/id"
                   },
-                  "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/v1/comment/{id}`, `PATCH /api/v1/admin/comment/{id}` and `DELETE /api/v1/admin/comment/{id}`.\n"
+                  "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/v1/comment/{id}`, `PATCH /api/v1/comment/{id}` and `DELETE /api/v1/comment/{id}`.\n"
                 }
               }
             },
@@ -2445,6 +2533,30 @@
             "url": "https://know-africa.herokuapp.com"
           }
         ]
+      },
+      "/api/v1/comments": {
+        "get": {
+          "tags": [
+            "comment"
+          ],
+          "summary": "Get all comments.",
+          "description": "This allows a user to retrieve all comments.",
+          "responses": {
+            "200": {
+              "description": "Successfully retrived comments."
+            }
+          },
+          "security": [
+            {
+              "jwt": []
+            }
+          ],
+          "servers": [
+            {
+              "url": "https://know-africa.herokuapp.com"
+            }
+          ]
+        }
       },
       "/api/v1/comment/{id}": {
         "get": {
@@ -2475,19 +2587,17 @@
               "description": "Comment not found."
             }
           },
+          "security": [
+            {
+              "jwt": []
+            }
+          ],
           "servers": [
             {
               "url": "https://know-africa.herokuapp.com"
             }
           ]
         },
-        "servers": [
-          {
-            "url": "https://know-africa.herokuapp.com"
-          }
-        ]
-      },
-      "/api/v1/admin/comment/{id}": {
         "patch": {
           "tags": [
             "comment"

@@ -5,6 +5,6 @@ const swaggerUi = require("swagger-ui-express");
 
 const router = Router();
 
-router.get("/", swaggerUi.setup(docs));
+router.get("/docs", swaggerUi.setup(docs));
 
 export default router;

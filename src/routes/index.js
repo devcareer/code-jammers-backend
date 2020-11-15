@@ -1,5 +1,6 @@
 import { Router } from "express";
 
+const swaggerUi = require("swagger-ui-express");
 import stateRoutes from "./stateRoutes";
 import resetPasswordRoutes from "./resetPasswordRoutes";
 import userRoutes from "./userRoute/userRoutes";
@@ -12,10 +13,11 @@ import foodRoutes from "./foodRoute/foodRoutes";
 import historicalFactsRoutes from "./historicalFactsRoute/historicalFactsRoute";
 import commentRoutes from "./commentRoutes";
 import adminRoutes from "./adminRoutes/activateUserRoutes";
-
+import docRoutes from "./docsRoutes/docsRoute";
 const router = new Router();
 
 router.use("/", adminRoutes);
+router.use("/", swaggerUi.serve, docRoutes);
 router.use("/", countryRoutes);
 router.use("/", ethnicRoutes);
 router.use("/", userRoutes);
