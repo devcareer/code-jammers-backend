@@ -6,7 +6,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { googleStrategy } from "./database/config/google-passport";
 import router from "./routes/index";
-
 import { fbStrategy } from "./database/config/fbpassport";
 
 dotenv.config();

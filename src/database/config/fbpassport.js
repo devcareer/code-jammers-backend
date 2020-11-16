@@ -1,8 +1,9 @@
 import dotenv from "dotenv";
 import FacebookStrategy from "passport-facebook";
-import database from "../../models";
+import model from "../../models";
 import User from "../../services/UserService/User";
 
+const { Users } = model;
 dotenv.config();
 
 const fbStrategy = new FacebookStrategy({
@@ -11,25 +12,26 @@ const fbStrategy = new FacebookStrategy({
   callbackURL: process.env.FACEBOOK_CALLBACK_URL,
   profileFields: ["id", "name", "email", "displayName"]
 },
- async (accessToken, refreshToken, profile, done) => {
-  try {
-    const username = (profile.displayName).toLowerCase();
-    const email = profile.emails[0].value;
 
-    // check if user already exists in our database
-    const userExist = await database.Users.findOne(
+async (accessToken, refreshToken, profile, done) => {
+  try {
+    const userExist = await Users.findOne(
       { where: { facebookId: profile.id } }
     );
     if (userExist) {
-      return done(null, userExist);
+      const msgObj = { status: 409, error: "User already exist" };
+      return done(null, msgObj);
     }
-    const emailExist = await database.Users.findOne({ where: { email } });
-    if (emailExist) return res.status(404).json({ status: 404, error: "Email already used by another user." });
+    const emailExist = await Users.findOne({ where: { email } });
+    if (emailExist) {
+      const msgObj = ({ status: 404, error: "Email already used by another user." });
+      return done(null, msgObj);
+    }
 
     if (!userExist) {
       const newUser = {
-        email,
-        username,
+        email: profile.emails[0].value,
+        username: (profile.displayName).toLowerCase(),
         facebookId: profile.id,
         password: "",
         role: "User",

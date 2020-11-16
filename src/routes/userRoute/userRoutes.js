@@ -17,12 +17,22 @@ router.get(
 router.patch("/user-profile/", verifyToken, verifyUserById, userController.updateUserProfile);
 router.get("/users/signup/verify/:email", userController.verifyUser);
 router.post("/users/signin", userController.loginUser);
-router.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email"] }));
-router.get("/auth/facebook/callback",
 
-  passport.authenticate("facebook", {
-    successRedirect: "/",
-    failureRedirect: "/login"
-  }));
+router.get(
+  "/auth/facebook",
+  passport.authenticate("facebook", { scope: ["email"] })
+);
+
+router.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", { scope: ["email"] }),
+  (req, res) => {
+    if (!req.user.status) {
+      res.redirect("/");
+    } else {
+      res.status(409).send(req.user);
+    }
+  }
+);
 
 export default router;
