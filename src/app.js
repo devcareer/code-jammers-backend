@@ -40,7 +40,7 @@ app.get(
     scope: ["profile", "email"],
   }),
   (req, res) => {
-    if (!req.user.status) {
+    if (!req.user.error) {
       res.redirect("/");
     } else {
       res.status(409).send(req.user);
