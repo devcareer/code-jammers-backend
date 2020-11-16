@@ -75,4 +75,76 @@ export default class Authentication {
       throw error;
     }
   }
+
+  /**
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
+   * @returns {Function} errorResponse | next
+   */
+  static async verifyUserById(req, res, next) {
+    try {
+      const { id } = req.decoded.user;
+      const user = await Authentication.findUserById(id);
+      if (user) {
+        return next();
+      }
+      return res.status(403).json({ status: 403, error: "Sorry User has been De-activated, Please contact an admin." });
+    } catch (error) {
+      return res.status(500).json({ status: 500, error: "Server Error." });
+    }
+  }
+
+  /**
+   * @param {string} id - The user ID
+   * @returns {object} - An instance of the Users model class
+   */
+  static async findUserById(id) {
+    try {
+      return await db.Users.findOne({
+        where: {
+          id,
+          active: true
+        }
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /**
+   * @param {object} req - The res body object
+   * @param {object} res - The res body object
+   * @param {object} next -  The function to call next
+   * @returns {Function} errorResponse | next
+   */
+  static async verifyUserByDetails(req, res, next) {
+    try {
+      const { email } = req.body;
+      const user = await Authentication.findUserByDetails(email);
+      if (user) {
+        return next();
+      }
+      return res.status(403).json({ status: 403, error: "Sorry User has been De-activated, Please contact an admin." });
+    } catch (error) {
+      return res.status(500).json({ status: 500, error: "Server Error." });
+    }
+  }
+
+  /**
+   * @param {string} email - The user Email
+   * @returns {object} - An instance of the Users model class
+   */
+  static async findUserByDetails(email) {
+    try {
+      return await db.Users.findOne({
+        where: {
+          email,
+          active: true
+        }
+      });
+    } catch (error) {
+      throw error;
+    }
+  }
 }

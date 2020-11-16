@@ -49,7 +49,7 @@ export default class Admin {
    */
   static async getAllStates() {
     try {
-      return await database.States.findAll({ attributes: ["id", "name", "countryId", "capital", "gallery"] });
+      return await database.States.findAll({ attributes: ["id", "name", "countryId", "capital", "gallery"], include: [{ model: database.Comments, as: "comments" }] });
     } catch (err) {
       throw err;
     }
@@ -64,7 +64,8 @@ export default class Admin {
       return await database.States.findOne({
         where: {
           id
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;

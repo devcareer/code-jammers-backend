@@ -27,7 +27,8 @@ export default class db {
       return await database.TouristCenters.findOne({
         where: {
           name,
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;
@@ -55,7 +56,9 @@ export default class db {
    */
   static async listTouristCenters() {
     try {
-      return await database.TouristCenters.findAll();
+      return await database.TouristCenters.findAll({
+        include: [{ model: database.Comments, as: "comments" }]
+      });
     } catch (err) {
       throw err;
     }
@@ -70,7 +73,8 @@ export default class db {
       return await database.TouristCenters.findOne({
         where: {
           id,
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;

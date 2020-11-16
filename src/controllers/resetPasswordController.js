@@ -26,7 +26,7 @@ export default class {
         return res.status(404).json({ status: 404, error: `The email address ${req.body.email} is not associated with any account.`, });
       }
       if (!user.verified) {
-        return res.status(403).json({ status: 403, error: "The acount is not verified. Please check your email inbox for verification email.", });
+        return res.status(403).json({ status: 403, error: "The account is not verified. Please check your email inbox for verification email.", });
       }
       const signed = signToken(user.toJSON(), user.password);
       await sendGrid.sendResetPasswordEmail(user.email, user.id, signed, res);
@@ -44,13 +44,9 @@ export default class {
   static async reset(req, res) {
     const { id, token } = req.params;
     const { newPassword } = req.body;
-    db.Users.findOne({
-      where: { id },
-    })
+    db.Users.findOne({ where: { id }, })
       .then(user => {
-        if (!user) {
-          return res.send({ status: 404, error: "user does not exist" });
-        } try {
+        if (!user) { return res.send({ status: 404, error: "user does not exist" }); } try {
           jwt.verify(token, user.password);
         } catch (error) {
           return res.send({ status: 410, error: "link has expired or has been used. please request for a new link." });
@@ -62,7 +58,7 @@ export default class {
           });
           return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
-          return res.status(500).json({ status: 500, error: "Server error", });
+          return res.status(500).json({ status: 500, error: "Server error" });
         }
       });
   }

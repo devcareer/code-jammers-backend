@@ -18,13 +18,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    facebookId: {
+    googleId: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     role: {
       type: DataTypes.ENUM("Super Admin", "Admin", "User"),
       defaultValue: "User",
+    },
+    active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     },
   });
   return User;
