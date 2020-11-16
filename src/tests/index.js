@@ -1,6 +1,4 @@
 import "./index-test";
-import "./models/user.spec";
-import "./models/profile.spec";
 import "./models/food.spec";
 import "./models/music.spec";
 import "./models/comment.spec";
@@ -12,6 +10,7 @@ import "./models/country.spec";
 import "./models/ethnicgroup.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
+import "./fbOAuth-test.spec";
 import "./google-oauth/google-test.spec";
 import "./controllers/userProfileTest/profile-test";
 import "./controllers/admin/addCountry.test";
