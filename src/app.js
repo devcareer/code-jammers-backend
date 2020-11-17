@@ -4,7 +4,9 @@ import passport from "passport";
 import cookieSession from "cookie-session";
 import cors from "cors";
 import dotenv from "dotenv";
-import { googleStrategy } from "./database/config/google-passport";
+import { googleStrategySignUp } from "./database/config/google-passport";
+import { googleStrategySignIn } from "./database/config/googlePassport-signin";
+
 import router from "./routes/index";
 
 dotenv.config();
@@ -25,7 +27,8 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(googleStrategy);
+passport.use("googleSignIn", googleStrategySignIn);
+passport.use("googleSignUp", googleStrategySignUp);
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -35,15 +38,29 @@ passport.deserializeUser((user, done) => {
 });
 
 app.get(
-  "/auth/google/callback",
-  passport.authenticate("google", {
+  "/auth/google/signin",
+  passport.authenticate("googleSignIn", {
+    scope: ["profile", "email"],
+  }),
+  (req, res) => {
+    if (!req.user.error) {
+      res.status(200).json(req.user);
+    } else {
+      res.status(404).json(req.user);
+    }
+  }
+);
+
+app.get(
+  "/auth/google/signup",
+  passport.authenticate("googleSignUp", {
     scope: ["profile", "email"],
   }),
   (req, res) => {
     if (!req.user.error) {
       res.redirect("/");
     } else {
-      res.status(409).send(req.user);
+      res.status(409).json(req.user);
     }
   }
 );
