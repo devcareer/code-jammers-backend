@@ -4,7 +4,7 @@ import passport from "passport";
 import cookieSession from "cookie-session";
 import cors from "cors";
 import dotenv from "dotenv";
-import { googleStrategySignUp } from "./database/config/google-passport";
+import { googleStrategySignUp } from "./database/config/google-passport-signup";
 import { googleStrategySignIn } from "./database/config/googlePassport-signin";
 
 import router from "./routes/index";
