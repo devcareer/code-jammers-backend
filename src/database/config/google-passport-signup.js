@@ -7,12 +7,12 @@ const { Users } = model;
 
 dotenv.config();
 
-const googleStrategy = new Strategy(
+const googleStrategySignUp = new Strategy(
   {
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK_HEROKU_URL,
-    callbackURL: process.env.GOOGLE_CALLBACK_URL,
+    callbackURL: process.env.GOOGLE_CALLBACK_HEROKU_URL_SIGNUP,
+    callbackURL: process.env.GOOGLE_CALLBACK_URL_SIGNUP,
   },
 
   async (accessToken, refreshToken, profile, done) => {
@@ -46,4 +46,4 @@ const googleStrategy = new Strategy(
   }
 );
 
-export { googleStrategy };
+export { googleStrategySignUp };
