@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+ 
+# environment variables
+.env
+
+# coverage dependencies
+coverage/
+.nyc_output/
+# package-lock.json
+package-lock.json
+
+# history
+.history
+
+build/
+
+.DS_store
+
+sendgrid.env
+
+#docker compose
+pgdata

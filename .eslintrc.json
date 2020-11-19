@@ -1,0 +1,43 @@
+{
+  "root": true,
+  "extends": "airbnb-base",
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true
+  },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2015,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    },
+  "rules": {
+    "linebreak-style": 0,
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "no-unused-vars":"off",
+    "no-plusplus":"off",
+    "no-undef":"off",
+    "comma-dangle":"off",
+    "consistent-return":"off",
+    "no-tabs":"off",
+    "prefer-const":"off",
+    "max-len":"off",
+    "global-require":"off",
+    "import/no-unresolved":"off",
+    "import/prefer-default-export":"off",
+    "import/no-dynamic-require":"off",
+    "no-console": "off",
+    "camelcase":"off",
+    "import/no-extraneous-dependencies":["error", {"devDependencies": true}],
+    "arrow-parens": [2, "as-needed"],
+    "no-useless-catch": "off",
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "require-jsdoc": 0,
+    "no-useless-concat": 0,
+    "operator-linebreak": 0,
+    "valid-jsdoc": "error"
+  }
+}
+    
