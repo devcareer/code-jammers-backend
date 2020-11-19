@@ -5,7 +5,12 @@
 
 An information and fact-based web application about Africa. Africa isn't a country. Africa is a continent with 54 independent countries.
 
-For the features, go here: https://github.com/devcareer/code-jammers-backend/wiki/Backend-sample-test-APIs
+- For the Features, go here: https://github.com/devcareer/code-jammers-backend/wiki/Backend-sample-test-APIs
+- For the Heroku, go here: https://know-africa.herokuapp.com
+- For the Pivotal tracker board, go here: https://www.pivotaltracker.com/n/projects/2463429
+- For GitHub kanban board, go here: https://github.com/devcareer/code-jammers-backend/projects/1
+- For our static website, go here: https://devcareer.github.io/code-jammers-backend/docs/
+- For our swagger docs, go here: https://know-africa.herokuapp.com/api/v1/docs
 
 ### The technologies used in creating this project are:
 
