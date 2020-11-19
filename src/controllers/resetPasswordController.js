@@ -58,6 +58,7 @@ export default class {
           });
           return res.status(200).json({ status: 200, success: "password has been reset" });
         } catch (error) {
+          console.log(error);
           return res.status(500).json({ status: 500, error: "Server error" });
         }
       });
