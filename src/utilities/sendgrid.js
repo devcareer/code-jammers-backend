@@ -84,7 +84,7 @@ export default class {
     msg.html = `<div style ="background-color: rgb(227, 223, 222); width:100%">
     <div style= "display: flex; padding-top: 50px; ">
       <div style= "line-height: 1.6; margin: auto; text-align: left; width: 50%; padding-top: 50px; background-color: white; margin-bottom:20px;">
-      <div><p style ="text-align: center; font-size: 40px; margin: auto; width: 70%; padding-bottom:50px">Welcom to Know Africa!</p></div>
+      <div><p style ="text-align: center; font-size: 40px; margin: auto; width: 70%; padding-bottom:50px">Welcome to Know Africa!</p></div>
       <p style="margin: 10px">Dear <strong>${User}</strong>,</p> 
       <div style="margin: 10px">
           <p>Thank you for joining Know Africa. We look forward to sharing the many beauties of Africa with you! <br> Please click the button below to confirm you own this email address</p>

@@ -45,6 +45,10 @@ jobs:
       env:
         NODE_ENV: test
         JWT_KEY: ${{ secrets.JWT_KEY }}
+        GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+        GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+        GOOGLE_CALLBACK_URL: ${{ secrets.GOOGLE_CALLBACK_URL }}
+        COOKIE_KEY: ${{ secrets.COOKIE_KEY }}
     - name: Coveralls
       uses: coverallsapp/github-action@master
       env:

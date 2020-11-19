@@ -56,7 +56,7 @@ export default class db {
    */
   static async listMusic() {
     try {
-      return await database.Music.findAll();
+      return await database.Music.findAll({ include: [{ model: database.Comments, as: "comments" }] });
     } catch (err) {
       throw err;
     }
@@ -71,7 +71,8 @@ export default class db {
       return await database.Music.findOne({
         where: {
           id,
-        }
+        },
+        include: [{ model: database.Comments, as: "comments" }]
       });
     } catch (err) {
       throw err;

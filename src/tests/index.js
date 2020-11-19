@@ -12,6 +12,7 @@ import "./models/country.spec";
 import "./models/ethnicgroup.spec";
 import "./controllers/users/user-test";
 import "./controllers/users/user-sign-in-test";
+import "./google-oauth/google-test.spec";
 import "./controllers/userProfileTest/profile-test";
 import "./controllers/admin/addCountry.test";
 import "./controllers/admin/activateUser.test";

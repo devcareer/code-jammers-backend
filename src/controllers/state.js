@@ -46,13 +46,14 @@ export default class AdminStateController {
   static async listStates(req, res) {
     try {
       const states = await Admin.getAllStates();
-      res.status(200).send({
+      res.status(200).json({
         status: 200,
         message: "Successfully retrived all States",
         data: states,
       });
     } catch (error) {
-      return res.status(500).send({
+      console.log(error);
+      return res.status(500).json({
         status: 500,
         error,
       });
@@ -71,13 +72,13 @@ export default class AdminStateController {
       if (error) return res.status(400).json({ status: 400, error: error.message });
       const state = await Admin.getState(id);
       if (!state) return res.status(404).json({ status: 404, error: "State not found" });
-      return res.status(200).send({
+      return res.status(200).json({
         status: 200,
         message: "Successfully retrived state",
         data: state,
       });
     } catch (error) {
-      return res.status(404).send({
+      return res.status(404).json({
         status: 404,
         error: "Resource not found."
       });
@@ -97,12 +98,12 @@ export default class AdminStateController {
       const state = await Admin.getState(id);
       if (!state) return res.status(404).json({ status: 404, error: "State not found" });
       await Admin.deleteState(id);
-      return res.status(200).send({
+      return res.status(200).json({
         status: 200,
         message: "Successfully Deleted state",
       });
     } catch (error) {
-      return res.status(404).send({
+      return res.status(404).json({
         status: 404,
         error: "Resource not found.",
       });
@@ -134,13 +135,13 @@ export default class AdminStateController {
         req.body.name = newname;
       }
       const state = await Admin.updateState(id, req.body);
-      return res.status(200).send({
+      return res.status(200).json({
         status: 200,
         message: "Successfully updated State",
         data: state[1],
       });
     } catch (error) {
-      return res.status(404).send({ status: 404, error: "Resource not found.", });
+      return res.status(404).json({ status: 404, error: "Resource not found.", });
     }
   }
 }
