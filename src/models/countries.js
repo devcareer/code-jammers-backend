@@ -74,12 +74,10 @@ module.exports = (sequelize, DataTypes) => {
     Country.hasMany(models.Comments, {
       as: "comments",
       foreignKey: "relatedId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
     });
   };
-
-
 
   return Country;
 };

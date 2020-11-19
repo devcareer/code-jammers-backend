@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     Historicalfact.hasMany(models.Comments, {
       as: "comments",
       foreignKey: "relatedId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
     });
   };
 

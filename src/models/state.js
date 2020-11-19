@@ -27,13 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     State.hasMany(models.Comments, {
       as: "comments",
       foreignKey: "relatedId",
-<<<<<<< HEAD
       onDelete: "cascade",
       hooks: true,
-=======
-      onDelete: 'cascade',
-      hooks: true, 
->>>>>>> dd1db87bb17eeacc966048616678192f31cb7e54
     });
   };
 

@@ -42,26 +42,24 @@ export default class {
    * @returns {object} Success message
    */
   static async reset(req, res) {
-    try {
-      const { id, token } = req.params;
-      const { newPassword } = req.body;
-      const user = await db.Users.findOne({ where: { id }, });
-      if (!user) { return res.send({ status: 404, error: "user does not exist" }); }
-      if (!user.active) {
-        return res.status(403).send({ message: "Sorry User has been De-activated, Please contact an admin." });
-      }
-      const resetPassword = jwt.verify(token, user.password);
-      if (!resetPassword) {
-        return res.send({ status: 410, error: "link has expired or has been used. please request for a new link." });
-      }
-      const hashedPass = hashPassword(newPassword);
-
-      db.Users.update({ password: hashedPass, }, {
-        where: { id: user.id }, returning: true, plain: true
+    const { id, token } = req.params;
+    const { newPassword } = req.body;
+    db.Users.findOne({ where: { id }, })
+      .then(user => {
+        if (!user) { return res.send({ status: 404, error: "user does not exist" }); } try {
+          jwt.verify(token, user.password);
+        } catch (error) {
+          return res.send({ status: 410, error: "link has expired or has been used. please request for a new link." });
+        }
+        const hashedPass = hashPassword(newPassword);
+        try {
+          db.Users.update({ password: hashedPass, }, {
+            where: { id: user.id }, returning: true, plain: true
+          });
+          return res.status(200).json({ status: 200, success: "password has been reset" });
+        } catch (error) {
+          return res.status(500).json({ status: 500, error: "Server error" });
+        }
       });
-      return res.status(200).json({ status: 200, success: "password has been reset" });
-    } catch (error) {
-      return res.status(500).json({ status: 500, error: "Server error" });
-    }
   }
 }

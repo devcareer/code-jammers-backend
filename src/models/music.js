@@ -31,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     Music.hasMany(models.Comments, {
       as: "comments",
       foreignKey: "relatedId",
-      onDelete: 'cascade',
-      hooks: true, 
+      onDelete: "cascade",
+      hooks: true,
     });
   };
   return Music;
