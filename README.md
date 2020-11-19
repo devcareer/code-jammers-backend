@@ -24,7 +24,13 @@ JavaScript, Node.js, ExpressJs, Sequelize ORM, PostgreSQL, Git, Github Actions, 
 - create a `.env` file and the contents in the sample file to it.
 - Run `npm run start-dev` to start the server and `npm test` to run the test suites
 
-Note: To test the APIs using Heroku, use the above Heroku Link. Then to test it through a container(docker), follow the following steps:
+#
+
+Note: To test the APIs using Heroku, use the above Heroku Link. 
+
+#
+
+### Then to test it through a container(docker), follow the following steps:
 
 - Make sure to have Git and Node.js installed on your computer
 - You can use this link to clone the project: `https://github.com/devcareer/code-jammers-backend.git`
@@ -35,6 +41,8 @@ Note: To test the APIs using Heroku, use the above Heroku Link. Then to test it 
 - Run `docker-compose run web npm run seeder`
 - To run tests `docker-compose run web npm run test`
 - To shut down the container `docker-compose down`
+
+#
 
 ### Sample .env file format
 
