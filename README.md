@@ -14,14 +14,6 @@ An information and fact-based web application about Africa. Africa isn't a count
 
 ### The technologies used in creating this project are:
 
-JavaScript, Node.js, ExpressJs, Sequelize ORM, PostgreSQL, Git, Github Actions, Code Climate, Coveralls, Pivotal Tracker, Docker, Swagger, Hound
-
-### :rocket: How to get started( to run locally)
-
-For the features, go here: https://github.com/devcareer/code-jammers-backend/wiki/Backend-sample-test-APIs
-
-### The technologies used in creating this project are:
-
 JavaScript, Node.js, ExpressJs, Sequelize ORM, PostgreSQL, Git, Github Actions, Code Climate, Coveralls, Pivotal Tracker, Docker, Swagger
 
 ### :rocket: How to get started
